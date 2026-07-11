@@ -1,11 +1,18 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign name_from_metafield = customer.metafields.custom.full_name | default: customer.name
-  assign email_from_metafield = customer.metafields.custom.email | default: customer.email
-  assign phone_from_metafield = customer.metafields.custom.phone | default: customer.phone
-  assign store_credit = customer.metafields.custom.store_credit | default: "$0.00"
-  assign cashback_balance = customer.metafields.custom.cashback | default: "$0.00"
+  assign name_from_metafield = customer.metafields.custom.full_name.value | default: customer.metafields.custom.full_name | default: customer.name
+  assign email_from_metafield = customer.metafields.custom.email.value | default: customer.metafields.custom.email | default: customer.email
+  assign phone_from_metafield = customer.metafields.custom.phone.value | default: customer.metafields.custom.phone | default: customer.phone
+  assign store_credit = customer.metafields.custom.store_credit.value | default: customer.metafields.custom.store_credit | default: "$0.00"
+  assign cashback_balance = customer.metafields.custom.cashback.value | default: customer.metafields.custom.cashback | default: "$0.00"
+
+  assign birth_date = customer.metafields.facts.birth_date.value | default: customer.metafields.facts.birth_date
+  assign pin_code = customer.metafields.custom.pin_code.value | default: customer.metafields.custom.pin_code
+  assign state = customer.metafields.custom.state.value | default: customer.metafields.custom.state
+  assign city = customer.metafields.custom.city.value | default: customer.metafields.custom.city
+  assign address = customer.metafields.custom.address.value | default: customer.metafields.custom.address
+  assign gender = customer.metafields.custom.gender.value | default: customer.metafields.custom.gender
 -%}
 
 <div class="customer account dashboard-container">
@@ -66,6 +73,24 @@
               <p class="detail-item"><strong>Email:</strong> {{ email_from_metafield }}</p>
               {% if phone_from_metafield != blank %}
                 <p class="detail-item"><strong>Phone:</strong> {{ phone_from_metafield }}</p>
+              {% endif %}
+              {% if gender != blank %}
+                <p class="detail-item"><strong>Gender:</strong> {{ gender }}</p>
+              {% endif %}
+              {% if birth_date != blank %}
+                <p class="detail-item"><strong>Birth Date:</strong> {{ birth_date }}</p>
+              {% endif %}
+              {% if address != blank %}
+                <p class="detail-item"><strong>Address:</strong> {{ address }}</p>
+              {% endif %}
+              {% if city != blank %}
+                <p class="detail-item"><strong>City:</strong> {{ city }}</p>
+              {% endif %}
+              {% if state != blank %}
+                <p class="detail-item"><strong>State:</strong> {{ state }}</p>
+              {% endif %}
+              {% if pin_code != blank %}
+                <p class="detail-item"><strong>Pin Code:</strong> {{ pin_code }}</p>
               {% endif %}
               <div class="store-credit-box">
                 <span class="credit-icon">💵</span>
