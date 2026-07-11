@@ -391,7 +391,7 @@
     </div>
   {% else %}
     <script>
-      window.location.href = '/account/login?return_to=' + window.location.pathname;
+      window.location.href = '/customer_authentication/login?return_to=' + encodeURIComponent(window.location.pathname);
     </script>
   {% endif %}
 </div>

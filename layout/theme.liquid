@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function patchReturnTo() {
     var inputs = document.querySelectorAll('input[name="return_to"]');
     inputs.forEach(function(input) {
-      if (input.value && (input.value.includes('?return_to=') || input.value.includes('/account/login'))) {
+      if (input.value && (input.value.includes('?return_to=') || input.value.includes('/account/login') || input.value.includes('/customer_authentication/login'))) {
         input.value = '/pages/dashboard';
       }
     });
