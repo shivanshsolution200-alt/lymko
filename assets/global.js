@@ -2361,6 +2361,7 @@ document.querySelectorAll('[id^="block-tab-1"]').forEach((arrowTab, index) => {
 
 
 
+/*
 let accountModel = document.querySelector('[id^="login-modal__"]');
 let accountButton = document.querySelector('.header__icon--account');
 let accountClose = document.querySelector('.details-modal-close');
@@ -2372,6 +2373,7 @@ accountClose.addEventListener("click", function (e) {
   accountModel.classList.remove('login-modal-active');
 });
 }
+*/
 
 
 document.querySelectorAll('[id^="shopify-section-"]').forEach((card, index) => {

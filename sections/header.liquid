@@ -737,14 +737,14 @@ display: inline-flex;
                  
       {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
        {%- if customer -%} 
-       <a href="{{ routes.account_url }}" class="header__icon  link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+       <a href="/pages/dashboard" class="header__icon  link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
          {% render 'icon-account' %}
          <span class="icon__fallback-text {% if section.settings.header_icon_type =="icon"  %} hidden {% endif %}">
            {{ 'customer.account_fallback' | t }}
          </span>
        </a>
         {% else %}
-       <a href="#" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+       <a href="{{ routes.account_register_url }}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
        {% render 'icon-account' %}
           <span class="icon__fallback-text {% if section.settings.header_icon_type =="icon"  %} hidden {% endif %}">
             {{ 'customer.log_in' | t }}              
