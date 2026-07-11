@@ -1,0 +1,172 @@
+{% schema %}
+{
+  "name": "Custom Double Banner",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Your Heading Here"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "SHOP NOW"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Double Banner",
+      "blocks": [
+        { "type": "banner" },
+        { "type": "banner" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="cdb-section page-width">
+  <div class="cdb-container">
+    {% for block in section.blocks %}
+      {% assign col = block.settings.collection %}
+
+      <a href="{{ col.url }}" class="cdb-item">
+
+        <!-- Image -->
+        <div class="cdb-image">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: '1200x' }}" alt="">
+          {% endif %}
+        </div>
+
+        <!-- Overlay -->
+        <div class="cdb-overlay">
+          <h2>{{ block.settings.heading }}</h2>
+
+          {% comment %} <span class="cdb-btn">
+            {{ block.settings.button_text }}
+          </span> {% endcomment %}
+        </div>
+
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+/* SECTION */
+.cdb-section {
+  padding: 30px 20px;
+}
+
+/* GRID */
+.cdb-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* ITEM */
+.cdb-item {
+  position: relative;
+  display: block;
+  {% comment %} border-radius: 20px; {% endcomment %}
+  overflow: hidden;
+}
+
+/* IMAGE */
+.cdb-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+{% comment %} /* HOVER */
+.cdb-item:hover img {
+  transform: scale(1.05);
+} {% endcomment %}
+
+/* OVERLAY */
+.cdb-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 40px;
+  color: #fff;
+}
+
+.cdb-overlay h2 {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  max-width: 80%;
+}
+
+/* BUTTON */
+.cdb-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #caa64b, #f5d27a);
+  color: #000;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* BORDER EFFECT */
+.cdb-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  {% comment %} background: linear-gradient(90deg, #caa64b, #f5d27a); {% endcomment %}
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .cdb-container {
+    grid-template-columns: 1fr;
+  }
+
+  .cdb-image img {
+    height: auto;
+  }
+
+  .cdb-overlay {
+    padding: 20px;
+  }
+  .cdb-section {
+    padding: 0px 11px;
+}
+
+  .cdb-overlay h2 {
+    font-size: 22px;
+  }
+}
+</style>

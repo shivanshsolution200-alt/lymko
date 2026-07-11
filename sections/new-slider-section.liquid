@@ -1,0 +1,223 @@
+{% schema %}
+{
+  "name": "Advanced Slider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Auto Slide Speed (seconds)",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Slide Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Slider"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-slider-{{ section.id }}">
+  
+  <div class="slider-wrapper">
+    {% for block in section.blocks %}
+      <div class="slide">
+        
+        {% if block.settings.link != blank %}
+        <a href="{{ block.settings.link }}">
+        {% endif %}
+
+          {% if block.settings.desktop_image != blank %}
+            <img class="desktop-img" src="{{ block.settings.desktop_image | image_url}}">
+          {% endif %}
+
+          {% if block.settings.mobile_image != blank %}
+            <img class="mobile-img" src="{{ block.settings.mobile_image | image_url }}">
+          {% endif %}
+
+        {% if block.settings.link != blank %}
+        </a>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Segmented Lines -->
+  <div class="lines">
+    {% for block in section.blocks %}
+      <div class="line">
+        <span class="fill"></span>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<style>
+.custom-slider-{{ section.id }} {
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-slider-{{ section.id }} .slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.custom-slider-{{ section.id }} .slide {
+  min-width: 100%;
+}
+
+.custom-slider-{{ section.id }} img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Mobile Image */
+.custom-slider-{{ section.id }} .mobile-img {
+  display: none;
+}
+
+@media(max-width: 768px){
+  .custom-slider-{{ section.id }} img {
+    height: auto;
+  }
+
+  .custom-slider-{{ section.id }} .desktop-img {
+    display: none;
+  }
+
+  .custom-slider-{{ section.id }} .mobile-img {
+    display: block;
+  }
+}
+
+/* Segmented Lines */
+.custom-slider-{{ section.id }} .lines {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 3;
+}
+
+/* 🔥 FIX: remove flex:1 */
+.custom-slider-{{ section.id }} .line {
+  width: 40px;   /* 👉 fixed width (important) */
+  height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* active fill */
+.custom-slider-{{ section.id }} .line span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  border-radius: 10px;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".custom-slider-{{ section.id }}");
+  if (!slider) return;
+
+  const wrapper = slider.querySelector(".slider-wrapper");
+  let slides = slider.querySelectorAll(".slide");
+  const lines = slider.querySelectorAll(".fill");
+
+  let index = 0;
+  const speed = {{ section.settings.speed }} * 1000;
+  let timer;
+
+  // clone first slide
+  const firstClone = slides[0].cloneNode(true);
+  wrapper.appendChild(firstClone);
+
+  slides = slider.querySelectorAll(".slide");
+  const total = slides.length;
+
+  function resetLines() {
+    lines.forEach((line, i) => {
+      line.style.transition = "none";
+      line.style.width = i < index ? "100%" : "0%";
+    });
+  }
+
+  function animateLine(i) {
+    if (i >= lines.length) i = 0;
+
+    requestAnimationFrame(() => {
+      lines[i].style.transition = "width " + speed + "ms linear";
+      lines[i].style.width = "100%";
+    });
+  }
+
+  function updateSlide() {
+    wrapper.style.transform = "translateX(-" + index * 100 + "%)";
+    resetLines();
+    animateLine(index);
+  }
+
+  function nextSlide() {
+    index++;
+    updateSlide();
+
+    if (index === total - 1) {
+      setTimeout(() => {
+        wrapper.style.transition = "none";
+        index = 0;
+        wrapper.style.transform = "translateX(0)";
+      }, 500);
+    }
+  }
+
+  function startSlider() {
+    timer = setInterval(nextSlide, speed);
+  }
+
+  // 👉 only start when visible (performance boost)
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      startSlider();
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(slider);
+
+  updateSlide();
+});
+</script>
