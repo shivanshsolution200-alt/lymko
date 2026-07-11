@@ -33,7 +33,7 @@
                 <span class="icon-text">{{ 'products.product.wishlist' | t }}</span>
               </a>
 
-              <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon link ">
+              <a href="{%- if customer -%}/pages/dashboard{%- else -%}/pages/sign-up{%- endif -%}" class="header__icon link ">
                 {% render 'icon-account' %}
                <span class="icon-text"> {%- liquid
                   if customer

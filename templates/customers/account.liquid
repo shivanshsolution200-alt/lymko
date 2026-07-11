@@ -1,5 +1,9 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
+<script>
+  window.location.href = "/pages/dashboard";
+</script>
+
 <div class="customer account">
   <div>
     <h1>{{ 'customer.account.title' | t }}</h1>

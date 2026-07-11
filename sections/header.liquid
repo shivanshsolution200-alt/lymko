@@ -434,7 +434,7 @@ display: inline-flex;
             </div>
              <div class="menu-drawer__utility-links">
                   {%- if shop.customer_accounts_enabled -%}
-                    <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5 small-hide">
+                    <a href="{%- if customer -%}/pages/dashboard{%- else -%}/pages/sign-up{%- endif -%}" class="menu-drawer__account link focus-inset h5 small-hide">
                       {% render 'icon-account' %}
                       {%- liquid
                         if customer
@@ -744,7 +744,7 @@ display: inline-flex;
          </span>
        </a>
         {% else %}
-       <a href="{{ routes.account_register_url }}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+       <a href="/pages/sign-up" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
        {% render 'icon-account' %}
           <span class="icon__fallback-text {% if section.settings.header_icon_type =="icon"  %} hidden {% endif %}">
             {{ 'customer.log_in' | t }}              

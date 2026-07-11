@@ -16,6 +16,7 @@
         {{ 'customer.login_page.login_account' | t }}
       </a> </p>
   {%- form 'create_customer', novalidate: 'novalidate' -%}
+    <input type="hidden" name="return_to" value="/account/login?return_to=/pages/dashboard" />
     {%- if form.errors -%}
       <h2 class="form__message" tabindex="-1" autofocus>
         <svg aria-hidden="true" focusable="false" role="presentation">
