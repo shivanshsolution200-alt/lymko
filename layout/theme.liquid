@@ -451,58 +451,5 @@
     </div>
   </body>
 
-  <script>
-(function(){
-  var min = 40;
-  var max = 150;
-  var current = Math.floor(Math.random() * (80 - min + 1)) + min;
-
-  var el = document.getElementById("viewingCount");
-  if (el) {
-    el.innerText = current;
-  }
-
-  function increaseOnly() {
-    var change = Math.floor(Math.random() * 5) + 1;
-    current += change;
-
-    if(current > max) {
-      current = max;
-    }
-
-    if (el) {
-      el.innerText = current;
-    }
-  }
-
-  setInterval(increaseOnly, 3000);
-})();
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  function patchReturnTo() {
-    var inputs = document.querySelectorAll('input[name="return_to"]');
-    inputs.forEach(function(input) {
-      if (input.value && (input.value.includes('?return_to=') || input.value.includes('/account/login') || input.value.includes('/customer_authentication/login'))) {
-        input.value = '/pages/dashboard';
-      }
-    });
-  }
-  
-  patchReturnTo();
-  
-  document.addEventListener('submit', function(e) {
-    patchReturnTo();
-  });
-  
-  var count = 0;
-  var interval = setInterval(function() {
-    patchReturnTo();
-    count++;
-    if (count > 10) clearInterval(interval);
-  }, 500);
-});
-</script>
 
 </html>
