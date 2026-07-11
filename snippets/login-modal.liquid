@@ -6,76 +6,88 @@
         </svg>
       </div>
                
- {%- form 'customer_login', novalidate: 'novalidate' -%}
-      {%- if form.errors -%}
-        <h2 class="form__message" tabindex="-1" autofocus>
-          <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
-          <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 13 13">
-            <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-            <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-            <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-            <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-          </svg>
-          {{ 'templates.contact.form.error_heading' | t }}
-        </h2>
-        {{ form.errors | default_errors }}
-      {%- endif -%}
-   
+ <form
+  id="CustomerOtpLoginForm"
+  class="customer-otp-login-form"
+  novalidate
+>
   <h1 id="customer--login" tabindex="-1">
-        {{ 'customer.login_page.title' | t }}
+    {{ 'customer.login_page.title' | t }}
   </h1>
-    
-      <div class="field field--with-error">  
-          <label for="CustomerEmail">
-          {{ 'customer.login_page.email' | t }}
-        </label>
-        <input
-          type="email"
-          name="customer[email]"
-          id="CustomerEmail"
-          autocomplete="email"
-          autocorrect="off"
-          autocapitalize="off"
-          {% if form.errors contains 'form' %}
-            aria-invalid="true"
-          {% endif %}
-          placeholder="{{ 'customer.login_page.email' | t }}" required
-        >
-      
-      </div>
 
-      {%- if form.password_needed -%}
-        <div class="field field--with-error">   
-         <label for="CustomerPassword">
-            {{ 'customer.login_page.password' | t }}
-          </label>
-          <input
-            type="password"
-            value=""
-            name="customer[password]"
-            id="CustomerPassword"
-            autocomplete="current-password"
-            {% if form.errors contains 'form' %}
-              aria-invalid="true"
-            {% endif %}
-            placeholder="{{ 'customer.login_page.password' | t }}" required
-          >
-        </div>
-        
-      {%- endif -%}
+  <div class="field field--with-error">
+    <label for="CustomerOtpEmail">
+      {{ 'customer.login_page.email' | t }}
+    </label>
 
-      <div class="link-wrapper">
-      <a href="{{ routes.account_login_url }}#recover">
-          {{ 'customer.login_page.forgot_password' | t }}
-        </a> 
-      <a href="{{ routes.account_register_url }}">
-        {{ 'customer.login_page.create_account' | t }}
-      </a>
-      </div>          
-       <button class="button button--primary">
-        {{ 'customer.login_page.sign_in' | t }}
-      </button>        
-    {%- endform -%}
+    <input
+      type="email"
+      name="email"
+      id="CustomerOtpEmail"
+      autocomplete="email"
+      autocorrect="off"
+      autocapitalize="off"
+      placeholder="{{ 'customer.login_page.email' | t }}"
+      required
+    >
+
+    <small
+      id="CustomerOtpEmailError"
+      class="form__message"
+      style="display:none;"
+    >
+      Please enter a valid email address.
+    </small>
+  </div>
+
+  <div class="link-wrapper">
+    <span>OTP will be sent to your email</span>
+
+    <a
+      href="/customer_authentication/login?return_to=%2Fpages%2Fdashboard"
+    >
+      Create account
+    </a>
+  </div>
+
+  <button type="submit" class="button button--primary">
+    Continue
+  </button>
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('CustomerOtpLoginForm');
+    var emailInput = document.getElementById('CustomerOtpEmail');
+    var errorMessage = document.getElementById('CustomerOtpEmailError');
+
+    if (!form || !emailInput) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var email = emailInput.value.trim();
+
+      if (!email || !emailInput.checkValidity()) {
+        errorMessage.style.display = 'block';
+        emailInput.focus();
+        return;
+      }
+
+      errorMessage.style.display = 'none';
+
+      /*
+       * Shopify new customer accounts do not support passing or
+       * pre-filling the email address from the theme form.
+       *
+       * User will enter/confirm the email on Shopify's secure page,
+       * receive the OTP, and then return to the dashboard.
+       */
+      window.location.href =
+        '/customer_authentication/login?return_to=%2Fpages%2Fdashboard';
+    });
+  });
+</script>
             </div>  
     </div>
 
