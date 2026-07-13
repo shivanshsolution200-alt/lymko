@@ -4929,6 +4929,6 @@ button.product-form__submit.button.button--full-width.button--secondary {
 
 
 ._textBody_2aowh_10 {
-    display: flex;
-    justify-content: space-between;
+    display: flex !important;
+    justify-content: space-between !important;
 }
