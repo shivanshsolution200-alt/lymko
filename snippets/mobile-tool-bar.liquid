@@ -33,16 +33,20 @@
                 <span class="icon-text">{{ 'products.product.wishlist' | t }}</span>
               </a>
 
-              <a href="{%- if customer -%}/pages/dashboard{%- else -%}/pages/sign-up{%- endif -%}" class="header__icon link ">
-                {% render 'icon-account' %}
-               <span class="icon-text"> {%- liquid
-                  if customer
-                    echo 'customer.account_fallback' | t
-                  else
-                    echo 'customer.log_in' | t
-                  endif
-                -%}</span>
-              </a>
+              <a
+  href="{% if customer %}/pages/dashboard{% else %}/customer_authentication/login?return_to=%2Fpages%2Fdashboard{% endif %}"
+  class="header__icon link"
+>
+  {% render 'icon-account' %}
+
+  <span class="icon-text">
+    {% if customer %}
+      {{ 'customer.account_fallback' | t }}
+    {% else %}
+      {{ 'customer.log_in' | t }}
+    {% endif %}
+  </span>
+</a>
                
    </div>
 </div>
