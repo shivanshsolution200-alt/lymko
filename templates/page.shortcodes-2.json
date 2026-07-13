@@ -25,7 +25,7 @@
           "type": "button",
           "settings": {
             "button_label": "already registered",
-            "button_link": "https://shopify.com/98832318749/account",
+            "button_link": "/customer_authentication/login?return_to=%2Fpages%2Fdashboard",
             "button_style_secondary": false
           }
         }
