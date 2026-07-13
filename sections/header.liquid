@@ -434,7 +434,7 @@ display: inline-flex;
             </div>
              <div class="menu-drawer__utility-links">
                   {%- if shop.customer_accounts_enabled -%}
-                    <a href="{%- if customer -%}/pages/dashboard{%- else -%}/pages/sign-up{%- endif -%}" class="menu-drawer__account link focus-inset h5 small-hide">
+                    <a href="{{ routes.account_url }}" class="menu-drawer__account link focus-inset h5 small-hide">
                       {% render 'icon-account' %}
                       {%- liquid
                         if customer
@@ -736,21 +736,20 @@ display: inline-flex;
  {%- endif -%}
                  
       {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
-       {%- if customer -%} 
-       <a href="/pages/dashboard" class="header__icon  link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
-         {% render 'icon-account' %}
-         <span class="icon__fallback-text {% if section.settings.header_icon_type =="icon"  %} hidden {% endif %}">
-           {{ 'customer.account_fallback' | t }}
-         </span>
-       </a>
-        {% else %}
-       <a href="/pages/sign-up" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
-       {% render 'icon-account' %}
-          <span class="icon__fallback-text {% if section.settings.header_icon_type =="icon"  %} hidden {% endif %}">
-            {{ 'customer.log_in' | t }}              
+        <a
+          href="{{ routes.account_url }}"
+          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+          aria-label="{% if customer %}My account{% else %}Login{% endif %}"
+        >
+          {% render 'icon-account' %}
+          <span class="icon__fallback-text {% if section.settings.header_icon_type == "icon" %} hidden{% endif %}">
+            {% if customer %}
+              {{ 'customer.account_fallback' | t }}
+            {% else %}
+              {{ 'customer.log_in' | t }}
+            {% endif %}
           </span>
         </a>
-         {%- endif -%}
       {%- endif -%}
       
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
