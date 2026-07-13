@@ -18,6 +18,30 @@
         "padding_bottom": 40
       }
     },
+    "rich_text_kp7b48": {
+      "type": "rich-text",
+      "blocks": {
+        "button_JURcAy": {
+          "type": "button",
+          "settings": {
+            "button_label": "already registered",
+            "button_link": "https://shopify.com/98832318749/account",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "button_JURcAy"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "page_full_width": false,
+        "page_full_width_spacing": false,
+        "color_scheme": "inverse",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "1783756603b97eea4f": {
       "type": "apps",
       "blocks": {
@@ -46,50 +70,11 @@
       "settings": {
         "include_margins": false
       }
-    },
-    "rich_text_kp7b48": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_M7prJh": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "text_EB9QMq": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
-          }
-        },
-        "button_JURcAy": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_M7prJh",
-        "text_EB9QMq",
-        "button_JURcAy"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "page_full_width": false,
-        "page_full_width_spacing": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "main",
-    "1783756603b97eea4f",
-    "rich_text_kp7b48"
+    "rich_text_kp7b48",
+    "1783756603b97eea4f"
   ]
 }
