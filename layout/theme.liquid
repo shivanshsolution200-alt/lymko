@@ -449,6 +449,21 @@
         </div>
       </div>
     </div>
+    {% if customer %}
+<script>
+(function () {
+  var current = window.location.pathname;
+
+  if (
+    current === "/account" ||
+    current === "/account/" ||
+    current.indexOf("/account?") === 0
+  ) {
+    window.location.replace("/pages/dashboard");
+  }
+})();
+</script>
+{% endif %}
   </body>
 
 
