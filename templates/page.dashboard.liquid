@@ -83,6 +83,13 @@
         <h2><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Recent Orders</h2>
       </header>
       <div class="ldash__card-body">
+        <div style="padding:15px;background:#fff3cd;border:1px solid #ffe69c;margin:20px 0;">
+  <p><strong>Customer:</strong> {{ customer.name }}</p>
+  <p><strong>Email:</strong> {{ customer.email }}</p>
+  <p><strong>Customer ID:</strong> {{ customer.id }}</p>
+  <p><strong>Orders count:</strong> {{ customer.orders_count }}</p>
+  <p><strong>Orders size:</strong> {{ customer.orders.size }}</p>
+</div>
         {% if customer.orders.size > 0 %}
           <div class="ldash__order-list">
             {% for order in customer.orders limit: 3 %}
