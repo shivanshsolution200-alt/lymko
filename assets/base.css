@@ -4927,3 +4927,8 @@ button.product-form__submit.button.button--full-width.button--secondary {
     background-color: #ffffffbf !important;
 }
 
+
+._textBody_2aowh_10 {
+    display: flex;
+    justify-content: space-between;
+}
