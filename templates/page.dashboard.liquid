@@ -1,1254 +1,174 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign name_from_metafield = customer.metafields.custom.full_name.value | default: customer.metafields.custom.full_name | default: customer.name
-  assign email_from_metafield = customer.metafields.custom.email.value | default: customer.metafields.custom.email | default: customer.email
-  assign phone_from_metafield = customer.metafields.custom.phone.value | default: customer.metafields.custom.phone | default: customer.phone
-  assign store_credit = customer.metafields.custom.store_credit.value | default: customer.metafields.custom.store_credit | default: "$0.00"
-  assign cashback_balance = customer.metafields.custom.cashback.value | default: customer.metafields.custom.cashback | default: "$0.00"
-
-  assign birth_date = customer.metafields.facts.birth_date.value | default: customer.metafields.facts.birth_date
-  assign pin_code = customer.metafields.custom.pin_code.value | default: customer.metafields.custom.pin_code
-  assign state = customer.metafields.custom.state.value | default: customer.metafields.custom.state
-  assign city = customer.metafields.custom.city.value | default: customer.metafields.custom.city
-  assign address = customer.metafields.custom.address.value | default: customer.metafields.custom.address
-  assign gender = customer.metafields.custom.gender.value | default: customer.metafields.custom.gender
+  assign customer_name = customer.metafields.custom.full_name.value | default: customer.metafields.custom.full_name | default: customer.name
+  assign customer_email = customer.metafields.custom.email.value | default: customer.metafields.custom.email | default: customer.email
+  assign customer_phone = customer.metafields.custom.phone.value | default: customer.metafields.custom.phone | default: customer.phone
 -%}
 
-<div class="customer account dashboard-container">
-  {% if customer %}
-    <!-- Dashboard Header -->
-    <div class="dashboard-header">
-      <div>
-        <h1>Welcome, <span class="accent-name">{{ customer.first_name }}</span>!</h1>
-      </div>
-      <a href="{{ routes.account_logout_url }}" class="logout-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 18 19">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M6 4.5a3 3 0 116 0 3 3 0 01-6 0zm3-4a4 4 0 100 8 4 4 0 000-8zm5.58 12.15c1.12.82 1.83 2.24 1.91 4.85H1.51c.08-2.6.79-4.03 1.9-4.85C4.66 11.75 6.5 11.5 9 11.5s4.35.26 5.58 1.15zM9 10.5c-2.5 0-4.65.24-6.17 1.35C1.27 12.98.5 14.93.5 18v.5h17V18c0-3.07-.77-5.02-2.33-6.15-1.52-1.1-3.67-1.35-6.17-1.35z" fill="currentColor"></path>
-        </svg>
-        Logout
-      </a>
+{% unless customer %}
+  <script>window.location.replace('/customer_authentication/login?return_to=%2Fpages%2Fdashboard');</script>
+{% endunless %}
+
+{% if customer %}
+<div class="ldash">
+  <div class="ldash__head">
+    <h1>Welcome, {{ customer.first_name | default: customer.name }}!</h1>
+    <a href="{{ routes.account_logout_url }}" class="ldash__logout">
+      <svg viewBox="0 0 24 24"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4M15 8l4 4-4 4M9 12h10"/></svg>
+      Logout
+    </a>
+  </div>
+
+  <div class="ldash__tabs" role="tablist">
+    <button class="ldash__tab is-active" data-tab="profile" type="button">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 2.8-7 7-7s7 3 7 7"/></svg>
+      My profile
+    </button>
+    <button class="ldash__tab" data-tab="orders" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16l-1 12H5L4 7Z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg>
+      Orders
+    </button>
+    <button class="ldash__tab" data-tab="addresses" type="button">
+      <svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+      Addresses
+    </button>
+    <button class="ldash__tab" data-tab="recent" type="button">
+      <svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+      Recently viewed
+    </button>
+    <button class="ldash__tab" data-tab="top" type="button">
+      <svg viewBox="0 0 24 24"><path d="M12 3v18M7 8l5-5 5 5M6 16h12"/></svg>
+      Top ordered products
+    </button>
+  </div>
+
+  <div id="ldash-profile" class="ldash__panel is-active">
+    <div class="ldash__grid">
+      <article class="ldash__card">
+        <header class="ldash__card-head">
+          <h2><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 2.8-7 7-7s7 3 7 7"/></svg></span>Account Details</h2>
+          <a href="https://account.lymko.in/profile" class="ldash__edit" title="Edit profile">
+            <svg viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10-3.5-3.5-10 10L4 20Z"/><path d="m13.5 6.5 3.5 3.5"/></svg>
+          </a>
+        </header>
+        <div class="ldash__card-body">
+          <p class="ldash__detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 2.8-7 7-7s7 3 7 7"/></svg>{{ customer_name }}</p>
+          {% if customer_phone != blank %}<p class="ldash__detail"><svg viewBox="0 0 24 24"><path d="M7 3h3l1 5-2 1c1.2 2.8 3.4 5 6.2 6.2l1-2 4.8 1V17c0 2.2-1.8 4-4 4C9.3 21 3 14.7 3 7c0-2.2 1.8-4 4-4Z"/></svg>{{ customer_phone }}</p>{% endif %}
+          <p class="ldash__detail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>{{ customer_email }}</p>
+        </div>
+      </article>
+
+      <article class="ldash__card">
+        <header class="ldash__card-head">
+          <h2><span><svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span>Default Address</h2>
+          <a href="https://account.lymko.in/profile" class="ldash__text-link">View all</a>
+        </header>
+        <div class="ldash__card-body">
+          {% if customer.default_address %}
+            <div class="ldash__address">{{ customer.default_address | format_address }}</div>
+          {% else %}
+            <div class="ldash__empty-address">
+              <svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+              <span>No addresses added</span>
+              <a href="https://account.lymko.in/profile" class="ldash__small-btn">Add</a>
+            </div>
+          {% endif %}
+        </div>
+      </article>
     </div>
 
-    <!-- Dashboard Tabs -->
-    <div class="tabs-scroll-wrapper">
-      <div class="dashboard-tabs">
-        <button class="tab-button active" onclick="switchTab(event, 'profile')">
-          <span class="tab-icon">👤</span> My profile
-        </button>
-        <button class="tab-button" onclick="switchTab(event, 'orders')">
-          <span class="tab-icon">📦</span> Orders
-        </button>
-        <button class="tab-button" onclick="switchTab(event, 'cashback')">
-          <span class="tab-icon">💰</span> Cashback
-        </button>
-        <button class="tab-button" onclick="switchTab(event, 'addresses')">
-          <span class="tab-icon">📍</span> Addresses
-        </button>
-        <button class="tab-button" onclick="switchTab(event, 'recently-viewed')">
-          <span class="tab-icon">👁️</span> Recently viewed
-        </button>
-        <button class="tab-button" onclick="switchTab(event, 'top-products')">
-          <span class="tab-icon">🔥</span> Top ordered products
-        </button>
-      </div>
-    </div>
-
-    <!-- Tab Contents -->
-    <div class="tab-contents-wrapper">
-      
-      <!-- 1. MY PROFILE TAB -->
-      <div id="tab-profile" class="tab-content active">
-        <div class="profile-grid">
-          <!-- Account Details Card -->
-          <div class="dashboard-card card-half">
-            <div class="card-header">
-              <h2>
-                <span class="card-icon">👤</span> Account Details
-              </h2>
-              <a href="{{ /pages/dashboard }}" class="card-action-link" title="Edit Profile">✏️</a>
-            </div>
-            <div class="card-body font-details">
-              <p class="detail-item"><strong>Name:</strong> {{ name_from_metafield }}</p>
-              <p class="detail-item"><strong>Email:</strong> {{ email_from_metafield }}</p>
-              {% if phone_from_metafield != blank %}
-                <p class="detail-item"><strong>Phone:</strong> {{ phone_from_metafield }}</p>
-              {% endif %}
-              {% if gender != blank %}
-                <p class="detail-item"><strong>Gender:</strong> {{ gender }}</p>
-              {% endif %}
-              {% if birth_date != blank %}
-                <p class="detail-item"><strong>Birth Date:</strong> {{ birth_date }}</p>
-              {% endif %}
-              {% if address != blank %}
-                <p class="detail-item"><strong>Address:</strong> {{ address }}</p>
-              {% endif %}
-              {% if city != blank %}
-                <p class="detail-item"><strong>City:</strong> {{ city }}</p>
-              {% endif %}
-              {% if state != blank %}
-                <p class="detail-item"><strong>State:</strong> {{ state }}</p>
-              {% endif %}
-              {% if pin_code != blank %}
-                <p class="detail-item"><strong>Pin Code:</strong> {{ pin_code }}</p>
-              {% endif %}
-              <div class="store-credit-box">
-                <span class="credit-icon">💵</span>
-                <span><strong>{{ store_credit }}</strong> Store credit</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Default Address Card -->
-          <div class="dashboard-card card-half">
-            <div class="card-header">
-              <h2>
-                <span class="card-icon">📍</span> Default Address
-              </h2>
-              <a href="{{ routes.account_addresses_url }}" class="card-action-link">View all</a>
-            </div>
-            <div class="card-body">
-              {% if customer.default_address %}
-                <div class="address-details">
-                  {{ customer.default_address | format_address }}
+    <article class="ldash__card ldash__orders-card">
+      <header class="ldash__card-head">
+        <h2><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Recent Orders</h2>
+      </header>
+      <div class="ldash__card-body">
+        {% if customer.orders.size > 0 %}
+          <div class="ldash__order-list">
+            {% for order in customer.orders limit: 3 %}
+              <div class="ldash__order-row">
+                <div>
+                  <strong>{{ order.name }}</strong>
+                  <span>{{ order.created_at | date: "%d %b %Y" }}</span>
                 </div>
-              {% else %}
-                <p class="no-data-msg">No default address saved yet.</p>
-                <a href="{{ routes.account_addresses_url }}" class="btn-outline-mini">Add address</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-
-        <!-- Recent Orders Card -->
-        <div class="dashboard-card card-full margin-top-2">
-          <div class="card-header">
-            <h2>
-              <span class="card-icon">🕒</span> Recent Orders
-            </h2>
-            <button class="card-action-link-btn" onclick="triggerTab('orders')">View all orders</button>
-          </div>
-          <div class="card-body">
-            {%- assign recent_orders = customer.orders -%}
-            {%- if recent_orders.size > 0 -%}
-              <div class="recent-orders-list">
-                {%- for order in recent_orders limit: 3 -%}
-                  <div class="recent-order-row">
-                    <div class="order-img-desc">
-                      <div class="order-thumbnail">
-                        {%- if order.line_items.first.image -%}
-                          <img src="{{ order.line_items.first.image | image_url: width: 80, height: 80, crop: 'center' }}" alt="{{ order.line_items.first.title }}" loading="lazy">
-                        {%- else -%}
-                          <div class="placeholder-img">📦</div>
-                        {%- endif -%}
-                      </div>
-                      <div class="order-meta">
-                        <span class="order-number">{{ order.name }}</span>
-                        <span class="order-date">{{ order.created_at | date: "%B %d, %Y" }}</span>
-                      </div>
-                    </div>
-                    
-                    <div class="order-status-badges">
-                      <span class="status-badge payment-{{ order.financial_status }}">
-                        {{ order.financial_status_label }}
-                      </span>
-                      <span class="status-badge fulfillment-{{ order.fulfillment_status }}">
-                        {{ order.fulfillment_status_label }}
-                      </span>
-                    </div>
-
-                    <div class="order-price-count">
-                      <span class="order-price">{{ order.total_price | money }}</span>
-                      <span class="order-count">{{ order.item_count }} {% if order.item_count == 1 %}item{% else %}items{% endif %}</span>
-                    </div>
-
-                    <div class="order-actions">
-                      <a href="{{ order.customer_url }}" class="btn-view-details">View details</a>
-                      {% capture items_json %}
-                        [
-                          {% for line_item in order.line_items %}
-                            {
-                              "variant_id": {{ line_item.variant_id }},
-                              "quantity": {{ line_item.quantity }}
-                            }{% unless forloop.last %},{% endunless %}
-                          {% endfor %}
-                        ]
-                      {% endcapture %}
-                      <button class="btn-reorder" onclick='reorderItems({{ items_json }})'>Reorder</button>
-                    </div>
-                  </div>
-                {%- endfor -%}
-              </div>
-            {%- else -%}
-              <p class="no-data-msg">You haven't placed any orders yet.</p>
-            {%- endif -%}
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. ORDERS TAB -->
-      <div id="tab-orders" class="tab-content">
-        <div class="dashboard-card card-full">
-          <div class="card-header">
-            <h2>📦 Order History</h2>
-          </div>
-          <div class="card-body">
-            {% paginate customer.orders by 10 %}
-              {%- if customer.orders.size > 0 -%}
-                <div class="table-responsive">
-                  <table class="dashboard-orders-table">
-                    <thead>
-                      <tr>
-                        <th>Order</th>
-                        <th>Date</th>
-                        <th>Payment Status</th>
-                        <th>Fulfillment</th>
-                        <th>Total</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {%- for order in customer.orders -%}
-                        <tr>
-                          <td data-label="Order">
-                            <a href="{{ order.customer_url }}" class="order-link-title">{{ order.name }}</a>
-                          </td>
-                          <td data-label="Date">{{ order.created_at | date: "%b %d, %Y" }}</td>
-                          <td data-label="Payment Status">
-                            <span class="status-badge payment-{{ order.financial_status }}">
-                              {{ order.financial_status_label }}
-                            </span>
-                          </td>
-                          <td data-label="Fulfillment">
-                            <span class="status-badge fulfillment-{{ order.fulfillment_status }}">
-                              {{ order.fulfillment_status_label }}
-                            </span>
-                          </td>
-                          <td data-label="Total">{{ order.total_price | money }}</td>
-                          <td data-label="Actions">
-                            <div class="table-actions">
-                              <a href="{{ order.customer_url }}" class="btn-view-details-mini">View</a>
-                              {% capture items_json %}
-                                [
-                                  {% for line_item in order.line_items %}
-                                    {
-                                      "variant_id": {{ line_item.variant_id }},
-                                      "quantity": {{ line_item.quantity }}
-                                    }{% unless forloop.last %},{% endunless %}
-                                  {% endfor %}
-                                ]
-                              {% endcapture %}
-                              <button class="btn-reorder-mini" onclick='reorderItems({{ items_json }})'>Reorder</button>
-                            </div>
-                          </td>
-                        </tr>
-                      {%- endfor -%}
-                    </tbody>
-                  </table>
-                </div>
-
-                {%- if paginate.pages > 1 -%}
-                  <div class="pagination-wrapper">
-                    {{ paginate | default_pagination }}
-                  </div>
-                {%- endif -%}
-              {%- else -%}
-                <p class="no-data-msg">No orders found.</p>
-              {%- endif -%}
-            {% endpaginate %}
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. CASHBACK TAB -->
-      <div id="tab-cashback" class="tab-content">
-        <div class="dashboard-card card-full">
-          <div class="card-header">
-            <h2>💰 Cashback Details</h2>
-          </div>
-          <div class="card-body">
-            <div class="cashback-banner">
-              <div class="cashback-wallet">
-                <span class="wallet-icon">👛</span>
-                <div class="wallet-text">
-                  <h3>Available Cashback</h3>
-                  <span class="cashback-amount">{{ cashback_balance }}</span>
+                <div>
+                  <strong>{{ order.total_price | money }}</strong>
+                  <a href="{{ order.customer_url }}">View details</a>
                 </div>
               </div>
-              <p class="cashback-promo">Earn cashback on every purchase! Your balance is automatically applied as store credit at checkout.</p>
-            </div>
-            
-            <h3 class="section-sub-title">How it works</h3>
-            <div class="cashback-steps-grid">
-              <div class="step-item">
-                <span class="step-num">1</span>
-                <h4>Shop products</h4>
-                <p>Purchase any qualifying items in our catalog to accumulate rewards.</p>
-              </div>
-              <div class="step-item">
-                <span class="step-num">2</span>
-                <h4>Earn balance</h4>
-                <p>Once your order is processed, your cashback balance will update automatically.</p>
-              </div>
-              <div class="step-item">
-                <span class="step-num">3</span>
-                <h4>Redeem instantly</h4>
-                <p>Apply your store credit on subsequent orders directly at the cart page.</p>
-              </div>
-            </div>
+            {% endfor %}
           </div>
+        {% else %}
+          <div class="ldash__empty-orders">
+            <div class="ldash__bag"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27"/><path d="M22 25h20l-2 20H24l-2-20Z"/><path d="M27 25a5 5 0 0 1 10 0"/><path d="M45 18v8M41 22h8"/></svg></div>
+            <h3>You haven't placed any orders yet.</h3>
+            <p>Looks like you haven't ordered anything from us yet. Explore our collections and find something you'll love.</p>
+            <a href="{{ routes.collections_url }}" class="ldash__primary">Explore Collections</a>
+          </div>
+        {% endif %}
+
+        <div class="ldash__trust">
+          <div><strong>Secure Checkout</strong><span>Safe and protected payments.</span></div>
+          <div><strong>Fast Delivery</strong><span>Quick updates on every order.</span></div>
+          <div><strong>24/7 Support</strong><span>Help whenever you need it.</span></div>
         </div>
       </div>
+    </article>
+  </div>
 
-      <!-- 4. ADDRESSES TAB -->
-      <div id="tab-addresses" class="tab-content">
-        <div class="dashboard-card card-full">
-          <div class="card-header">
-            <h2>📍 Saved Addresses</h2>
-            <a href="{{ routes.account_addresses_url }}" class="btn-primary-mini">Manage Addresses</a>
-          </div>
-          <div class="card-body">
-            {%- if customer.addresses.size > 0 -%}
-              <div class="addresses-grid">
-                {%- for address in customer.addresses -%}
-                  <div class="address-card {% if address == customer.default_address %}is-default{% endif %}">
-                    {%- if address == customer.default_address -%}
-                      <span class="default-badge">Default</span>
-                    {%- endif -%}
-                    <div class="address-details-body">
-                      {{ address | format_address }}
-                    </div>
-                  </div>
-                {%- endfor -%}
-              </div>
-            {%- else -%}
-              <p class="no-data-msg">No saved addresses found.</p>
-              <a href="{{ routes.account_addresses_url }}" class="btn-outline-mini">Add New Address</a>
-            {%- endif -%}
-          </div>
-        </div>
+  <div id="ldash-orders" class="ldash__panel">
+    <article class="ldash__card">
+      <header class="ldash__card-head"><h2><span><svg viewBox="0 0 24 24"><path d="M4 7h16l-1 12H5L4 7Z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg></span>Order History</h2></header>
+      <div class="ldash__card-body">
+        {% paginate customer.orders by 10 %}
+          {% if customer.orders.size > 0 %}
+            <div class="ldash__table-wrap"><table class="ldash__table"><thead><tr><th>Order</th><th>Date</th><th>Payment</th><th>Fulfillment</th><th>Total</th><th></th></tr></thead><tbody>
+            {% for order in customer.orders %}<tr><td>{{ order.name }}</td><td>{{ order.created_at | date: "%d %b %Y" }}</td><td>{{ order.financial_status_label }}</td><td>{{ order.fulfillment_status_label }}</td><td>{{ order.total_price | money }}</td><td><a href="{{ order.customer_url }}">View</a></td></tr>{% endfor %}
+            </tbody></table></div>
+            {% if paginate.pages > 1 %}<div class="ldash__pagination">{{ paginate | default_pagination }}</div>{% endif %}
+          {% else %}<p class="ldash__muted">No orders found.</p>{% endif %}
+        {% endpaginate %}
       </div>
+    </article>
+  </div>
 
-      <!-- 5. RECENTLY VIEWED TAB -->
-      <div id="tab-recently-viewed" class="tab-content">
-        <div class="dashboard-card card-full">
-          <div class="card-header">
-            <h2>👁️ Recently Viewed Products</h2>
-          </div>
-          <div class="card-body">
-            <div id="recently-viewed-grid" class="products-grid-dashboard">
-              <p class="loading-products-msg">Loading recently viewed products...</p>
-            </div>
-          </div>
-        </div>
+  <div id="ldash-addresses" class="ldash__panel">
+    <article class="ldash__card">
+      <header class="ldash__card-head"><h2><span><svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span>Saved Addresses</h2><a href="https://account.lymko.in/profile" class="ldash__small-btn">Add</a></header>
+      <div class="ldash__card-body">
+        {% if customer.addresses.size > 0 %}<div class="ldash__address-grid">{% for address in customer.addresses %}<div class="ldash__address-card">{% if address == customer.default_address %}<span>Default</span>{% endif %}{{ address | format_address }}</div>{% endfor %}</div>{% else %}<p class="ldash__muted">No addresses added.</p>{% endif %}
       </div>
+    </article>
+  </div>
 
-      <!-- 6. TOP ORDERED PRODUCTS TAB -->
-      <div id="tab-top-products" class="tab-content">
-        <div class="dashboard-card card-full">
-          <div class="card-header">
-            <h2>🔥 Your Frequently Ordered Products</h2>
-          </div>
-          <div class="card-body">
-            {%- assign unique_ordered_products = "" -%}
-            {%- for order in customer.orders -%}
-              {%- for line_item in order.line_items -%}
-                {%- if line_item.product -%}
-                  {%- unless unique_ordered_products contains line_item.product.handle -%}
-                    {%- assign unique_ordered_products = unique_ordered_products | append: line_item.product.handle | append: "," -%}
-                  {%- endunless -%}
-                {%- endif -%}
-              {%- endfor -%}
-            {%- endfor -%}
-            
-            {%- assign product_handles = unique_ordered_products | split: "," -%}
-            
-            {%- if product_handles.size > 0 -%}
-              <div class="products-grid-dashboard">
-                {%- for handle in product_handles limit: 8 -%}
-                  {%- assign ordered_product = all_products[handle] -%}
-                  {%- if ordered_product != blank -%}
-                    <div class="dashboard-product-card">
-                      <div class="prod-card-image">
-                        <img src="{{ ordered_product.featured_image | image_url: width: 240, height: 240, crop: 'center' }}" alt="{{ ordered_product.title }}" loading="lazy">
-                      </div>
-                      <div class="prod-card-body">
-                        <h3>{{ ordered_product.title }}</h3>
-                        <span class="prod-card-price">{{ ordered_product.price | money }}</span>
-                        <a href="{{ ordered_product.url }}" class="btn-buy-now-prod">View Product</a>
-                      </div>
-                    </div>
-                  {%- endif -%}
-                {%- endfor -%}
-              </div>
-            {%- else -%}
-              <p class="no-data-msg">You haven't ordered any products yet.</p>
-            {%- endif -%}
-          </div>
-        </div>
-      </div>
+  <div id="ldash-recent" class="ldash__panel">
+    <article class="ldash__card"><header class="ldash__card-head"><h2><span><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></span>Recently Viewed Products</h2></header><div class="ldash__card-body"><div class="ldash__products" id="ldash-recent-grid"><p class="ldash__muted">No recently viewed products found.</p></div></div></article>
+  </div>
 
-    </div>
-  {% else %}
-    <script>
-      window.location.href = '/customer_authentication/login?return_to=' + encodeURIComponent(window.location.pathname);
-    </script>
-  {% endif %}
+  <div id="ldash-top" class="ldash__panel">
+    <article class="ldash__card"><header class="ldash__card-head"><h2><span><svg viewBox="0 0 24 24"><path d="M12 3v18M7 8l5-5 5 5M6 16h12"/></svg></span>Top Ordered Products</h2></header><div class="ldash__card-body"><p class="ldash__muted">Your frequently ordered products will appear here.</p></div></article>
+  </div>
 </div>
 
-<!-- Premium Dashboard Styles -->
 <style>
-  :root {
-    --dash-bg: #f9fbfc;
-    --dash-card-bg: #ffffff;
-    --dash-text: #2c3e50;
-    --dash-accent: #2e7d32; /* Rich Forest Green */
-    --dash-accent-hover: #1b5e20;
-    --dash-border: #eaedf1;
-    --dash-badge-bg: #e8f5e9;
-    --dash-badge-text: #2e7d32;
-    --dash-shadow: 0px 8px 30px rgba(0, 0, 0, 0.04);
-  }
-
-  .dashboard-container {
-    background-color: var(--dash-bg);
-    min-height: 80vh;
-    padding: 3rem 1.5rem;
-    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--dash-text);
-  }
-
-  .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2.5rem;
-  }
-
-  .dashboard-header h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    margin: 0;
-    color: #1e293b;
-  }
-
-  .dashboard-header .accent-name {
-    color: var(--dash-accent);
-    position: relative;
-  }
-
-  .logout-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 30px;
-    background-color: white;
-    border: 1px solid #cbd5e1;
-    color: #64748b;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .logout-btn svg {
-    width: 15px;
-    height: 15px;
-  }
-
-  .logout-btn:hover {
-    color: #ef4444;
-    border-color: #fca5a5;
-    background-color: #fef2f2;
-    transform: translateY(-1px);
-  }
-
-  /* Horizontal Scroll Tabs */
-  .tabs-scroll-wrapper {
-    overflow-x: auto;
-    margin-bottom: 2.5rem;
-    padding-bottom: 5px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .tabs-scroll-wrapper::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .tabs-scroll-wrapper::-webkit-scrollbar-thumb {
-    background: #e2e8f0;
-    border-radius: 4px;
-  }
-
-  .dashboard-tabs {
-    display: flex;
-    gap: 12px;
-    width: max-content;
-    padding: 2px;
-  }
-
-  .tab-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 30px;
-    border: 1px solid #e2e8f0;
-    background: white;
-    color: #64748b;
-    font-size: 1.45rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .tab-button:hover {
-    border-color: #cbd5e1;
-    color: #1e293b;
-    background-color: #f8fafc;
-  }
-
-  .tab-button.active {
-    background-color: var(--dash-badge-bg);
-    color: var(--dash-badge-text);
-    border-color: var(--dash-accent);
-    box-shadow: 0px 4px 10px rgba(46, 125, 50, 0.1);
-  }
-
-  /* Tab Contents */
-  .tab-content {
-    display: none;
-    animation: fadeIn 0.4s ease-out;
-  }
-
-  .tab-content.active {
-    display: block;
-  }
-
-  /* Cards Grid */
-  .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.8rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    .profile-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .dashboard-card {
-    background: var(--dash-card-bg);
-    border-radius: 16px;
-    border: 1px solid var(--dash-border);
-    box-shadow: var(--dash-shadow);
-    padding: 2rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .dashboard-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.06);
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--dash-border);
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-  }
-
-  .card-header h2 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #1e293b;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .card-action-link {
-    color: var(--dash-accent);
-    text-decoration: none;
-    font-size: 1.35rem;
-    font-weight: 500;
-    transition: color 0.15s ease;
-  }
-
-  .card-action-link:hover {
-    color: var(--dash-accent-hover);
-    text-decoration: underline;
-  }
-
-  .card-action-link-btn {
-    border: none;
-    background: transparent;
-    color: var(--dash-accent);
-    cursor: pointer;
-    font-size: 1.35rem;
-    font-weight: 500;
-  }
-
-  .card-action-link-btn:hover {
-    text-decoration: underline;
-    color: var(--dash-accent-hover);
-  }
-
-  /* Account Details styling */
-  .font-details {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .detail-item {
-    margin: 0;
-    font-size: 1.45rem;
-    color: #475569;
-  }
-
-  .store-credit-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-    padding: 10px 14px;
-    background-color: #f0fdf4;
-    border: 1px dashed var(--dash-accent);
-    border-radius: 8px;
-    color: var(--dash-accent);
-    font-size: 1.45rem;
-    width: fit-content;
-  }
-
-  /* Default Address layout */
-  .address-details address {
-    font-style: normal;
-    line-height: 1.6;
-    color: #475569;
-    font-size: 1.45rem;
-  }
-
-  .no-data-msg {
-    color: #94a3b8;
-    margin: 1.5rem 0;
-    font-size: 1.4rem;
-  }
-
-  .btn-outline-mini {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid var(--dash-accent);
-    border-radius: 20px;
-    color: var(--dash-accent);
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  .btn-outline-mini:hover {
-    background-color: var(--dash-accent);
-    color: white;
-  }
-
-  /* Recent Orders layout */
-  .recent-orders-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .recent-order-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--dash-border);
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-
-  .recent-order-row:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .order-img-desc {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex: 1;
-    min-width: 250px;
-  }
-
-  .order-thumbnail img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid var(--dash-border);
-  }
-
-  .placeholder-img {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem;
-    background-color: #f1f5f9;
-    border-radius: 8px;
-  }
-
-  .order-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .order-number {
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: #1e293b;
-  }
-
-  .order-date {
-    font-size: 1.3rem;
-    color: #94a3b8;
-  }
-
-  /* Badges */
-  .order-status-badges {
-    display: flex;
-    gap: 8px;
-  }
-
-  .status-badge {
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: capitalize;
-  }
-
-  .status-badge.payment-paid {
-    background-color: #dcfce7;
-    color: #15803d;
-  }
-
-  .status-badge.payment-unpaid, .status-badge.payment-pending {
-    background-color: #fef3c7;
-    color: #b45309;
-  }
-
-  .status-badge.fulfillment-fulfilled {
-    background-color: #e0f2fe;
-    color: #0369a1;
-  }
-
-  .status-badge.fulfillment-unfulfilled {
-    background-color: #fee2e2;
-    color: #b91c1c;
-  }
-
-  .order-price-count {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    min-width: 80px;
-  }
-
-  .order-price {
-    font-weight: 600;
-    font-size: 1.6rem;
-    color: #1e293b;
-  }
-
-  .order-count {
-    font-size: 1.30rem;
-    color: #94a3b8;
-  }
-
-  .order-actions {
-    display: flex;
-    gap: 10px;
-  }
-
-  .btn-view-details {
-    padding: 10px 18px;
-    border: 1px solid #e2e8f0;
-    background-color: white;
-    color: #475569;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 1.35rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  .btn-view-details:hover {
-    border-color: #cbd5e1;
-    background-color: #f8fafc;
-  }
-
-  .btn-reorder {
-    padding: 10px 18px;
-    background-color: #1e293b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.35rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-
-  .btn-reorder:hover {
-    background-color: #0f172a;
-  }
-
-  /* Table styling for Orders Tab */
-  .table-responsive {
-    overflow-x: auto;
-  }
-
-  .dashboard-orders-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
-  }
-
-  .dashboard-orders-table th, .dashboard-orders-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid var(--dash-border);
-    font-size: 1.4rem;
-  }
-
-  .dashboard-orders-table th {
-    background-color: #f8fafc;
-    font-weight: 600;
-    color: #475569;
-  }
-
-  .order-link-title {
-    font-weight: 600;
-    color: var(--dash-accent);
-    text-decoration: none;
-  }
-
-  .order-link-title:hover {
-    text-decoration: underline;
-  }
-
-  .table-actions {
-    display: flex;
-    gap: 8px;
-  }
-
-  .btn-view-details-mini, .btn-reorder-mini {
-    padding: 6px 12px;
-    font-size: 1.25rem;
-    border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-  }
-
-  .btn-view-details-mini {
-    border: 1px solid #cbd5e1;
-    background-color: white;
-    color: #475569;
-  }
-
-  .btn-reorder-mini {
-    background-color: #1e293b;
-    color: white;
-    border: none;
-  }
-
-  .pagination-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    gap: 5px;
-  }
-
-  .pagination-wrapper a, .pagination-wrapper span {
-    padding: 8px 14px;
-    border: 1px solid var(--dash-border);
-    border-radius: 8px;
-    text-decoration: none;
-    color: #475569;
-  }
-
-  .pagination-wrapper .current {
-    background-color: var(--dash-accent);
-    color: white;
-    border-color: var(--dash-accent);
-  }
-
-  /* Cashback styles */
-  .cashback-banner {
-    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
-    border-radius: 12px;
-    padding: 2.5rem;
-    color: white;
-    margin-bottom: 2rem;
-  }
-
-  .cashback-wallet {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 1.5rem;
-  }
-
-  .wallet-icon {
-    font-size: 3.5rem;
-  }
-
-  .wallet-text h3 {
-    margin: 0;
-    font-size: 1.4rem;
-    opacity: 0.85;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .cashback-amount {
-    font-size: 3rem;
-    font-weight: 700;
-  }
-
-  .cashback-promo {
-    margin: 0;
-    font-size: 1.45rem;
-    line-height: 1.5;
-    opacity: 0.9;
-  }
-
-  .section-sub-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-    color: #1e293b;
-  }
-
-  .cashback-steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  @media screen and (max-width: 600px) {
-    .cashback-steps-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .step-item {
-    background-color: #f8fafc;
-    border: 1px solid var(--dash-border);
-    padding: 1.8rem;
-    border-radius: 12px;
-    position: relative;
-  }
-
-  .step-num {
-    display: flex;
-    width: 30px;
-    height: 30px;
-    background-color: var(--dash-accent);
-    color: white;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-
-  .step-item h4 {
-    margin: 0 0 8px 0;
-    font-size: 1.45rem;
-    color: #1e293b;
-  }
-
-  .step-item p {
-    margin: 0;
-    font-size: 1.3rem;
-    color: #64748b;
-    line-height: 1.5;
-  }
-
-  /* Addresses grid */
-  .addresses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .address-card {
-    background-color: #f8fafc;
-    border: 1px solid var(--dash-border);
-    border-radius: 12px;
-    padding: 1.8rem;
-    position: relative;
-  }
-
-  .address-card.is-default {
-    border-color: var(--dash-accent);
-    background-color: #f0fdf4;
-  }
-
-  .default-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: var(--dash-accent);
-    color: white;
-    font-size: 1.1rem;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-
-  .address-details-body address {
-    font-style: normal;
-    line-height: 1.6;
-    font-size: 1.4rem;
-    color: #475569;
-    margin-top: 10px;
-  }
-
-  .btn-primary-mini {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--dash-accent);
-    color: white;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 500;
-  }
-
-  /* Products grids (Recently viewed, top ordered) */
-  .products-grid-dashboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-
-  .dashboard-product-card {
-    background-color: white;
-    border: 1px solid var(--dash-border);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease;
-  }
-
-  .dashboard-product-card:hover {
-    transform: translateY(-2px);
-  }
-
-  .prod-card-image img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-
-  .prod-card-body {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: space-between;
-  }
-
-  .prod-card-body h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #1e293b;
-    line-height: 1.4;
-    height: 2.8em;
-    overflow: hidden;
-  }
-
-  .prod-card-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dash-accent);
-    margin-bottom: 12px;
-  }
-
-  .btn-buy-now-prod {
-    padding: 8px 0;
-    text-align: center;
-    background-color: #f1f5f9;
-    color: #475569;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 1.3rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  .btn-buy-now-prod:hover {
-    background-color: #cbd5e1;
-    color: #1e293b;
-  }
-
-  /* Margin Utilities */
-  .margin-top-2 {
-    margin-top: 2rem;
-  }
-
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.ldash{--p:#6f3cff;--ps:#f1edff;--b:#ececf1;--m:#6c7280;max-width:1280px;margin:auto;padding:28px 22px 60px;color:#111}.ldash *{box-sizing:border-box}.ldash svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.ldash__head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:26px}.ldash__head h1{margin:0;font-size:clamp(22px,2.4vw,34px)}.ldash__logout{display:flex;align-items:center;gap:8px;padding:10px 17px;border:1px solid #d9dbe2;border-radius:9px;color:#111;text-decoration:none}.ldash__tabs{display:flex;gap:8px;padding:12px 16px 0;margin-bottom:28px;overflow:auto;border:1px solid var(--b);border-radius:14px;background:#fff}.ldash__tab{position:relative;display:flex;align-items:center;gap:9px;white-space:nowrap;padding:0 16px 13px;min-height:50px;border:0;border-radius:8px 8px 0 0;background:transparent;color:#4e5563;cursor:pointer}.ldash__tab:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:transparent}.ldash__tab.is-active{background:var(--ps);color:var(--p)}.ldash__tab.is-active:after{background:var(--p)}.ldash__panel{display:none}.ldash__panel.is-active{display:block}.ldash__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.ldash__card{overflow:hidden;border:1px solid var(--b);border-radius:14px;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.035)}.ldash__card-head{min-height:72px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--b)}.ldash__card-head h2{display:flex;align-items:center;gap:10px;margin:0;font-size:18px}.ldash__card-head h2 span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ps);color:var(--p)}.ldash__card-body{padding:22px}.ldash__edit,.ldash__text-link{color:#111;text-decoration:none}.ldash__detail{display:flex;align-items:center;gap:13px;margin:0 0 20px;font-size:15px}.ldash__detail:last-child{margin-bottom:0}.ldash__address address,.ldash__address-card address{font-style:normal;line-height:1.6}.ldash__empty-address{min-height:120px;display:flex;align-items:center;gap:14px}.ldash__empty-address>svg{width:46px;height:46px;padding:12px;border-radius:12px;background:#f7f7f9}.ldash__empty-address span{flex:1;color:var(--m)}.ldash__small-btn{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:38px;padding:0 14px;border:1px solid #dadce3;border-radius:10px;color:#111;text-decoration:none;background:#fff}.ldash__orders-card{margin-top:24px}.ldash__empty-orders{text-align:center;padding:34px 20px 24px}.ldash__bag{width:86px;height:86px;margin:0 auto 22px;color:var(--p)}.ldash__bag svg{width:86px;height:86px}.ldash__bag circle{fill:var(--ps);stroke:none}.ldash__empty-orders h3{margin:0 0 12px}.ldash__empty-orders p{max-width:620px;margin:0 auto 20px;color:var(--m);line-height:1.6}.ldash__primary{display:inline-flex;min-height:46px;padding:0 22px;align-items:center;border-radius:7px;background:#000;color:#fff;text-decoration:none}.ldash__trust{display:grid;grid-template-columns:repeat(3,1fr);margin-top:28px;border:1px solid #f2d0c7;border-radius:10px;overflow:hidden}.ldash__trust>div{padding:18px;text-align:center;background:#fffdfc}.ldash__trust>div+div{border-left:1px solid #f2d0c7}.ldash__trust strong,.ldash__trust span{display:block}.ldash__trust span{margin-top:5px;color:var(--m);font-size:12px}.ldash__order-list{display:grid;gap:14px}.ldash__order-row{display:flex;justify-content:space-between;padding:16px;border:1px solid var(--b);border-radius:12px}.ldash__order-row span,.ldash__order-row a{display:block;margin-top:5px}.ldash__order-row span{color:var(--m);font-size:13px}.ldash__order-row a{color:var(--p);text-decoration:none}.ldash__table-wrap{overflow:auto}.ldash__table{width:100%;border-collapse:collapse}.ldash__table th,.ldash__table td{padding:14px 12px;border-bottom:1px solid var(--b);text-align:left;white-space:nowrap}.ldash__table a{color:var(--p);text-decoration:none}.ldash__address-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.ldash__address-card{position:relative;min-height:160px;padding:20px;border:1px solid var(--b);border-radius:12px}.ldash__address-card>span{position:absolute;top:12px;right:12px;padding:4px 8px;border-radius:20px;background:var(--ps);color:var(--p);font-size:11px}.ldash__products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.ldash__product{overflow:hidden;border:1px solid var(--b);border-radius:12px}.ldash__product a{color:inherit;text-decoration:none}.ldash__product img{width:100%;aspect-ratio:1;object-fit:cover}.ldash__product h3,.ldash__product strong{display:block;padding:0 14px}.ldash__product h3{font-size:14px}.ldash__product strong{padding-bottom:16px;color:var(--p)}.ldash__muted{color:var(--m)}
+@media(max-width:900px){.ldash__grid,.ldash__address-grid{grid-template-columns:1fr}.ldash__products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.ldash{padding:20px 12px 48px}.ldash__head{align-items:flex-start}.ldash__trust{grid-template-columns:1fr}.ldash__trust>div+div{border-left:0;border-top:1px solid #f2d0c7}.ldash__order-row{flex-direction:column;gap:12px}}
 </style>
 
-<!-- Premium Dashboard Logic (Tabs, Ajax Reordering, Local Storage Recently Viewed) -->
 <script>
-  // Tab switcher logic
-  function switchTab(evt, tabName) {
-    // Hide all tab contents
-    var tabContents = document.getElementsByClassName("tab-content");
-    for (var i = 0; i < tabContents.length; i++) {
-      tabContents[i].classList.remove("active");
-    }
-
-    // Remove active class from all tab buttons
-    var tabButtons = document.getElementsByClassName("tab-button");
-    for (var i = 0; i < tabButtons.length; i++) {
-      tabButtons[i].classList.remove("active");
-    }
-
-    // Show the active tab and style the active button
-    document.getElementById("tab-" + tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
-
-    // Load recently viewed dynamic content if active
-    if (tabName === 'recently-viewed') {
-      loadRecentlyViewed();
-    }
-  }
-
-  // Trigger tab switcher dynamically from other actions
-  function triggerTab(tabName) {
-    var buttons = document.getElementsByClassName("tab-button");
-    for (var i = 0; i < buttons.length; i++) {
-      if (buttons[i].getAttribute("onclick").indexOf(tabName) > -1) {
-        buttons[i].click();
-        break;
-      }
-    }
-  }
-
-  // Reorder items via AJAX to Shopify Cart API
-  function reorderItems(items) {
-    if (!items || items.length === 0) return;
-    
-    var formattedItems = items.map(function(item) {
-      return {
-        id: item.variant_id,
-        quantity: item.quantity
-      };
-    });
-
-    fetch('/cart/clear.js', {
-      method: 'POST'
-    })
-    .then(function() {
-      return fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ items: formattedItems })
-      });
-    })
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(data) {
-      window.location.href = '/cart';
-    })
-    .catch(function(err) {
-      console.error('Error reordering items:', err);
-      alert('Could not reorder. Please try again.');
-    });
-  }
-
-  // Capture current product details to local storage if viewing a product
-  {%- if template contains 'product' -%}
-    (function() {
-      var recentlyViewed = JSON.parse(localStorage.getItem('recently_viewed_products') || '[]');
-      var currentProduct = {
-        title: {{ product.title | json }},
-        url: {{ product.url | json }},
-        price: {{ product.price | money | json }},
-        image: {{ product.featured_image | image_url: width: 240, height: 240, crop: 'center' | json }}
-      };
-
-      // Filter out current product if already exists
-      recentlyViewed = recentlyViewed.filter(function(item) {
-        return item.url !== currentProduct.url;
-      });
-
-      // Insert at first place
-      recentlyViewed.unshift(currentProduct);
-
-      // Keep only last 8 products
-      recentlyViewed = recentlyViewed.slice(0, 8);
-
-      localStorage.setItem('recently_viewed_products', JSON.stringify(recentlyViewed));
-    })();
-  {%- endif -%}
-
-  // Render recently viewed products
-  function loadRecentlyViewed() {
-    var container = document.getElementById("recently-viewed-grid");
-    var recentlyViewed = JSON.parse(localStorage.getItem('recently_viewed_products') || '[]');
-
-    if (recentlyViewed.length === 0) {
-      container.innerHTML = '<p class="no-data-msg">No recently viewed products found.</p>';
-      return;
-    }
-
-    var html = '';
-    recentlyViewed.forEach(function(product) {
-      html += '<div class="dashboard-product-card">';
-      html += '  <div class="prod-card-image">';
-      html += '    <img src="' + product.image + '" alt="' + product.title + '" loading="lazy">';
-      html += '  </div>';
-      html += '  <div class="prod-card-body">';
-      html += '    <h3>' + product.title + '</h3>';
-      html += '    <span class="prod-card-price">' + product.price + '</span>';
-      html += '    <a href="' + product.url + '" class="btn-buy-now-prod">View Product</a>';
-      html += '  </div>';
-      html += '</div>';
-    });
-
-    container.innerHTML = html;
-  }
+document.addEventListener('DOMContentLoaded',function(){
+  var tabs=document.querySelectorAll('.ldash__tab');
+  var panels=document.querySelectorAll('.ldash__panel');
+  tabs.forEach(function(tab){tab.addEventListener('click',function(){
+    tabs.forEach(function(t){t.classList.remove('is-active')});
+    panels.forEach(function(p){p.classList.remove('is-active')});
+    tab.classList.add('is-active');
+    var panel=document.getElementById('ldash-'+tab.dataset.tab);if(panel)panel.classList.add('is-active');
+    if(tab.dataset.tab==='recent')renderRecent();
+  })});
+  function esc(v){return String(v||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]})}
+  function renderRecent(){var box=document.getElementById('ldash-recent-grid'),items=[];try{items=JSON.parse(localStorage.getItem('recently_viewed_products')||'[]')}catch(e){}if(!items.length){box.innerHTML='<p class="ldash__muted">No recently viewed products found.</p>';return}box.innerHTML=items.slice(0,8).map(function(p){return '<article class="ldash__product"><a href="'+esc(p.url)+'">'+(p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'">':'')+'<h3>'+esc(p.title)+'</h3><strong>'+esc(p.price)+'</strong></a></article>'}).join('')}
+});
 </script>
-
+{% endif %}
