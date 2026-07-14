@@ -12,6 +12,18 @@
 
 {% if customer %}
 <div class="ldash">
+  {%- assign ldash_orders_count = customer.orders_count | default: 0 -%}
+  {%- assign ldash_orders_size = customer.orders.size | default: 0 -%}
+
+  {% if ldash_orders_count > 0 and ldash_orders_size == 0 %}
+    <div class="ldash__order-sync-note">
+      <div>
+        <strong>Your orders are available in your Shopify account.</strong>
+        <span>The storefront session has not exposed the order list on this page.</span>
+      </div>
+      <a href="https://account.lymko.in/orders">View all orders</a>
+    </div>
+  {% endif %}
   <div class="ldash__head">
     <h1>Welcome, {{ customer.first_name | default: customer.name }}!</h1>
     <a href="{{ routes.account_logout_url }}" class="ldash__logout">
@@ -127,9 +139,16 @@
         {% else %}
           <div class="ldash__empty-orders">
             <div class="ldash__bag"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27"/><path d="M22 25h20l-2 20H24l-2-20Z"/><path d="M27 25a5 5 0 0 1 10 0"/><path d="M45 18v8M41 22h8"/></svg></div>
-            <h3>You haven't placed any orders yet.</h3>
-            <p>Looks like you haven't ordered anything from us yet. Explore our collections and find something you'll love.</p>
-            <a href="{{ routes.collections_url }}" class="ldash__primary">Explore Collections</a>
+
+            {% if customer.orders_count > 0 %}
+              <h3>Your order exists, but Shopify has not exposed it to this custom page.</h3>
+              <p>Open your secure Shopify Orders page to see the complete order history and order details.</p>
+              <a href="https://account.lymko.in/orders" class="ldash__primary">View My Orders</a>
+            {% else %}
+              <h3>You haven't placed any orders yet.</h3>
+              <p>Place an order using the same email address as this logged-in customer account.</p>
+              <a href="{{ routes.collections_url }}" class="ldash__primary">Explore Collections</a>
+            {% endif %}
           </div>
         {% endif %}
 
@@ -159,7 +178,19 @@
               {% endfor %}
             </div>
             {% if paginate.pages > 1 %}<div class="ldash__pagination">{{ paginate | default_pagination }}</div>{% endif %}
-          {% else %}<p class="ldash__muted">No orders found.</p>{% endif %}
+          {% else %}
+            <div class="ldash__empty-orders ldash__empty-orders--orders-tab">
+              {% if customer.orders_count > 0 %}
+                <h3>Your orders are available in Shopify Customer Accounts.</h3>
+                <p>This custom storefront page did not receive the private order list from the current customer-account session.</p>
+                <a href="https://account.lymko.in/orders" class="ldash__primary">Open Order History</a>
+              {% else %}
+                <h3>No orders found.</h3>
+                <p>Make sure the checkout email exactly matches <strong>{{ customer.email }}</strong>.</p>
+                <a href="{{ routes.collections_url }}" class="ldash__primary">Start Shopping</a>
+              {% endif %}
+            </div>
+          {% endif %}
         {% endpaginate %}
       </div>
     </article>
@@ -189,6 +220,10 @@
 @media(max-width:640px){.ldash{padding:20px 12px 48px}.ldash__head{align-items:flex-start}.ldash__trust{grid-template-columns:1fr}.ldash__trust>div+div{border-left:0;border-top:1px solid #f2d0c7}.ldash__order-row{flex-direction:column;gap:12px}}
 
 .ldash__order-item{display:grid;grid-template-columns:minmax(260px,1fr) auto auto;align-items:center;gap:24px;padding:20px 16px;border-bottom:1px solid #ececf1}.ldash__order-item:last-child{border-bottom:none}.ldash__order-product{display:flex;align-items:center;gap:18px;min-width:0}.ldash__order-image{flex:0 0 72px;width:72px;height:72px}.ldash__order-image img,.ldash__order-image-placeholder{display:block;width:72px;height:72px;border-radius:8px;object-fit:cover;background:#f6f6f6}.ldash__order-image-placeholder{display:flex;align-items:center;justify-content:center}.ldash__order-info{min-width:0}.ldash__order-top-line{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px}.ldash__order-top-line>strong{font-size:15px}.ldash__order-date{display:block;color:#3f4652;font-size:13px}.ldash__status{display:inline-flex;align-items:center;min-height:28px;padding:4px 11px;border-radius:7px;font-size:12px;font-weight:600;text-transform:capitalize}.ldash__status--paid,.ldash__status--fulfilled{color:#147a45;background:#ddf6e8}.ldash__status--pending,.ldash__status--authorized{color:#986600;background:#fff1c9}.ldash__status--unfulfilled,.ldash__status--partial{color:#b05d00;background:#fff0d3}.ldash__status--refunded,.ldash__status--voided{color:#b42318;background:#fee4e2}.ldash__order-total{min-width:90px;text-align:right}.ldash__order-total strong,.ldash__order-total span{display:block}.ldash__order-total strong{margin-bottom:5px;font-size:15px}.ldash__order-total span{font-size:13px;color:#303642}.ldash__order-actions{display:flex;align-items:center;gap:10px}.ldash__order-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 19px;border-radius:9px;font-family:inherit;font-size:13px;font-weight:650;text-decoration:none;cursor:pointer;white-space:nowrap;transition:.2s ease}.ldash__order-btn--outline{border:1px solid #d9dce3;background:#fff;color:#222}.ldash__order-btn--dark{border:1px solid #000;background:#000;color:#fff}.ldash__order-btn--invoice{border:1px solid #6f3cff;background:#f1edff;color:#6f3cff}.ldash__order-btn:hover{transform:translateY(-1px)}.ldash__invoice-template{display:none}.ldash__invoice{width:760px;padding:38px;background:#fff;color:#111;font-family:Arial,sans-serif}.ldash__invoice-header,.ldash__invoice-customer{display:flex;justify-content:space-between;gap:30px}.ldash__invoice-header{padding-bottom:24px;border-bottom:2px solid #111}.ldash__invoice-header h1,.ldash__invoice-header p{margin:0}.ldash__invoice-header h1{margin-bottom:6px;font-size:28px}.ldash__invoice-number{text-align:right}.ldash__invoice-number strong,.ldash__invoice-number span{display:block}.ldash__invoice-customer{margin:28px 0}.ldash__invoice-customer>div{width:50%}.ldash__invoice-customer h3{margin:0 0 10px}.ldash__invoice-customer p,.ldash__invoice-customer address{margin:0 0 5px;font-style:normal;line-height:1.5}.ldash__invoice-table{width:100%;border-collapse:collapse}.ldash__invoice-table th,.ldash__invoice-table td{padding:12px;border:1px solid #ddd;text-align:left}.ldash__invoice-table th{background:#f5f5f5}.ldash__invoice-table small{display:block;margin-top:4px;color:#666}.ldash__invoice-summary{width:330px;margin:25px 0 0 auto}.ldash__invoice-summary>div{display:flex;justify-content:space-between;gap:20px;padding:7px 0}.ldash__invoice-grand-total{margin-top:8px;padding-top:14px!important;border-top:2px solid #111;font-size:17px}.ldash__invoice-footer{margin-top:40px;padding-top:18px;border-top:1px solid #ddd;text-align:center}@media(max-width:900px){.ldash__order-item{grid-template-columns:1fr auto}.ldash__order-actions{grid-column:1/-1;flex-wrap:wrap}}@media(max-width:600px){.ldash__order-item{grid-template-columns:1fr}.ldash__order-total{text-align:left}.ldash__order-actions{grid-column:auto}.ldash__order-btn{flex:1}}
+
+.ldash__order-sync-note{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 22px;padding:16px 18px;border:1px solid #eadfff;border-radius:12px;background:#faf8ff}.ldash__order-sync-note div{display:flex;flex-direction:column;gap:4px}.ldash__order-sync-note strong{font-size:14px}.ldash__order-sync-note span{color:var(--m);font-size:13px}.ldash__order-sync-note a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:8px;background:var(--p);color:#fff;text-decoration:none;font-size:13px;font-weight:600}.ldash__empty-orders--orders-tab{padding-top:24px;padding-bottom:24px}
+@media(max-width:640px){.ldash__order-sync-note{align-items:flex-start;flex-direction:column}.ldash__order-sync-note a{width:100%}}
+
 </style>
 
 <script>
