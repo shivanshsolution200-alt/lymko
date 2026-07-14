@@ -30,7 +30,10 @@
 
   function getStoredProducts() {
     try {
-      var products = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      var products = JSON.parse(
+        localStorage.getItem(STORAGE_KEY) || '[]'
+      );
+
       return Array.isArray(products) ? products : [];
     } catch (error) {
       return [];
@@ -44,7 +47,10 @@
         JSON.stringify(products.slice(0, MAX_PRODUCTS))
       );
     } catch (error) {
-      console.error('Recently viewed products could not be saved.', error);
+      console.error(
+        'Recently viewed products could not be saved.',
+        error
+      );
     }
   }
 
@@ -65,14 +71,20 @@
       return String(checkedVariant.value);
     }
 
-    var urlParams = new URLSearchParams(window.location.search);
+    var urlParams = new URLSearchParams(
+      window.location.search
+    );
+
     var variantFromUrl = urlParams.get('variant');
 
     if (variantFromUrl) {
       return String(variantFromUrl);
     }
 
-    if (productData.variants && productData.variants.length) {
+    if (
+      productData.variants &&
+      productData.variants.length
+    ) {
       return String(productData.variants[0].id);
     }
 
@@ -80,7 +92,10 @@
   }
 
   function findVariant(productData, variantId) {
-    if (!productData.variants || !productData.variants.length) {
+    if (
+      !productData.variants ||
+      !productData.variants.length
+    ) {
       return null;
     }
 
@@ -101,11 +116,16 @@
     try {
       productData = JSON.parse(productJson.textContent);
     } catch (error) {
-      console.error('Product data could not be read.', error);
+      console.error(
+        'Product data could not be read.',
+        error
+      );
       return;
     }
 
-    var selectedVariantId = getSelectedVariantId(productData);
+    var selectedVariantId =
+      getSelectedVariantId(productData);
+
     var selectedVariant = findVariant(
       productData,
       selectedVariantId
@@ -125,18 +145,27 @@
         productData.featured_image ||
         '',
       price: selectedVariant.price_formatted,
-      price_formatted: selectedVariant.price_formatted,
-      price_cents: selectedVariant.price_cents,
-      available: selectedVariant.available,
-      variant_id: selectedVariant.id,
-      variant_title: selectedVariant.title,
-      viewed_at: Date.now()
+      price_formatted:
+        selectedVariant.price_formatted,
+      price_cents:
+        selectedVariant.price_cents,
+      available:
+        selectedVariant.available,
+      variant_id:
+        selectedVariant.id,
+      variant_title:
+        selectedVariant.title,
+      viewed_at:
+        Date.now()
     };
 
     var products = getStoredProducts();
 
     products = products.filter(function (product) {
-      return product && product.handle !== recentlyViewedProduct.handle;
+      return (
+        product &&
+        product.handle !== recentlyViewedProduct.handle
+      );
     });
 
     products.unshift(recentlyViewedProduct);
@@ -150,154 +179,162 @@
     }, 150);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    saveCurrentProduct();
-  });
+  document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+      saveCurrentProduct();
+    }
+  );
 
-  document.addEventListener('change', function (event) {
-    if (
-      event.target.matches(
-        'input[name="id"], select[name="id"], variant-selects input, variant-selects select, variant-radios input'
-      )
-    ) {
+  document.addEventListener(
+    'change',
+    function (event) {
+      if (
+        event.target.matches(
+          'input[name="id"], ' +
+          'select[name="id"], ' +
+          'variant-selects input, ' +
+          'variant-selects select, ' +
+          'variant-radios input'
+        )
+      ) {
+        updateProductAfterVariantChange();
+      }
+    }
+  );
+
+  document.addEventListener(
+    'variant:change',
+    function () {
       updateProductAfterVariantChange();
     }
-  });
+  );
 
-  document.addEventListener('variant:change', function () {
-    updateProductAfterVariantChange();
-  });
+  /*
+   * Important:
+   * Quantity plus/minus code is intentionally not here.
+   * Dashboard script already handles quantity buttons.
+   */
 
-  document.addEventListener('click', function (event) {
-    var minusButton = event.target.closest('[data-qty-minus]');
-    var plusButton = event.target.closest('[data-qty-plus]');
+  document.addEventListener(
+    'click',
+    function (event) {
+      var addButton = event.target.closest(
+        '.ldash__recent-add'
+      );
 
-    if (minusButton || plusButton) {
+      if (!addButton) return;
+
       event.preventDefault();
 
-      var quantityCard = event.target.closest(
+      if (
+        addButton.disabled ||
+        addButton.classList.contains('is-soldout')
+      ) {
+        return;
+      }
+
+      var productCard = addButton.closest(
         '.ldash__recent-product'
       );
 
-      if (!quantityCard) return;
+      if (!productCard) return;
 
-      var quantityInput = quantityCard.querySelector(
+      var quantityInput = productCard.querySelector(
         '.ldash__recent-qty input'
       );
 
-      if (!quantityInput) return;
+      var variantId = parseInt(
+        addButton.getAttribute('data-variant-id'),
+        10
+      );
 
-      var quantity = parseInt(quantityInput.value, 10) || 1;
+      var quantity = quantityInput
+        ? Math.max(
+            1,
+            parseInt(quantityInput.value, 10) || 1
+          )
+        : 1;
 
-      if (minusButton) {
-        quantity = Math.max(1, quantity - 1);
+      if (!variantId) {
+        alert('Product variant was not found.');
+        return;
       }
 
-      if (plusButton) {
-        quantity = quantity + 1;
-      }
+      var originalButtonText =
+        addButton.textContent;
 
-      quantityInput.value = quantity;
-      return;
-    }
+      addButton.disabled = true;
+      addButton.textContent = 'Adding...';
 
-    var addButton = event.target.closest('.ldash__recent-add');
+      var cartAddUrl =
+        window.Shopify &&
+        Shopify.routes &&
+        Shopify.routes.root
+          ? Shopify.routes.root + 'cart/add.js'
+          : '/cart/add.js';
 
-    if (!addButton) return;
-
-    event.preventDefault();
-
-    if (
-      addButton.disabled ||
-      addButton.classList.contains('is-soldout')
-    ) {
-      return;
-    }
-
-    var productCard = addButton.closest(
-      '.ldash__recent-product'
-    );
-
-    if (!productCard) return;
-
-    var quantityInput = productCard.querySelector(
-      '.ldash__recent-qty input'
-    );
-
-    var variantId = parseInt(
-      addButton.getAttribute('data-variant-id'),
-      10
-    );
-
-    var quantity = quantityInput
-      ? Math.max(1, parseInt(quantityInput.value, 10) || 1)
-      : 1;
-
-    if (!variantId) {
-      alert('Product variant was not found.');
-      return;
-    }
-
-    var originalButtonText = addButton.textContent;
-
-    addButton.disabled = true;
-    addButton.textContent = 'Adding...';
-
-    fetch(window.Shopify && Shopify.routes
-      ? Shopify.routes.root + 'cart/add.js'
-      : '/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        items: [
-          {
-            id: variantId,
-            quantity: quantity
-          }
-        ]
+      fetch(cartAddUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          items: [
+            {
+              id: variantId,
+              quantity: quantity
+            }
+          ]
+        })
       })
-    })
-      .then(function (response) {
-        return response.json().then(function (data) {
-          if (!response.ok) {
-            throw new Error(
-              data.description ||
-              data.message ||
-              'Product could not be added.'
-            );
-          }
+        .then(function (response) {
+          return response
+            .json()
+            .then(function (data) {
+              if (!response.ok) {
+                throw new Error(
+                  data.description ||
+                  data.message ||
+                  'Product could not be added.'
+                );
+              }
 
-          return data;
+              return data;
+            });
+        })
+        .then(function () {
+          addButton.textContent = 'Added to cart';
+
+          document.dispatchEvent(
+            new CustomEvent('cart:refresh', {
+              bubbles: true
+            })
+          );
+
+          window.setTimeout(function () {
+            var cartUrl =
+              window.Shopify &&
+              Shopify.routes &&
+              Shopify.routes.root
+                ? Shopify.routes.root + 'cart'
+                : '/cart';
+
+            window.location.href = cartUrl;
+          }, 600);
+        })
+        .catch(function (error) {
+          addButton.disabled = false;
+          addButton.textContent =
+            originalButtonText;
+
+          alert(
+            error.message ||
+            'Product could not be added to cart.'
+          );
         });
-      })
-      .then(function () {
-        addButton.textContent = 'Added to cart';
-
-        document.dispatchEvent(
-          new CustomEvent('cart:refresh', {
-            bubbles: true
-          })
-        );
-
-        window.setTimeout(function () {
-          window.location.href =
-            window.Shopify && Shopify.routes
-              ? Shopify.routes.root + 'cart'
-              : '/cart';
-        }, 600);
-      })
-      .catch(function (error) {
-        addButton.disabled = false;
-        addButton.textContent = originalButtonText;
-
-        alert(
-          error.message ||
-          'Product could not be added to cart.'
-        );
-      });
-  });
+    }
+  );
 })();
 </script>
