@@ -261,9 +261,9 @@
     </article>
   </div>
 
-  <div id="ldash-top" class="ldash__panel">
+  {% comment %} <div id="ldash-top" class="ldash__panel">
     <article class="ldash__card"><header class="ldash__card-head"><h2><span><svg viewBox="0 0 24 24"><path d="M12 3v18M7 8l5-5 5 5M6 16h12"/></svg></span>Top Ordered Products</h2></header><div class="ldash__card-body"><p class="ldash__muted">Your frequently ordered products will appear here.</p></div></article>
-  </div>
+  </div> {% endcomment %}
 
   <div id="ldash-order-detail" class="ldash__order-detail-wrap" hidden>
     {% for order in customer.orders %}
