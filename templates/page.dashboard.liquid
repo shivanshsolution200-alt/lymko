@@ -180,9 +180,9 @@
             {% if paginate.pages > 1 %}<div class="ldash__pagination">{{ paginate | default_pagination }}</div>{% endif %}
           {% else %}
             <div class="ldash__empty-orders ldash__empty-orders--orders-tab">
+                {{ customer_email }}
 
               {% if customer.orders_count > 0 %}
-                {{ customer_email }}
                 <h3>Your orders are available in Shopify Customer Accounts.</h3>
                 <p>This custom storefront page did not receive the private order list from the current customer-account session.</p>
                 <a href="https://account.lymko.in/orders" class="ldash__primary">Open Order History</a>
