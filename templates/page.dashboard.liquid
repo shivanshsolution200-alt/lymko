@@ -7,13 +7,7 @@
   assign customer_birth_date = customer.metafields.custom.birth_date.value | default: customer.metafields.custom.birth_date
   assign customer_gender = customer.metafields.custom.gender.value | default: customer.metafields.custom.gender
 -%}
-<p>Customer: {{ customer.email }}</p>
 
-<p>Birth Date Value: {{ customer.metafields.custom.birth_date.value }}</p>
-
-<p>Birth Date Raw: {{ customer.metafields.custom.birth_date }}</p>
-
-<pre>{{ customer.metafields.custom.birth_date | json }}</pre>
 {% unless customer %}
   <script>window.location.replace('/customer_authentication/login?return_to=%2Fpages%2Fdashboard');</script>
 {% endunless %}
