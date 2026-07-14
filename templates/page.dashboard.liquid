@@ -78,7 +78,7 @@
               <span>{{ customer_birth_date | date: "%d %B %Y" }}</span>
             </p>
           {% endif %}
-
+{{ customer.metafields.custom.birth_date.value | date: "%d %b %Y" }}
           {% if customer_gender != blank %}
             <p class="ldash__detail">
               <svg viewBox="0 0 24 24"><circle cx="10" cy="14" r="5"/><path d="M14 10l6-6M15 4h5v5"/></svg>
