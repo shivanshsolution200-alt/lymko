@@ -1,37 +1,303 @@
 {% if request.page_type == 'product' and product %}
-  {%- assign rv_variant = product.selected_or_first_available_variant -%}
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var productData = {
-        handle: {{ product.handle | json }},
-        title: {{ product.title | json }},
-        url: {{ product.url | within: collection | json }},
-        image: {% if product.featured_image %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %},
-        price_formatted: {{ product.price | money | json }},
-        price_cents: {{ product.price | json }},
-        available: {{ product.available | json }},
-        variant_id: {% if rv_variant %}{{ rv_variant.id | json }}{% else %}null{% endif %},
-        viewed_at: Date.now()
-      };
-
-      var storageKey = 'lymko_recently_viewed';
-      var items = [];
-
-      try {
-        items = JSON.parse(localStorage.getItem(storageKey) || '[]');
-        if (!Array.isArray(items)) items = [];
-      } catch (error) {
-        items = [];
-      }
-
-      items = items.filter(function (item) {
-        return item && item.handle !== productData.handle;
-      });
-
-      items.unshift(productData);
-      items = items.slice(0, 12);
-
-      localStorage.setItem(storageKey, JSON.stringify(items));
-    });
+  <script type="application/json" id="LymkoRecentlyViewedProduct">
+    {
+      "handle": {{ product.handle | json }},
+      "title": {{ product.title | json }},
+      "url": {{ product.url | json }},
+      "featured_image": {% if product.featured_image %}{{ product.featured_image | image_url: width: 700 | json }}{% else %}""{% endif %},
+      "variants": [
+        {% for variant in product.variants %}
+          {
+            "id": {{ variant.id | json }},
+            "title": {{ variant.title | json }},
+            "available": {{ variant.available | json }},
+            "price_cents": {{ variant.price | json }},
+            "price_formatted": {{ variant.price | money | json }},
+            "image": {% if variant.featured_image %}{{ variant.featured_image | image_url: width: 700 | json }}{% elsif product.featured_image %}{{ product.featured_image | image_url: width: 700 | json }}{% else %}""{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
   </script>
 {% endif %}
+
+<script>
+(function () {
+  'use strict';
+
+  var STORAGE_KEY = 'lymko_recently_viewed';
+  var MAX_PRODUCTS = 12;
+
+  function getStoredProducts() {
+    try {
+      var products = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return Array.isArray(products) ? products : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveStoredProducts(products) {
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(products.slice(0, MAX_PRODUCTS))
+      );
+    } catch (error) {
+      console.error('Recently viewed products could not be saved.', error);
+    }
+  }
+
+  function getSelectedVariantId(productData) {
+    var variantInput = document.querySelector(
+      'form[action*="/cart/add"] [name="id"]'
+    );
+
+    if (variantInput && variantInput.value) {
+      return String(variantInput.value);
+    }
+
+    var checkedVariant = document.querySelector(
+      'input[name="id"]:checked'
+    );
+
+    if (checkedVariant && checkedVariant.value) {
+      return String(checkedVariant.value);
+    }
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var variantFromUrl = urlParams.get('variant');
+
+    if (variantFromUrl) {
+      return String(variantFromUrl);
+    }
+
+    if (productData.variants && productData.variants.length) {
+      return String(productData.variants[0].id);
+    }
+
+    return '';
+  }
+
+  function findVariant(productData, variantId) {
+    if (!productData.variants || !productData.variants.length) {
+      return null;
+    }
+
+    return productData.variants.find(function (variant) {
+      return String(variant.id) === String(variantId);
+    }) || productData.variants[0];
+  }
+
+  function saveCurrentProduct() {
+    var productJson = document.getElementById(
+      'LymkoRecentlyViewedProduct'
+    );
+
+    if (!productJson) return;
+
+    var productData;
+
+    try {
+      productData = JSON.parse(productJson.textContent);
+    } catch (error) {
+      console.error('Product data could not be read.', error);
+      return;
+    }
+
+    var selectedVariantId = getSelectedVariantId(productData);
+    var selectedVariant = findVariant(
+      productData,
+      selectedVariantId
+    );
+
+    if (!selectedVariant) return;
+
+    var recentlyViewedProduct = {
+      handle: productData.handle,
+      title: productData.title,
+      url:
+        productData.url +
+        '?variant=' +
+        encodeURIComponent(selectedVariant.id),
+      image:
+        selectedVariant.image ||
+        productData.featured_image ||
+        '',
+      price: selectedVariant.price_formatted,
+      price_formatted: selectedVariant.price_formatted,
+      price_cents: selectedVariant.price_cents,
+      available: selectedVariant.available,
+      variant_id: selectedVariant.id,
+      variant_title: selectedVariant.title,
+      viewed_at: Date.now()
+    };
+
+    var products = getStoredProducts();
+
+    products = products.filter(function (product) {
+      return product && product.handle !== recentlyViewedProduct.handle;
+    });
+
+    products.unshift(recentlyViewedProduct);
+
+    saveStoredProducts(products);
+  }
+
+  function updateProductAfterVariantChange() {
+    window.setTimeout(function () {
+      saveCurrentProduct();
+    }, 150);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    saveCurrentProduct();
+  });
+
+  document.addEventListener('change', function (event) {
+    if (
+      event.target.matches(
+        'input[name="id"], select[name="id"], variant-selects input, variant-selects select, variant-radios input'
+      )
+    ) {
+      updateProductAfterVariantChange();
+    }
+  });
+
+  document.addEventListener('variant:change', function () {
+    updateProductAfterVariantChange();
+  });
+
+  document.addEventListener('click', function (event) {
+    var minusButton = event.target.closest('[data-qty-minus]');
+    var plusButton = event.target.closest('[data-qty-plus]');
+
+    if (minusButton || plusButton) {
+      event.preventDefault();
+
+      var quantityCard = event.target.closest(
+        '.ldash__recent-product'
+      );
+
+      if (!quantityCard) return;
+
+      var quantityInput = quantityCard.querySelector(
+        '.ldash__recent-qty input'
+      );
+
+      if (!quantityInput) return;
+
+      var quantity = parseInt(quantityInput.value, 10) || 1;
+
+      if (minusButton) {
+        quantity = Math.max(1, quantity - 1);
+      }
+
+      if (plusButton) {
+        quantity = quantity + 1;
+      }
+
+      quantityInput.value = quantity;
+      return;
+    }
+
+    var addButton = event.target.closest('.ldash__recent-add');
+
+    if (!addButton) return;
+
+    event.preventDefault();
+
+    if (
+      addButton.disabled ||
+      addButton.classList.contains('is-soldout')
+    ) {
+      return;
+    }
+
+    var productCard = addButton.closest(
+      '.ldash__recent-product'
+    );
+
+    if (!productCard) return;
+
+    var quantityInput = productCard.querySelector(
+      '.ldash__recent-qty input'
+    );
+
+    var variantId = parseInt(
+      addButton.getAttribute('data-variant-id'),
+      10
+    );
+
+    var quantity = quantityInput
+      ? Math.max(1, parseInt(quantityInput.value, 10) || 1)
+      : 1;
+
+    if (!variantId) {
+      alert('Product variant was not found.');
+      return;
+    }
+
+    var originalButtonText = addButton.textContent;
+
+    addButton.disabled = true;
+    addButton.textContent = 'Adding...';
+
+    fetch(window.Shopify && Shopify.routes
+      ? Shopify.routes.root + 'cart/add.js'
+      : '/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        items: [
+          {
+            id: variantId,
+            quantity: quantity
+          }
+        ]
+      })
+    })
+      .then(function (response) {
+        return response.json().then(function (data) {
+          if (!response.ok) {
+            throw new Error(
+              data.description ||
+              data.message ||
+              'Product could not be added.'
+            );
+          }
+
+          return data;
+        });
+      })
+      .then(function () {
+        addButton.textContent = 'Added to cart';
+
+        document.dispatchEvent(
+          new CustomEvent('cart:refresh', {
+            bubbles: true
+          })
+        );
+
+        window.setTimeout(function () {
+          window.location.href =
+            window.Shopify && Shopify.routes
+              ? Shopify.routes.root + 'cart'
+              : '/cart';
+        }, 600);
+      })
+      .catch(function (error) {
+        addButton.disabled = false;
+        addButton.textContent = originalButtonText;
+
+        alert(
+          error.message ||
+          'Product could not be added to cart.'
+        );
+      });
+  });
+})();
+</script>
