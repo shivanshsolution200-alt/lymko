@@ -1,0 +1,37 @@
+{% if request.page_type == 'product' and product %}
+  {%- assign rv_variant = product.selected_or_first_available_variant -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var productData = {
+        handle: {{ product.handle | json }},
+        title: {{ product.title | json }},
+        url: {{ product.url | within: collection | json }},
+        image: {% if product.featured_image %}{{ product.featured_image | image_url: width: 600 | json }}{% else %}""{% endif %},
+        price_formatted: {{ product.price | money | json }},
+        price_cents: {{ product.price | json }},
+        available: {{ product.available | json }},
+        variant_id: {% if rv_variant %}{{ rv_variant.id | json }}{% else %}null{% endif %},
+        viewed_at: Date.now()
+      };
+
+      var storageKey = 'lymko_recently_viewed';
+      var items = [];
+
+      try {
+        items = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        if (!Array.isArray(items)) items = [];
+      } catch (error) {
+        items = [];
+      }
+
+      items = items.filter(function (item) {
+        return item && item.handle !== productData.handle;
+      });
+
+      items.unshift(productData);
+      items = items.slice(0, 12);
+
+      localStorage.setItem(storageKey, JSON.stringify(items));
+    });
+  </script>
+{% endif %}
