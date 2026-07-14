@@ -181,6 +181,7 @@
           {% else %}
             <div class="ldash__empty-orders ldash__empty-orders--orders-tab">
                 {{ customer_email }}
+                {{ customer.last_order }}
 <div class="ldash__order-list">
               {% for order in customer.orders %}
                 <div class="ldash__order-item">
