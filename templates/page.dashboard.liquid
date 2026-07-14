@@ -91,7 +91,7 @@
       <article class="ldash__card">
         <header class="ldash__card-head">
           <h2><span><svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span>Default Address</h2>
-          <a href="https://account.lymko.in/profile" class="ldash__text-link">View all</a>
+          {% comment %} <a href="https://account.lymko.in/profile" class="ldash__text-link">View all</a> {% endcomment %}
         </header>
         <div class="ldash__card-body">
           {% if customer.default_address %}
@@ -100,7 +100,7 @@
             <div class="ldash__empty-address">
               <svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
               <span>No addresses added</span>
-              <a href="https://account.lymko.in/profile" class="ldash__small-btn">Add</a>
+              {% comment %} <a href="https://account.lymko.in/profile" class="ldash__small-btn">Add</a> {% endcomment %}
             </div>
           {% endif %}
         </div>
