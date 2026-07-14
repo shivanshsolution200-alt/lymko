@@ -55,53 +55,6 @@
         <div class="ldash__card-body">
           <p class="ldash__detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 2.8-7 7-7s7 3 7 7"/></svg>{{ customer_name }}</p>
           {% if customer_phone != blank %}<p class="ldash__detail"><svg viewBox="0 0 24 24"><path d="M7 3h3l1 5-2 1c1.2 2.8 3.4 5 6.2 6.2l1-2 4.8 1V17c0 2.2-1.8 4-4 4C9.3 21 3 14.7 3 7c0-2.2 1.8-4 4-4Z"/></svg>{{ customer_phone }}</p>
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  var tabsBox=document.querySelector('.ldash__tabs');
-  var panels=document.querySelectorAll('.ldash__panel');
-  var detailWrap=document.getElementById('ldash-order-detail');
-
-  function showOrder(id){
-    var target=document.getElementById('ldash-order-'+id);
-    if(!target||!detailWrap)return;
-    if(tabsBox)tabsBox.hidden=true;
-    panels.forEach(function(panel){panel.hidden=true;});
-    detailWrap.hidden=false;
-    detailWrap.querySelectorAll('.ldash__order-detail').forEach(function(detail){detail.hidden=true;});
-    target.hidden=false;
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-
-  function closeOrder(){
-    if(tabsBox)tabsBox.hidden=false;
-    if(detailWrap)detailWrap.hidden=true;
-    panels.forEach(function(panel){panel.hidden=false;panel.classList.remove('is-active');});
-    document.querySelectorAll('.ldash__tab').forEach(function(tab){tab.classList.remove('is-active');});
-    var ordersPanel=document.getElementById('ldash-orders');
-    var ordersTab=document.querySelector('.ldash__tab[data-tab="orders"]');
-    if(ordersPanel)ordersPanel.classList.add('is-active');
-    if(ordersTab)ordersTab.classList.add('is-active');
-    history.replaceState(null,'',window.location.pathname);
-  }
-
-  document.querySelectorAll('.ldash-view-order').forEach(function(link){
-    link.addEventListener('click',function(event){
-      event.preventDefault();
-      var id=link.getAttribute('data-order-id');
-      history.pushState({orderId:id},'',window.location.pathname+'#order-'+id);
-      showOrder(id);
-    });
-  });
-
-  document.querySelectorAll('[data-order-back]').forEach(function(button){
-    button.addEventListener('click',closeOrder);
-  });
-
-  var match=window.location.hash.match(/^#order-(.+)$/);
-  if(match)showOrder(match[1]);
-});
-</script>
-
 {% endif %}
           <p class="ldash__detail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>{{ customer_email }}</p>
         </div>
@@ -397,4 +350,92 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>function ldashDownloadInvoice(invoiceId,orderName){var invoice=document.getElementById(invoiceId);if(!invoice){alert('Invoice data was not found.');return}if(typeof html2pdf==='undefined'){alert('Invoice library failed to load. Please refresh and try again.');return}var wrapper=document.createElement('div');wrapper.appendChild(invoice.firstElementChild.cloneNode(true));var clean=String(orderName||'invoice').replace('#','').replace(/[^a-zA-Z0-9-_]/g,'-');html2pdf().set({margin:8,filename:clean+'-invoice.pdf',image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(wrapper).save()}function ldashReorder(items){if(!Array.isArray(items)||!items.length){alert('No products were found in this order.');return}fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:items})}).then(function(r){if(!r.ok)throw new Error();return r.json()}).then(function(){window.location.href='/cart'}).catch(function(){alert('Some products are unavailable. Please try again.')})}</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var dashboard = document.querySelector('.ldash');
+  var tabsBox = document.querySelector('.ldash__tabs');
+  var panels = document.querySelectorAll('.ldash__panel');
+  var detailWrap = document.getElementById('ldash-order-detail');
+
+  function showOrder(id) {
+    var target = document.getElementById('ldash-order-' + id);
+    if (!target || !detailWrap) return;
+
+    if (tabsBox) tabsBox.style.display = 'none';
+    panels.forEach(function (panel) {
+      panel.classList.remove('is-active');
+      panel.style.display = 'none';
+    });
+
+    detailWrap.hidden = false;
+    detailWrap.style.display = 'block';
+
+    detailWrap.querySelectorAll('.ldash__order-detail').forEach(function (detail) {
+      detail.hidden = true;
+      detail.style.display = 'none';
+    });
+
+    target.hidden = false;
+    target.style.display = 'block';
+
+    if (dashboard) dashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeOrder() {
+    if (tabsBox) tabsBox.style.display = '';
+    if (detailWrap) {
+      detailWrap.hidden = true;
+      detailWrap.style.display = 'none';
+    }
+
+    detailWrap && detailWrap.querySelectorAll('.ldash__order-detail').forEach(function (detail) {
+      detail.hidden = true;
+      detail.style.display = 'none';
+    });
+
+    panels.forEach(function (panel) {
+      panel.style.display = '';
+      panel.classList.remove('is-active');
+    });
+
+    document.querySelectorAll('.ldash__tab').forEach(function (tab) {
+      tab.classList.remove('is-active');
+    });
+
+    var ordersPanel = document.getElementById('ldash-orders');
+    var ordersTab = document.querySelector('.ldash__tab[data-tab="orders"]');
+    if (ordersPanel) ordersPanel.classList.add('is-active');
+    if (ordersTab) ordersTab.classList.add('is-active');
+
+    history.replaceState(null, '', window.location.pathname);
+    if (dashboard) dashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.addEventListener('click', function (event) {
+    var viewLink = event.target.closest('.ldash-view-order');
+    if (viewLink) {
+      event.preventDefault();
+      var id = viewLink.getAttribute('data-order-id');
+      history.pushState({ orderId: id }, '', window.location.pathname + '#order-' + id);
+      showOrder(id);
+      return;
+    }
+
+    var backButton = event.target.closest('[data-order-back]');
+    if (backButton) {
+      event.preventDefault();
+      closeOrder();
+    }
+  });
+
+  window.addEventListener('hashchange', function () {
+    var match = window.location.hash.match(/^#order-(.+)$/);
+    if (match) showOrder(match[1]);
+    else closeOrder();
+  });
+
+  var initialMatch = window.location.hash.match(/^#order-(.+)$/);
+  if (initialMatch) showOrder(initialMatch[1]);
+});
+</script>
 {% endif %}
