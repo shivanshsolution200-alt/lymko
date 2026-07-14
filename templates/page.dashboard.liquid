@@ -83,12 +83,192 @@
         <h2><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Recent Orders</h2>
       </header>
       <div class="ldash__card-body">
-        <div style="padding:15px;background:#fff3cd;border:1px solid #ffe69c;margin:20px 0;">
-  <p><strong>Customer:</strong> {{ customer.name }}</p>
-  <p><strong>Email:</strong> {{ customer.email }}</p>
-  <p><strong>Customer ID:</strong> {{ customer.id }}</p>
-  <p><strong>Orders count:</strong> {{ customer.orders_count }}</p>
-  <p><strong>Orders size:</strong> {{ customer.orders.size }}</p>
+        <div class="lymko-recent-orders">
+  {% for order in customer.orders limit: 3 %}
+    <div class="lymko-order-item">
+
+      <div class="lymko-order-product">
+        <div class="lymko-order-image">
+          {% if order.line_items.first.image %}
+            <img
+              src="{{ order.line_items.first.image | image_url: width: 90, height: 90, crop: 'center' }}"
+              alt="{{ order.line_items.first.title | escape }}"
+              loading="lazy"
+            >
+          {% else %}
+            <div class="lymko-order-image-placeholder">
+              {% render 'icon-cart' %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="lymko-order-info">
+          <div class="lymko-order-top-line">
+            <strong>{{ order.name }}</strong>
+
+            <span class="lymko-status lymko-status--{{ order.financial_status }}">
+              {{ order.financial_status_label }}
+            </span>
+
+            <span class="lymko-status lymko-status--{{ order.fulfillment_status }}">
+              {{ order.fulfillment_status_label }}
+            </span>
+          </div>
+
+          <span class="lymko-order-date">
+            {{ order.created_at | date: "%B %d, %Y" }}
+          </span>
+        </div>
+      </div>
+
+      <div class="lymko-order-total">
+        <strong>{{ order.total_price | money }}</strong>
+
+        <span>
+          {{ order.item_count }}
+          {% if order.item_count == 1 %}
+            item
+          {% else %}
+            items
+          {% endif %}
+        </span>
+      </div>
+
+      <div class="lymko-order-actions">
+        <a href="{{ order.customer_url }}" class="lymko-order-btn lymko-order-btn--outline">
+          View details
+        </a>
+
+        {% capture reorder_items %}
+          [
+            {% for item in order.line_items %}
+              {
+                "id": {{ item.variant_id | json }},
+                "quantity": {{ item.quantity | json }}
+              }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        {% endcapture %}
+
+        <button
+          type="button"
+          class="lymko-order-btn lymko-order-btn--dark"
+          onclick='lymkoReorder({{ reorder_items | strip }})'
+        >
+          Reorder
+        </button>
+
+        <button
+          type="button"
+          class="lymko-order-btn lymko-order-btn--invoice"
+          onclick="lymkoDownloadInvoice('invoice-{{ order.id }}', '{{ order.name | escape }}')"
+        >
+          Download Invoice
+        </button>
+      </div>
+
+      <!-- Hidden invoice -->
+      <div id="invoice-{{ order.id }}" class="lymko-invoice-template">
+        <div class="lymko-invoice">
+          <div class="lymko-invoice__header">
+            <div>
+              <h1>{{ shop.name }}</h1>
+              <p>Tax Invoice</p>
+            </div>
+
+            <div class="lymko-invoice__number">
+              <strong>{{ order.name }}</strong>
+              <span>{{ order.created_at | date: "%B %d, %Y" }}</span>
+            </div>
+          </div>
+
+          <div class="lymko-invoice__customer">
+            <div>
+              <h3>Bill To</h3>
+              <p>{{ customer.name }}</p>
+              <p>{{ customer.email }}</p>
+
+              {% if customer.phone != blank %}
+                <p>{{ customer.phone }}</p>
+              {% endif %}
+            </div>
+
+            <div>
+              <h3>Shipping Address</h3>
+
+              {% if order.shipping_address %}
+                {{ order.shipping_address | format_address }}
+              {% elsif customer.default_address %}
+                {{ customer.default_address | format_address }}
+              {% else %}
+                <p>No shipping address available.</p>
+              {% endif %}
+            </div>
+          </div>
+
+          <table class="lymko-invoice__table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for item in order.line_items %}
+                <tr>
+                  <td>
+                    <strong>{{ item.product.title | default: item.title }}</strong>
+
+                    {% unless item.variant.title == 'Default Title' %}
+                      <small>{{ item.variant.title }}</small>
+                    {% endunless %}
+                  </td>
+
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.final_price | money }}</td>
+                  <td>{{ item.final_line_price | money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <div class="lymko-invoice__summary">
+            <div>
+              <span>Subtotal</span>
+              <strong>{{ order.subtotal_price | money }}</strong>
+            </div>
+
+            {% for shipping_method in order.shipping_methods %}
+              <div>
+                <span>{{ shipping_method.title }}</span>
+                <strong>{{ shipping_method.price | money }}</strong>
+              </div>
+            {% endfor %}
+
+            {% if order.total_discounts > 0 %}
+              <div>
+                <span>Discount</span>
+                <strong>-{{ order.total_discounts | money }}</strong>
+              </div>
+            {% endif %}
+
+            <div class="lymko-invoice__grand-total">
+              <span>Total</span>
+              <strong>{{ order.total_price | money_with_currency }}</strong>
+            </div>
+          </div>
+
+          <div class="lymko-invoice__footer">
+            <p>Thank you for shopping with {{ shop.name }}.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
 </div>
         {% if customer.orders.size > 0 %}
           <div class="ldash__order-list">
