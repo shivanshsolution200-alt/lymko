@@ -237,7 +237,9 @@
 
   <div id="ldash-addresses" class="ldash__panel">
     <article class="ldash__card">
-      <header class="ldash__card-head"><h2><span><svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span>Saved Addresses</h2><a href="https://account.lymko.in/profile" class="ldash__small-btn">Add</a></header>
+      <header class="ldash__card-head"><h2><span><svg viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span>Saved Addresses</h2>
+      {% comment %} <a href="https://account.lymko.in/profile" class="ldash__small-btn">Add</a> {% endcomment %}
+    </header>
       <div class="ldash__card-body">
         {% if customer.addresses.size > 0 %}<div class="ldash__address-grid">{% for address in customer.addresses %}<div class="ldash__address-card">{% if address == customer.default_address %}<span>Default</span>{% endif %}{{ address | format_address }}</div>{% endfor %}</div>{% else %}<p class="ldash__muted">No addresses added.</p>{% endif %}
       </div>
