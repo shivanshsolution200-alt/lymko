@@ -4932,3 +4932,11 @@ button.product-form__submit.button.button--full-width.button--secondary {
     display: flex !important;
     justify-content: space-between !important;
 }
+.collection-list.overlay .collection-list__item .card__content .card__information {
+    width: 110px;
+    height: 110px;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
