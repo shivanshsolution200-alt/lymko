@@ -7,7 +7,7 @@
   id="green-revolution-{{ section.id }}"
   class="green-revolution"
 >
-  <div class="green-revolution__container">
+  <div class="green-revolution__container page-width">
 
     <!-- LEFT CONTENT -->
     <div class="green-revolution__content">
@@ -269,13 +269,18 @@
     position: relative;
     display: grid;
     grid-template-columns: 56% 44%;
-    width: 100%;
-    max-width: 1480px;
     min-height: 720px;
     margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
     overflow: hidden;
     background: #ffffff;
     border-radius: 24px;
+  }
+
+  #green-revolution-{{ section.id }} .green-revolution__container.page-width {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* =========================
