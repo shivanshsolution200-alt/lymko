@@ -126,6 +126,8 @@
         "button_text": "Grab Your 10% Discount",
         "button_link": "",
         "note": "<p>It's simple.<br/>It's impactful.</p>",
+        "main_image": "shopify://shop_images/07_1324796d-ed6b-45c3-ae9b-8162357cbd19.jpg",
+        "mobile_image": "shopify://shop_images/07_1324796d-ed6b-45c3-ae9b-8162357cbd19.jpg",
         "show_discount_badge": true,
         "badge_top_text": "Grab Your",
         "badge_discount": "10% OFF",
