@@ -134,6 +134,47 @@
         "badge_bottom_text": "ON YOUR PURCHASE"
       }
     },
+    "green_benefits_bar_RHdY8j": {
+      "type": "green-benefits-bar",
+      "blocks": {
+        "benefit_FqR6dg": {
+          "type": "benefit",
+          "settings": {
+            "title": "Better Planet",
+            "text": "<p>Better Future</p>"
+          }
+        },
+        "benefit_cCJk6b": {
+          "type": "benefit",
+          "settings": {
+            "title": "Every Tree",
+            "text": "<p>Makes a Difference</p>"
+          }
+        },
+        "benefit_jwXhPe": {
+          "type": "benefit",
+          "settings": {
+            "title": "Together, Let's Make",
+            "text": "<p>Earth Greener</p>"
+          }
+        },
+        "benefit_rcgFVC": {
+          "type": "benefit",
+          "settings": {
+            "title": "For Nature,",
+            "text": "<p>For Us, For Future</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_FqR6dg",
+        "benefit_cCJk6b",
+        "benefit_jwXhPe",
+        "benefit_rcgFVC"
+      ],
+      "name": "Green benefits bar",
+      "settings": {}
+    },
     "22208e64-dcc3-4578-b425-207fdf5259a3": {
       "type": "slideshow",
       "blocks": {
@@ -1296,6 +1337,7 @@
     "new_slider_section_bTRmQy",
     "image_with_video_text_6UeqAQ",
     "green_revolution_eyG7Te",
+    "green_benefits_bar_RHdY8j",
     "22208e64-dcc3-4578-b425-207fdf5259a3",
     "support_block_qiVE4Q",
     "fd1d65a5-6009-416e-9903-05b10c8ce413",
