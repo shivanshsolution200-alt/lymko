@@ -1,0 +1,290 @@
+{% comment %}
+  Section: Green Benefits Bar
+  File: sections/green-benefits-bar.liquid
+{% endcomment %}
+
+<section
+  id="green-benefits-bar-{{ section.id }}"
+  class="green-benefits-bar"
+>
+  <div class="page-width green-benefits-bar__container">
+    <div class="green-benefits-bar__grid">
+      {% for block in section.blocks %}
+        <div
+          class="green-benefits-bar__item"
+          {{ block.shopify_attributes }}
+        >
+          <div class="green-benefits-bar__icon">
+            {% if block.settings.icon != blank %}
+              {{
+                block.settings.icon
+                | image_url: width: 120
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '60, 90, 120',
+                  sizes: '60px',
+                  alt: block.settings.title
+              }}
+            {% else %}
+              {% case forloop.index %}
+                {% when 1 %}
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <circle cx="32" cy="32" r="21" fill="none" stroke="currentColor" stroke-width="4"/>
+                    <path d="M11 32h42M32 11c7 7 10 14 10 21s-3 14-10 21M32 11c-7 7-10 14-10 21s3 14 10 21" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                  </svg>
+                {% when 2 %}
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <path d="M23 51h18M25 44h14M28 18c0-5 2-9 4-9s4 4 4 9c5 2 8 7 8 12 0 8-5 14-12 14S20 38 20 30c0-5 3-10 8-12Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="32" cy="29" r="4" fill="currentColor"/>
+                  </svg>
+                {% when 3 %}
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <circle cx="22" cy="22" r="7" fill="none" stroke="currentColor" stroke-width="4"/>
+                    <circle cx="43" cy="18" r="5" fill="none" stroke="currentColor" stroke-width="4"/>
+                    <path d="M9 48c1-10 6-15 13-15s12 5 13 15M35 48c1-8 4-12 9-12 6 0 10 4 11 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                    <path d="m38 26 5 5 9-11" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% else %}
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <path d="M32 53S11 41 11 25c0-8 6-14 14-14 4 0 7 2 9 5 2-3 5-5 9-5 8 0 14 6 14 14 0 16-25 28-25 28Z" fill="currentColor"/>
+                  </svg>
+              {% endcase %}
+            {% endif %}
+          </div>
+
+          <div class="green-benefits-bar__content">
+            {% if block.settings.title != blank %}
+              <h3 class="green-benefits-bar__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+              <div class="green-benefits-bar__text">
+                {{ block.settings.text }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #green-benefits-bar-{{ section.id }} {
+    width: 100%;
+    background: #f1f8ed;
+    overflow: hidden;
+  }
+
+  #green-benefits-bar-{{ section.id }} *,
+  #green-benefits-bar-{{ section.id }} *::before,
+  #green-benefits-bar-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    gap: 40px;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__item {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 18px;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 58px;
+    height: 58px;
+    color: #ffffff;
+    background: #155c35;
+    border-radius: 50%;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__icon svg,
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__icon img {
+    display: block;
+    width: 31px;
+    height: 31px;
+    object-fit: contain;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__content {
+    min-width: 0;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__title {
+    margin: 0;
+    color: #202a3a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__text {
+    margin-top: 2px;
+    color: #566072;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  #green-benefits-bar-{{ section.id }} .green-benefits-bar__text p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 1100px) {
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 40px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__container {
+      padding-top: 18px;
+      padding-bottom: 18px;
+      padding-right: 0;
+    }
+
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__grid {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-right: 20px;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__item {
+      flex: 0 0 calc(86% - 8px);
+      min-width: calc(86% - 8px);
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(21, 92, 53, 0.08);
+      border-radius: 14px;
+      scroll-snap-align: start;
+    }
+
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__icon {
+      width: 52px;
+      height: 52px;
+    }
+
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__icon svg,
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__icon img {
+      width: 27px;
+      height: 27px;
+    }
+
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__title {
+      font-size: 16px;
+    }
+
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__text {
+      font-size: 13px;
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    #green-benefits-bar-{{ section.id }} .green-benefits-bar__item {
+      flex-basis: calc(92% - 8px);
+      min-width: calc(92% - 8px);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Green benefits bar",
+  "tag": "section",
+  "class": "section-green-benefits-bar",
+  "max_blocks": 8,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Better Planet"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Better Future</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Green benefits bar",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Better Planet",
+            "text": "<p>Better Future</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Every Tree",
+            "text": "<p>Makes a Difference</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Together, Let's Make",
+            "text": "<p>Earth Greener</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "For Nature,",
+            "text": "<p>For Us, For Future</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
