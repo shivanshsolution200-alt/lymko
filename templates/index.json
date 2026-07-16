@@ -264,6 +264,16 @@
         "columns_mobile": "2"
       }
     },
+    "single_grid_collection_mHDFHe": {
+      "type": "single-grid-collection",
+      "name": "Single Collection Grid",
+      "settings": {
+        "heading": "Shop Our Best Selling products",
+        "subheading": "Explore our latest collection",
+        "collection": "best-selling",
+        "heading_alignment": "center"
+      }
+    },
     "custom_double_banner_7GqEfT": {
       "type": "custom-double-banner",
       "blocks": {
@@ -292,16 +302,6 @@
       ],
       "name": "Custom Double Banner",
       "settings": {}
-    },
-    "single_grid_collection_mHDFHe": {
-      "type": "single-grid-collection",
-      "name": "Single Collection Grid",
-      "settings": {
-        "heading": "Shop Our Best Selling products",
-        "subheading": "Explore our latest collection",
-        "collection": "best-selling",
-        "heading_alignment": "center"
-      }
     },
     "featured_collection_iX7fef": {
       "type": "featured-collection",
@@ -482,65 +482,6 @@
         "custom_class_name": "custom-deal-banner"
       }
     },
-    "reels_section_VXtTkE": {
-      "type": "reels-section",
-      "blocks": {
-        "reel_bBN8cY": {
-          "type": "reel",
-          "settings": {
-            "reel_video": "shopify://files/videos/7306363-uhd_2160_4096_25fps.mp4",
-            "linked_product": "coffee-culture-eye-firming-cream"
-          }
-        },
-        "reel_QM6xgF": {
-          "type": "reel",
-          "settings": {
-            "reel_video": "shopify://files/videos/7305322-uhd_2160_4096_25fps.mp4",
-            "linked_product": "citrus-got-real-spf30-sunscreen"
-          }
-        },
-        "reel_KHfB38": {
-          "type": "reel",
-          "settings": {
-            "reel_video": "shopify://files/videos/7615056-uhd_2160_4096_25fps.mp4",
-            "linked_product": "citrus-got-real-daily-moisturizer"
-          }
-        },
-        "reel_3YDT7a": {
-          "type": "reel",
-          "settings": {
-            "reel_video": "shopify://files/videos/8131891-uhd_2160_4096_25fps.mp4",
-            "linked_product": "growthme-growth-activator-hair-serum"
-          }
-        },
-        "reel_zDmYg6": {
-          "type": "reel",
-          "settings": {
-            "reel_video": "shopify://files/videos/7011160-hd_1080_1920_25fps.mp4",
-            "linked_product": "bling-leader-illuminating-moisturizer"
-          }
-        },
-        "reel_7tcdUM": {
-          "type": "reel",
-          "disabled": true,
-          "settings": {
-            "linked_product": ""
-          }
-        }
-      },
-      "block_order": [
-        "reel_bBN8cY",
-        "reel_QM6xgF",
-        "reel_KHfB38",
-        "reel_3YDT7a",
-        "reel_zDmYg6",
-        "reel_7tcdUM"
-      ],
-      "name": "Shoppable Reels Slider",
-      "settings": {
-        "heading": "Watch And Buy"
-      }
-    },
     "shop_by_skin_pikKnX": {
       "type": "shop-by-skin",
       "blocks": {
@@ -662,6 +603,65 @@
         "padding_top": 36,
         "padding_bottom": 52,
         "custom_class_name": "custom-specification-block"
+      }
+    },
+    "reels_section_VXtTkE": {
+      "type": "reels-section",
+      "blocks": {
+        "reel_bBN8cY": {
+          "type": "reel",
+          "settings": {
+            "reel_video": "shopify://files/videos/7306363-uhd_2160_4096_25fps.mp4",
+            "linked_product": "coffee-culture-eye-firming-cream"
+          }
+        },
+        "reel_QM6xgF": {
+          "type": "reel",
+          "settings": {
+            "reel_video": "shopify://files/videos/7305322-uhd_2160_4096_25fps.mp4",
+            "linked_product": "citrus-got-real-spf30-sunscreen"
+          }
+        },
+        "reel_KHfB38": {
+          "type": "reel",
+          "settings": {
+            "reel_video": "shopify://files/videos/7615056-uhd_2160_4096_25fps.mp4",
+            "linked_product": "citrus-got-real-daily-moisturizer"
+          }
+        },
+        "reel_3YDT7a": {
+          "type": "reel",
+          "settings": {
+            "reel_video": "shopify://files/videos/8131891-uhd_2160_4096_25fps.mp4",
+            "linked_product": "growthme-growth-activator-hair-serum"
+          }
+        },
+        "reel_zDmYg6": {
+          "type": "reel",
+          "settings": {
+            "reel_video": "shopify://files/videos/7011160-hd_1080_1920_25fps.mp4",
+            "linked_product": "bling-leader-illuminating-moisturizer"
+          }
+        },
+        "reel_7tcdUM": {
+          "type": "reel",
+          "disabled": true,
+          "settings": {
+            "linked_product": ""
+          }
+        }
+      },
+      "block_order": [
+        "reel_bBN8cY",
+        "reel_QM6xgF",
+        "reel_KHfB38",
+        "reel_3YDT7a",
+        "reel_zDmYg6",
+        "reel_7tcdUM"
+      ],
+      "name": "Shoppable Reels Slider",
+      "settings": {
+        "heading": "Watch And Buy"
       }
     },
     "image_with_text_URtQMH": {
