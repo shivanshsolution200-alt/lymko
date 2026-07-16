@@ -2,6 +2,7 @@
   Section: Green Revolution
   File: sections/green-revolution.liquid
 {% endcomment %}
+{% if customer %}
 
 <section
   id="green-revolution-{{ section.id }}"
@@ -897,6 +898,7 @@
     }
   }
 </style>
+{% endif %}
 
 {% schema %}
 {
