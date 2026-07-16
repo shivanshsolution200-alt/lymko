@@ -47,27 +47,6 @@
         "speed": 3
       }
     },
-    "image_with_video_text_6UeqAQ": {
-      "type": "image-with-video-text",
-      "name": "Login Image Text",
-      "settings": {
-        "image": "shopify://shop_images/WhatsAppImage2026-06-30at12.47.29PM.jpg",
-        "image_width": 50,
-        "section_width": 1200,
-        "heading": "Exclusive Video Content",
-        "text": "<p>This section is only visible after customer login.</p>",
-        "button_text": "Watch Now",
-        "button_link": "",
-        "heading_size": 36,
-        "text_size": 16,
-        "image_radius": 12,
-        "button_bg": "#000000",
-        "button_color": "#ffffff",
-        "button_radius": 6,
-        "padding_top": 50,
-        "padding_bottom": 50
-      }
-    },
     "green_revolution_eyG7Te": {
       "type": "green-revolution",
       "blocks": {
@@ -1335,7 +1314,6 @@
   },
   "order": [
     "new_slider_section_bTRmQy",
-    "image_with_video_text_6UeqAQ",
     "green_revolution_eyG7Te",
     "green_benefits_bar_RHdY8j",
     "22208e64-dcc3-4578-b425-207fdf5259a3",
