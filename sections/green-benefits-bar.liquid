@@ -2,6 +2,7 @@
   Section: Green Benefits Bar
   File: sections/green-benefits-bar.liquid
 {% endcomment %}
+{% if customer %}
 
 <section
   id="green-benefits-bar-{{ section.id }}"
@@ -218,6 +219,7 @@
     }
   }
 </style>
+{% endif %}
 
 {% schema %}
 {
