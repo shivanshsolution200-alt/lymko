@@ -5015,3 +5015,10 @@ span.badge.badge--bottom-left.color-accent-2 {
 .announcement-bar .announcement-bar__message:hover {
     color: #000 !important;
 }
+a.full-unstyled-link {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 35px;
+}
