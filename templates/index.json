@@ -111,7 +111,7 @@
         "slider_image_height_laptop": 700,
         "slider_image_height_tab": 500,
         "slider_image_height_mobile": 400,
-        "swiper_pagination": true,
+        "swiper_pagination": false,
         "swiper_navigation": true,
         "auto_play": 3,
         "slider_effect": "slide",
