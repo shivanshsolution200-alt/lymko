@@ -124,6 +124,59 @@
         "custom_class_name": ""
       }
     },
+    "about_image_carousel_FTwXfj": {
+      "type": "about-image-carousel",
+      "blocks": {
+        "slide_UUDxKr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/All_Product_1.png",
+            "eyebrow": "",
+            "heading": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "slide_bw4zVc": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/All_Product_1.png",
+            "eyebrow": "",
+            "heading": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "slide_xJ6mTT": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/All_Product_1.png",
+            "eyebrow": "",
+            "heading": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_UUDxKr",
+        "slide_bw4zVc",
+        "slide_xJ6mTT"
+      ],
+      "name": "About image carousel",
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "#ffffff",
+        "desktop_height": 620,
+        "mobile_height": 520,
+        "border_radius": 18,
+        "overlay_opacity": 35,
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "padding_top": 16,
+        "padding_bottom": 28
+      }
+    },
     "green_revolution_eyG7Te": {
       "type": "green-revolution",
       "blocks": {
@@ -1050,6 +1103,7 @@
   "order": [
     "new_slider_section_bTRmQy",
     "slideshow_DUeHXM",
+    "about_image_carousel_FTwXfj",
     "green_revolution_eyG7Te",
     "green_benefits_bar_RHdY8j",
     "collection_list_QVNMd6",
