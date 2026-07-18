@@ -4981,3 +4981,6 @@ span.badge.badge--bottom-left.color-accent-2 {
 .card__content.for-arrow-alignment {
     position: relative !important;
 }
+.card__badge.bottom-left {
+    display: none;
+}
