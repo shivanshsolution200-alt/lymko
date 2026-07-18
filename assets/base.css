@@ -4623,7 +4623,9 @@ a.full-unstyled-link {
     font-size: 14px !important;
     font-weight: normal !important;
 }
-
+.card__information h3.card__heading a.full-unstyled-link {
+    font-size: 11px;
+}
 .product__info-container .html-sections-product span {
     font-size: 1.3rem !important;
     font-weight: 600;
