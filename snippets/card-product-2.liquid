@@ -207,12 +207,12 @@
           <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
           <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
           {%- endif -%}
+          <p>Launching Price Off</p>
           <h3 class="card__heading h5" id="title-{{ section_id }}-{{ card_product.id }}">
             <a href="{{ card_product.url | within: collection }}" class="full-unstyled-link">
               {{ card_product.title | escape }} <span class="choosen-swatch"></span>
             </a>
           </h3>
-          <p>fdsfsdf</p>
         {% render 'price', product: card_product, price_class: '' %}      
          <span class="caption-large light">{{ block.settings.description | escape }}</span>
        <div class="card-information review">
