@@ -186,22 +186,22 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "Clearance Sale Event: Up to 50% Off Select Items!",
-              "link": "shopify://collections/anti-aging-cream"
+              "text": "🔥 *UP TO 40% OFF – FESTIVAL SPECIAL*",
+              "link": "shopify://collections/combo"
             }
           },
           "26a5b632-ccfe-4348-b599-1e87c2b86bce": {
             "type": "announcement",
             "settings": {
-              "text": "Best special offers every week 40% Off! Free delivery time",
-              "link": "shopify://collections/creams"
+              "text": "🚚 *FREE SHIPPING ACROSS INDIA*",
+              "link": "shopify://collections/all"
             }
           },
           "6785f306-a6b1-4f8d-abdc-7f21d70a632f": {
             "type": "announcement",
             "settings": {
-              "text": "Free Shipping on Orders over $140",
-              "link": "shopify://collections/face-cream"
+              "text": "🎁 *EXCLUSIVE COMBO OFFERS LIVE NOW*",
+              "link": "shopify://collections/combo"
             }
           }
         },
