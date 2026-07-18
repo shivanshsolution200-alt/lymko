@@ -43,9 +43,9 @@
             </span>
 
             <span class="cosmetic-trust-item__icon">
-              {% case block.settings.icon %}
+              {% case forloop.index %}
 
-                {% when 'shipping' %}
+                {% when 1 %}
                   <svg viewBox="0 0 64 64" fill="none">
                     <g
                       stroke="currentColor"
@@ -63,7 +63,7 @@
                     </g>
                   </svg>
 
-                {% when 'customers' %}
+                {% when 2 %}
                   <svg viewBox="0 0 64 64" fill="none">
                     <g
                       stroke="currentColor"
@@ -77,11 +77,10 @@
                       <path d="M21 50C22 41 26 36 32 36C38 36 42 41 43 50"/>
                       <path d="M5 49C6 42 10 38 15 38C20 38 23 41 25 45"/>
                       <path d="M59 49C58 42 54 38 49 38C44 38 41 41 39 45"/>
-                      <path d="M24 16C20 12 23 7 27 8C29 8 31 10 32 12C33 10 35 8 38 8C42 8 44 13 40 17L32 24L24 16Z"/>
                     </g>
                   </svg>
 
-                {% when 'payment' %}
+                {% when 3 %}
                   <svg viewBox="0 0 64 64" fill="none">
                     <g
                       stroke="currentColor"
@@ -94,7 +93,7 @@
                     </g>
                   </svg>
 
-                {% when 'quality' %}
+                {% when 4 %}
                   <svg viewBox="0 0 64 64" fill="none">
                     <g
                       stroke="currentColor"
