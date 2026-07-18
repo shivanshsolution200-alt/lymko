@@ -339,7 +339,7 @@
           "type": "banner",
           "settings": {
             "image": "shopify://shop_images/combo_1_2.png",
-            "collection": "",
+            "collection": "combo",
             "heading": "",
             "button_text": "SHOP NOW"
           }
@@ -347,8 +347,8 @@
         "banner_8Dai8b": {
           "type": "banner",
           "settings": {
-            "image": "shopify://shop_images/combo_2_2.png",
-            "collection": "",
+            "image": "shopify://shop_images/combo_2_3.png",
+            "collection": "combo",
             "heading": "",
             "button_text": "SHOP NOW"
           }
