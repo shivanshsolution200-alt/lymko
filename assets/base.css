@@ -4974,3 +4974,8 @@ button.product-form__submit.button.button--full-width.button--secondary {
     border-radius: 50%;
 }
 }
+span.badge.badge--bottom-left.color-accent-2 {
+    background: #64bf99;
+    padding: 5px 5px 4px;
+    border: 0;
+}
