@@ -47,6 +47,82 @@
         "speed": 3
       }
     },
+    "slideshow_DUeHXM": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_BYApTn": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/All_Product_1.png",
+            "mobile_image": "shopify://shop_images/All_Product_1.png",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Image sub heading",
+            "text": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_product": true,
+            "subheading1": "Product heading",
+            "button_label1": "Button label",
+            "link1": "",
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_Mn4UmJ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/All_Product_1.png",
+            "mobile_image": "shopify://shop_images/All_Product_1.png",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Image sub heading",
+            "text": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_product": true,
+            "subheading1": "Product heading",
+            "button_label1": "Button label",
+            "link1": "",
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_BYApTn",
+        "slide_Mn4UmJ"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "page_full_width": false,
+        "page_full_width_spacing": false,
+        "slider_image_height": 700,
+        "slider_image_height_laptop": 700,
+        "slider_image_height_tab": 500,
+        "slider_image_height_mobile": 400,
+        "swiper_pagination": false,
+        "swiper_navigation": false,
+        "auto_play": 3,
+        "slider_effect": "slide",
+        "show_text_below": true,
+        "slider_overlay": true,
+        "overlay_opacity": 0.5,
+        "overlay_color": "",
+        "overlay_screen_width": "576",
+        "custom_class_name": ""
+      }
+    },
     "green_revolution_eyG7Te": {
       "type": "green-revolution",
       "blocks": {
@@ -1001,6 +1077,7 @@
   },
   "order": [
     "new_slider_section_bTRmQy",
+    "slideshow_DUeHXM",
     "green_revolution_eyG7Te",
     "green_benefits_bar_RHdY8j",
     "collection_list_QVNMd6",
