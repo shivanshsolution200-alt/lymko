@@ -1,60 +1,107 @@
 {% comment %}
-  Section: About Image Carousel
-  File: sections/about-image-carousel.liquid
+  Section: Center Peek Auto Slider
+  File: sections/center-peek-auto-slider.liquid
 {% endcomment %}
 
-<section id="about-carousel-{{ section.id }}" class="about-carousel-section">
-  <div class="about-carousel page-width" data-about-carousel="{{ section.id }}">
-    <div class="about-carousel__viewport">
-      <div class="about-carousel__track">
+<section
+  id="center-peek-slider-{{ section.id }}"
+  class="center-peek-slider-section"
+>
+  <div
+    class="center-peek-slider"
+    data-center-peek-slider="{{ section.id }}"
+    data-autoplay="{{ section.settings.autoplay }}"
+    data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+  >
+    <div class="center-peek-slider__viewport">
+      <div class="center-peek-slider__track">
+
         {% for block in section.blocks %}
-          <article class="about-carousel__slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
-            <div class="about-carousel__media">
-              {% if block.settings.image != blank %}
-                {{
-                  block.settings.image
-                  | image_url: width: 2200
-                  | image_tag:
-                    class: 'about-carousel__image',
-                    loading: 'lazy',
-                    widths: '750, 1100, 1500, 1800, 2200',
-                    sizes: '(max-width: 749px) 88vw, 74vw',
-                    alt: block.settings.heading
-                }}
-              {% else %}
-                {{ 'lifestyle-1' | placeholder_svg_tag: 'about-carousel__placeholder' }}
+          {% liquid
+            assign has_content = false
+            if block.settings.eyebrow != blank or block.settings.heading != blank or block.settings.button_label != blank
+              assign has_content = true
+            endif
+          %}
+
+          <article
+            class="center-peek-slider__slide"
+            data-original-index="{{ forloop.index0 }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="center-peek-slider__media">
+
+              <picture>
+                {% if block.settings.mobile_image != blank %}
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="{{ block.settings.mobile_image | image_url: width: 1200 }}"
+                  >
+                {% endif %}
+
+                {% if block.settings.image != blank %}
+                  {{
+                    block.settings.image
+                    | image_url: width: 2400
+                    | image_tag:
+                      class: 'center-peek-slider__image',
+                      loading: 'lazy',
+                      widths: '750, 1100, 1500, 1800, 2200, 2400',
+                      sizes: '(max-width: 749px) 88vw, 70vw',
+                      alt: block.settings.heading
+                  }}
+                {% else %}
+                  {{ 'lifestyle-1' | placeholder_svg_tag: 'center-peek-slider__placeholder' }}
+                {% endif %}
+              </picture>
+
+              {% if has_content %}
+                <div class="center-peek-slider__overlay"></div>
+
+                <div class="center-peek-slider__content">
+                  {% if block.settings.eyebrow != blank %}
+                    <div class="center-peek-slider__eyebrow">
+                      {{ block.settings.eyebrow }}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.heading != blank %}
+                    <h2 class="center-peek-slider__heading">
+                      {{ block.settings.heading }}
+                    </h2>
+                  {% endif %}
+
+                  {% if block.settings.button_label != blank %}
+                    <a
+                      href="{{ block.settings.button_link | default: '#' }}"
+                      class="center-peek-slider__button"
+                    >
+                      {{ block.settings.button_label }}
+                    </a>
+                  {% endif %}
+                </div>
+              {% elsif block.settings.slide_link != blank %}
+                <a
+                  href="{{ block.settings.slide_link }}"
+                  class="center-peek-slider__full-link"
+                  aria-label="Open slide"
+                ></a>
               {% endif %}
 
-              <div class="about-carousel__overlay"></div>
-
-              <div class="about-carousel__content">
-                {% if block.settings.eyebrow != blank %}
-                  <div class="about-carousel__eyebrow">{{ block.settings.eyebrow }}</div>
-                {% endif %}
-
-                {% if block.settings.heading != blank %}
-                  <h2 class="about-carousel__heading">{{ block.settings.heading }}</h2>
-                {% endif %}
-
-                {% if block.settings.button_label != blank %}
-                  <a href="{{ block.settings.button_link | default: '#' }}" class="about-carousel__button">
-                    {{ block.settings.button_label }}
-                  </a>
-                {% endif %}
-              </div>
             </div>
           </article>
         {% endfor %}
+
       </div>
     </div>
 
     {% if section.blocks.size > 1 %}
-      <div class="about-carousel__dots">
+      <div class="center-peek-slider__dots">
         {% for block in section.blocks %}
           <button
             type="button"
-            class="about-carousel__dot{% if forloop.first %} is-active{% endif %}"
-            data-index="{{ forloop.index0 }}"
+            class="center-peek-slider__dot{% if forloop.first %} is-active{% endif %}"
+            data-dot-index="{{ forloop.index0 }}"
             aria-label="Go to slide {{ forloop.index }}"
           ></button>
         {% endfor %}
@@ -64,97 +111,108 @@
 </section>
 
 <style>
-  #about-carousel-{{ section.id }} {
+  #center-peek-slider-{{ section.id }} {
+    width: 100%;
     overflow: hidden;
     background: {{ section.settings.background_color }};
-    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 
-  #about-carousel-{{ section.id }} * {
+  #center-peek-slider-{{ section.id }} * {
     box-sizing: border-box;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel {
-    overflow: visible;
+  #center-peek-slider-{{ section.id }} .center-peek-slider {
+    width: 100%;
+    overflow: hidden;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__viewport {
-    overflow: visible;
+  #center-peek-slider-{{ section.id }} .center-peek-slider__viewport {
+    width: 100%;
+    overflow: hidden;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__track {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__track {
     display: flex;
     align-items: stretch;
-    gap: 10px;
-    transition: transform .6s cubic-bezier(.22,.61,.36,1);
+    gap: {{ section.settings.slide_gap }}px;
     will-change: transform;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__slide {
-    flex: 0 0 74%;
+  #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
+    flex: 0 0 {{ section.settings.desktop_slide_width }}%;
     min-width: 0;
-    opacity: .55;
+    opacity: .48;
     transition: opacity .35s ease;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__slide.is-active {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__slide.is-active {
     opacity: 1;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__media {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__media {
     position: relative;
-    overflow: hidden;
+    width: 100%;
     height: {{ section.settings.desktop_height }}px;
+    overflow: hidden;
     border-radius: {{ section.settings.border_radius }}px;
-    background: #e5e8ea;
+    background: #e8e8e8;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__image,
-  #about-carousel-{{ section.id }} .about-carousel__placeholder {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #center-peek-slider-{{ section.id }} .center-peek-slider__image,
+  #center-peek-slider-{{ section.id }} .center-peek-slider__placeholder {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__overlay {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%,
-      rgba(0,0,0,0.12) 55%,
-      rgba(0,0,0,0) 100%
+      rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%,
+      rgba(0, 0, 0, .18) 40%,
+      rgba(0, 0, 0, 0) 75%
     );
+    pointer-events: none;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__content {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__content {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top: 50%;
-    left: 8%;
-    width: min(46%, 560px);
+    left: 9%;
+    width: min(48%, 620px);
     color: {{ section.settings.text_color }};
     transform: translateY(-50%);
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__eyebrow {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__eyebrow {
     margin-bottom: 24px;
     font-size: 18px;
     font-weight: 600;
     line-height: 1.2;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__heading {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__heading {
     margin: 0;
     color: inherit;
-    font-size: clamp(38px, 3vw, 58px);
+    font-size: clamp(38px, 3.2vw, 62px);
     font-weight: 500;
     letter-spacing: -2px;
     line-height: 1.05;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__button {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -162,15 +220,22 @@
     min-height: 48px;
     margin-top: 38px;
     padding: 12px 28px;
-    color: #111;
-    background: #fff;
+    color: #111111;
+    background: #ffffff;
     border-radius: 999px;
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__dots {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__full-link {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    display: block;
+  }
+
+  #center-peek-slider-{{ section.id }} .center-peek-slider__dots {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,138 +243,208 @@
     margin-top: 28px;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__dot {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__dot {
     width: 10px;
     height: 10px;
     padding: 0;
     border: 0;
     border-radius: 999px;
-    background: #d0d0d0;
+    background: #d2d2d2;
     cursor: pointer;
     transition: width .25s ease, background-color .25s ease;
   }
 
-  #about-carousel-{{ section.id }} .about-carousel__dot.is-active {
+  #center-peek-slider-{{ section.id }} .center-peek-slider__dot.is-active {
     width: 48px;
-    background: #000;
+    background: #000000;
   }
 
   @media screen and (max-width: 990px) {
-    #about-carousel-{{ section.id }} .about-carousel__slide {
-      flex-basis: 82%;
+    #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
+      flex-basis: 80%;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__media {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__media {
       height: 520px;
     }
   }
 
   @media screen and (max-width: 749px) {
-    #about-carousel-{{ section.id }} .about-carousel__slide {
-      flex-basis: 88%;
+    #center-peek-slider-{{ section.id }} {
+      padding-top: 16px;
+      padding-bottom: 22px;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__media {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__track {
+      gap: 8px;
+    }
+
+    #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
+      flex-basis: {{ section.settings.mobile_slide_width }}%;
+    }
+
+    #center-peek-slider-{{ section.id }} .center-peek-slider__media {
       height: {{ section.settings.mobile_height }}px;
       border-radius: 16px;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__content {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__content {
       top: auto;
       right: 22px;
-      bottom: 34px;
+      bottom: 30px;
       left: 22px;
       width: auto;
       transform: none;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__eyebrow {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__eyebrow {
       margin-bottom: 12px;
       font-size: 14px;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__heading {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__heading {
       font-size: clamp(30px, 10vw, 44px);
-      letter-spacing: -1.2px;
+      letter-spacing: -1px;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__button {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__button {
       min-width: 132px;
       min-height: 44px;
-      margin-top: 24px;
+      margin-top: 22px;
       padding: 10px 22px;
       font-size: 14px;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__dots {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__dots {
       gap: 8px;
       margin-top: 20px;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__dot {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__dot {
       width: 8px;
       height: 8px;
     }
 
-    #about-carousel-{{ section.id }} .about-carousel__dot.is-active {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__dot.is-active {
       width: 36px;
     }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const root = document.querySelector('[data-about-carousel="{{ section.id }}"]');
-    if (!root || root.dataset.ready === 'true') return;
-    root.dataset.ready = 'true';
+  (() => {
+    const root = document.querySelector('[data-center-peek-slider="{{ section.id }}"]');
+    if (!root || root.dataset.initialized === 'true') return;
+    root.dataset.initialized = 'true';
 
-    const track = root.querySelector('.about-carousel__track');
-    const slides = Array.from(root.querySelectorAll('.about-carousel__slide'));
-    const dots = Array.from(root.querySelectorAll('.about-carousel__dot'));
+    const track = root.querySelector('.center-peek-slider__track');
+    const originalSlides = Array.from(root.querySelectorAll('.center-peek-slider__slide'));
+    const dots = Array.from(root.querySelectorAll('.center-peek-slider__dot'));
 
-    if (!track || !slides.length) return;
+    if (!track || originalSlides.length === 0) return;
 
     let current = 0;
-    let startX = 0;
-    let endX = 0;
-    let dragging = false;
+    let visualIndex = 0;
     let timer = null;
+    let startX = 0;
+    let currentX = 0;
+    let dragging = false;
+    let locked = false;
 
-    function gapSize() {
-      return parseFloat(getComputedStyle(track).gap || 0);
+    if (originalSlides.length > 1) {
+      const firstClone = originalSlides[0].cloneNode(true);
+      const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+
+      firstClone.classList.add('is-clone');
+      lastClone.classList.add('is-clone');
+
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, track.firstChild);
+
+      visualIndex = 1;
     }
 
-    function update(index, animate = true) {
-      current = (index + slides.length) % slides.length;
+    const allSlides = () => Array.from(track.querySelectorAll('.center-peek-slider__slide'));
 
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('is-active', i === current);
-      });
+    function getGap() {
+      return parseFloat(window.getComputedStyle(track).gap || 0);
+    }
+
+    function getOffset(index) {
+      const slides = allSlides();
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      const gap = getGap();
+      const viewportWidth = root.getBoundingClientRect().width;
+      const slideCenter = index * (slideWidth + gap) + (slideWidth / 2);
+      return (viewportWidth / 2) - slideCenter;
+    }
+
+    function updateActive() {
+      allSlides().forEach(slide => slide.classList.remove('is-active'));
+
+      if (originalSlides.length === 1) {
+        allSlides()[0].classList.add('is-active');
+      } else {
+        const slides = allSlides();
+        if (slides[visualIndex]) slides[visualIndex].classList.add('is-active');
+      }
 
       dots.forEach((dot, i) => {
         dot.classList.toggle('is-active', i === current);
       });
+    }
 
-      const slideWidth = slides[0].getBoundingClientRect().width;
-      const gap = gapSize();
-      const viewportWidth = root.getBoundingClientRect().width;
-      const slideCenter = current * (slideWidth + gap) + (slideWidth / 2);
-      const offset = (viewportWidth / 2) - slideCenter;
-
+    function moveTo(index, animate = true) {
+      visualIndex = index;
       track.style.transition = animate
         ? 'transform .6s cubic-bezier(.22,.61,.36,1)'
         : 'none';
+      track.style.transform = `translate3d(${getOffset(visualIndex)}px,0,0)`;
+      updateActive();
+    }
 
-      track.style.transform = 'translate3d(' + offset + 'px,0,0)';
+    function goToReal(index) {
+      if (originalSlides.length <= 1) return;
+
+      current = (index + originalSlides.length) % originalSlides.length;
+      visualIndex = current + 1;
+      moveTo(visualIndex, true);
     }
 
     function next() {
-      update(current + 1);
+      if (locked || originalSlides.length <= 1) return;
+      locked = true;
+      visualIndex += 1;
+      current = (current + 1) % originalSlides.length;
+      moveTo(visualIndex, true);
     }
 
     function prev() {
-      update(current - 1);
+      if (locked || originalSlides.length <= 1) return;
+      locked = true;
+      visualIndex -= 1;
+      current = (current - 1 + originalSlides.length) % originalSlides.length;
+      moveTo(visualIndex, true);
     }
+
+    track.addEventListener('transitionend', () => {
+      if (originalSlides.length <= 1) {
+        locked = false;
+        return;
+      }
+
+      const slides = allSlides();
+
+      if (visualIndex === slides.length - 1) {
+        visualIndex = 1;
+        moveTo(visualIndex, false);
+      } else if (visualIndex === 0) {
+        visualIndex = originalSlides.length;
+        moveTo(visualIndex, false);
+      }
+
+      locked = false;
+    });
 
     function stopAutoplay() {
       if (timer) clearInterval(timer);
@@ -318,61 +453,73 @@
 
     function startAutoplay() {
       stopAutoplay();
-      {% if section.settings.autoplay and section.blocks.size > 1 %}
-        timer = setInterval(next, {{ section.settings.autoplay_speed | times: 1000 }});
-      {% endif %}
+
+      if (
+        root.dataset.autoplay === 'true' &&
+        originalSlides.length > 1
+      ) {
+        const speed = Number(root.dataset.speed) || 5000;
+        timer = setInterval(next, speed);
+      }
     }
 
-    dots.forEach((dot) => {
-      dot.addEventListener('click', function () {
-        update(Number(this.dataset.index));
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoplay();
+        goToReal(index);
         startAutoplay();
       });
     });
 
-    root.addEventListener('pointerdown', function (e) {
+    root.addEventListener('pointerdown', (event) => {
       dragging = true;
-      startX = e.clientX;
-      endX = e.clientX;
+      startX = event.clientX;
+      currentX = event.clientX;
       stopAutoplay();
     });
 
-    root.addEventListener('pointermove', function (e) {
+    root.addEventListener('pointermove', (event) => {
       if (!dragging) return;
-      endX = e.clientX;
+      currentX = event.clientX;
     });
 
-    root.addEventListener('pointerup', function () {
+    root.addEventListener('pointerup', () => {
       if (!dragging) return;
       dragging = false;
 
-      const diff = endX - startX;
-      if (Math.abs(diff) > 45) {
-        diff < 0 ? next() : prev();
+      const delta = currentX - startX;
+
+      if (Math.abs(delta) > 45) {
+        delta < 0 ? next() : prev();
       }
 
       startAutoplay();
     });
 
-    root.addEventListener('pointercancel', function () {
+    root.addEventListener('pointercancel', () => {
       dragging = false;
       startAutoplay();
     });
 
-    window.addEventListener('resize', function () {
-      update(current, false);
+    root.addEventListener('mouseenter', stopAutoplay);
+    root.addEventListener('mouseleave', startAutoplay);
+
+    window.addEventListener('resize', () => {
+      moveTo(visualIndex, false);
     });
 
-    update(0, false);
-    startAutoplay();
-  });
+    requestAnimationFrame(() => {
+      moveTo(visualIndex, false);
+      startAutoplay();
+    });
+  })();
 </script>
 
 {% schema %}
 {
-  "name": "About image carousel",
+  "name": "Center peek auto slider",
   "tag": "section",
-  "class": "section-about-image-carousel",
+  "class": "section-center-peek-auto-slider",
   "settings": [
     {
       "type": "color",
@@ -383,8 +530,38 @@
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text color",
+      "label": "Content text color",
       "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "desktop_slide_width",
+      "label": "Desktop active slide width",
+      "min": 55,
+      "max": 85,
+      "step": 1,
+      "unit": "%",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "mobile_slide_width",
+      "label": "Mobile active slide width",
+      "min": 75,
+      "max": 96,
+      "step": 1,
+      "unit": "%",
+      "default": 88
+    },
+    {
+      "type": "range",
+      "id": "slide_gap",
+      "label": "Slide gap",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
     },
     {
       "type": "range",
@@ -400,11 +577,11 @@
       "type": "range",
       "id": "mobile_height",
       "label": "Mobile slide height",
-      "min": 360,
+      "min": 320,
       "max": 700,
       "step": 20,
       "unit": "px",
-      "default": 520
+      "default": 500
     },
     {
       "type": "range",
@@ -419,7 +596,7 @@
     {
       "type": "range",
       "id": "overlay_opacity",
-      "label": "Overlay opacity",
+      "label": "Content overlay opacity",
       "min": 0,
       "max": 80,
       "step": 5,
@@ -440,7 +617,7 @@
       "max": 10,
       "step": 1,
       "unit": "s",
-      "default": 5
+      "default": 4
     },
     {
       "type": "range",
@@ -471,37 +648,52 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image"
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image"
+        },
+        {
+          "type": "header",
+          "content": "Optional content"
         },
         {
           "type": "text",
           "id": "eyebrow",
-          "label": "Small heading",
-          "default": "About Us"
+          "label": "Small heading"
         },
         {
           "type": "text",
           "id": "heading",
-          "label": "Heading",
-          "default": "Rooted in Nature, Born in Gir."
+          "label": "Heading"
         },
         {
           "type": "text",
           "id": "button_label",
-          "label": "Button label",
-          "default": "Shop Now"
+          "label": "Button label"
         },
         {
           "type": "url",
           "id": "button_link",
           "label": "Button link"
+        },
+        {
+          "type": "header",
+          "content": "Full image link"
+        },
+        {
+          "type": "url",
+          "id": "slide_link",
+          "label": "Image link when no content is used"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "About image carousel",
+      "name": "Center peek auto slider",
       "blocks": [
         { "type": "slide" },
         { "type": "slide" },
