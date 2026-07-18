@@ -690,15 +690,6 @@
               "enable_socialicon": true
             }
           },
-          "a7817e3b-b4ba-4fb9-9181-073b8dc38c6e": {
-            "type": "link_list",
-            "disabled": true,
-            "settings": {
-              "heading": "PRESETS",
-              "menu": "",
-              "alignment": "left"
-            }
-          },
           "3d388e38-c98c-4234-89f3-84dfe340d3f7": {
             "type": "link_list",
             "settings": {
@@ -743,7 +734,6 @@
         },
         "block_order": [
           "99c35259-1f09-45c0-8575-1a58e47c7b91",
-          "a7817e3b-b4ba-4fb9-9181-073b8dc38c6e",
           "3d388e38-c98c-4234-89f3-84dfe340d3f7",
           "bd11441b-83e5-4381-bcc2-4a9431cfe4d7",
           "a5b8fbc1-fedb-41fb-9509-3207cc8481cf",
