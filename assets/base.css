@@ -4964,8 +4964,6 @@ button.product-form__submit.button.button--full-width.button--secondary {
     width: auto !important;
     height: auto !important;
     border-radius: 50% !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-bottom: 0px !important
 }
 }
