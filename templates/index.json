@@ -571,29 +571,13 @@
         "tab_CkkQLC": {
           "type": "tab",
           "settings": {
-            "tab_name": "Face Serums",
-            "collection": "face-serums"
-          }
-        },
-        "tab_yq8CbR": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Face Wash",
-            "collection": "face-wash"
-          }
-        },
-        "tab_CTH8NJ": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Hair Care",
-            "collection": "hair-care"
+            "tab_name": "Combo",
+            "collection": "combo"
           }
         }
       },
       "block_order": [
-        "tab_CkkQLC",
-        "tab_yq8CbR",
-        "tab_CTH8NJ"
+        "tab_CkkQLC"
       ],
       "name": "Skin Type Tabs",
       "settings": {
