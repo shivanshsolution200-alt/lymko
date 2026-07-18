@@ -4970,4 +4970,7 @@ button.product-form__submit.button.button--full-width.button--secondary {
     font-size: 12px !important;
     margin-bottom: 0px !important
 }
+.card__media .media.media--transparent.media--hover-effect {
+    border-radius: 50%;
+}
 }
