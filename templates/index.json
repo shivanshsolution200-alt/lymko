@@ -248,7 +248,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "sunscreen",
-            "button_label": "Button label",
+            "button_label": "",
             "button_link": "",
             "button_style_secondary": false
           }
