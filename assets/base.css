@@ -4940,3 +4940,13 @@ button.product-form__submit.button.button--full-width.button--secondary {
     align-items: center;
     justify-content: center;
 }
+
+@media( max-width: 768px){
+  a.full-unstyled-link {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 30px;
+}
+}
