@@ -1,86 +1,131 @@
 <section
-  id="feature-bar-{{ section.id }}"
-  class="custom-feature-bar"
+  id="cosmetic-trust-{{ section.id }}"
+  class="cosmetic-trust-bar"
   style="
-    --bg: {{ section.settings.background }};
-    --icon-bg: {{ section.settings.icon_background }};
+    --section-bg: {{ section.settings.background_color }};
+    --icon-color: {{ section.settings.icon_color }};
+    --brush-color: {{ section.settings.brush_color }};
     --title-color: {{ section.settings.title_color }};
     --text-color: {{ section.settings.text_color }};
+    --divider-color: {{ section.settings.divider_color }};
   "
 >
-  <div class="custom-feature-bar__wrapper page-width">
+  <div class="cosmetic-trust-bar__inner page-width">
 
-    <!-- LEFT LEAVES -->
-    <div class="feature-decoration feature-decoration--left">
-      <svg viewBox="0 0 100 100" fill="none">
-        <path d="M6 95C22 74 37 49 47 15" stroke="#718568" stroke-width="2"/>
-        <path d="M20 72C5 66 3 49 4 40C19 43 28 56 20 72Z" fill="#8A9C80"/>
-        <path d="M32 51C19 42 22 27 27 18C40 25 45 39 32 51Z" fill="#778B6E"/>
-        <path d="M12 85C25 84 33 89 38 98C24 101 14 96 12 85Z" fill="#A1AF98"/>
-      </svg>
-    </div>
-
-    <div class="custom-feature-bar__items">
+    <div class="cosmetic-trust-bar__items">
       {% for block in section.blocks %}
-        <div class="custom-feature-item" {{ block.shopify_attributes }}>
+        <div
+          class="cosmetic-trust-item"
+          {{ block.shopify_attributes }}
+        >
 
-          <div class="custom-feature-icon">
-            {% case block.settings.icon_type %}
+          <div class="cosmetic-trust-item__visual">
 
-              {% when 'shipping' %}
-                <svg viewBox="0 0 64 64" aria-hidden="true">
-                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 18h34v25H5z"/>
-                    <path d="M39 27h10l9 10v6H39z"/>
-                    <circle cx="17" cy="46" r="5"/>
-                    <circle cx="48" cy="46" r="5"/>
-                    <path d="M1 24h10M1 30h8M1 36h6"/>
-                  </g>
-                </svg>
+            <span class="cosmetic-brush">
+              <svg
+                viewBox="0 0 120 85"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10 23
+                  C27 8 51 9 68 12
+                  C88 14 108 8 114 19
+                  C119 29 102 36 108 44
+                  C114 52 103 61 89 63
+                  C74 66 68 79 49 73
+                  C35 69 26 77 16 67
+                  C7 57 18 48 10 40
+                  C3 34 2 28 10 23Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
 
-              {% when 'customers' %}
-                <svg viewBox="0 0 64 64" aria-hidden="true">
-                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="32" cy="21" r="7"/>
-                    <circle cx="15" cy="25" r="5"/>
-                    <circle cx="49" cy="25" r="5"/>
-                    <path d="M21 48c1-9 5-14 11-14s10 5 11 14"/>
-                    <path d="M5 47c1-7 4-11 10-11 4 0 7 2 9 6"/>
-                    <path d="M59 47c-1-7-4-11-10-11-4 0-7 2-9 6"/>
-                    <path d="M28 10c2-4 6-6 9-3 3 3 0 7-5 10-5-3-8-7-5-10 3-3 7-1 9 3"/>
-                  </g>
-                </svg>
+            <span class="cosmetic-trust-item__icon">
+              {% case block.settings.icon %}
 
-              {% when 'payment' %}
-                <svg viewBox="0 0 64 64" aria-hidden="true">
-                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M32 5 51 13v14c0 13-8 24-19 31C21 51 13 40 13 27V13z"/>
-                    <rect x="24" y="28" width="16" height="13" rx="2"/>
-                    <path d="M27 28v-5a5 5 0 0 1 10 0v5"/>
-                    <path d="M32 33v3"/>
-                  </g>
-                </svg>
+                {% when 'shipping' %}
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <g
+                      stroke="currentColor"
+                      stroke-width="2.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M8 18H39V43H8V18Z"/>
+                      <path d="M39 26H49L57 35V43H39V26Z"/>
+                      <circle cx="19" cy="46" r="5"/>
+                      <circle cx="48" cy="46" r="5"/>
+                      <path d="M3 25H12"/>
+                      <path d="M2 31H10"/>
+                      <path d="M4 37H11"/>
+                    </g>
+                  </svg>
 
-              {% when 'quality' %}
-                <svg viewBox="0 0 64 64" aria-hidden="true">
-                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M49 14C29 14 18 24 18 43c17 0 29-10 31-29Z"/>
-                    <path d="M18 43c9-7 17-14 26-22"/>
-                    <path d="M18 43v13"/>
-                    <path d="M15 56h12"/>
-                  </g>
-                </svg>
+                {% when 'customers' %}
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <g
+                      stroke="currentColor"
+                      stroke-width="2.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="32" cy="22" r="7"/>
+                      <circle cx="15" cy="27" r="5"/>
+                      <circle cx="49" cy="27" r="5"/>
+                      <path d="M21 50C22 41 26 36 32 36C38 36 42 41 43 50"/>
+                      <path d="M5 49C6 42 10 38 15 38C20 38 23 41 25 45"/>
+                      <path d="M59 49C58 42 54 38 49 38C44 38 41 41 39 45"/>
+                      <path d="M24 16C20 12 23 7 27 8C29 8 31 10 32 12C33 10 35 8 38 8C42 8 44 13 40 17L32 24L24 16Z"/>
+                    </g>
+                  </svg>
 
-            {% endcase %}
+                {% when 'payment' %}
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <g
+                      stroke="currentColor"
+                      stroke-width="2.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M32 5L53 14V29C53 42 45 53 32 59C19 53 11 42 11 29V14L32 5Z"/>
+                      <path d="M32 19L38 26L34 29L36 39L32 43L28 39L30 29L26 26L32 19Z"/>
+                    </g>
+                  </svg>
+
+                {% when 'quality' %}
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <g
+                      stroke="currentColor"
+                      stroke-width="2.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M52 10C31 12 19 25 19 46C39 45 50 33 52 10Z"/>
+                      <path d="M19 46C28 36 37 28 47 18"/>
+                      <path d="M18 47V56"/>
+                      <path d="M12 56H25"/>
+                      <path d="M28 32C22 26 17 21 12 18C12 32 18 39 25 42"/>
+                    </g>
+                  </svg>
+
+              {% endcase %}
+            </span>
+
           </div>
 
-          <div class="custom-feature-content">
+          <div class="cosmetic-trust-item__content">
             {% if block.settings.title != blank %}
-              <h3>{{ block.settings.title }}</h3>
+              <h3>
+                {{ block.settings.title }}
+              </h3>
             {% endif %}
 
             {% if block.settings.text != blank %}
-              <p>{{ block.settings.text }}</p>
+              <div class="cosmetic-trust-item__text">
+                {{ block.settings.text }}
+              </div>
             {% endif %}
           </div>
 
@@ -88,234 +133,277 @@
       {% endfor %}
     </div>
 
-    <!-- RIGHT LEAVES -->
-    <div class="feature-decoration feature-decoration--right">
-      <svg viewBox="0 0 100 100" fill="none">
-        <path d="M94 95C78 74 63 49 53 15" stroke="#718568" stroke-width="2"/>
-        <path d="M80 72C95 66 97 49 96 40C81 43 72 56 80 72Z" fill="#8A9C80"/>
-        <path d="M68 51C81 42 78 27 73 18C60 25 55 39 68 51Z" fill="#778B6E"/>
-        <path d="M88 85C75 84 67 89 62 98C76 101 86 96 88 85Z" fill="#A1AF98"/>
-      </svg>
-    </div>
-
   </div>
 </section>
 
 <style>
-  #feature-bar-{{ section.id }} {
+  #cosmetic-trust-{{ section.id }} {
     width: 100%;
+    background: var(--section-bg);
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 
-  #feature-bar-{{ section.id }} * {
+  #cosmetic-trust-{{ section.id }} * {
     box-sizing: border-box;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-bar__wrapper {
-    position: relative;
-    background: var(--bg);
-    min-height: 108px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-bar__inner {
+    width: 100%;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-bar__items {
-    width: 100%;
-    padding: 0 72px;
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-bar__items {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 34px;
-    position: relative;
-    z-index: 2;
+    align-items: center;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-item {
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item {
+    position: relative;
     min-width: 0;
-    min-height: 64px;
-    background: #ffffff;
-    border-radius: 40px;
+    min-height: 120px;
+    padding: 15px 34px;
     display: flex;
     align-items: center;
-    padding: 0 17px 0 0;
-
-    box-shadow:
-      0 3px 10px rgba(80, 90, 70, 0.09),
-      0 1px 4px rgba(80, 90, 70, 0.05);
+    gap: 20px;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-icon {
-    width: 64px;
-    height: 64px;
-    min-width: 64px;
-    border-radius: 50%;
-    background: var(--icon-bg);
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    width: 1px;
+    height: 50%;
+    background: var(--divider-color);
+  }
+
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__visual {
+    position: relative;
+    width: 92px;
+    height: 82px;
+    min-width: 92px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 13px;
-    color: #fff;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-icon svg {
-    width: 30px;
-    height: 30px;
+  #cosmetic-trust-{{ section.id }} .cosmetic-brush {
+    position: absolute;
+    inset: 0;
+    color: var(--brush-color);
+  }
+
+  #cosmetic-trust-{{ section.id }} .cosmetic-brush svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.72;
+  }
+
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__icon {
+    position: relative;
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    color: var(--icon-color);
+  }
+
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__icon svg {
+    width: 100%;
+    height: 100%;
     display: block;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-content {
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__content {
     min-width: 0;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-content h3 {
-    margin: 0 0 4px;
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item h3 {
+    margin: 0 0 8px;
     padding: 0;
     color: var(--title-color);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.3;
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: 700;
+    line-height: 1.25;
   }
 
-  #feature-bar-{{ section.id }} .custom-feature-content p {
-    margin: 0;
-    padding: 0;
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__text {
     color: var(--text-color);
-    font-size: 11px;
+    font-size: {{ section.settings.text_size }}px;
     font-weight: 400;
-    line-height: 1.35;
+    line-height: 1.55;
   }
 
-  #feature-bar-{{ section.id }} .feature-decoration {
-    width: 75px;
-    height: 90px;
-    position: absolute;
-    bottom: -8px;
-    z-index: 1;
-    pointer-events: none;
+  #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__text p {
+    margin: 0;
   }
 
-  #feature-bar-{{ section.id }} .feature-decoration svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  #feature-bar-{{ section.id }} .feature-decoration--left {
-    left: -4px;
-  }
-
-  #feature-bar-{{ section.id }} .feature-decoration--right {
-    right: -4px;
-  }
-
-  @media screen and (max-width: 1200px) {
-    #feature-bar-{{ section.id }} .custom-feature-bar__items {
-      gap: 15px;
-      padding: 0 45px;
+  @media screen and (max-width: 1199px) {
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item {
+      padding-left: 20px;
+      padding-right: 20px;
+      gap: 12px;
     }
 
-    #feature-bar-{{ section.id }} .custom-feature-icon {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__visual {
+      width: 75px;
+      height: 70px;
+      min-width: 75px;
     }
 
-    #feature-bar-{{ section.id }} .custom-feature-content h3 {
-      font-size: 12px;
-    }
-
-    #feature-bar-{{ section.id }} .custom-feature-content p {
-      font-size: 10px;
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__icon {
+      width: 40px;
+      height: 40px;
     }
   }
 
   @media screen and (max-width: 989px) {
-    #feature-bar-{{ section.id }} .custom-feature-bar__items {
-      grid-template-columns: repeat(2, 1fr);
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-bar__items {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item:nth-child(2)::after {
+      display: none;
+    }
+
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item {
+      border-bottom: 1px solid var(--divider-color);
     }
   }
 
   @media screen and (max-width: 749px) {
-    #feature-bar-{{ section.id }} .custom-feature-bar__wrapper {
-      padding-top: 15px;
-      padding-bottom: 15px;
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-bar__inner {
+      padding-left: 0;
+      padding-right: 0;
     }
 
-    #feature-bar-{{ section.id }} .custom-feature-bar__items {
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-bar__items {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      gap: 12px;
-      padding: 0 15px;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
     }
 
-    #feature-bar-{{ section.id }} .custom-feature-bar__items::-webkit-scrollbar {
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-bar__items::-webkit-scrollbar {
       display: none;
     }
 
-    #feature-bar-{{ section.id }} .custom-feature-item {
-      flex: 0 0 78%;
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item {
+      flex: 0 0 85%;
+      min-height: 105px;
+      padding: 12px 20px;
       scroll-snap-align: start;
+      border-bottom: 0;
     }
 
-    #feature-bar-{{ section.id }} .feature-decoration {
-      display: none;
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item:not(:last-child)::after {
+      display: block;
+      top: 22%;
+      height: 56%;
+    }
+
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__visual {
+      width: 72px;
+      min-width: 72px;
+      height: 68px;
+    }
+
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__icon {
+      width: 38px;
+      height: 38px;
+    }
+
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item h3 {
+      font-size: 15px;
+    }
+
+    #cosmetic-trust-{{ section.id }} .cosmetic-trust-item__text {
+      font-size: 12px;
     }
   }
 </style>
 
 {% schema %}
 {
-  "name": "Cosmetic Features",
+  "name": "Cosmetic Trust Bar",
   "settings": [
     {
       "type": "color",
-      "id": "background",
-      "label": "Background",
-      "default": "#F7F7F2"
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F8F9F3"
     },
     {
       "type": "color",
-      "id": "icon_background",
-      "label": "Icon background",
-      "default": "#899B79"
+      "id": "brush_color",
+      "label": "Brush background color",
+      "default": "#B9C9A6"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#274722"
     },
     {
       "type": "color",
       "id": "title_color",
       "label": "Title color",
-      "default": "#292929"
+      "default": "#365531"
     },
     {
       "type": "color",
       "id": "text_color",
       "label": "Text color",
-      "default": "#666666"
+      "default": "#505050"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#AEB7A6"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
     },
     {
       "type": "range",
       "id": "padding_top",
+      "label": "Padding top",
       "min": 0,
       "max": 80,
       "step": 4,
       "unit": "px",
-      "label": "Padding top",
-      "default": 20
+      "default": 8
     },
     {
       "type": "range",
       "id": "padding_bottom",
+      "label": "Padding bottom",
       "min": 0,
       "max": 80,
       "step": 4,
       "unit": "px",
-      "label": "Padding bottom",
-      "default": 20
+      "default": 8
     }
   ],
   "blocks": [
@@ -325,12 +413,12 @@
       "settings": [
         {
           "type": "select",
-          "id": "icon_type",
+          "id": "icon",
           "label": "Icon",
           "options": [
             {
               "value": "shipping",
-              "label": "Shipping Truck"
+              "label": "Free Shipping"
             },
             {
               "value": "customers",
@@ -354,10 +442,10 @@
           "default": "Free Shipping"
         },
         {
-          "type": "text",
+          "type": "richtext",
           "id": "text",
-          "label": "Subtitle",
-          "default": "On all prepaid orders"
+          "label": "Description",
+          "default": "<p>On all orders<br>above $49</p>"
         }
       ]
     }
@@ -365,38 +453,38 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "Cosmetic Features",
+      "name": "Cosmetic Trust Bar",
       "blocks": [
         {
           "type": "feature",
           "settings": {
-            "icon_type": "shipping",
+            "icon": "shipping",
             "title": "Free Shipping",
-            "text": "On all prepaid orders"
+            "text": "<p>On all orders<br>above $49</p>"
           }
         },
         {
           "type": "feature",
           "settings": {
-            "icon_type": "customers",
-            "title": "250000+ Happy Customers",
-            "text": "Loved by beauty buyers"
+            "icon": "customers",
+            "title": "2500+ Happy Customers",
+            "text": "<p>Trusted by thousands<br>of beauty lovers</p>"
           }
         },
         {
           "type": "feature",
           "settings": {
-            "icon_type": "payment",
+            "icon": "payment",
             "title": "Secure Payment",
-            "text": "100% safe checkout"
+            "text": "<p>100% secure payment<br>guarantee</p>"
           }
         },
         {
           "type": "feature",
           "settings": {
-            "icon_type": "quality",
+            "icon": "quality",
             "title": "Assured Quality",
-            "text": "Premium skincare products"
+            "text": "<p>Premium products<br>you can trust</p>"
           }
         }
       ]
