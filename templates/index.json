@@ -42,6 +42,7 @@
         "slide_HtjtLm",
         "slide_ndhR4c"
       ],
+      "disabled": true,
       "name": "Advanced Slider",
       "settings": {
         "speed": 3
@@ -107,10 +108,10 @@
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": true,
-        "slider_image_height": 700,
+        "slider_image_height": 800,
         "slider_image_height_laptop": 700,
-        "slider_image_height_tab": 500,
-        "slider_image_height_mobile": 400,
+        "slider_image_height_tab": 700,
+        "slider_image_height_mobile": 700,
         "swiper_pagination": false,
         "swiper_navigation": true,
         "auto_play": 3,
