@@ -4935,8 +4935,8 @@ button.product-form__submit.button.button--full-width.button--secondary {
     justify-content: space-between !important;
 }
 .collection-list.overlay .collection-list__item .card__content .card__information {
-    width: 65px;
-    height: 65px;
+    width: auto;
+    height: auto;
     border-radius: 50% !important;
     display: flex;
     align-items: center;
