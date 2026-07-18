@@ -84,7 +84,7 @@
   {% assign discount_percentage = discount_amount
     | times: 100.0
     | divided_by: compare_at_price
-    | round
+    | round: 1
   %}
 
   <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
