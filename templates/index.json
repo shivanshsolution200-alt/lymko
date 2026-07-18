@@ -295,7 +295,7 @@
         "desktop_column": 9,
         "laptop_column": 6,
         "tablet_column": 2,
-        "mobile_column": 2,
+        "mobile_column": 3,
         "swiper_pagination": true,
         "swiper_navigation": true,
         "auto_play": 3,
