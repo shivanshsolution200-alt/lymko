@@ -106,7 +106,7 @@
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "page_full_width": false,
-        "page_full_width_spacing": false,
+        "page_full_width_spacing": true,
         "slider_image_height": 700,
         "slider_image_height_laptop": 700,
         "slider_image_height_tab": 500,
