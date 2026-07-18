@@ -4957,5 +4957,7 @@ button.product-form__submit.button.button--full-width.button--secondary {
     overflow: hidden;
     height: 40px;
 }
-
+.card__content.for-arrow-alignment {
+    position: relative;
+}
 }
