@@ -4623,7 +4623,7 @@ a.full-unstyled-link {
     font-size: 14px !important;
     font-weight: normal !important;
 }
-.card__information h3.card__heading a.full-unstyled-link {
+.collection-list__item .card__information h3.card__heading a.full-unstyled-link {
     font-size: 11px !important;
 }
 .product__info-container .html-sections-product span {
@@ -4966,7 +4966,7 @@ button.product-form__submit.button.button--full-width.button--secondary {
     border-radius: 50% !important;
     padding-bottom: 0px !important
 }
-collection-list__item .card__information h3.card__heading a.full-unstyled-link {
+.card__information h3.card__heading a.full-unstyled-link {
     font-size: 12px !important;
     margin-bottom: 0px !important
 }
