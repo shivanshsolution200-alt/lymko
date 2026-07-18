@@ -131,6 +131,13 @@
   #center-peek-slider-{{ section.id }} .center-peek-slider__viewport {
     width: 100%;
     overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  #center-peek-slider-{{ section.id }} .center-peek-slider__viewport.is-dragging {
+    cursor: grabbing;
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__track {
@@ -172,6 +179,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__overlay {
@@ -366,6 +376,7 @@
     if (!root || root.dataset.initialized === 'true') return;
     root.dataset.initialized = 'true';
 
+    const viewport = root.querySelector('.center-peek-slider__viewport');
     const track = root.querySelector('.center-peek-slider__track');
     const originalSlides = Array.from(root.querySelectorAll('.center-peek-slider__slide'));
     const dots = Array.from(root.querySelectorAll('.center-peek-slider__dot'));
@@ -379,6 +390,7 @@
     let currentX = 0;
     let dragging = false;
     let locked = false;
+    let dragStartOffset = 0;
 
     if (originalSlides.length > 1) {
       const firstClone = originalSlides[0].cloneNode(true);
@@ -519,34 +531,59 @@
       });
     });
 
-    root.addEventListener('pointerdown', (event) => {
+    viewport.addEventListener('pointerdown', (event) => {
+      if (event.button !== undefined && event.button !== 0) return;
+
       dragging = true;
+      locked = false;
       startX = event.clientX;
       currentX = event.clientX;
+      dragStartOffset = getOffset(visualIndex);
+
+      viewport.classList.add('is-dragging');
+      viewport.setPointerCapture?.(event.pointerId);
+
       stopAutoplay();
+      track.style.transition = 'none';
     });
 
-    root.addEventListener('pointermove', (event) => {
+    viewport.addEventListener('pointermove', (event) => {
       if (!dragging) return;
+
       currentX = event.clientX;
+      const delta = currentX - startX;
+
+      track.style.transition = 'none';
+      track.style.transform = `translate3d(${dragStartOffset + delta}px,0,0)`;
     });
 
-    root.addEventListener('pointerup', () => {
+    function finishDrag(event) {
       if (!dragging) return;
+
       dragging = false;
+      viewport.classList.remove('is-dragging');
+
+      if (event && event.pointerId !== undefined) {
+        try {
+          viewport.releasePointerCapture?.(event.pointerId);
+        } catch (e) {}
+      }
 
       const delta = currentX - startX;
 
       if (Math.abs(delta) > 45) {
         delta < 0 ? prev() : next();
+      } else {
+        moveTo(visualIndex, true);
       }
 
       startAutoplay();
-    });
+    }
 
-    root.addEventListener('pointercancel', () => {
-      dragging = false;
-      startAutoplay();
+    viewport.addEventListener('pointerup', finishDrag);
+    viewport.addEventListener('pointercancel', finishDrag);
+    viewport.addEventListener('lostpointercapture', () => {
+      if (dragging) finishDrag();
     });
 
     window.addEventListener('resize', () => {
