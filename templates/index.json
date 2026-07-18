@@ -1033,6 +1033,7 @@
     },
     "featured_blog_nyEDtC": {
       "type": "featured-blog",
+      "disabled": true,
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": false,
