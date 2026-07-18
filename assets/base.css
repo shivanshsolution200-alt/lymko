@@ -4994,6 +4994,9 @@ button.product-form__submit.button.button--full-width.button--secondary {
 .card.card--button_width_icons.card--media .card__media .media.media--transparent.media--hover-effect {
     border-radius: 50%;
 }
+#shopify-section-template--27351286022429__collection_list_QVNMd6 .collection-list__item {
+    max-width: 29% !important;
+}
 }
 span.badge.badge--bottom-left.color-accent-2 {
     background: #64bf99;
