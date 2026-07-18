@@ -4807,6 +4807,25 @@ h5.specification-block-support-heading {
   gap: 12px;
   padding-bottom:20px;
   }
+  
+}
+@media screen and (max-width: 768px) {
+
+  /* Mobile: Footer menu default closed */
+  .footer-style3 .footer-links .footer_menu {
+    display: none !important;
+  }
+
+  /* Mobile: Footer menu open */
+  .footer-style3 .footer-links.open .footer_menu {
+    display: block !important;
+    height: auto !important;
+  }
+
+  /* Open menu spacing */
+  .footer-style3 .footer-links.open {
+    margin-bottom: 15px;
+  }
 }
 .viewing-box {
   display: flex;
