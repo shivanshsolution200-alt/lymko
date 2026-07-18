@@ -96,28 +96,6 @@
     </div>
 
     {% if section.blocks.size > 1 %}
-      {% if section.settings.show_arrows %}
-        <button
-          type="button"
-          class="center-peek-slider__arrow center-peek-slider__arrow--prev"
-          aria-label="Previous slide"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-
-        <button
-          type="button"
-          class="center-peek-slider__arrow center-peek-slider__arrow--next"
-          aria-label="Next slide"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      {% endif %}
-
       <div class="center-peek-slider__dots">
         {% for block in section.blocks %}
           <button
@@ -146,7 +124,6 @@
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider {
-    position: relative;
     width: 100%;
     overflow: hidden;
   }
@@ -159,13 +136,18 @@
   #center-peek-slider-{{ section.id }} .center-peek-slider__track {
     display: flex;
     align-items: stretch;
-    gap: 0;
+    gap: {{ section.settings.slide_gap }}px;
     will-change: transform;
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
-    flex: 0 0 100%;
+    flex: 0 0 {{ section.settings.desktop_slide_width }}%;
     min-width: 0;
+    opacity: .48;
+    transition: opacity .35s ease;
+  }
+
+  #center-peek-slider-{{ section.id }} .center-peek-slider__slide.is-active {
     opacity: 1;
   }
 
@@ -253,44 +235,6 @@
     display: block;
   }
 
-  #center-peek-slider-{{ section.id }} .center-peek-slider__arrow {
-    position: absolute;
-    z-index: 8;
-    top: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    padding: 0;
-    color: #111111;
-    background: rgba(255, 255, 255, .92);
-    border: 0;
-    border-radius: 50%;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
-    cursor: pointer;
-    transform: translateY(-50%);
-    transition: transform .2s ease, background-color .2s ease;
-  }
-
-  #center-peek-slider-{{ section.id }} .center-peek-slider__arrow:hover {
-    background: #ffffff;
-    transform: translateY(-50%) scale(1.05);
-  }
-
-  #center-peek-slider-{{ section.id }} .center-peek-slider__arrow svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  #center-peek-slider-{{ section.id }} .center-peek-slider__arrow--prev {
-    left: 24px;
-  }
-
-  #center-peek-slider-{{ section.id }} .center-peek-slider__arrow--next {
-    right: 24px;
-  }
-
   #center-peek-slider-{{ section.id }} .center-peek-slider__dots {
     display: flex;
     align-items: center;
@@ -345,6 +289,10 @@
   }
 
   @media screen and (max-width: 990px) {
+    #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
+      flex-basis: 80%;
+    }
+
     #center-peek-slider-{{ section.id }} .center-peek-slider__media {
       height: 520px;
     }
@@ -354,6 +302,14 @@
     #center-peek-slider-{{ section.id }} {
       padding-top: 16px;
       padding-bottom: 22px;
+    }
+
+    #center-peek-slider-{{ section.id }} .center-peek-slider__track {
+      gap: 8px;
+    }
+
+    #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
+      flex-basis: {{ section.settings.mobile_slide_width }}%;
     }
 
     #center-peek-slider-{{ section.id }} .center-peek-slider__media {
@@ -388,19 +344,6 @@
       font-size: 14px;
     }
 
-    #center-peek-slider-{{ section.id }} .center-peek-slider__arrow {
-      width: 38px;
-      height: 38px;
-    }
-
-    #center-peek-slider-{{ section.id }} .center-peek-slider__arrow--prev {
-      left: 12px;
-    }
-
-    #center-peek-slider-{{ section.id }} .center-peek-slider__arrow--next {
-      right: 12px;
-    }
-
     #center-peek-slider-{{ section.id }} .center-peek-slider__dots {
       gap: 8px;
       margin-top: 20px;
@@ -426,8 +369,6 @@
     const track = root.querySelector('.center-peek-slider__track');
     const originalSlides = Array.from(root.querySelectorAll('.center-peek-slider__slide'));
     const dots = Array.from(root.querySelectorAll('.center-peek-slider__dot'));
-    const prevButton = root.querySelector('.center-peek-slider__arrow--prev');
-    const nextButton = root.querySelector('.center-peek-slider__arrow--next');
 
     if (!track || originalSlides.length === 0) return;
 
@@ -570,26 +511,6 @@
       }
     }
 
-    if (prevButton) {
-      prevButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        stopAutoplay();
-        prev();
-        setTimeout(startAutoplay, 650);
-      });
-    }
-
-    if (nextButton) {
-      nextButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        stopAutoplay();
-        next();
-        setTimeout(startAutoplay, 650);
-      });
-    }
-
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
         stopAutoplay();
@@ -627,7 +548,6 @@
       dragging = false;
       startAutoplay();
     });
-
 
     window.addEventListener('resize', () => {
       moveTo(visualIndex, false);
@@ -727,12 +647,6 @@
       "step": 5,
       "unit": "%",
       "default": 35
-    },
-    {
-      "type": "checkbox",
-      "id": "show_arrows",
-      "label": "Show navigation arrows",
-      "default": true
     },
     {
       "type": "checkbox",
