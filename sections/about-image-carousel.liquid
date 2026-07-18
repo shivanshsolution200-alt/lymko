@@ -134,6 +134,8 @@
     cursor: grab;
     touch-action: pan-y;
     user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__viewport.is-dragging {
@@ -243,6 +245,8 @@
     z-index: 4;
     inset: 0;
     display: block;
+    -webkit-user-drag: none;
+    user-select: none;
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__dots {
@@ -531,59 +535,113 @@
       });
     });
 
-    viewport.addEventListener('pointerdown', (event) => {
-      if (event.button !== undefined && event.button !== 0) return;
+    let dragMoved = false;
+
+    function beginDrag(clientX) {
+      if (locked) return;
 
       dragging = true;
-      locked = false;
-      startX = event.clientX;
-      currentX = event.clientX;
+      dragMoved = false;
+      startX = clientX;
+      currentX = clientX;
       dragStartOffset = getOffset(visualIndex);
 
       viewport.classList.add('is-dragging');
-      viewport.setPointerCapture?.(event.pointerId);
-
       stopAutoplay();
-      track.style.transition = 'none';
-    });
 
-    viewport.addEventListener('pointermove', (event) => {
+      track.style.transition = 'none';
+    }
+
+    function updateDrag(clientX) {
       if (!dragging) return;
 
-      currentX = event.clientX;
+      currentX = clientX;
       const delta = currentX - startX;
 
-      track.style.transition = 'none';
-      track.style.transform = `translate3d(${dragStartOffset + delta}px,0,0)`;
-    });
+      if (Math.abs(delta) > 4) {
+        dragMoved = true;
+      }
 
-    function finishDrag(event) {
+      track.style.transition = 'none';
+      track.style.transform = `translate3d(${dragStartOffset + delta}px, 0, 0)`;
+    }
+
+    function endDrag() {
       if (!dragging) return;
 
       dragging = false;
       viewport.classList.remove('is-dragging');
 
-      if (event && event.pointerId !== undefined) {
-        try {
-          viewport.releasePointerCapture?.(event.pointerId);
-        } catch (e) {}
-      }
-
       const delta = currentX - startX;
 
-      if (Math.abs(delta) > 45) {
-        delta < 0 ? prev() : next();
+      if (Math.abs(delta) > 60) {
+        // Natural drag behavior:
+        // drag left => next/right slide
+        // drag right => previous/left slide
+        if (delta < 0) {
+          next();
+        } else {
+          prev();
+        }
       } else {
         moveTo(visualIndex, true);
       }
 
+      setTimeout(() => {
+        dragMoved = false;
+      }, 0);
+
       startAutoplay();
     }
 
-    viewport.addEventListener('pointerup', finishDrag);
-    viewport.addEventListener('pointercancel', finishDrag);
-    viewport.addEventListener('lostpointercapture', () => {
-      if (dragging) finishDrag();
+    /* Desktop mouse drag */
+    viewport.addEventListener('mousedown', (event) => {
+      if (event.button !== 0) return;
+      event.preventDefault();
+      beginDrag(event.clientX);
+    });
+
+    window.addEventListener('mousemove', (event) => {
+      if (!dragging) return;
+      event.preventDefault();
+      updateDrag(event.clientX);
+    });
+
+    window.addEventListener('mouseup', () => {
+      endDrag();
+    });
+
+    /* Mobile / touch swipe */
+    viewport.addEventListener('touchstart', (event) => {
+      if (!event.touches || !event.touches[0]) return;
+      beginDrag(event.touches[0].clientX);
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', (event) => {
+      if (!dragging || !event.touches || !event.touches[0]) return;
+      updateDrag(event.touches[0].clientX);
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', () => {
+      endDrag();
+    });
+
+    viewport.addEventListener('touchcancel', () => {
+      endDrag();
+    });
+
+    /* Prevent slide links from opening after an actual drag */
+    root.addEventListener('click', (event) => {
+      if (dragMoved) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }, true);
+
+    /* Disable browser native image/link dragging */
+    root.querySelectorAll('img, a').forEach((element) => {
+      element.setAttribute('draggable', 'false');
+      element.addEventListener('dragstart', (event) => event.preventDefault());
     });
 
     window.addEventListener('resize', () => {
