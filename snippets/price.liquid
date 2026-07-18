@@ -73,18 +73,25 @@
         </span>
       {%- endunless -%}
       
-              <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
-              
-              {% assign discount_amount = card_product.compare_at_price | minus: card_product.price %}
-{% assign discount_percentage = discount_amount
-  | times: 100.0
-  | divided_by: card_product.compare_at_price
-  | round: 1
-%}
+      {%- if available == false -%}
+  <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">
+    {{ 'products.product.sold_out' | t }}
+  </span>
 
-<span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
-  {{ discount_percentage }}%
-</span>
+{%- elsif compare_at_price > price -%}
+
+  {% assign discount_amount = compare_at_price | minus: price %}
+  {% assign discount_percentage = discount_amount
+    | times: 100.0
+    | divided_by: compare_at_price
+    | round
+  %}
+
+  <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
+    {{ discount_percentage }}% OFF
+  </span>
+
+{%- endif -%}
       {% comment %}
         <div class="product_right_tag  {% if on_sale %} offer_exist {% endif %}">
             {% if on_sale %}
