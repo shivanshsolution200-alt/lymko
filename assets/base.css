@@ -4940,7 +4940,13 @@ button.product-form__submit.button.button--full-width.button--secondary {
     align-items: center;
     justify-content: center;
 }
-
+@media(min-width: 769px){
+  div#Slider-template--27351286022429__collection_list_QVNMd6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
 @media( max-width: 768px){
   a.full-unstyled-link {
     display: -webkit-box;
@@ -4949,9 +4955,5 @@ button.product-form__submit.button.button--full-width.button--secondary {
     overflow: hidden;
     height: 40px;
 }
-div#Slider-template--27351286022429__collection_list_QVNMd6 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 }
