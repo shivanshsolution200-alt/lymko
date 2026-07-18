@@ -159,18 +159,13 @@
   #center-peek-slider-{{ section.id }} .center-peek-slider__track {
     display: flex;
     align-items: stretch;
-    gap: {{ section.settings.slide_gap }}px;
+    gap: 0;
     will-change: transform;
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
-    flex: 0 0 {{ section.settings.desktop_slide_width }}%;
+    flex: 0 0 100%;
     min-width: 0;
-    opacity: .48;
-    transition: opacity .35s ease;
-  }
-
-  #center-peek-slider-{{ section.id }} .center-peek-slider__slide.is-active {
     opacity: 1;
   }
 
@@ -350,10 +345,6 @@
   }
 
   @media screen and (max-width: 990px) {
-    #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
-      flex-basis: 80%;
-    }
-
     #center-peek-slider-{{ section.id }} .center-peek-slider__media {
       height: 520px;
     }
@@ -363,14 +354,6 @@
     #center-peek-slider-{{ section.id }} {
       padding-top: 16px;
       padding-bottom: 22px;
-    }
-
-    #center-peek-slider-{{ section.id }} .center-peek-slider__track {
-      gap: 8px;
-    }
-
-    #center-peek-slider-{{ section.id }} .center-peek-slider__slide {
-      flex-basis: {{ section.settings.mobile_slide_width }}%;
     }
 
     #center-peek-slider-{{ section.id }} .center-peek-slider__media {
@@ -634,7 +617,7 @@
       const delta = currentX - startX;
 
       if (Math.abs(delta) > 45) {
-        delta < 0 ? next() : prev();
+        delta < 0 ? prev() : next();
       }
 
       startAutoplay();
@@ -645,61 +628,6 @@
       startAutoplay();
     });
 
-    root.addEventListener('mouseenter', () => {
-      stopAutoplay();
-    });
-
-    root.addEventListener('mouseleave', () => {
-      startAutoplay();
-    });
-
-    {% if section.settings.auto_hide_header %}
-      const headerSelectors = [
-        '#shopify-section-header',
-        '.shopify-section-group-header-group',
-        'sticky-header',
-        '.header-wrapper',
-        'header.header',
-        'header'
-      ];
-
-      let detectedHeader = null;
-
-      for (const selector of headerSelectors) {
-        const el = document.querySelector(selector);
-        if (el && !root.contains(el)) {
-          detectedHeader = el;
-          break;
-        }
-      }
-
-      if (detectedHeader) {
-        detectedHeader.style.transition = 'transform .28s ease, opacity .28s ease';
-
-        const updateHeaderVisibility = () => {
-          const sliderRect = root.getBoundingClientRect();
-          const headerHeight = detectedHeader.getBoundingClientRect().height || 0;
-
-          const isOverSlider =
-            sliderRect.top <= headerHeight &&
-            sliderRect.bottom > headerHeight;
-
-          if (isOverSlider) {
-            detectedHeader.style.transform = 'translateY(-110%)';
-            detectedHeader.style.opacity = '0';
-            detectedHeader.style.pointerEvents = 'none';
-          } else {
-            detectedHeader.style.transform = '';
-            detectedHeader.style.opacity = '';
-            detectedHeader.style.pointerEvents = '';
-          }
-        };
-
-        window.addEventListener('scroll', updateHeaderVisibility, { passive: true });
-        window.addEventListener('resize', updateHeaderVisibility);
-        updateHeaderVisibility();
-      }
-    {% endif %}
 
     window.addEventListener('resize', () => {
       moveTo(visualIndex, false);
@@ -804,12 +732,6 @@
       "type": "checkbox",
       "id": "show_arrows",
       "label": "Show navigation arrows",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "auto_hide_header",
-      "label": "Auto hide header when slider reaches header",
       "default": true
     },
     {
