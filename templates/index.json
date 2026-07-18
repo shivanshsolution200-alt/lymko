@@ -319,7 +319,7 @@
         "padding_top": 36,
         "padding_bottom": 20,
         "custom_class_name": "",
-        "swiper_enable": true,
+        "swiper_enable": false,
         "desktop_column": 9,
         "laptop_column": 6,
         "tablet_column": 4,
