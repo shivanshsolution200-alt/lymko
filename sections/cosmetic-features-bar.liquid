@@ -1,0 +1,406 @@
+<section
+  id="feature-bar-{{ section.id }}"
+  class="custom-feature-bar"
+  style="
+    --bg: {{ section.settings.background }};
+    --icon-bg: {{ section.settings.icon_background }};
+    --title-color: {{ section.settings.title_color }};
+    --text-color: {{ section.settings.text_color }};
+  "
+>
+  <div class="custom-feature-bar__wrapper page-width">
+
+    <!-- LEFT LEAVES -->
+    <div class="feature-decoration feature-decoration--left">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M6 95C22 74 37 49 47 15" stroke="#718568" stroke-width="2"/>
+        <path d="M20 72C5 66 3 49 4 40C19 43 28 56 20 72Z" fill="#8A9C80"/>
+        <path d="M32 51C19 42 22 27 27 18C40 25 45 39 32 51Z" fill="#778B6E"/>
+        <path d="M12 85C25 84 33 89 38 98C24 101 14 96 12 85Z" fill="#A1AF98"/>
+      </svg>
+    </div>
+
+    <div class="custom-feature-bar__items">
+      {% for block in section.blocks %}
+        <div class="custom-feature-item" {{ block.shopify_attributes }}>
+
+          <div class="custom-feature-icon">
+            {% case block.settings.icon_type %}
+
+              {% when 'shipping' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 18h34v25H5z"/>
+                    <path d="M39 27h10l9 10v6H39z"/>
+                    <circle cx="17" cy="46" r="5"/>
+                    <circle cx="48" cy="46" r="5"/>
+                    <path d="M1 24h10M1 30h8M1 36h6"/>
+                  </g>
+                </svg>
+
+              {% when 'customers' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="32" cy="21" r="7"/>
+                    <circle cx="15" cy="25" r="5"/>
+                    <circle cx="49" cy="25" r="5"/>
+                    <path d="M21 48c1-9 5-14 11-14s10 5 11 14"/>
+                    <path d="M5 47c1-7 4-11 10-11 4 0 7 2 9 6"/>
+                    <path d="M59 47c-1-7-4-11-10-11-4 0-7 2-9 6"/>
+                    <path d="M28 10c2-4 6-6 9-3 3 3 0 7-5 10-5-3-8-7-5-10 3-3 7-1 9 3"/>
+                  </g>
+                </svg>
+
+              {% when 'payment' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M32 5 51 13v14c0 13-8 24-19 31C21 51 13 40 13 27V13z"/>
+                    <rect x="24" y="28" width="16" height="13" rx="2"/>
+                    <path d="M27 28v-5a5 5 0 0 1 10 0v5"/>
+                    <path d="M32 33v3"/>
+                  </g>
+                </svg>
+
+              {% when 'quality' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M49 14C29 14 18 24 18 43c17 0 29-10 31-29Z"/>
+                    <path d="M18 43c9-7 17-14 26-22"/>
+                    <path d="M18 43v13"/>
+                    <path d="M15 56h12"/>
+                  </g>
+                </svg>
+
+            {% endcase %}
+          </div>
+
+          <div class="custom-feature-content">
+            {% if block.settings.title != blank %}
+              <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text }}</p>
+            {% endif %}
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- RIGHT LEAVES -->
+    <div class="feature-decoration feature-decoration--right">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M94 95C78 74 63 49 53 15" stroke="#718568" stroke-width="2"/>
+        <path d="M80 72C95 66 97 49 96 40C81 43 72 56 80 72Z" fill="#8A9C80"/>
+        <path d="M68 51C81 42 78 27 73 18C60 25 55 39 68 51Z" fill="#778B6E"/>
+        <path d="M88 85C75 84 67 89 62 98C76 101 86 96 88 85Z" fill="#A1AF98"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #feature-bar-{{ section.id }} {
+    width: 100%;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #feature-bar-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-bar__wrapper {
+    position: relative;
+    background: var(--bg);
+    min-height: 108px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-bar__items {
+    width: 100%;
+    padding: 0 72px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 34px;
+    position: relative;
+    z-index: 2;
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-item {
+    min-width: 0;
+    min-height: 64px;
+    background: #ffffff;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 17px 0 0;
+
+    box-shadow:
+      0 3px 10px rgba(80, 90, 70, 0.09),
+      0 1px 4px rgba(80, 90, 70, 0.05);
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-icon {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    border-radius: 50%;
+    background: var(--icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 13px;
+    color: #fff;
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-icon svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-content {
+    min-width: 0;
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-content h3 {
+    margin: 0 0 4px;
+    padding: 0;
+    color: var(--title-color);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  #feature-bar-{{ section.id }} .custom-feature-content p {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  #feature-bar-{{ section.id }} .feature-decoration {
+    width: 75px;
+    height: 90px;
+    position: absolute;
+    bottom: -8px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #feature-bar-{{ section.id }} .feature-decoration svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #feature-bar-{{ section.id }} .feature-decoration--left {
+    left: -4px;
+  }
+
+  #feature-bar-{{ section.id }} .feature-decoration--right {
+    right: -4px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    #feature-bar-{{ section.id }} .custom-feature-bar__items {
+      gap: 15px;
+      padding: 0 45px;
+    }
+
+    #feature-bar-{{ section.id }} .custom-feature-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+    }
+
+    #feature-bar-{{ section.id }} .custom-feature-content h3 {
+      font-size: 12px;
+    }
+
+    #feature-bar-{{ section.id }} .custom-feature-content p {
+      font-size: 10px;
+    }
+  }
+
+  @media screen and (max-width: 989px) {
+    #feature-bar-{{ section.id }} .custom-feature-bar__items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #feature-bar-{{ section.id }} .custom-feature-bar__wrapper {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    #feature-bar-{{ section.id }} .custom-feature-bar__items {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 12px;
+      padding: 0 15px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #feature-bar-{{ section.id }} .custom-feature-bar__items::-webkit-scrollbar {
+      display: none;
+    }
+
+    #feature-bar-{{ section.id }} .custom-feature-item {
+      flex: 0 0 78%;
+      scroll-snap-align: start;
+    }
+
+    #feature-bar-{{ section.id }} .feature-decoration {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Cosmetic Features",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#F7F7F2"
+    },
+    {
+      "type": "color",
+      "id": "icon_background",
+      "label": "Icon background",
+      "default": "#899B79"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#292929"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "shipping",
+              "label": "Shipping Truck"
+            },
+            {
+              "value": "customers",
+              "label": "Happy Customers"
+            },
+            {
+              "value": "payment",
+              "label": "Secure Payment"
+            },
+            {
+              "value": "quality",
+              "label": "Assured Quality"
+            }
+          ],
+          "default": "shipping"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Subtitle",
+          "default": "On all prepaid orders"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Cosmetic Features",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon_type": "shipping",
+            "title": "Free Shipping",
+            "text": "On all prepaid orders"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_type": "customers",
+            "title": "250000+ Happy Customers",
+            "text": "Loved by beauty buyers"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_type": "payment",
+            "title": "Secure Payment",
+            "text": "100% safe checkout"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_type": "quality",
+            "title": "Assured Quality",
+            "text": "Premium skincare products"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
