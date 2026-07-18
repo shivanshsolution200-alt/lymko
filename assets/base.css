@@ -4984,3 +4984,9 @@ span.badge.badge--bottom-left.color-accent-2 {
 .card__badge.bottom-left {
     display: none;
 }
+.card__inner .product-icons a:hover, .card__inner .product-icons button:hover{
+  color: #000 !important;
+}
+.product-icons.right-aligned tooltip.tooltip{
+  color: #000 !important
+}
