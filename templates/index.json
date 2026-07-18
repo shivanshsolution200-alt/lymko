@@ -565,6 +565,42 @@
         "heading_alignment": "center"
       }
     },
+    "shop_by_skin_RHHYjb": {
+      "type": "shop-by-skin",
+      "blocks": {
+        "tab_CkkQLC": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Face Serums",
+            "collection": "face-serums"
+          }
+        },
+        "tab_yq8CbR": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Face Wash",
+            "collection": "face-wash"
+          }
+        },
+        "tab_CTH8NJ": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Hair Care",
+            "collection": "hair-care"
+          }
+        }
+      },
+      "block_order": [
+        "tab_CkkQLC",
+        "tab_yq8CbR",
+        "tab_CTH8NJ"
+      ],
+      "name": "Skin Type Tabs",
+      "settings": {
+        "heading": "Shop By Skin Type",
+        "heading_alignment": "center"
+      }
+    },
     "specification_block_Y7LAY7": {
       "type": "specification-block",
       "blocks": {
@@ -1058,6 +1094,7 @@
     "grid_banner_slider_yGnEgj",
     "deal_banner_aXn6CT",
     "shop_by_skin_pikKnX",
+    "shop_by_skin_RHHYjb",
     "specification_block_Y7LAY7",
     "reels_section_VXtTkE",
     "image_with_text_URtQMH",
