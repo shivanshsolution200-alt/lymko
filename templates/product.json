@@ -389,7 +389,7 @@
         "mobile_column": 2,
         "centered_slide": true,
         "swiper_pagination": false,
-        "swiper_navigation": false,
+        "swiper_navigation": true,
         "auto_play": 0,
         "swipe_on_mobile": false,
         "arrow_on_mobile": false,
