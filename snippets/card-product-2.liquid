@@ -207,7 +207,9 @@
           <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
           <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
           {%- endif -%}
-          <p>Launching Price Off</p>
+          <p style="font-size: 11px;
+    margin: 0;
+    color: #fd5e09;">Launching Price Off</p>
           <h3 class="card__heading h5" id="title-{{ section_id }}-{{ card_product.id }}">
             <a href="{{ card_product.url | within: collection }}" class="full-unstyled-link">
               {{ card_product.title | escape }} <span class="choosen-swatch"></span>
