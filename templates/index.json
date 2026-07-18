@@ -217,48 +217,48 @@
     "collection_list_QVNMd6": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_aXQQm3": {
+        "featured_collection_ATrpNi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "face-serums",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "featured_collection_EjLQB6": {
           "type": "featured_collection",
           "settings": {
             "collection": "hair-care",
-            "button_label": "",
-            "button_link": "shopify://collections/hair-care",
+            "button_label": "Button label",
+            "button_link": "",
             "button_style_secondary": false
           }
         },
-        "featured_collection_LHfHcG": {
+        "featured_collection_DTjiKr": {
           "type": "featured_collection",
           "settings": {
-            "collection": "moisturizer",
-            "button_label": "",
-            "button_link": "shopify://collections/moisturizer",
+            "collection": "face-wash",
+            "button_label": "Button label",
+            "button_link": "",
             "button_style_secondary": false
           }
         },
-        "featured_collection_E7DX7x": {
+        "featured_collection_yPLztV": {
           "type": "featured_collection",
           "settings": {
             "collection": "sunscreen",
-            "button_label": "",
-            "button_link": "shopify://collections/sunscream",
-            "button_style_secondary": false
-          }
-        },
-        "featured_collection_UGnBDr": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "eye-lip-care",
-            "button_label": "",
-            "button_link": "shopify://collections/eye-lip-care",
+            "button_label": "Button label",
+            "button_link": "",
             "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "featured_collection_aXQQm3",
-        "featured_collection_LHfHcG",
-        "featured_collection_E7DX7x",
-        "featured_collection_UGnBDr"
+        "featured_collection_ATrpNi",
+        "featured_collection_EjLQB6",
+        "featured_collection_DTjiKr",
+        "featured_collection_yPLztV"
       ],
       "custom_css": [
         ".card:not(.ratio) > .card__content {padding-bottom: 0px !important; padding-top: 20px;}",
