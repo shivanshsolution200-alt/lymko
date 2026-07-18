@@ -769,7 +769,7 @@
         "caption_LyGdPN": {
           "type": "caption",
           "settings": {
-            "caption": "Care your skin with simple  science",
+            "caption": "CARE YOUR SKIN WITH SIMPLE SCIENCE",
             "text_style": "subtitle",
             "text_size": "medium"
           }
@@ -784,7 +784,7 @@
         "text_MhYmEB": {
           "type": "text",
           "settings": {
-            "text": "<p><br/>Elevate Your Glow with Clean, Science-Backed Skincare—Cruelty-Free, Sustainable, and Packed with Antioxidants for Skin That Looks Healthy at Every Age.<br/></p>",
+            "text": "<p>Discover thoughtfully formulated skincare designed to cleanse, hydrate, nourish, and protect your skin. Powered by effective ingredients and gentle formulas for healthy-looking, smooth, and naturally radiant skin every day.</p>",
             "text_style": "body"
           }
         },
@@ -806,11 +806,11 @@
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": false,
-        "image": "shopify://shop_images/Gemini_Generated_Image_tf2tb8tf2tb8tf2t.png",
+        "image": "shopify://shop_images/image_2_2.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "color_scheme": "background-1",
