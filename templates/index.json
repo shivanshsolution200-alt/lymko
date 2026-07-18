@@ -239,7 +239,7 @@
           "settings": {
             "collection": "hair-care",
             "button_label": "",
-            "button_link": "",
+            "button_link": "shopify://collections/hair-care",
             "button_style_secondary": false
           }
         },
@@ -248,7 +248,7 @@
           "settings": {
             "collection": "moisturizer",
             "button_label": "",
-            "button_link": "",
+            "button_link": "shopify://collections/moisturizer",
             "button_style_secondary": false
           }
         },
@@ -257,34 +257,16 @@
           "settings": {
             "collection": "sunscream",
             "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        },
-        "featured_collection_jxGzMc": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "hair-care",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        },
-        "featured_collection_NLXn6e": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "moisturizer",
-            "button_label": "",
-            "button_link": "",
+            "button_link": "shopify://collections/sunscream",
             "button_style_secondary": false
           }
         },
         "featured_collection_UGnBDr": {
           "type": "featured_collection",
           "settings": {
-            "collection": "sunscream",
+            "collection": "eye-lip-care",
             "button_label": "",
-            "button_link": "",
+            "button_link": "shopify://collections/eye-lip-care",
             "button_style_secondary": false
           }
         }
@@ -293,8 +275,6 @@
         "featured_collection_aXQQm3",
         "featured_collection_LHfHcG",
         "featured_collection_E7DX7x",
-        "featured_collection_jxGzMc",
-        "featured_collection_NLXn6e",
         "featured_collection_UGnBDr"
       ],
       "custom_css": [
@@ -319,7 +299,7 @@
         "column_alignment": "center",
         "image_ratio": "adapt",
         "image_style": "default",
-        "columns_desktop": 5,
+        "columns_desktop": 3,
         "color_scheme": "background-1",
         "show_view_all": false,
         "collection_layout": "overlay",
@@ -329,9 +309,9 @@
         "padding_bottom": 20,
         "custom_class_name": "",
         "swiper_enable": true,
-        "desktop_column": 6,
-        "laptop_column": 5,
-        "tablet_column": 3,
+        "desktop_column": 4,
+        "laptop_column": 4,
+        "tablet_column": 2,
         "mobile_column": 2,
         "swiper_pagination": true,
         "swiper_navigation": true,
@@ -339,16 +319,6 @@
         "swipe_on_mobile": true,
         "arrow_on_mobile": false,
         "columns_mobile": "2"
-      }
-    },
-    "single_grid_collection_mHDFHe": {
-      "type": "single-grid-collection",
-      "name": "Single Collection Grid",
-      "settings": {
-        "heading": "Shop Our Best Selling products",
-        "subheading": "Explore our latest collection",
-        "collection": "best-selling",
-        "heading_alignment": "center"
       }
     },
     "custom_double_banner_7GqEfT": {
@@ -1083,7 +1053,6 @@
     "green_revolution_eyG7Te",
     "green_benefits_bar_RHdY8j",
     "collection_list_QVNMd6",
-    "single_grid_collection_mHDFHe",
     "custom_double_banner_7GqEfT",
     "featured_collection_iX7fef",
     "grid_banner_slider_yGnEgj",
