@@ -4960,4 +4960,12 @@ button.product-form__submit.button.button--full-width.button--secondary {
 .card__content.for-arrow-alignment {
     position: relative !important;
 }
+.collection-list.overlay .collection-list__item .card__content .card__information {
+    width: auto !important;
+    height: auto !important;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 }
