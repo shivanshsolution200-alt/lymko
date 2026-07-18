@@ -4958,6 +4958,6 @@ button.product-form__submit.button.button--full-width.button--secondary {
     height: 40px;
 }
 .card__content.for-arrow-alignment {
-    position: relative;
+    position: relative !important;
 }
 }
