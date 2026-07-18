@@ -155,6 +155,7 @@
         "step_KnwnBB",
         "step_wRnGLh"
       ],
+      "disabled": true,
       "name": "Green Revolution",
       "settings": {
         "eyebrow": "Be a Part of the",
@@ -518,22 +519,22 @@
         "tab_jryHtn": {
           "type": "tab",
           "settings": {
-            "tab_name": "Hair Care",
+            "tab_name": "Face Serums",
             "collection": "face-serums"
           }
         },
         "tab_8mXi9U": {
           "type": "tab",
           "settings": {
-            "tab_name": "Dry",
-            "collection": "moisturizer"
+            "tab_name": "Face Wash",
+            "collection": "face-wash"
           }
         },
         "tab_X4iHJW": {
           "type": "tab",
           "settings": {
-            "tab_name": "Normal",
-            "collection": "best-selling"
+            "tab_name": "Hair Care",
+            "collection": "hair-care"
           }
         }
       },
