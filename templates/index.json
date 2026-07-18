@@ -262,6 +262,15 @@
             "button_style_secondary": false
           }
         },
+        "featured_collection_LPC3dD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "moisturizer",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
         "featured_collection_yPLztV": {
           "type": "featured_collection",
           "settings": {
@@ -276,6 +285,7 @@
         "featured_collection_ATrpNi",
         "featured_collection_EjLQB6",
         "featured_collection_DTjiKr",
+        "featured_collection_LPC3dD",
         "featured_collection_yPLztV"
       ],
       "custom_css": [
