@@ -48,82 +48,6 @@
         "speed": 3
       }
     },
-    "slideshow_DUeHXM": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_Mn4UmJ": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/All_Product_1.png",
-            "mobile_image": "shopify://shop_images/All_Product_1.png",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "text": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "show_product": true,
-            "subheading1": "",
-            "button_label1": "",
-            "link1": "",
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_jmdpap": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/All_Product_1.png",
-            "mobile_image": "shopify://shop_images/All_Product_1.png",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "text": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "show_product": true,
-            "subheading1": "",
-            "button_label1": "",
-            "link1": "",
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slide_Mn4UmJ",
-        "slide_jmdpap"
-      ],
-      "name": "t:sections.slideshow.presets.name",
-      "settings": {
-        "page_full_width": false,
-        "page_full_width_spacing": true,
-        "slider_image_height": 800,
-        "slider_image_height_laptop": 800,
-        "slider_image_height_tab": 700,
-        "slider_image_height_mobile": 700,
-        "swiper_pagination": false,
-        "swiper_navigation": true,
-        "auto_play": 3,
-        "slider_effect": "slide",
-        "show_text_below": false,
-        "slider_overlay": false,
-        "overlay_opacity": 0.5,
-        "overlay_color": "",
-        "overlay_screen_width": "576",
-        "custom_class_name": ""
-      }
-    },
     "about_image_carousel_FTwXfj": {
       "type": "about-image-carousel",
       "blocks": {
@@ -134,7 +58,8 @@
             "eyebrow": "",
             "heading": "",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "slide_link": ""
           }
         },
         "slide_bw4zVc": {
@@ -144,7 +69,8 @@
             "eyebrow": "",
             "heading": "",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "slide_link": ""
           }
         },
         "slide_xJ6mTT": {
@@ -154,7 +80,8 @@
             "eyebrow": "",
             "heading": "",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "slide_link": ""
           }
         }
       },
@@ -167,12 +94,15 @@
       "settings": {
         "background_color": "#ffffff",
         "text_color": "#ffffff",
+        "desktop_slide_width": 70,
+        "mobile_slide_width": 88,
+        "slide_gap": 10,
         "desktop_height": 620,
         "mobile_height": 520,
         "border_radius": 18,
         "overlay_opacity": 35,
         "autoplay": true,
-        "autoplay_speed": 5,
+        "autoplay_speed": 3,
         "padding_top": 16,
         "padding_bottom": 28
       }
@@ -1102,7 +1032,6 @@
   },
   "order": [
     "new_slider_section_bTRmQy",
-    "slideshow_DUeHXM",
     "about_image_carousel_FTwXfj",
     "green_revolution_eyG7Te",
     "green_benefits_bar_RHdY8j",
