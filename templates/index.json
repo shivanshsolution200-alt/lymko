@@ -255,7 +255,7 @@
         "featured_collection_E7DX7x": {
           "type": "featured_collection",
           "settings": {
-            "collection": "sunscream",
+            "collection": "sunscreen",
             "button_label": "",
             "button_link": "shopify://collections/sunscream",
             "button_style_secondary": false
@@ -543,7 +543,7 @@
           "type": "tab",
           "settings": {
             "tab_name": "Dry",
-            "collection": "best-selling"
+            "collection": "moisturizer"
           }
         },
         "tab_X4iHJW": {
