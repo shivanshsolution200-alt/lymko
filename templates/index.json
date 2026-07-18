@@ -212,6 +212,7 @@
         "benefit_jwXhPe",
         "benefit_rcgFVC"
       ],
+      "disabled": true,
       "name": "Green benefits bar",
       "settings": {}
     },
