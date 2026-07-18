@@ -347,13 +347,6 @@
         "include_margins": true
       }
     },
-    "new_product_recommended_Gmk9XN": {
-      "type": "new-product-recommended",
-      "name": "New Recommended Products",
-      "settings": {
-        "heading": "You May Also Like"
-      }
-    },
     "featured_collection_ybc7eT": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -369,7 +362,7 @@
         "button_style_secondary": false,
         "column_alignment": "center",
         "collection": "combo",
-        "products_to_show": 8,
+        "products_to_show": 6,
         "columns_desktop": 4,
         "show_view_all": true,
         "view_all_style": "link",
@@ -394,6 +387,13 @@
         "swipe_on_mobile": false,
         "arrow_on_mobile": false,
         "columns_mobile": "2"
+      }
+    },
+    "new_product_recommended_Gmk9XN": {
+      "type": "new-product-recommended",
+      "name": "New Recommended Products",
+      "settings": {
+        "heading": "You May Also Like"
       }
     },
     "1700121402aa445ab6": {
