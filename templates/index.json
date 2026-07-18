@@ -557,7 +557,7 @@
           "type": "text",
           "settings": {
             "block-image": "shopify://shop_images/Home-Page-Icons-New-01_d7e8cbec-7ebd-4239-945b-1322a6a731dc.png",
-            "title": "Strong & Smooth",
+            "title": "Gentle & Effective",
             "desc": "",
             "link_text": "",
             "link": ""
@@ -567,7 +567,7 @@
           "type": "text",
           "settings": {
             "block-image": "shopify://shop_images/Home-Page-Icons-New-06_bfe7fee0-469c-4df6-9c0c-dfb421a55003.png",
-            "title": "Sulfate& Peraben Free",
+            "title": "Skin-Loving Ingredients",
             "desc": "",
             "link_text": "",
             "link": ""
@@ -577,7 +577,7 @@
           "type": "text",
           "settings": {
             "block-image": "shopify://shop_images/Home-Page-Icons-New-03_9ad9dc53-b471-4d64-8d52-561791b4df5f.png",
-            "title": "Sustanable Source",
+            "title": "Paraben Free",
             "desc": "",
             "link_text": "",
             "link": ""
@@ -587,7 +587,7 @@
           "type": "text",
           "settings": {
             "block-image": "shopify://shop_images/Home-Page-Icons-New-02_ebe0af63-f692-4b25-af02-9465595a6363.png",
-            "title": "100% Vegan",
+            "title": "Suitable For All Skin Types",
             "desc": "",
             "link_text": "",
             "link": ""
@@ -604,16 +604,16 @@
         "page_full_width": false,
         "page_full_width_spacing": false,
         "color_scheme": "background-1",
-        "title": "Why Our is Skincare Good For You-And Your Skin",
+        "title": "Why Lymkō Is Good For You — And Your Skin",
         "heading_size": "h1",
         "sub_heading": "PURE AND SIMPLE",
-        "description": "Ut tempor sem leo, a ultricies quam aliquam eget. Vivamus commodo scelerisq ue velit, quis viverra velit bibendum vel. Phasell sus id leo et vestibulum.",
+        "description": "Thoughtfully formulated skincare designed to cleanse, nourish, hydrate and protect your skin every day. Our formulas combine effective ingredients with gentle care to help support healthy-looking, smooth and radiant skin.",
         "button_label": "",
         "button_link": "shopify://collections/lotions",
         "column_alignment": "left",
         "button_style_secondary": false,
         "enable_image": true,
-        "primary_image": "shopify://shop_images/Image-Sectio-3_4bf9d804-e941-478d-98bf-9867ba97363b.png",
+        "primary_image": "shopify://shop_images/image_1_2.png",
         "primary_title": "",
         "primary_sub_title": "",
         "primary_description": "",
