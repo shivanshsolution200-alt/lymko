@@ -244,19 +244,48 @@
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__dot {
+    position: relative;
     width: 10px;
     height: 10px;
     padding: 0;
     border: 0;
+    overflow: hidden;
     border-radius: 999px;
     background: #d2d2d2;
     cursor: pointer;
-    transition: width .25s ease, background-color .25s ease;
+    transition: width .25s ease;
   }
 
   #center-peek-slider-{{ section.id }} .center-peek-slider__dot.is-active {
     width: 48px;
+    background: #d2d2d2;
+  }
+
+  #center-peek-slider-{{ section.id }} .center-peek-slider__dot.is-active::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
     background: #000000;
+  }
+
+  #center-peek-slider-{{ section.id }} .center-peek-slider.is-autoplaying .center-peek-slider__dot.is-active::after {
+    animation: centerPeekDotProgress-{{ section.id }} {{ section.settings.autoplay_speed }}s linear forwards;
+  }
+
+  #center-peek-slider-{{ section.id }} .center-peek-slider.is-paused .center-peek-slider__dot.is-active::after {
+    animation-play-state: paused;
+  }
+
+  @keyframes centerPeekDotProgress-{{ section.id }} {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
   }
 
   @media screen and (max-width: 990px) {
@@ -392,6 +421,16 @@
       dots.forEach((dot, i) => {
         dot.classList.toggle('is-active', i === current);
       });
+
+      restartDotProgress();
+    }
+
+    function restartDotProgress() {
+      if (root.dataset.autoplay !== 'true' || originalSlides.length <= 1) return;
+
+      root.classList.remove('is-autoplaying');
+      void root.offsetWidth;
+      root.classList.add('is-autoplaying');
     }
 
     function moveTo(index, animate = true) {
@@ -449,17 +488,26 @@
     function stopAutoplay() {
       if (timer) clearInterval(timer);
       timer = null;
+      root.classList.add('is-paused');
     }
 
     function startAutoplay() {
-      stopAutoplay();
+      if (timer) clearInterval(timer);
+      timer = null;
 
       if (
         root.dataset.autoplay === 'true' &&
         originalSlides.length > 1
       ) {
+        root.classList.remove('is-paused');
+        root.classList.add('is-autoplaying');
+        restartDotProgress();
+
         const speed = Number(root.dataset.speed) || 5000;
         timer = setInterval(next, speed);
+      } else {
+        root.classList.remove('is-autoplaying');
+        root.classList.remove('is-paused');
       }
     }
 
