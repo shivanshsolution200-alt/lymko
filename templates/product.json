@@ -1,1 +1,423 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"fake_visitors_JaqMJq":{"type":"fake_visitors","disabled":true,"settings":{"text":"People are Viewing Right Now","min_count":50,"max_count":200}},"caption":{"type":"text","disabled":true,"settings":{"text":"Grab the best quality fabrics with free size.","text_style":"body"}},"custom_liquid_ebCM4N":{"type":"custom_liquid","disabled":true,"settings":{"custom_liquid":"{% if product.metafields.custom.product_tags != blank %}\n  <div class=\"custom-product-tags\">\n    {% for tag in product.metafields.custom.product_tags.value %}\n      <span class=\"custom-tag\">{{ tag }}<\/span>\n    {% endfor %}\n  <\/div>\n{% endif %}"}},"381e9805-2b9d-4e45-99ce-2a5f748ed6af":{"type":"size-popup","disabled":true,"settings":{"text":"File Size Chart","page":"size-chart"}},"custom_liquid_HFdpPU":{"type":"custom_liquid","settings":{"custom_liquid":"<div class=\"viewing-box\">\n  \n  <span class=\"eye-icon\">\n    <!-- SVG Eye Icon -->\n    <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#222\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n      <path d=\"M1 12C3.5 7 7.5 4 12 4s8.5 3 11 8c-2.5 5-6.5 8-11 8s-8.5-3-11-8z\"\/>\n      <circle cx=\"12\" cy=\"12\" r=\"3\"\/>\n    <\/svg>\n  <\/span>\n\n  <span class=\"viewing-text\">\n    <b id=\"viewingCount\">52<\/b> People are Viewing Right Now\n  <\/span>\n\n<\/div>"}},"variant_picker":{"type":"variant_picker","settings":{"picker_type":"button","picker_method":"custom_color"}},"4c6c3629-d7b7-42eb-bd05-e2189e5f2c29":{"type":"deal","disabled":true,"settings":{}},"html_c_qJpL9V":{"type":"Html_c","disabled":true,"settings":{"html":"<div class=\"trust-section\">\n  \n  <div class=\"trust-item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/ruppe.png?v=1775890685\">\n    <span>Cash on Delivery<\/span>\n  <\/div>\n\n  <div class=\"trust-item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/transport_1.png?v=1775890685\">\n    <span>Free Shipping<\/span>\n  <\/div>\n\n  <div class=\"trust-item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/right.png?v=1775890685\">\n    <span>Express Delivery<\/span>\n  <\/div>\n\n  <div class=\"trust-item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/return_2.png?v=1775890685\">\n    <span>Easy Returns<\/span>\n  <\/div>\n\n<\/div>"}},"68863399-17f6-4e5b-8b56-6ef125ef3168":{"type":"Html_c","settings":{"html":"<p class=\"delivery\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"38.197\" height=\"21.5\" viewbox=\"0 0 38.197 21.5\">\n  <g id=\"Group_25127\" data-name=\"Group 25127\" transform=\"translate(-1083.836 -1161.835)\">\n    <path id=\"Path_54444\" data-name=\"Path 54444\" d=\"M76.155,6.988H95.1a.132.132,0,0,1,.132.132V23.868\" transform=\"translate(1014.583 1155.597)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/path>\n    <line id=\"Line_317\" data-name=\"Line 317\" x1=\"4.357\" transform=\"translate(1090.739 1179.465)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <line id=\"Line_318\" data-name=\"Line 318\" x1=\"11.098\" transform=\"translate(1101.294 1179.465)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <path id=\"Path_54445\" data-name=\"Path 54445\" d=\"M291.733,32.235h6.362a.4.4,0,0,1,.338.188l4.479,7.216a1.261,1.261,0,0,1,.19.665v5.1a1.46,1.46,0,0,1-1.46,1.46h-1.3\" transform=\"translate(818.182 1132.596)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/path>\n    <circle id=\"Ellipse_200\" data-name=\"Ellipse 200\" cx=\"3.068\" cy=\"3.068\" r=\"3.068\" transform=\"translate(1112.393 1176.449)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/circle>\n    <path id=\"Path_54446\" data-name=\"Path 54446\" d=\"M131.987,165.909a3.068,3.068,0,1,1-3.068-3.068A3.068,3.068,0,0,1,131.987,165.909Z\" transform=\"translate(969.308 1013.608)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/path>\n    <path id=\"Path_54447\" data-name=\"Path 54447\" d=\"M340,62.32h-3.635a.293.293,0,0,0-.289.346l.765,4.31a.415.415,0,0,0,.408.341h6.064\" transform=\"translate(777.784 1105.187)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/path>\n    <line id=\"Line_319\" data-name=\"Line 319\" x2=\"4.116\" transform=\"translate(1086.602 1165.636)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <line id=\"Line_320\" data-name=\"Line 320\" x2=\"4.389\" transform=\"translate(1088.04 1169.229)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <line id=\"Line_321\" data-name=\"Line 321\" x2=\"5.754\" transform=\"translate(1086.714 1176.415)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <line id=\"Line_322\" data-name=\"Line 322\" x2=\"5.88\" transform=\"translate(1084.586 1172.822)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n  <\/g>\n<\/svg><span>Estimated delivery:<\/span> 4-5 Days from order date.<\/p>"}},"23fc8ca2-22ab-4803-9f12-37a2242738b7":{"type":"Html_c","disabled":true,"settings":{"html":"<p class=\"shipping\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"27.969\" height=\"21.5\" viewbox=\"0 0 27.969 21.5\">\n  <g id=\"Group_25129\" data-name=\"Group 25129\" transform=\"translate(-1025.238 -1129.238)\">\n    <rect id=\"Rectangle_8802\" data-name=\"Rectangle 8802\" width=\"26.469\" height=\"20\" rx=\"3\" transform=\"translate(1025.988 1129.988)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/rect>\n    <line id=\"Line_323\" data-name=\"Line 323\" x2=\"26.469\" transform=\"translate(1025.988 1134.55)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <line id=\"Line_324\" data-name=\"Line 324\" x2=\"12.4\" transform=\"translate(1031.041 1138.374)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <line id=\"Line_325\" data-name=\"Line 325\" x2=\"16.364\" transform=\"translate(1031.041 1142.115)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n    <line id=\"Line_326\" data-name=\"Line 326\" x2=\"13.721\" transform=\"translate(1031.041 1145.855)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"><\/line>\n  <\/g>\n<\/svg><span>Free Shipping &amp; Returns:<\/span> On orders above $79<\/p>"}},"d0801597-0373-4cce-9004-cd5ceda4203d":{"type":"Html_c","disabled":true,"settings":{"html":"<p style=\"font-weight: 500;\">Shipping &amp; Return: <span style=\"font-weight: 400;\">Worldwide Shipping in all order $200, Delivery in 2-5 working days<\/span><\/p>"}},"html_c_YyJmT7":{"type":"Html_c","settings":{"html":"<section class=\"voguemine-features\">\n\n    <div class=\"features-grid\">\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0760\/1736\/9287\/files\/delivery-truck_2.png?v=1772181477\" alt=\"Free Shipping\">\n        <span>Free Shipping<\/span>\n      <\/div>\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0760\/1736\/9287\/files\/return_1.png?v=1772181475\" alt=\"7 Days Exchange\">\n        <span>7 Days Exchange<\/span>\n      <\/div>\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/ruppe_e34eb725-2118-40df-93f0-314252ac636b.png?v=1776413229\">\n        <span>Cash on Delivery<\/span>\n      <\/div>\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/express-delivery.png?v=1776413229\" alt=\"Gift Wrap\">\n        <span>Express Delivery<\/span>\n      <\/div>\n\n  \n  <\/div>\n<\/section>"}},"fba18659-f515-470a-ad98-83721b6d8b37":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"custom_liquid_7eJcMD":{"type":"custom_liquid","disabled":true,"settings":{"custom_liquid":"<section class=\"voguemine-features\">\n\n    <div class=\"features-grid\">\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0760\/1736\/9287\/files\/delivery-truck_2.png?v=1772181477\" alt=\"Free Shipping\">\n        <span>Free Shipping<\/span>\n      <\/div>\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0760\/1736\/9287\/files\/return_1.png?v=1772181475\" alt=\"7 Days Exchange\">\n        <span>7 Days Exchange<\/span>\n      <\/div>\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0760\/1736\/9287\/files\/shield.png?v=1772181476\" alt=\"High End Store Article\">\n        <span>100% Authentic<\/span>\n      <\/div>\n\n      <div class=\"feature-card\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0760\/1736\/9287\/files\/gift.png?v=1772181476\" alt=\"Gift Wrap\">\n        <span>Gift Wrap<\/span>\n      <\/div>\n\n  \n  <\/div>\n<\/section>"}},"description":{"type":"description","settings":{}},"custom_liquid_DbWMdj":{"type":"custom_liquid","disabled":true,"settings":{"custom_liquid":"<div class=\"top-bar\">\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/ruppe.png?v=1775890685\" alt=\"COD\" class=\"icon1\">\n    Cash on Delivery\n  <\/div>\n\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/transport_1.png?v=1775890685\" alt=\"Shipping\" class=\"icon1\">\n    Free Shipping\n  <\/div>\n\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/right.png?v=1775890685\" alt=\"Express\" class=\"icon1\">\n    Express Delivery\n  <\/div>\n\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0988\/3231\/8749\/files\/return_2.png?v=1775890685\" alt=\"Returns\" class=\"icon1\">\n    Easy Returns\n  <\/div>\n<\/div>"}},"0bfec2f5-5d58-468c-92f3-9a99aed291fb":{"type":"collapsible_tab","settings":{"heading":"How To Use ?","icon":"check_mark","content":"<p>{{ product.metafields.custom.how_to_use | metafield_tag }}<\/p>","page":""}},"collapsible-row-1":{"type":"collapsible_tab","settings":{"heading":"Reason To Love it","icon":"none","content":"<p>{{ product.metafields.custom.reason_to_love | metafield_tag }}<\/p>","page":"certificate"}},"collapsible_tab_Y9m78e":{"type":"collapsible_tab","disabled":true,"settings":{"heading":"Reason To Love it","icon":"none","content":"","page":""}},"3f7d416a-1acc-4807-845a-a90b79a879f9":{"type":"complementary","disabled":true,"settings":{"block_heading":"Complementary products","make_collapsible_row":true,"icon":"price_tag","product_list_limit":10,"products_per_page":4}},"8b614703-5d11-4efc-b5d0-e7e014e4d422":{"type":"payments_logo","disabled":true,"settings":{}},"judge_me_reviews_preview_badge_d6Webf":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{}}},"block_order":["title","price","fake_visitors_JaqMJq","caption","custom_liquid_ebCM4N","381e9805-2b9d-4e45-99ce-2a5f748ed6af","custom_liquid_HFdpPU","variant_picker","4c6c3629-d7b7-42eb-bd05-e2189e5f2c29","html_c_qJpL9V","68863399-17f6-4e5b-8b56-6ef125ef3168","23fc8ca2-22ab-4803-9f12-37a2242738b7","d0801597-0373-4cce-9004-cd5ceda4203d","html_c_YyJmT7","fba18659-f515-470a-ad98-83721b6d8b37","custom_liquid_7eJcMD","description","custom_liquid_DbWMdj","0bfec2f5-5d58-468c-92f3-9a99aed291fb","collapsible-row-1","collapsible_tab_Y9m78e","3f7d416a-1acc-4807-845a-a90b79a879f9","8b614703-5d11-4efc-b5d0-e7e014e4d422","judge_me_reviews_preview_badge_d6Webf"],"settings":{"page_full_width":true,"page_full_width_spacing":true,"enable_sticky_info":true,"enable_product_zoom":"default","gallery_layout":"thumbnail_slider","stacked_column_alignment":"one","thumb_carousel_layout":"thumbnail_slider_left","media_size":"medium","meta_style":"one-half","hide_variants":false,"enable_video_looping":false,"tab_position":"right","tab_style":"toggle","show_wishlist":false,"show_review_tab":false,"rating_script":"<div style=\"clear:both\"><\/div>\n<div\n  id=\"judgeme_product_reviews\"\n  class=\"jdgm-widget jdgm-review-widget\"\n  data-product-title=\"{{ product.title | escape }}\"\n  data-id=\"{{ product.id }}\"\n  data-auto-install=\"false\"\n>\n  {{ product.metafields.judgeme.widget }}\n<\/div>","enable_sticky_bar":false,"sidebar_settings":"no-sidebar","show_menu":false,"menu_title":"Category","linklist":"","show_image":false,"sidebar_title":"TOP SALE","sidebar_button":"Shop Now","sidebar_link":"\/","show_collection":false,"collection_title":"Featured products","collection":"collection-1","collection_limit":5,"show_carousel":false,"carousel_title":"Featured items","iconwithtext":"Further info","heading_1":"Free Shipping","heading_1_text":"Free Shipping World wide","heading_2":"Free Shipping","heading_2_text":"Free Shipping World wide","heading_3":"Free Shipping","heading_3_text":"Free Shipping World wide","html":"","enable_enquiry":false,"padding_top":35,"padding_bottom":60,"display_back_in_stock":true,"notify_text":"","notify_error":"","open_first_collapsible_row":true,"choose_label":"Related Accessories","show_share":false,"share_label":"","show_quantity_selector":true}},"marquee_section_44hkdn":{"type":"marquee-section","blocks":{"text_UMDd39":{"type":"text","settings":{"block_heading":"Safe & sustainable"}},"text_Hy7WKD":{"type":"text","settings":{"block_heading":"For the real you"}},"text_QwgUBK":{"type":"text","settings":{"block_heading":"High performance formulation"}}},"block_order":["text_UMDd39","text_Hy7WKD","text_QwgUBK"],"name":"Marquee","settings":{"page_full_width":true,"page_full_width_spacing":false,"speed":6,"marquee_image":"shopify:\/\/shop_images\/Home-Page-Icons-New-03_9ad9dc53-b471-4d64-8d52-561791b4df5f.png","color_scheme":"accent-1","heading_size":"h3","gradient_text_background":"","marquee_padding":36,"padding_top":36,"padding_bottom":36}},"product-recommendations":{"type":"product-recommendations","disabled":true,"settings":{"page_full_width":false,"page_full_width_spacing":false,"heading":"Related Products","heading_size":"h2","sub_heading":"Top Rated","column_alignment":"center","products_to_show":8,"desktop_column":6,"laptop_column":4,"tablet_column":2,"mobile_column":2,"centered_slide":true,"swiper_pagination":false,"swiper_navigation":true,"auto_play":0,"swipe_on_mobile":true,"arrow_on_mobile":false,"color_scheme":"background-1","image_ratio":"square","show_secondary_image":true,"show_vendor":false,"show_rating":false,"padding_top":25,"padding_bottom":15}},"17767696674ced4d46":{"type":"apps","blocks":{"judge_me_reviews_review_widget_cJGi4i":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"review_data":"sample_data","max_width":1200,"show_shop_reviews":false,"empty_state":"empty_widget"}}},"block_order":["judge_me_reviews_review_widget_cJGi4i"],"settings":{"include_margins":true}},"new_product_recommended_Gmk9XN":{"type":"new-product-recommended","name":"New Recommended Products","settings":{"heading":"You May Also Like"}},"1700121402aa445ab6":{"type":"apps","settings":{"include_margins":true}},"product-next-prev-navigation":{"type":"product-next-prev-navigation","settings":{"page_full_width":false,"prev_next_products":true}}},"order":["main","marquee_section_44hkdn","product-recommendations","17767696674ced4d46","new_product_recommended_Gmk9XN","1700121402aa445ab6","product-next-prev-navigation"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "fake_visitors_JaqMJq": {
+          "type": "fake_visitors",
+          "disabled": true,
+          "settings": {
+            "text": "People are Viewing Right Now",
+            "min_count": 50,
+            "max_count": 200
+          }
+        },
+        "caption": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Grab the best quality fabrics with free size.",
+            "text_style": "body"
+          }
+        },
+        "custom_liquid_ebCM4N": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{% if product.metafields.custom.product_tags != blank %}\n  <div class=\"custom-product-tags\">\n    {% for tag in product.metafields.custom.product_tags.value %}\n      <span class=\"custom-tag\">{{ tag }}</span>\n    {% endfor %}\n  </div>\n{% endif %}"
+          }
+        },
+        "381e9805-2b9d-4e45-99ce-2a5f748ed6af": {
+          "type": "size-popup",
+          "disabled": true,
+          "settings": {
+            "text": "File Size Chart",
+            "page": "size-chart"
+          }
+        },
+        "custom_liquid_HFdpPU": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"viewing-box\">\n  \n  <span class=\"eye-icon\">\n    <!-- SVG Eye Icon -->\n    <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#222\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n      <path d=\"M1 12C3.5 7 7.5 4 12 4s8.5 3 11 8c-2.5 5-6.5 8-11 8s-8.5-3-11-8z\"/>\n      <circle cx=\"12\" cy=\"12\" r=\"3\"/>\n    </svg>\n  </span>\n\n  <span class=\"viewing-text\">\n    <b id=\"viewingCount\">52</b> People are Viewing Right Now\n  </span>\n\n</div>"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "picker_method": "custom_color"
+          }
+        },
+        "4c6c3629-d7b7-42eb-bd05-e2189e5f2c29": {
+          "type": "deal",
+          "disabled": true,
+          "settings": {}
+        },
+        "html_c_qJpL9V": {
+          "type": "Html_c",
+          "disabled": true,
+          "settings": {
+            "html": "<div class=\"trust-section\">\n  \n  <div class=\"trust-item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/ruppe.png?v=1775890685\">\n    <span>Cash on Delivery</span>\n  </div>\n\n  <div class=\"trust-item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/transport_1.png?v=1775890685\">\n    <span>Free Shipping</span>\n  </div>\n\n  <div class=\"trust-item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/right.png?v=1775890685\">\n    <span>Express Delivery</span>\n  </div>\n\n  <div class=\"trust-item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/return_2.png?v=1775890685\">\n    <span>Easy Returns</span>\n  </div>\n\n</div>"
+          }
+        },
+        "68863399-17f6-4e5b-8b56-6ef125ef3168": {
+          "type": "Html_c",
+          "settings": {
+            "html": "<p class=\"delivery\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"38.197\" height=\"21.5\" viewbox=\"0 0 38.197 21.5\">\n  <g id=\"Group_25127\" data-name=\"Group 25127\" transform=\"translate(-1083.836 -1161.835)\">\n    <path id=\"Path_54444\" data-name=\"Path 54444\" d=\"M76.155,6.988H95.1a.132.132,0,0,1,.132.132V23.868\" transform=\"translate(1014.583 1155.597)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></path>\n    <line id=\"Line_317\" data-name=\"Line 317\" x1=\"4.357\" transform=\"translate(1090.739 1179.465)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <line id=\"Line_318\" data-name=\"Line 318\" x1=\"11.098\" transform=\"translate(1101.294 1179.465)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <path id=\"Path_54445\" data-name=\"Path 54445\" d=\"M291.733,32.235h6.362a.4.4,0,0,1,.338.188l4.479,7.216a1.261,1.261,0,0,1,.19.665v5.1a1.46,1.46,0,0,1-1.46,1.46h-1.3\" transform=\"translate(818.182 1132.596)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></path>\n    <circle id=\"Ellipse_200\" data-name=\"Ellipse 200\" cx=\"3.068\" cy=\"3.068\" r=\"3.068\" transform=\"translate(1112.393 1176.449)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></circle>\n    <path id=\"Path_54446\" data-name=\"Path 54446\" d=\"M131.987,165.909a3.068,3.068,0,1,1-3.068-3.068A3.068,3.068,0,0,1,131.987,165.909Z\" transform=\"translate(969.308 1013.608)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></path>\n    <path id=\"Path_54447\" data-name=\"Path 54447\" d=\"M340,62.32h-3.635a.293.293,0,0,0-.289.346l.765,4.31a.415.415,0,0,0,.408.341h6.064\" transform=\"translate(777.784 1105.187)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></path>\n    <line id=\"Line_319\" data-name=\"Line 319\" x2=\"4.116\" transform=\"translate(1086.602 1165.636)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <line id=\"Line_320\" data-name=\"Line 320\" x2=\"4.389\" transform=\"translate(1088.04 1169.229)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <line id=\"Line_321\" data-name=\"Line 321\" x2=\"5.754\" transform=\"translate(1086.714 1176.415)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <line id=\"Line_322\" data-name=\"Line 322\" x2=\"5.88\" transform=\"translate(1084.586 1172.822)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n  </g>\n</svg><span>Estimated delivery:</span> 4-5 Days from order date.</p>"
+          }
+        },
+        "23fc8ca2-22ab-4803-9f12-37a2242738b7": {
+          "type": "Html_c",
+          "disabled": true,
+          "settings": {
+            "html": "<p class=\"shipping\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"27.969\" height=\"21.5\" viewbox=\"0 0 27.969 21.5\">\n  <g id=\"Group_25129\" data-name=\"Group 25129\" transform=\"translate(-1025.238 -1129.238)\">\n    <rect id=\"Rectangle_8802\" data-name=\"Rectangle 8802\" width=\"26.469\" height=\"20\" rx=\"3\" transform=\"translate(1025.988 1129.988)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></rect>\n    <line id=\"Line_323\" data-name=\"Line 323\" x2=\"26.469\" transform=\"translate(1025.988 1134.55)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <line id=\"Line_324\" data-name=\"Line 324\" x2=\"12.4\" transform=\"translate(1031.041 1138.374)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <line id=\"Line_325\" data-name=\"Line 325\" x2=\"16.364\" transform=\"translate(1031.041 1142.115)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n    <line id=\"Line_326\" data-name=\"Line 326\" x2=\"13.721\" transform=\"translate(1031.041 1145.855)\" fill=\"none\" stroke=\"currentcolor\" stroke-linecap=\"round\" stroke-width=\"1.5\"></line>\n  </g>\n</svg><span>Free Shipping &amp; Returns:</span> On orders above $79</p>"
+          }
+        },
+        "d0801597-0373-4cce-9004-cd5ceda4203d": {
+          "type": "Html_c",
+          "disabled": true,
+          "settings": {
+            "html": "<p style=\"font-weight: 500;\">Shipping &amp; Return: <span style=\"font-weight: 400;\">Worldwide Shipping in all order $200, Delivery in 2-5 working days</span></p>"
+          }
+        },
+        "html_c_YyJmT7": {
+          "type": "Html_c",
+          "settings": {
+            "html": "<section class=\"voguemine-features\">\n\n    <div class=\"features-grid\">\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0760/1736/9287/files/delivery-truck_2.png?v=1772181477\" alt=\"Free Shipping\">\n        <span>Free Shipping</span>\n      </div>\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0760/1736/9287/files/return_1.png?v=1772181475\" alt=\"7 Days Exchange\">\n        <span>7 Days Exchange</span>\n      </div>\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/ruppe_e34eb725-2118-40df-93f0-314252ac636b.png?v=1776413229\">\n        <span>Cash on Delivery</span>\n      </div>\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/express-delivery.png?v=1776413229\" alt=\"Gift Wrap\">\n        <span>Express Delivery</span>\n      </div>\n\n  \n  </div>\n</section>"
+          }
+        },
+        "fba18659-f515-470a-ad98-83721b6d8b37": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "custom_liquid_7eJcMD": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<section class=\"voguemine-features\">\n\n    <div class=\"features-grid\">\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0760/1736/9287/files/delivery-truck_2.png?v=1772181477\" alt=\"Free Shipping\">\n        <span>Free Shipping</span>\n      </div>\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0760/1736/9287/files/return_1.png?v=1772181475\" alt=\"7 Days Exchange\">\n        <span>7 Days Exchange</span>\n      </div>\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0760/1736/9287/files/shield.png?v=1772181476\" alt=\"High End Store Article\">\n        <span>100% Authentic</span>\n      </div>\n\n      <div class=\"feature-card\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0760/1736/9287/files/gift.png?v=1772181476\" alt=\"Gift Wrap\">\n        <span>Gift Wrap</span>\n      </div>\n\n  \n  </div>\n</section>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "custom_liquid_DbWMdj": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"top-bar\">\n  <div class=\"item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/ruppe.png?v=1775890685\" alt=\"COD\" class=\"icon1\">\n    Cash on Delivery\n  </div>\n\n  <div class=\"item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/transport_1.png?v=1775890685\" alt=\"Shipping\" class=\"icon1\">\n    Free Shipping\n  </div>\n\n  <div class=\"item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/right.png?v=1775890685\" alt=\"Express\" class=\"icon1\">\n    Express Delivery\n  </div>\n\n  <div class=\"item\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0988/3231/8749/files/return_2.png?v=1775890685\" alt=\"Returns\" class=\"icon1\">\n    Easy Returns\n  </div>\n</div>"
+          }
+        },
+        "0bfec2f5-5d58-468c-92f3-9a99aed291fb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How To Use ?",
+            "icon": "check_mark",
+            "content": "<p>{{ product.metafields.custom.how_to_use | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Reason To Love it",
+            "icon": "none",
+            "content": "<p>{{ product.metafields.custom.reason_to_love | metafield_tag }}</p>",
+            "page": "certificate"
+          }
+        },
+        "collapsible_tab_Y9m78e": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Reason To Love it",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "3f7d416a-1acc-4807-845a-a90b79a879f9": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Complementary products",
+            "make_collapsible_row": true,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 4
+          }
+        },
+        "8b614703-5d11-4efc-b5d0-e7e014e4d422": {
+          "type": "payments_logo",
+          "disabled": true,
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_d6Webf": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "fake_visitors_JaqMJq",
+        "caption",
+        "custom_liquid_ebCM4N",
+        "381e9805-2b9d-4e45-99ce-2a5f748ed6af",
+        "custom_liquid_HFdpPU",
+        "variant_picker",
+        "4c6c3629-d7b7-42eb-bd05-e2189e5f2c29",
+        "html_c_qJpL9V",
+        "68863399-17f6-4e5b-8b56-6ef125ef3168",
+        "23fc8ca2-22ab-4803-9f12-37a2242738b7",
+        "d0801597-0373-4cce-9004-cd5ceda4203d",
+        "html_c_YyJmT7",
+        "fba18659-f515-470a-ad98-83721b6d8b37",
+        "custom_liquid_7eJcMD",
+        "description",
+        "custom_liquid_DbWMdj",
+        "0bfec2f5-5d58-468c-92f3-9a99aed291fb",
+        "collapsible-row-1",
+        "collapsible_tab_Y9m78e",
+        "3f7d416a-1acc-4807-845a-a90b79a879f9",
+        "8b614703-5d11-4efc-b5d0-e7e014e4d422",
+        "judge_me_reviews_preview_badge_d6Webf"
+      ],
+      "settings": {
+        "page_full_width": true,
+        "page_full_width_spacing": true,
+        "enable_sticky_info": true,
+        "enable_product_zoom": "default",
+        "gallery_layout": "thumbnail_slider",
+        "stacked_column_alignment": "one",
+        "thumb_carousel_layout": "thumbnail_slider_left",
+        "media_size": "medium",
+        "meta_style": "one-half",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "tab_position": "right",
+        "tab_style": "toggle",
+        "show_wishlist": false,
+        "show_review_tab": false,
+        "rating_script": "<div style=\"clear:both\"></div>\n<div\n  id=\"judgeme_product_reviews\"\n  class=\"jdgm-widget jdgm-review-widget\"\n  data-product-title=\"{{ product.title | escape }}\"\n  data-id=\"{{ product.id }}\"\n  data-auto-install=\"false\"\n>\n  {{ product.metafields.judgeme.widget }}\n</div>",
+        "enable_sticky_bar": false,
+        "sidebar_settings": "no-sidebar",
+        "show_menu": false,
+        "menu_title": "Category",
+        "linklist": "",
+        "show_image": false,
+        "sidebar_title": "TOP SALE",
+        "sidebar_button": "Shop Now",
+        "sidebar_link": "/",
+        "show_collection": false,
+        "collection_title": "Featured products",
+        "collection": "collection-1",
+        "collection_limit": 5,
+        "show_carousel": false,
+        "carousel_title": "Featured items",
+        "iconwithtext": "Further info",
+        "heading_1": "Free Shipping",
+        "heading_1_text": "Free Shipping World wide",
+        "heading_2": "Free Shipping",
+        "heading_2_text": "Free Shipping World wide",
+        "heading_3": "Free Shipping",
+        "heading_3_text": "Free Shipping World wide",
+        "html": "",
+        "enable_enquiry": false,
+        "padding_top": 35,
+        "padding_bottom": 60,
+        "display_back_in_stock": true,
+        "notify_text": "",
+        "notify_error": "",
+        "open_first_collapsible_row": true,
+        "choose_label": "Related Accessories",
+        "show_share": false,
+        "share_label": "",
+        "show_quantity_selector": true
+      }
+    },
+    "marquee_section_44hkdn": {
+      "type": "marquee-section",
+      "blocks": {
+        "text_UMDd39": {
+          "type": "text",
+          "settings": {
+            "block_heading": "Safe & sustainable"
+          }
+        },
+        "text_Hy7WKD": {
+          "type": "text",
+          "settings": {
+            "block_heading": "For the real you"
+          }
+        },
+        "text_QwgUBK": {
+          "type": "text",
+          "settings": {
+            "block_heading": "High performance formulation"
+          }
+        }
+      },
+      "block_order": [
+        "text_UMDd39",
+        "text_Hy7WKD",
+        "text_QwgUBK"
+      ],
+      "name": "Marquee",
+      "settings": {
+        "page_full_width": true,
+        "page_full_width_spacing": false,
+        "speed": 6,
+        "marquee_image": "shopify://shop_images/Home-Page-Icons-New-03_9ad9dc53-b471-4d64-8d52-561791b4df5f.png",
+        "color_scheme": "accent-1",
+        "heading_size": "h3",
+        "gradient_text_background": "",
+        "marquee_padding": 36,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "page_full_width": false,
+        "page_full_width_spacing": false,
+        "heading": "Related Products",
+        "heading_size": "h2",
+        "sub_heading": "Top Rated",
+        "column_alignment": "center",
+        "products_to_show": 8,
+        "desktop_column": 6,
+        "laptop_column": 4,
+        "tablet_column": 2,
+        "mobile_column": 2,
+        "centered_slide": true,
+        "swiper_pagination": false,
+        "swiper_navigation": true,
+        "auto_play": 0,
+        "swipe_on_mobile": true,
+        "arrow_on_mobile": false,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 25,
+        "padding_bottom": 15
+      }
+    },
+    "17767696674ced4d46": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_cJGi4i": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_cJGi4i"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "new_product_recommended_Gmk9XN": {
+      "type": "new-product-recommended",
+      "name": "New Recommended Products",
+      "settings": {
+        "heading": "You May Also Like"
+      }
+    },
+    "featured_collection_ybc7eT": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "page_full_width": false,
+        "page_full_width_spacing": false,
+        "title": "exclusive combo",
+        "heading_size": "h1",
+        "sub_heading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style_secondary": false,
+        "column_alignment": "center",
+        "collection": "combo",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_new_tag": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "custom_class_name": "",
+        "swiper_enable": true,
+        "desktop_column": 4,
+        "laptop_column": 4,
+        "tablet_column": 4,
+        "mobile_column": 2,
+        "centered_slide": true,
+        "swiper_pagination": false,
+        "swiper_navigation": false,
+        "auto_play": 0,
+        "swipe_on_mobile": false,
+        "arrow_on_mobile": false,
+        "columns_mobile": "2"
+      }
+    },
+    "1700121402aa445ab6": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "product-next-prev-navigation": {
+      "type": "product-next-prev-navigation",
+      "settings": {
+        "page_full_width": false,
+        "prev_next_products": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "marquee_section_44hkdn",
+    "product-recommendations",
+    "17767696674ced4d46",
+    "new_product_recommended_Gmk9XN",
+    "featured_collection_ybc7eT",
+    "1700121402aa445ab6",
+    "product-next-prev-navigation"
+  ]
+}
