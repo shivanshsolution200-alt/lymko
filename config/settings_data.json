@@ -476,7 +476,7 @@
           "image_8VryjE"
         ],
         "settings": {
-          "display_recent_purchase": true,
+          "display_recent_purchase": false,
           "placement": "right",
           "text": "Someone purchased"
         }
