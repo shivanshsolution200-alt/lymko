@@ -256,6 +256,58 @@
         "show_quantity_selector": true
       }
     },
+    "cosmetic_features_bar_nhitUF": {
+      "type": "cosmetic-features-bar",
+      "blocks": {
+        "feature_krFgph": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "shipping",
+            "title": "Free Shipping",
+            "text": "On all prepaid orders"
+          }
+        },
+        "feature_6XVPxp": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "customers",
+            "title": "250000+ Happy Customers",
+            "text": "Loved by beauty buyers"
+          }
+        },
+        "feature_JRgzjQ": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "payment",
+            "title": "Secure Payment",
+            "text": "100% safe checkout"
+          }
+        },
+        "feature_kbEazX": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "quality",
+            "title": "Assured Quality",
+            "text": "Premium skincare products"
+          }
+        }
+      },
+      "block_order": [
+        "feature_krFgph",
+        "feature_6XVPxp",
+        "feature_JRgzjQ",
+        "feature_kbEazX"
+      ],
+      "name": "Cosmetic Features",
+      "settings": {
+        "background": "#F7F7F2",
+        "icon_background": "#899B79",
+        "title_color": "#292929",
+        "text_color": "#666666",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
     "marquee_section_44hkdn": {
       "type": "marquee-section",
       "blocks": {
@@ -283,6 +335,7 @@
         "text_Hy7WKD",
         "text_QwgUBK"
       ],
+      "disabled": true,
       "name": "Marquee",
       "settings": {
         "page_full_width": true,
@@ -412,6 +465,7 @@
   },
   "order": [
     "main",
+    "cosmetic_features_bar_nhitUF",
     "marquee_section_44hkdn",
     "product-recommendations",
     "17767696674ced4d46",
