@@ -90,6 +90,7 @@
         "slide_WzMJCb": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/All_Product_1.png",
             "mobile_image": "shopify://shop_images/Premium_Serum_Combo.jpg",
             "eyebrow": "",
             "heading": "",
