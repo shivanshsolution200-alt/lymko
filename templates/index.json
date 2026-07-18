@@ -109,7 +109,7 @@
         "page_full_width": false,
         "page_full_width_spacing": true,
         "slider_image_height": 800,
-        "slider_image_height_laptop": 700,
+        "slider_image_height_laptop": 800,
         "slider_image_height_tab": 700,
         "slider_image_height_mobile": 700,
         "swiper_pagination": false,
