@@ -549,25 +549,25 @@
             "collection": "face-serums"
           }
         },
-        "tab_8mXi9U": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Face Wash",
-            "collection": "face-wash"
-          }
-        },
         "tab_X4iHJW": {
           "type": "tab",
           "settings": {
             "tab_name": "Hair Care",
             "collection": "hair-care"
           }
+        },
+        "tab_8mXi9U": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Face Wash",
+            "collection": "face-wash"
+          }
         }
       },
       "block_order": [
         "tab_jryHtn",
-        "tab_8mXi9U",
-        "tab_X4iHJW"
+        "tab_X4iHJW",
+        "tab_8mXi9U"
       ],
       "name": "Skin Type Tabs",
       "settings": {
