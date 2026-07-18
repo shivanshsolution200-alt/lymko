@@ -565,24 +565,46 @@
         "heading_alignment": "center"
       }
     },
-    "shop_by_skin_RHHYjb": {
-      "type": "shop-by-skin",
-      "blocks": {
-        "tab_CkkQLC": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Combo",
-            "collection": "combo"
-          }
-        }
-      },
-      "block_order": [
-        "tab_CkkQLC"
-      ],
-      "name": "Skin Type Tabs",
+    "featured_collection_3EBBn8": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "heading": "Shop By Skin Type",
-        "heading_alignment": "center"
+        "page_full_width": false,
+        "page_full_width_spacing": true,
+        "title": "exclusive combo",
+        "heading_size": "h2",
+        "sub_heading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style_secondary": false,
+        "column_alignment": "center",
+        "collection": "combo",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_new_tag": true,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "custom_class_name": "",
+        "swiper_enable": true,
+        "desktop_column": 4,
+        "laptop_column": 3,
+        "tablet_column": 3,
+        "mobile_column": 2,
+        "centered_slide": false,
+        "swiper_pagination": false,
+        "swiper_navigation": true,
+        "auto_play": 0,
+        "swipe_on_mobile": false,
+        "arrow_on_mobile": false,
+        "columns_mobile": "2"
       }
     },
     "specification_block_Y7LAY7": {
@@ -1078,7 +1100,7 @@
     "grid_banner_slider_yGnEgj",
     "deal_banner_aXn6CT",
     "shop_by_skin_pikKnX",
-    "shop_by_skin_RHHYjb",
+    "featured_collection_3EBBn8",
     "specification_block_Y7LAY7",
     "reels_section_VXtTkE",
     "image_with_text_URtQMH",
