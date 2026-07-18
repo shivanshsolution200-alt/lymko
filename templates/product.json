@@ -372,7 +372,7 @@
         "products_to_show": 8,
         "columns_desktop": 4,
         "show_view_all": true,
-        "view_all_style": "solid",
+        "view_all_style": "link",
         "color_scheme": "background-1",
         "image_ratio": "portrait",
         "show_secondary_image": false,
@@ -415,8 +415,8 @@
     "marquee_section_44hkdn",
     "product-recommendations",
     "17767696674ced4d46",
-    "new_product_recommended_Gmk9XN",
     "featured_collection_ybc7eT",
+    "new_product_recommended_Gmk9XN",
     "1700121402aa445ab6",
     "product-next-prev-navigation"
   ]
