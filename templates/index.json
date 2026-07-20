@@ -636,7 +636,7 @@
         "centered_slide": false,
         "swiper_pagination": false,
         "swiper_navigation": true,
-        "auto_play": 0,
+        "auto_play": 3,
         "swipe_on_mobile": false,
         "arrow_on_mobile": true,
         "columns_mobile": "1"
