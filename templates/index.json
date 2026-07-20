@@ -394,14 +394,14 @@
         "desktop_column": 4,
         "laptop_column": 3,
         "tablet_column": 3,
-        "mobile_column": 2,
+        "mobile_column": 1,
         "centered_slide": false,
         "swiper_pagination": false,
         "swiper_navigation": true,
         "auto_play": 0,
         "swipe_on_mobile": false,
         "arrow_on_mobile": false,
-        "columns_mobile": "2"
+        "columns_mobile": "1"
       }
     },
     "rich_text_fMaciX": {
@@ -632,14 +632,14 @@
         "desktop_column": 4,
         "laptop_column": 3,
         "tablet_column": 3,
-        "mobile_column": 2,
+        "mobile_column": 1,
         "centered_slide": false,
         "swiper_pagination": false,
         "swiper_navigation": true,
         "auto_play": 0,
         "swipe_on_mobile": false,
         "arrow_on_mobile": false,
-        "columns_mobile": "2"
+        "columns_mobile": "1"
       }
     },
     "rich_text_BKF8d6": {
