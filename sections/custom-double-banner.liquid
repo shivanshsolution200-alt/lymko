@@ -1,3 +1,4 @@
+```liquid
 {% schema %}
 {
   "name": "Custom Double Banner",
@@ -10,7 +11,12 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Banner Image"
+          "label": "Desktop Banner Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Banner Image"
         },
         {
           "type": "collection",
@@ -49,22 +55,50 @@
     {% for block in section.blocks %}
       {% assign col = block.settings.collection %}
 
-      <a href="{{ col.url }}" class="cdb-item">
+      <a href="{{ col.url }}" class="cdb-item" {{ block.shopify_attributes }}>
 
         <!-- Image -->
         <div class="cdb-image">
+
           {% if block.settings.image != blank %}
-            <img src="{{ block.settings.image | img_url: '1200x' }}" alt="">
+            <img
+              class="cdb-desktop-image"
+              src="{{ block.settings.image | image_url: width: 1600 }}"
+              alt="{{ block.settings.heading | escape }}"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
           {% endif %}
+
+          {% if block.settings.mobile_image != blank %}
+            <img
+              class="cdb-mobile-image"
+              src="{{ block.settings.mobile_image | image_url: width: 1000 }}"
+              alt="{{ block.settings.heading | escape }}"
+              width="{{ block.settings.mobile_image.width }}"
+              height="{{ block.settings.mobile_image.height }}"
+            >
+          {% elsif block.settings.image != blank %}
+            <img
+              class="cdb-mobile-image"
+              src="{{ block.settings.image | image_url: width: 1000 }}"
+              alt="{{ block.settings.heading | escape }}"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {% endif %}
+
         </div>
 
         <!-- Overlay -->
         <div class="cdb-overlay">
           <h2>{{ block.settings.heading }}</h2>
 
-          {% comment %} <span class="cdb-btn">
-            {{ block.settings.button_text }}
-          </span> {% endcomment %}
+          {% comment %}
+            <span class="cdb-btn">
+              {{ block.settings.button_text }}
+            </span>
+          {% endcomment %}
         </div>
 
       </a>
@@ -89,7 +123,6 @@
 .cdb-item {
   position: relative;
   display: block;
-  {% comment %} border-radius: 20px; {% endcomment %}
   overflow: hidden;
 }
 
@@ -101,10 +134,15 @@
   transition: 0.5s ease;
 }
 
-{% comment %} /* HOVER */
-.cdb-item:hover img {
-  transform: scale(1.05);
-} {% endcomment %}
+/* DESKTOP IMAGE */
+.cdb-desktop-image {
+  display: block;
+}
+
+/* MOBILE IMAGE */
+.cdb-mobile-image {
+  display: none;
+}
 
 /* OVERLAY */
 .cdb-overlay {
@@ -140,33 +178,44 @@
   inset: 0;
   border-radius: 20px;
   padding: 2px;
-  {% comment %} background: linear-gradient(90deg, #caa64b, #f5d27a); {% endcomment %}
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
-/* RESPONSIVE */
-@media(max-width: 768px) {
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
   .cdb-container {
     grid-template-columns: 1fr;
   }
 
-  .cdb-image img {
+  /* Hide Desktop Image */
+  .cdb-desktop-image {
+    display: none;
+  }
+
+  /* Show Mobile Image */
+  .cdb-mobile-image {
+    display: block;
+    width: 100%;
     height: auto;
   }
 
   .cdb-overlay {
     padding: 20px;
   }
+
   .cdb-section {
-    padding: 0px 11px;
-}
+    padding: 0 11px;
+  }
 
   .cdb-overlay h2 {
     font-size: 22px;
   }
 }
 </style>
+```
