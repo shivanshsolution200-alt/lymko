@@ -638,7 +638,7 @@
         "swiper_navigation": true,
         "auto_play": 0,
         "swipe_on_mobile": false,
-        "arrow_on_mobile": false,
+        "arrow_on_mobile": true,
         "columns_mobile": "1"
       }
     },
