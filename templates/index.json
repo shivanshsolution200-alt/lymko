@@ -279,6 +279,15 @@
             "button_link": "",
             "button_style_secondary": false
           }
+        },
+        "featured_collection_bzj7VW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "combo",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
         }
       },
       "block_order": [
@@ -286,7 +295,8 @@
         "featured_collection_EjLQB6",
         "featured_collection_DTjiKr",
         "featured_collection_LPC3dD",
-        "featured_collection_yPLztV"
+        "featured_collection_yPLztV",
+        "featured_collection_bzj7VW"
       ],
       "custom_css": [
         ".card:not(.ratio) > .card__content {padding-bottom: 0px !important; padding-top: 20px;}",
@@ -434,12 +444,12 @@
         "text_bgda9Y": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/Cleanse-1772795350807.jpg",
+            "block_image": "shopify://shop_images/facewash_step_1.png",
             "show_content": true,
             "block_title": "Step 1",
             "enable_title_link": false,
             "block_sub_title": "",
-            "block_description": "Cleanse",
+            "block_description": "Face Wash",
             "block_button_text": "",
             "block_button_link": "shopify://collections/moisturizer",
             "desktop_content_alignment": "left",
@@ -450,12 +460,12 @@
         "text_LY6JVB": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/Treat-1772795386443.webp",
+            "block_image": "shopify://shop_images/face_serum_step_2.png",
             "show_content": true,
             "block_title": "Step 2",
             "enable_title_link": false,
             "block_sub_title": "",
-            "block_description": "Treat",
+            "block_description": "Face Serums",
             "block_button_text": "",
             "block_button_link": "",
             "desktop_content_alignment": "left",
@@ -466,7 +476,7 @@
         "text_hDU7hg": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/Moisturise-1772795424881.jpg",
+            "block_image": "shopify://shop_images/Moisturiser_step_3.png",
             "show_content": true,
             "block_title": "Step 3",
             "enable_title_link": false,
@@ -482,12 +492,12 @@
         "text_eCXKhC": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/Protect-1772795446632.jpg",
+            "block_image": "shopify://shop_images/sunscreen_step_4.png",
             "show_content": true,
             "block_title": "Step 4",
             "enable_title_link": false,
             "block_sub_title": "",
-            "block_description": "Protect",
+            "block_description": "Suns Creen",
             "block_button_text": "",
             "block_button_link": "",
             "desktop_content_alignment": "left",
