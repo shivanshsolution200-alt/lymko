@@ -741,7 +741,7 @@
         "column_alignment": "left",
         "button_style_secondary": false,
         "enable_image": true,
-        "primary_image": "shopify://shop_images/image_1_2.png",
+        "primary_image": "shopify://shop_images/skin_side_image.png",
         "primary_title": "",
         "primary_sub_title": "",
         "primary_description": "",
