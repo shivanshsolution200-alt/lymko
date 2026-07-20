@@ -350,6 +350,7 @@
           "type": "banner",
           "settings": {
             "image": "shopify://shop_images/combo_1_2.png",
+            "mobile_image": "shopify://shop_images/brighten_and_glow.png",
             "collection": "combo",
             "heading": "",
             "button_text": "SHOP NOW"
@@ -359,6 +360,7 @@
           "type": "banner",
           "settings": {
             "image": "shopify://shop_images/combo_2_3.png",
+            "mobile_image": "shopify://shop_images/protect_and_hydrate.png",
             "collection": "combo",
             "heading": "",
             "button_text": "SHOP NOW"
