@@ -66,8 +66,8 @@
         "slide_bw4zVc": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/lymko_website_banner_1_1.png",
-            "mobile_image": "shopify://shop_images/resize_mobile_banner.png",
+            "image": "shopify://shop_images/changes_banner_2.png",
+            "mobile_image": "shopify://shop_images/changes_mobile_banner_1.png",
             "eyebrow": "",
             "heading": "",
             "button_label": "",
@@ -741,7 +741,7 @@
         "column_alignment": "left",
         "button_style_secondary": false,
         "enable_image": true,
-        "primary_image": "shopify://shop_images/skin_side_image.png",
+        "primary_image": "shopify://shop_images/skin_side_image_1.png",
         "primary_title": "",
         "primary_sub_title": "",
         "primary_description": "",
