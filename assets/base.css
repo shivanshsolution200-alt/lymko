@@ -5092,6 +5092,11 @@ a.full-unstyled-link {
 header#header {
   width: 100%;
   z-index: 9999;
+  background: #fff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 header#header.temp-sticky {
@@ -5099,4 +5104,15 @@ header#header.temp-sticky {
   top: 0;
   left: 0;
   right: 0;
+
+  background: #fff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  transform: translateY(0);
+}
+
+/* Optional: very light shadow */
+header#header.temp-sticky {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
