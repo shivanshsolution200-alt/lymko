@@ -217,7 +217,10 @@
           </h3>
         {% render 'price', product: card_product, price_class: '' %}      
          <span class="caption-large light">{{ block.settings.description | escape }}</span>
-       <div class="card-information review">
+       
+         
+        </div>
+        <div class="card-information review">
             {%- if show_rating  -%}
                    <!-- Start of Judge.me code -->
   <div class='jdgm-widget jdgm-preview-badge'>
@@ -263,8 +266,6 @@
                {%- endif -%}
           </div>
        </div>
-         
-        </div>
         <div class="card__badge {{ settings.badge_position }}">
           {%- if card_product.available == false -%}
             <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
