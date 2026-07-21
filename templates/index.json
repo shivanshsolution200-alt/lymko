@@ -299,7 +299,7 @@
         "featured_collection_bzj7VW"
       ],
       "custom_css": [
-        ".card:not(.ratio) > .card__content {padding-bottom: 0px !important; padding-top: 20px;}",
+        ".card:not(.ratio) > .card__content {padding-bottom: 0px !important; padding-top: 10px;}",
         ".collection-list .swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal {margin-top: 20px; margin-bottom: 30px;}",
         ".collection-list.overlay .collection-list__item .card__content {position: absolute; right: 0; bottom: 0; left: 0; display: flex; margin: auto; width: fit-content; height: fit-content; transition: all 0.3s linear; padding: 0; height: 100%; align-items: center;}",
         ".collection-list__item {max-width: 10%;}"
