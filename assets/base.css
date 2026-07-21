@@ -4621,7 +4621,7 @@ nav.breadcrumb.text-center {
     padding: 0px !important;
 }
     aside.facets-wrapper.sidebar-sticky {
-        padding: 0 30px 5px 0px;
+        padding: 0 30px 5px 0px !important;
     }
 }
 @media screen and (min-width: 1200px) and (max-width: 1539px) {
