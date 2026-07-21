@@ -886,6 +886,9 @@
         "text_MhYmEB",
         "button_iyd48P"
       ],
+      "custom_css": [
+        ".image-with-text__media-item.image-with-text__media-item--medium.image-with-text__media-item--middle.grid__item {padding-bottom: 25px;}"
+      ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "page_full_width": false,
