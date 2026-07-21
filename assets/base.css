@@ -1320,7 +1320,7 @@ ul ul {
 /* component-title */
 .title,
 .title-wrapper-with-link {
-  margin: 3rem 0 2rem;
+  margin: 3rem 0 1.2rem;
   text-transform: capitalize;
 }
 
