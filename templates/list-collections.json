@@ -15,12 +15,11 @@
         "page_full_width": true,
         "page_full_width_spacing": false,
         "use_breadcrumb_title": true,
-        "breadcrumb_image": "shopify://shop_images/New_Project_15.png",
         "breadcrumb_style": "center",
-        "image_overlay_opacity": 60,
+        "image_overlay_opacity": 99,
         "color_scheme": "accent-1",
-        "padding_top": 100,
-        "padding_bottom": 100
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "main": {
