@@ -375,7 +375,7 @@
         "desktop_column": 4,
         "laptop_column": 3,
         "tablet_column": 3,
-        "mobile_column": 1,
+        "mobile_column": 2,
         "centered_slide": false,
         "swiper_pagination": false,
         "swiper_navigation": true,
