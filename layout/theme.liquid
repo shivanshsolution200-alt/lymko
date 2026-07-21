@@ -472,15 +472,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!header) return;
 
+  const spacer = document.createElement("div");
+  spacer.style.height = "0px";
+  header.parentNode.insertBefore(spacer, header.nextSibling);
+
   let ticking = false;
 
   function updateHeader() {
     const scrollY = window.scrollY || document.documentElement.scrollTop;
 
     if (scrollY > 0 && scrollY <= 300) {
+
+      if (!header.classList.contains("temp-sticky")) {
+        spacer.style.height = header.offsetHeight + "px";
+      }
+
       header.classList.add("temp-sticky");
+
     } else {
+
       header.classList.remove("temp-sticky");
+      spacer.style.height = "0px";
+
     }
 
     ticking = false;
@@ -488,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("scroll", function () {
     if (!ticking) {
-      window.requestAnimationFrame(updateHeader);
+      requestAnimationFrame(updateHeader);
       ticking = true;
     }
   });
