@@ -346,7 +346,11 @@
     "featured_collection_iX7fef": {
       "type": "featured-collection",
       "custom_css": [
-        "p.description {margin-top: 2px; margin-bottom: 2px;}"
+        "p.description {margin-top: 2px; margin-bottom: 2px;}",
+        ".card-wrapper .card-information.review {display: flex; justify-content: flex-start; width: 100% !important;}",
+        ".price--on-sale .price__sale {display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start;}",
+        "h3 {text-align: left;}",
+        "p {text-align: left;}"
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
