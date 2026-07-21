@@ -11,6 +11,12 @@
   "sections": {
     "breadcrumb_eQRcGj": {
       "type": "breadcrumb",
+      "custom_css": [
+        "span {display: none !important;}",
+        "span {display: none !important;}",
+        "span.breadcrumb__sep {display: none !important;}",
+        "a {display: none !important;}"
+      ],
       "name": "t:sections.breadcrumb.presets.name",
       "settings": {
         "page_full_width": true,
