@@ -245,6 +245,49 @@
   </div>
 </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  function setMobileOneHalfGrid() {
+    if (window.innerWidth <= 749) {
+
+      const section = document.querySelector(
+        '#shopify-section-{{ section.id }}'
+      );
+
+      if (!section) return;
+
+      const grid = section.querySelector(
+        '#Slider-{{ section.id }}'
+      );
+
+      if (!grid) return;
+
+      const items = grid.querySelectorAll(
+        '.grid__item, .slider__slide, .swiper-slide'
+      );
+
+      items.forEach(function(item) {
+        item.style.width = 'calc((100vw - 30px) / 1.5)';
+        item.style.maxWidth = 'calc((100vw - 30px) / 1.5)';
+        item.style.flex = '0 0 calc((100vw - 30px) / 1.5)';
+      });
+
+      grid.style.display = 'flex';
+      grid.style.flexWrap = 'nowrap';
+      grid.style.overflowX = 'auto';
+      grid.style.scrollSnapType = 'x proximity';
+      grid.style.webkitOverflowScrolling = 'touch';
+
+    }
+  }
+
+  setMobileOneHalfGrid();
+
+  window.addEventListener('resize', setMobileOneHalfGrid);
+
+});
+</script>
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",
