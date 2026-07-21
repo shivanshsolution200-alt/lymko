@@ -507,6 +507,10 @@
         "tab_X4iHJW",
         "tab_8mXi9U"
       ],
+      "custom_css": [
+        "h2.skin-heading {margin-top: 0;}",
+        "#skin-section-template--27351286022429__shop_by_skin_pikKnX {padding: 10px 0px;}"
+      ],
       "name": "Skin Type Tabs",
       "settings": {
         "heading": "Shop By Skin Type",
