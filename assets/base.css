@@ -4666,6 +4666,12 @@ a.full-unstyled-link {
 h5.specification-block-support-heading {
     font-size: 14px;
 }
+.price--on-sale .price-item--regular {
+    font-size: 1.3rem;
+}
+span.price-item {
+    font-size: 15px !important;
+}
 }
 
 .customer-who-purchased .product-data p span.purchased {
