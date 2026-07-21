@@ -4620,7 +4620,7 @@ span.price-item {
     }
 }
 a.full-unstyled-link {
-    font-size: 14px !important;
+    /* font-size: 14px !important; */
     font-weight: normal !important;
 }
 .collection-list__item .card__information h3.card__heading a.full-unstyled-link {
