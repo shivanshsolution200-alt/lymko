@@ -4998,7 +4998,7 @@ button.product-form__submit.button.button--full-width.button--secondary {
     justify-content: center;
     align-items: center;
 }
-.card__information {
+.product-grid .card__information {
     height: 150px;
 }
 }
