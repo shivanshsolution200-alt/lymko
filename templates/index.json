@@ -350,7 +350,8 @@
         ".card-wrapper .card-information.review {display: flex; justify-content: flex-start; width: 100% !important;}",
         ".price--on-sale .price__sale {display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start !important;}",
         "h3 {text-align: left;}",
-        "p {text-align: left;}"
+        "p {text-align: left;}",
+        ".price.price--on-sale.product-price-current {text-align: left;}"
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
