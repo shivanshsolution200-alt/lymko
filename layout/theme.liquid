@@ -466,7 +466,27 @@
 {% endif %}
 
 {% render 'recently-viewed-tracker' %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector("header#header");
 
+  if (!header) return;
+
+  function handleHeader() {
+    const scrollY = window.scrollY;
+
+    // Scroll start hone ke baad se 100px tak sticky
+    if (scrollY > 0 && scrollY <= 100) {
+      header.classList.add("temp-sticky");
+    } else {
+      header.classList.remove("temp-sticky");
+    }
+  }
+
+  window.addEventListener("scroll", handleHeader);
+  handleHeader();
+});
+</script>
   </body>
 
 

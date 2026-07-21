@@ -5089,3 +5089,14 @@ a.full-unstyled-link {
     padding-right: 15px;
   }
 }
+header#header {
+  width: 100%;
+  z-index: 9999;
+}
+
+header#header.temp-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
