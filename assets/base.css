@@ -4613,6 +4613,11 @@ span.price-item {
     font-size: 19px !important;
     font-weight: 600;
 }
+@media screen and (max-width: 576px) {
+    .breadcrumb span {
+    padding: 0 1rem !important;
+}
+}
 @media screen and (min-width: 1200px) and (max-width: 1539px) {
     .footer-style3 .grid--4-col-tablet.section-footer_style3-padding {
         display: grid;
