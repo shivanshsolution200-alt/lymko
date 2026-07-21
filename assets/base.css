@@ -5077,8 +5077,8 @@ a.full-unstyled-link {
 /* Desktop spacing */
 @media screen and (min-width: 990px) {
   #shopify-section-{{ section.id }} featured-swiper-slider {
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
