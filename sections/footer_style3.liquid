@@ -45,7 +45,7 @@
     .footer-style3 .footer-block--menu { display: block;}
   }
 
-  .footer-block__details-content{display:block !important;height:100%!important;margin-bottom: 1rem!important;}
+  .footer-block__details-content{display:block !important;height:auto!important;max-height:none!important;overflow:visible!important;opacity:1!important;visibility:visible!important;margin-bottom:1rem!important;}
   .footer-style3 .footer-block.center > * {
     display: flex;
     flex-direction: column;
@@ -67,70 +67,37 @@
   .footer-block__details-content.footer-block--newsletter.center .footer-block__details-content-newsletter{margin:auto;}
     
   
-{%- endstyle -%}
-<script>
-document.addEventListener('DOMContentLoaded', function () {
 
-  const footer = document.querySelector('.footer-style3');
-  if (!footer) return;
-
-  const contents = footer.querySelectorAll(
-    '.footer-block__details-content'
-  );
-
-  contents.forEach(function(content) {
-    content.style.display = 'block';
-    content.style.height = 'auto';
-    content.style.maxHeight = 'none';
-    content.style.overflow = 'visible';
-  });
-
-  const headings = footer.querySelectorAll(
-    '.footer-block__heading, .footer-accord_block__heading'
-  );
-
-  headings.forEach(function(heading) {
-
-    const newHeading = heading.cloneNode(true);
-
-    heading.parentNode.replaceChild(newHeading, heading);
-
-    newHeading.style.cursor = 'default';
-    newHeading.classList.remove('active');
-  });
-
-});
-</script>
-
-<style>
-@media screen and (max-width: 768px) {
-
-  .footer-style3 .footer-block__details-content,
-  .footer-style3 .footer_menu {
-    display: block !important;
-    height: auto !important;
-    max-height: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    overflow: visible !important;
-  }
-
-  .footer-style3 .footer-block--menu {
-    display: block !important;
-  }
-
-  .footer-style3 .footer-accord_block__heading,
-  .footer-style3 .footer-block__heading {
+  /* Footer menus are permanently open - accordion disabled */
+  .footer-style3 .footer-static__heading {
     cursor: default !important;
     pointer-events: none !important;
   }
 
-  .footer-style3 .drop_down-area {
-    display: none !important;
+  .footer-style3 .footer-block--menu .footer-block__details-content,
+  .footer-style3 .footer_menu {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
   }
 
-}
-</style>
+  @media screen and (max-width: 768px) {
+    .footer-style3 .footer-block--menu .footer-block__details-content,
+    .footer-style3 .footer_menu {
+      display: block !important;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  }
+
+{%- endstyle -%}
 <footer  id="Banner-{{ section.id }}" class="{% if request.page_type == 'index' %}index-footer{% endif %} footer-style3 color-{{ section.settings.color_scheme }} gradient  {% if section.settings.footer_default %}theme__default-footer_style{% endif %}">
   {%- if section.settings.image != blank -%}
    <div class="banner__media media">
@@ -178,9 +145,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h2 class="footer-block__subheading {{ block.settings.alignment }}">{{- block.settings.sub_heading | escape -}}</h2>
               {%- endif -%}
               {% if block.type == 'link_list' and block.settings.heading != blank %}
-                <h2 class="footer-accord_block__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
+                <h2 class="footer-static__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
               {%- elsif block.settings.heading != blank -%}
-                <h2 class="footer-accord_block__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
+                <h2 class="footer-static__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
               {%- endif -%}
 
               {%- case block.type -%}
