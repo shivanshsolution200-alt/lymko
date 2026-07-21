@@ -247,6 +247,7 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+
   const section = document.querySelector('#shopify-section-{{ section.id }}');
   if (!section) return;
 
@@ -254,68 +255,53 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!grid) return;
 
   function mobileOneHalfGrid() {
-    const items = grid.querySelectorAll('.grid__item, .slider__slide');
+
+    const items = grid.children;
 
     if (window.innerWidth <= 749) {
 
-      /* Main product row */
       grid.style.display = 'flex';
       grid.style.flexWrap = 'nowrap';
       grid.style.overflowX = 'auto';
       grid.style.overflowY = 'hidden';
-      grid.style.scrollBehavior = 'smooth';
-      grid.style.webkitOverflowScrolling = 'touch';
-      grid.style.scrollSnapType = 'x mandatory';
       grid.style.gap = '12px';
+      grid.style.scrollSnapType = 'x mandatory';
+      grid.style.webkitOverflowScrolling = 'touch';
+      grid.style.scrollbarWidth = 'none';
 
-      /* Important: remove theme grid spacing conflict */
-      grid.style.marginLeft = '0';
-      grid.style.paddingLeft = '0';
-      grid.style.paddingRight = '20px';
-
-      /* 1.5 products */
-      items.forEach(function(item) {
-        item.style.width = 'calc((100% - 12px) / 1.5)';
-        item.style.minWidth = 'calc((100% - 12px) / 1.5)';
-        item.style.maxWidth = 'calc((100% - 12px) / 1.5)';
+      Array.from(items).forEach(function(item) {
         item.style.flex = '0 0 calc((100% - 12px) / 1.5)';
+        item.style.width = 'calc((100% - 12px) / 1.5)';
+        item.style.maxWidth = 'calc((100% - 12px) / 1.5)';
         item.style.scrollSnapAlign = 'start';
         item.style.margin = '0';
       });
 
-      /* Hide scrollbar */
-      grid.style.scrollbarWidth = 'none';
-
     } else {
 
-      /* Desktop reset */
       grid.style.display = '';
       grid.style.flexWrap = '';
       grid.style.overflowX = '';
       grid.style.overflowY = '';
-      grid.style.scrollBehavior = '';
-      grid.style.webkitOverflowScrolling = '';
-      grid.style.scrollSnapType = '';
       grid.style.gap = '';
-      grid.style.marginLeft = '';
-      grid.style.paddingLeft = '';
-      grid.style.paddingRight = '';
+      grid.style.scrollSnapType = '';
+      grid.style.webkitOverflowScrolling = '';
       grid.style.scrollbarWidth = '';
 
-      items.forEach(function(item) {
-        item.style.width = '';
-        item.style.minWidth = '';
-        item.style.maxWidth = '';
+      Array.from(items).forEach(function(item) {
         item.style.flex = '';
+        item.style.width = '';
+        item.style.maxWidth = '';
         item.style.scrollSnapAlign = '';
         item.style.margin = '';
       });
+
     }
   }
 
   mobileOneHalfGrid();
-
   window.addEventListener('resize', mobileOneHalfGrid);
+
 });
 </script>
 
