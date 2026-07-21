@@ -1155,7 +1155,7 @@
   "platform_customizations": {
     "custom_css": [
       ".card__information .card__heading {font-size: 2rem; text-transform: capitalize; margin-bottom: 0.2rem;}",
-      "span.price-item.price-item--sale.price-item--last {color: #ff2f00;}"
+      "span.price-item.price-item--sale.price-item--last {color: #b2287a;}"
     ]
   }
 }
