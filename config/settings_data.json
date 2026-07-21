@@ -298,7 +298,7 @@
           "db1729b0-4155-4e49-a312-35dd73e4bfe5"
         ],
         "custom_css": [
-          "@media screen and (min-width: 1220px) {.header {padding-top: 0.2rem; padding-bottom: 0.2rem; }}"
+          "@media screen and (min-width: 1220px) {.header {padding-top: 0.8rem; padding-bottom: 0.8rem; }}"
         ],
         "settings": {
           "page_full_width": true,
