@@ -839,6 +839,9 @@
         "reel_zDmYg6",
         "reel_7tcdUM"
       ],
+      "custom_css": [
+        "h2.reels-section-title {margin: 10px 0px;}"
+      ],
       "name": "Shoppable Reels Slider",
       "settings": {
         "heading": "Watch And Buy"
@@ -896,8 +899,8 @@
         "content_layout": "no-overlap",
         "color_scheme": "background-1",
         "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "custom_class_name": ""
       }
     },
