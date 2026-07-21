@@ -110,6 +110,7 @@
     <h2 class="breadcrumb_title ">{{ product.title }}</h2>
         {% endif %}
     {% if collection %}
+      <div>
     <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a> 
     <span aria-hidden="true" class="breadcrumb__sep"> 
    <svg xmlns="http://www.w3.org/2000/svg" width="2" height="15" viewBox="0 0 2 15" fill="none">
@@ -131,7 +132,7 @@
 </svg>
     </span>
     <span>{{ product.title }}</span>
-
+  </div>
 
     {% elsif template contains 'collection' and collection.handle %}
     {% if template == 'list-collections' %}
