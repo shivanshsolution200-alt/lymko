@@ -110,7 +110,9 @@
     <h2 class="breadcrumb_title ">{{ product.title }}</h2>
         {% endif %}
     {% if collection %}
-      
+      <div style="    display: flex;
+    align-items: center;
+    justify-content: center;">
     <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a> 
     <span aria-hidden="true" class="breadcrumb__sep"> 
    <svg xmlns="http://www.w3.org/2000/svg" width="2" height="15" viewBox="0 0 2 15" fill="none">
@@ -123,9 +125,7 @@
     {{ collection.title | link_to: url }}  
     {% endif %}
     {% else %}
-    <div style="    display: flex;
-    align-items: center;
-    justify-content: center;">
+    
 
     {% capture url %}/collections/all{% endcapture %}
     <a href="{{ url }}" style="color: gray;">{{ 'general.breadcrumbs.all' | t }}</a>
