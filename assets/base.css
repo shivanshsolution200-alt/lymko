@@ -4621,6 +4621,9 @@ span.price-item {
         padding: 0 2px !important;
         margin: 0px !important;
     }
+    .card__information .card__heading{
+      margin-bottom: 2px !important;
+    }
 nav.breadcrumb.text-center {
     padding: 0px !important;
 }
