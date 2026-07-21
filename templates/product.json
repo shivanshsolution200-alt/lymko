@@ -9,6 +9,20 @@
  */
 {
   "sections": {
+    "breadcrumb_eQRcGj": {
+      "type": "breadcrumb",
+      "name": "t:sections.breadcrumb.presets.name",
+      "settings": {
+        "page_full_width": true,
+        "page_full_width_spacing": false,
+        "use_breadcrumb_title": true,
+        "breadcrumb_style": "center",
+        "image_overlay_opacity": 99,
+        "color_scheme": "background-1",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -262,33 +276,33 @@
         "feature_krFgph": {
           "type": "feature",
           "settings": {
-            "icon_type": "shipping",
+            "icon": "shipping",
             "title": "Free Shipping",
-            "text": "On all prepaid orders"
+            "text": "<p>On all prepaid orders</p>"
           }
         },
         "feature_6XVPxp": {
           "type": "feature",
           "settings": {
-            "icon_type": "customers",
+            "icon": "shipping",
             "title": "2500+ Happy Customers",
-            "text": "Loved by beauty buyers"
+            "text": "<p>Loved by beauty buyers</p>"
           }
         },
         "feature_JRgzjQ": {
           "type": "feature",
           "settings": {
-            "icon_type": "payment",
+            "icon": "shipping",
             "title": "Secure Payment",
-            "text": "100% safe checkout"
+            "text": "<p>100% safe checkout</p>"
           }
         },
         "feature_kbEazX": {
           "type": "feature",
           "settings": {
-            "icon_type": "quality",
+            "icon": "shipping",
             "title": "Assured Quality",
-            "text": "Premium skincare products"
+            "text": "<p>Premium skincare products</p>"
           }
         }
       },
@@ -300,10 +314,14 @@
       ],
       "name": "Cosmetic Features",
       "settings": {
-        "background": "#F7F7F2",
-        "icon_background": "#899B79",
+        "background_color": "#f8f9f3",
+        "brush_color": "#b9c9a6",
+        "icon_color": "#274722",
         "title_color": "#292929",
         "text_color": "#666666",
+        "divider_color": "#aeb7a6",
+        "title_size": 17,
+        "text_size": 14,
         "padding_top": 20,
         "padding_bottom": 20
       }
@@ -464,6 +482,7 @@
     }
   },
   "order": [
+    "breadcrumb_eQRcGj",
     "main",
     "cosmetic_features_bar_nhitUF",
     "marquee_section_44hkdn",
