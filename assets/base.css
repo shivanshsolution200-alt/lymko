@@ -4615,7 +4615,7 @@ span.price-item {
 }
 @media screen and (max-width: 576px) {
     .breadcrumb span {
-    padding: 0 1rem !important;
+    padding: 0 0.5rem !important;
 }
 }
 @media screen and (min-width: 1200px) and (max-width: 1539px) {
