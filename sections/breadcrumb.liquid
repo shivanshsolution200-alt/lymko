@@ -142,7 +142,8 @@
     {% else %}
     {% if section.settings.use_breadcrumb_title %}     
     <h1 class="breadcrumb_title">{{ collection.title }}</h1>
-    {% endif %}     
+    {% endif %}
+    <div>     
     <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
   <span aria-hidden="true" class="breadcrumb__sep">
     <svg xmlns="http://www.w3.org/2000/svg" width="2" height="15" viewBox="0 0 2 15" fill="none">
@@ -166,7 +167,7 @@
     <span>{{ current_tags | join: " + " }}</span>
     {% else %}
     <span>{{ collection.title }}</span>
-
+    </div>
     {% endif %}  
     {% endif %}
     {% elsif template == 'blog' %}
