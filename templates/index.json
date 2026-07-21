@@ -359,7 +359,7 @@
         "button_label": "",
         "button_link": "",
         "button_style_secondary": false,
-        "column_alignment": "center",
+        "column_alignment": "left",
         "collection": "best-selling",
         "products_to_show": 8,
         "columns_desktop": 4,
