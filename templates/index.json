@@ -345,6 +345,9 @@
     },
     "featured_collection_iX7fef": {
       "type": "featured-collection",
+      "custom_css": [
+        "p.description {margin-top: 2px; margin-bottom: 2px;}"
+      ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "page_full_width": false,
