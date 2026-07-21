@@ -66,40 +66,69 @@
   .footer-block__details-content.footer-block--newsletter.left .footer-block__details-content-newsletter{margin-right:auto;}
   .footer-block__details-content.footer-block--newsletter.center .footer-block__details-content-newsletter{margin:auto;}
     
- @media screen and (max-width: 768px) {
+ <script>
+document.addEventListener('DOMContentLoaded', function () {
 
-  .footer-style3 .footer__blocks-wrapper {
-    display: block !important;
-  }
+  const footer = document.querySelector('.footer-style3');
+  if (!footer) return;
 
-  .footer-style3 .footer-block {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-bottom: 24px !important;
-  }
+  const contents = footer.querySelectorAll(
+    '.footer-block__details-content'
+  );
 
-  .footer-style3 .footer-block__details-content {
+  contents.forEach(function(content) {
+    content.style.display = 'block';
+    content.style.height = 'auto';
+    content.style.maxHeight = 'none';
+    content.style.overflow = 'visible';
+  });
+
+  const headings = footer.querySelectorAll(
+    '.footer-block__heading, .footer-accord_block__heading'
+  );
+
+  headings.forEach(function(heading) {
+
+    const newHeading = heading.cloneNode(true);
+
+    heading.parentNode.replaceChild(newHeading, heading);
+
+    newHeading.style.cursor = 'default';
+    newHeading.classList.remove('active');
+  });
+
+});
+</script>
+
+<style>
+@media screen and (max-width: 768px) {
+
+  .footer-style3 .footer-block__details-content,
+  .footer-style3 .footer_menu {
     display: block !important;
     height: auto !important;
     max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     overflow: visible !important;
-    margin-top: 12px !important;
-    margin-bottom: 0 !important;
   }
 
-  .footer-style3 .footer-accord_block__heading {
-    margin-bottom: 10px !important;
-    cursor: default !important;
-  }
-
-  .footer-style3 .footer_menu {
+  .footer-style3 .footer-block--menu {
     display: block !important;
   }
 
-  .footer-style3 .footer_menu li {
-    margin-bottom: 8px;
+  .footer-style3 .footer-accord_block__heading,
+  .footer-style3 .footer-block__heading {
+    cursor: default !important;
+    pointer-events: none !important;
   }
-} 
+
+  .footer-style3 .drop_down-area {
+    display: none !important;
+  }
+
+}
+</style> 
 {%- endstyle -%}
 
 <footer  id="Banner-{{ section.id }}" class="{% if request.page_type == 'index' %}index-footer{% endif %} footer-style3 color-{{ section.settings.color_scheme }} gradient  {% if section.settings.footer_default %}theme__default-footer_style{% endif %}">
