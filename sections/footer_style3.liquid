@@ -42,14 +42,10 @@
     }
   }
   @media screen and (max-width:768px) {
-    {%- unless section.settings.enable_accordian -%}
     .footer-style3 .footer-block--menu { display: block;}
-    {% endunless %}
   }
 
-  {% unless section.settings.enable_accordian %}
-    .footer-block__details-content{display:block !important;height:100%!important;margin-bottom: 1rem!important;}
-  {% endunless %}
+  .footer-block__details-content{display:block !important;height:100%!important;margin-bottom: 1rem!important;}
   .footer-style3 .footer-block.center > * {
     display: flex;
     flex-direction: column;
@@ -120,18 +116,9 @@
                 <h2 class="footer-block__subheading {{ block.settings.alignment }}">{{- block.settings.sub_heading | escape -}}</h2>
               {%- endif -%}
               {% if block.type == 'link_list' and block.settings.heading != blank %}
-                {%- if section.settings.enable_accordian -%}
-                <h2 class="footer-block__heading  {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading -}}</h2>
-                <span class="drop_down-area">{%- render 'icon-accordion-1' -%}</span>
-                  {% else %}
-                 <h2 class="footer-accord_block__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
-               {% endif %}
+                <h2 class="footer-accord_block__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
               {%- elsif block.settings.heading != blank -%}
-                {%- if section.settings.enable_accordian -%}
-                <h2 class="footer-block__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
-                {% else %}
-                 <h2 class="footer-accord_block__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
-               {% endif %}
+                <h2 class="footer-accord_block__heading {% if block.type == 'link_list' %}footer__title{% endif %} {{ block.settings.alignment }}">{{- block.settings.heading | escape -}}</h2>
               {%- endif -%}
 
               {%- case block.type -%}
@@ -953,12 +940,6 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_accordian",
-      "default": true,
-      "label": "Enable accordian"
     }
   ],
   "default": {
