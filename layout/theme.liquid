@@ -472,19 +472,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!header) return;
 
-  function handleHeader() {
-    const scrollY = window.scrollY;
+  let ticking = false;
 
-    // Scroll start hone ke baad se 100px tak sticky
+  function updateHeader() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+
     if (scrollY > 0 && scrollY <= 300) {
       header.classList.add("temp-sticky");
     } else {
       header.classList.remove("temp-sticky");
     }
+
+    ticking = false;
   }
 
-  window.addEventListener("scroll", handleHeader);
-  handleHeader();
+  window.addEventListener("scroll", function () {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  });
+
+  updateHeader();
 });
 </script>
   </body>
