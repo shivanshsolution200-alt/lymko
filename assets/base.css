@@ -5056,3 +5056,36 @@ a.full-unstyled-link {
 .card-information.review {
     align-items: flex-end;
 }
+
+/* Prevent left & right product cards/shadows from getting cut */
+#shopify-section-{{ section.id }} .swiper {
+  overflow: visible !important;
+}
+
+#shopify-section-{{ section.id }} featured-swiper-slider {
+  display: block;
+  overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#shopify-section-{{ section.id }} .swiper-wrapper {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+/* Desktop spacing */
+@media screen and (min-width: 990px) {
+  #shopify-section-{{ section.id }} featured-swiper-slider {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 749px) {
+  #shopify-section-{{ section.id }} featured-swiper-slider {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
