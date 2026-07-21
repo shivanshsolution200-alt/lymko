@@ -343,37 +343,6 @@
         "columns_mobile": "2"
       }
     },
-    "custom_double_banner_7GqEfT": {
-      "type": "custom-double-banner",
-      "blocks": {
-        "banner_E9fznN": {
-          "type": "banner",
-          "settings": {
-            "image": "shopify://shop_images/combo_1_2.png",
-            "mobile_image": "shopify://shop_images/brighten_and_glow.png",
-            "collection": "combo",
-            "heading": "",
-            "button_text": "SHOP NOW"
-          }
-        },
-        "banner_8Dai8b": {
-          "type": "banner",
-          "settings": {
-            "image": "shopify://shop_images/combo_2_3.png",
-            "mobile_image": "shopify://shop_images/protect_and_hydrate.png",
-            "collection": "combo",
-            "heading": "",
-            "button_text": "SHOP NOW"
-          }
-        }
-      },
-      "block_order": [
-        "banner_E9fznN",
-        "banner_8Dai8b"
-      ],
-      "name": "Custom Double Banner",
-      "settings": {}
-    },
     "featured_collection_iX7fef": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -415,6 +384,37 @@
         "arrow_on_mobile": false,
         "columns_mobile": "1"
       }
+    },
+    "custom_double_banner_7GqEfT": {
+      "type": "custom-double-banner",
+      "blocks": {
+        "banner_E9fznN": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/combo_1_2.png",
+            "mobile_image": "shopify://shop_images/brighten_and_glow.png",
+            "collection": "combo",
+            "heading": "",
+            "button_text": "SHOP NOW"
+          }
+        },
+        "banner_8Dai8b": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/combo_2_3.png",
+            "mobile_image": "shopify://shop_images/protect_and_hydrate.png",
+            "collection": "combo",
+            "heading": "",
+            "button_text": "SHOP NOW"
+          }
+        }
+      },
+      "block_order": [
+        "banner_E9fznN",
+        "banner_8Dai8b"
+      ],
+      "name": "Custom Double Banner",
+      "settings": {}
     },
     "rich_text_fMaciX": {
       "type": "rich-text",
@@ -1166,9 +1166,9 @@
     "green_revolution_eyG7Te",
     "green_benefits_bar_RHdY8j",
     "collection_list_QVNMd6",
-    "custom_double_banner_7GqEfT",
     "featured_collection_iX7fef",
     "rich_text_fMaciX",
+    "custom_double_banner_7GqEfT",
     "grid_banner_slider_yGnEgj",
     "deal_banner_aXn6CT",
     "shop_by_skin_pikKnX",
