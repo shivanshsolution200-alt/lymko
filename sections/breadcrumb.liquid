@@ -117,7 +117,7 @@
 <path d="M1.32812 0.460227V14.8125H0.18608V0.460227H1.32812Z" fill="currentColor"></path>
 </svg>
     </span>
-    <div>
+    
     {% if collection.handle %}
     {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
     {{ collection.title | link_to: url }}  
@@ -132,6 +132,7 @@
 <path d="M1.32812 0.460227V14.8125H0.18608V0.460227H1.32812Z" fill="currentColor"></path>
 </svg>
     </span>
+    <div>
     <span>{{ product.title }}</span>
   </div>
 
