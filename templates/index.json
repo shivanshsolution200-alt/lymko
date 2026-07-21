@@ -380,7 +380,7 @@
         "swiper_pagination": false,
         "swiper_navigation": true,
         "auto_play": 0,
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "arrow_on_mobile": false,
         "columns_mobile": "1"
       }
