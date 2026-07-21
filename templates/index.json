@@ -509,7 +509,7 @@
         "text_bgda9Y": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/facewash_step_1.png",
+            "block_image": "shopify://shop_images/facewash_step_1_44f0bc6b-08f2-4e09-b3ce-d325f4fcec45.png",
             "show_content": true,
             "block_title": "Step 1",
             "enable_title_link": false,
@@ -525,7 +525,7 @@
         "text_LY6JVB": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/face_serum_step_2.png",
+            "block_image": "shopify://shop_images/face_serum_step_2.jpg",
             "show_content": true,
             "block_title": "Step 2",
             "enable_title_link": false,
@@ -541,7 +541,7 @@
         "text_hDU7hg": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/Moisturiser_step_3.png",
+            "block_image": "shopify://shop_images/Moisturiser_step_3.jpg",
             "show_content": true,
             "block_title": "Step 3",
             "enable_title_link": false,
@@ -557,7 +557,7 @@
         "text_eCXKhC": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/sunscreen_step_4.png",
+            "block_image": "shopify://shop_images/sunscreen_step_4_9d547461-b541-4a0d-8724-0c7ca50c4181.png",
             "show_content": true,
             "block_title": "Step 4",
             "enable_title_link": false,
