@@ -4998,6 +4998,9 @@ button.product-form__submit.button.button--full-width.button--secondary {
     justify-content: center;
     align-items: center;
 }
+.card__information {
+    height: 150px;
+}
 }
 @media( max-width: 768px){
   .card__heading h5 a.full-unstyled-link {
@@ -5007,9 +5010,7 @@ button.product-form__submit.button.button--full-width.button--secondary {
     overflow: hidden;
     /* height: 40px; */
 }
-.card__information {
-    height: 150px;
-}
+
 .collection-list.overlay .collection-list__item .card__content .card__information {
     width: auto !important;
     height: auto !important;
