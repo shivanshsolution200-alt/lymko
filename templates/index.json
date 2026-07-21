@@ -385,6 +385,30 @@
         "columns_mobile": "1"
       }
     },
+    "rich_text_fMaciX": {
+      "type": "rich-text",
+      "blocks": {
+        "button_Wch3wb": {
+          "type": "button",
+          "settings": {
+            "button_label": "View All",
+            "button_link": "shopify://collections/best-selling",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "button_Wch3wb"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "page_full_width": false,
+        "page_full_width_spacing": false,
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
     "custom_double_banner_7GqEfT": {
       "type": "custom-double-banner",
       "blocks": {
@@ -416,28 +440,67 @@
       "name": "Custom Double Banner",
       "settings": {}
     },
-    "rich_text_fMaciX": {
-      "type": "rich-text",
+    "deal_banner_aXn6CT": {
+      "type": "deal-banner",
+      "disabled": true,
+      "settings": {
+        "page_full_width": true,
+        "page_full_width_spacing": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "background-1",
+        "heading": "Luxurious Feeling Face Creams",
+        "sub-heading": "vitamin rich",
+        "text": "Cras bibendum lectus augue, vel fringilla leo conse. Praesent in nunc vel urna consequat mattis eget vel libero. Phasellus pellentesque Proin tempus tempor diam, non pellentesque quam ornare vel. Aenean laoreet mollis erat facilisis ac.",
+        "deal_end_date": "25 mar 2024",
+        "button_label_1": "Shop Now",
+        "button_link_1": "shopify://collections/creams",
+        "button_style_secondary_1": false,
+        "button_label_2": "",
+        "button_link_2": "",
+        "button_style_secondary_2": false,
+        "enable_two_column_section": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "custom_class_name": "custom-deal-banner"
+      }
+    },
+    "shop_by_skin_pikKnX": {
+      "type": "shop-by-skin",
       "blocks": {
-        "button_Wch3wb": {
-          "type": "button",
+        "tab_jryHtn": {
+          "type": "tab",
           "settings": {
-            "button_label": "View All",
-            "button_link": "shopify://collections/best-selling",
-            "button_style_secondary": true
+            "tab_name": "Face Serums",
+            "collection": "face-serums"
+          }
+        },
+        "tab_X4iHJW": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Hair Care",
+            "collection": "hair-care"
+          }
+        },
+        "tab_8mXi9U": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Face Wash",
+            "collection": "face-wash"
           }
         }
       },
       "block_order": [
-        "button_Wch3wb"
+        "tab_jryHtn",
+        "tab_X4iHJW",
+        "tab_8mXi9U"
       ],
-      "name": "t:sections.rich-text.presets.name",
+      "name": "Skin Type Tabs",
       "settings": {
-        "page_full_width": false,
-        "page_full_width_spacing": false,
-        "color_scheme": "background-1",
-        "padding_top": 0,
-        "padding_bottom": 36
+        "heading": "Shop By Skin Type",
+        "heading_alignment": "center"
       }
     },
     "grid_banner_slider_yGnEgj": {
@@ -547,69 +610,6 @@
         "swiper_pagination": false,
         "swiper_navigation": false,
         "auto_play": 0
-      }
-    },
-    "deal_banner_aXn6CT": {
-      "type": "deal-banner",
-      "disabled": true,
-      "settings": {
-        "page_full_width": true,
-        "page_full_width_spacing": false,
-        "image_height": "medium",
-        "desktop_content_position": "middle-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "color_scheme": "background-1",
-        "heading": "Luxurious Feeling Face Creams",
-        "sub-heading": "vitamin rich",
-        "text": "Cras bibendum lectus augue, vel fringilla leo conse. Praesent in nunc vel urna consequat mattis eget vel libero. Phasellus pellentesque Proin tempus tempor diam, non pellentesque quam ornare vel. Aenean laoreet mollis erat facilisis ac.",
-        "deal_end_date": "25 mar 2024",
-        "button_label_1": "Shop Now",
-        "button_link_1": "shopify://collections/creams",
-        "button_style_secondary_1": false,
-        "button_label_2": "",
-        "button_link_2": "",
-        "button_style_secondary_2": false,
-        "enable_two_column_section": false,
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "custom_class_name": "custom-deal-banner"
-      }
-    },
-    "shop_by_skin_pikKnX": {
-      "type": "shop-by-skin",
-      "blocks": {
-        "tab_jryHtn": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Face Serums",
-            "collection": "face-serums"
-          }
-        },
-        "tab_X4iHJW": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Hair Care",
-            "collection": "hair-care"
-          }
-        },
-        "tab_8mXi9U": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Face Wash",
-            "collection": "face-wash"
-          }
-        }
-      },
-      "block_order": [
-        "tab_jryHtn",
-        "tab_X4iHJW",
-        "tab_8mXi9U"
-      ],
-      "name": "Skin Type Tabs",
-      "settings": {
-        "heading": "Shop By Skin Type",
-        "heading_alignment": "center"
       }
     },
     "featured_collection_3EBBn8": {
@@ -1169,9 +1169,9 @@
     "featured_collection_iX7fef",
     "rich_text_fMaciX",
     "custom_double_banner_7GqEfT",
-    "grid_banner_slider_yGnEgj",
     "deal_banner_aXn6CT",
     "shop_by_skin_pikKnX",
+    "grid_banner_slider_yGnEgj",
     "featured_collection_3EBBn8",
     "rich_text_BKF8d6",
     "specification_block_Y7LAY7",
