@@ -247,47 +247,85 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  const section = document.querySelector('#shopify-section-{{ section.id }}');
+  if (!section) return;
 
-  function setMobileOneHalfGrid() {
+  const grid = section.querySelector('#Slider-{{ section.id }}');
+  if (!grid) return;
+
+  function mobileOneHalfGrid() {
+    const items = grid.querySelectorAll('.grid__item, .slider__slide');
+
     if (window.innerWidth <= 749) {
 
-      const section = document.querySelector(
-        '#shopify-section-{{ section.id }}'
-      );
-
-      if (!section) return;
-
-      const grid = section.querySelector(
-        '#Slider-{{ section.id }}'
-      );
-
-      if (!grid) return;
-
-      const items = grid.querySelectorAll(
-        '.grid__item, .slider__slide, .swiper-slide'
-      );
-
-      items.forEach(function(item) {
-        item.style.width = 'calc((100vw - 30px) / 1.5)';
-        item.style.maxWidth = 'calc((100vw - 30px) / 1.5)';
-        item.style.flex = '0 0 calc((100vw - 30px) / 1.5)';
-      });
-
+      /* Main product row */
       grid.style.display = 'flex';
       grid.style.flexWrap = 'nowrap';
       grid.style.overflowX = 'auto';
-      grid.style.scrollSnapType = 'x proximity';
+      grid.style.overflowY = 'hidden';
+      grid.style.scrollBehavior = 'smooth';
       grid.style.webkitOverflowScrolling = 'touch';
+      grid.style.scrollSnapType = 'x mandatory';
+      grid.style.gap = '12px';
 
+      /* Important: remove theme grid spacing conflict */
+      grid.style.marginLeft = '0';
+      grid.style.paddingLeft = '0';
+      grid.style.paddingRight = '20px';
+
+      /* 1.5 products */
+      items.forEach(function(item) {
+        item.style.width = 'calc((100% - 12px) / 1.5)';
+        item.style.minWidth = 'calc((100% - 12px) / 1.5)';
+        item.style.maxWidth = 'calc((100% - 12px) / 1.5)';
+        item.style.flex = '0 0 calc((100% - 12px) / 1.5)';
+        item.style.scrollSnapAlign = 'start';
+        item.style.margin = '0';
+      });
+
+      /* Hide scrollbar */
+      grid.style.scrollbarWidth = 'none';
+
+    } else {
+
+      /* Desktop reset */
+      grid.style.display = '';
+      grid.style.flexWrap = '';
+      grid.style.overflowX = '';
+      grid.style.overflowY = '';
+      grid.style.scrollBehavior = '';
+      grid.style.webkitOverflowScrolling = '';
+      grid.style.scrollSnapType = '';
+      grid.style.gap = '';
+      grid.style.marginLeft = '';
+      grid.style.paddingLeft = '';
+      grid.style.paddingRight = '';
+      grid.style.scrollbarWidth = '';
+
+      items.forEach(function(item) {
+        item.style.width = '';
+        item.style.minWidth = '';
+        item.style.maxWidth = '';
+        item.style.flex = '';
+        item.style.scrollSnapAlign = '';
+        item.style.margin = '';
+      });
     }
   }
 
-  setMobileOneHalfGrid();
+  mobileOneHalfGrid();
 
-  window.addEventListener('resize', setMobileOneHalfGrid);
-
+  window.addEventListener('resize', mobileOneHalfGrid);
 });
 </script>
+
+<style>
+@media screen and (max-width: 749px) {
+  #Slider-{{ section.id }}::-webkit-scrollbar {
+    display: none;
+  }
+}
+</style>
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",
