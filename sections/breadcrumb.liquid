@@ -123,10 +123,12 @@
     {{ collection.title | link_to: url }}  
     {% endif %}
     {% else %}
-    <div>
+    <div style="    display: flex;
+    align-items: center;
+    justify-content: center;">
 
     {% capture url %}/collections/all{% endcapture %}
-    <a href="{{ url }}">{{ 'general.breadcrumbs.all' | t }}</a>
+    <a href="{{ url }}" style="color: gray;">{{ 'general.breadcrumbs.all' | t }}</a>
     {% endif %}
 
     <span aria-hidden="true" class="breadcrumb__sep">
@@ -134,7 +136,7 @@
 <path d="M1.32812 0.460227V14.8125H0.18608V0.460227H1.32812Z" fill="currentColor"></path>
 </svg>
     </span>
-    <span>{{ product.title }}</span>
+    <span style="    font-weight: 700;">{{ product.title }}</span>
   </div>
 
     {% elsif template contains 'collection' and collection.handle %}
