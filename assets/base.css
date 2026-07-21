@@ -4617,6 +4617,9 @@ span.price-item {
     .breadcrumb span {
     padding: 0 0.5rem !important;
 }
+nav.breadcrumb.text-center {
+    padding: 0px !important;
+}
 }
 @media screen and (min-width: 1200px) and (max-width: 1539px) {
     .footer-style3 .grid--4-col-tablet.section-footer_style3-padding {
