@@ -426,7 +426,7 @@
           "type": "banner",
           "settings": {
             "image": "shopify://shop_images/combo_1_2.png",
-            "mobile_image": "shopify://shop_images/brighten_and_glow.png",
+            "mobile_image": "shopify://shop_images/brighten_and_glow_1.png",
             "collection": "combo",
             "heading": "",
             "button_text": "SHOP NOW"
@@ -612,7 +612,7 @@
         "overlay_height_tab": 300,
         "overlay_height_mobile": 200,
         "color_scheme": "background-1",
-        "padding_top": 36,
+        "padding_top": 12,
         "padding_bottom": 36,
         "custom_class_name": "",
         "swiper_enable": true,
