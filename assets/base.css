@@ -4617,6 +4617,9 @@ span.price-item {
     .breadcrumb span {
     padding: 0 2px !important;
 }
+    .breadcrumb a, .breadcrumb span {
+        padding: 0 2px !important;
+    }
 nav.breadcrumb.text-center {
     padding: 0px !important;
 }
