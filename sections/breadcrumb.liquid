@@ -146,7 +146,7 @@
     <div style="display: flex;
     align-items: center;
     justify-content: center;">     
-    <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+    <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}" style="color: gray;">{{ 'general.breadcrumbs.home' | t }}</a>
   <span aria-hidden="true" class="breadcrumb__sep">
     <svg xmlns="http://www.w3.org/2000/svg" width="2" height="15" viewBox="0 0 2 15" fill="none">
 <path d="M1.32812 0.460227V14.8125H0.18608V0.460227H1.32812Z" fill="currentColor"></path>
@@ -164,7 +164,7 @@
     </span>
     <span>{{ current_tags | join: " + " }}</span>
     {% else %}
-    <span>{{ collection.title }}</span>
+    <span style="    font-weight: 600;">{{ collection.title }}</span>
     </div>
     {% endif %}  
     {% endif %}
