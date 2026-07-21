@@ -4667,7 +4667,7 @@ h5.specification-block-support-heading {
     font-size: 14px;
 }
 .price--on-sale .price-item--regular {
-    font-size: 1.3rem;
+    font-size: 1.3rem !important;
 }
 span.price-item {
     font-size: 15px !important;
