@@ -4623,6 +4623,9 @@ nav.breadcrumb.text-center {
     aside.facets-wrapper.sidebar-sticky {
         padding: 0 30px 5px 0px !important;
     }
+        .breadcrumb a, .breadcrumb span {
+        font-size: 10px !important;
+    }
 }
 @media screen and (min-width: 1200px) and (max-width: 1539px) {
     .footer-style3 .grid--4-col-tablet.section-footer_style3-padding {
