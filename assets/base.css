@@ -4615,7 +4615,7 @@ span.price-item {
 }
 @media screen and (max-width: 576px) {
     .breadcrumb span {
-    padding: 0 0.5rem !important;
+    padding: 0 2px !important;
 }
 nav.breadcrumb.text-center {
     padding: 0px !important;
