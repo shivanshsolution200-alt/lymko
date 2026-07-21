@@ -5118,6 +5118,13 @@ header#header.temp-sticky {
 }
 @media screen and (max-width: 992px) {
 
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
   main,
   #MainContent,
   .main-content {
