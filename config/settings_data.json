@@ -301,7 +301,7 @@
           "@media screen and (min-width: 1220px) {.header {padding-top: 0.6rem; padding-bottom: 0.6rem; }}"
         ],
         "settings": {
-          "page_full_width": true,
+          "page_full_width": false,
           "page_full_width_spacing": true,
           "color_scheme": "background-1",
           "logo": "shopify://shop_images/lymko_logo_1.png",
@@ -752,8 +752,7 @@
           "show_bottom-icon": true,
           "margin_top": 0,
           "padding_top": 40,
-          "padding_bottom": 48,
-          "enable_accordian": true
+          "padding_bottom": 48
         }
       },
       "footer_style4": {
