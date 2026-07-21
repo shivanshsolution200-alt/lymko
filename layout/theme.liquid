@@ -468,23 +468,37 @@
 {% render 'recently-viewed-tracker' %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+
   const header = document.querySelector("header#header");
 
   if (!header) return;
 
-  function handleHeaderSticky() {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  // Header ki original position
+  const headerTop = header.offsetTop;
 
-    if (scrollTop <= 100) {
-      header.classList.add("scroll-sticky");
+  // Header top par pahunchne ke baad kitna scroll fixed rehna hai
+  const stickyDistance = 100;
+
+  function handleHeader() {
+
+    const scrollY = window.scrollY;
+
+    if (
+      scrollY >= headerTop &&
+      scrollY <= headerTop + stickyDistance
+    ) {
+      // Header top par aaya → FIX
+      header.classList.add("temp-fixed");
     } else {
-      header.classList.remove("scroll-sticky");
+      // 100px ke baad ya original position se upar → normal
+      header.classList.remove("temp-fixed");
     }
+
   }
 
-  handleHeaderSticky();
+  window.addEventListener("scroll", handleHeader);
+  handleHeader();
 
-  window.addEventListener("scroll", handleHeaderSticky);
 });
 </script>
   </body>

@@ -5056,7 +5056,7 @@ header#header {
   z-index: 9999;
 }
 
-header#header.scroll-sticky {
+header#header.temp-fixed {
   position: fixed;
   top: 0;
   left: 0;
