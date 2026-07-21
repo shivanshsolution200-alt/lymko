@@ -123,6 +123,8 @@
     {{ collection.title | link_to: url }}  
     {% endif %}
     {% else %}
+    <div>
+
     {% capture url %}/collections/all{% endcapture %}
     <a href="{{ url }}">{{ 'general.breadcrumbs.all' | t }}</a>
     {% endif %}
@@ -132,7 +134,6 @@
 <path d="M1.32812 0.460227V14.8125H0.18608V0.460227H1.32812Z" fill="currentColor"></path>
 </svg>
     </span>
-    <div>
     <span>{{ product.title }}</span>
   </div>
 
