@@ -466,6 +466,27 @@
 {% endif %}
 
 {% render 'recently-viewed-tracker' %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector("header#header");
+
+  if (!header) return;
+
+  function handleHeaderSticky() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop <= 100) {
+      header.classList.add("scroll-sticky");
+    } else {
+      header.classList.remove("scroll-sticky");
+    }
+  }
+
+  handleHeaderSticky();
+
+  window.addEventListener("scroll", handleHeaderSticky);
+});
+</script>
   </body>
 
 

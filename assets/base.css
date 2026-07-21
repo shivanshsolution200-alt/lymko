@@ -5050,3 +5050,15 @@ a.full-unstyled-link {
     overflow: hidden;
     /* height: 35px; */
 }
+
+header#header {
+  width: 100%;
+  z-index: 9999;
+}
+
+header#header.scroll-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
