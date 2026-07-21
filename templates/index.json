@@ -352,7 +352,8 @@
         "h3 {text-align: left;}",
         "p {text-align: left;}",
         ".price.price--on-sale.product-price-current {text-align: left;}",
-        "product-form {width: 100%;}"
+        "product-form {width: 100%;}",
+        ".quick-add.button-quick-add {width: 100%;}"
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
