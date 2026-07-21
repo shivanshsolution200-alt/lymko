@@ -66,7 +66,9 @@
   .footer-block__details-content.footer-block--newsletter.left .footer-block__details-content-newsletter{margin-right:auto;}
   .footer-block__details-content.footer-block--newsletter.center .footer-block__details-content-newsletter{margin:auto;}
     
- <script>
+  
+{%- endstyle -%}
+<script>
 document.addEventListener('DOMContentLoaded', function () {
 
   const footer = document.querySelector('.footer-style3');
@@ -128,9 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 }
-</style> 
-{%- endstyle -%}
-
+</style>
 <footer  id="Banner-{{ section.id }}" class="{% if request.page_type == 'index' %}index-footer{% endif %} footer-style3 color-{{ section.settings.color_scheme }} gradient  {% if section.settings.footer_default %}theme__default-footer_style{% endif %}">
   {%- if section.settings.image != blank -%}
    <div class="banner__media media">
