@@ -1160,7 +1160,8 @@
       ".card__information p {text-align: left;}",
       ".price.price--on-sale.product-price-current {text-align: left;}",
       "product-form {width: 100%;}",
-      ".quick-add.button-quick-add {width: 100%;}"
+      ".quick-add.button-quick-add {width: 100%;}",
+      "span.price-item.price-item--sale.price-item--last {color: #b32889;}"
     ]
   }
 }
