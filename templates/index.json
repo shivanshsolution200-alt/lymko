@@ -887,7 +887,8 @@
         "button_iyd48P"
       ],
       "custom_css": [
-        ".image-with-text__media-item.image-with-text__media-item--medium.image-with-text__media-item--middle.grid__item {padding-bottom: 25px;}"
+        ".image-with-text__media-item.image-with-text__media-item--medium.image-with-text__media-item--middle.grid__item {padding-bottom: 25px;}",
+        ".product-grid .card__information {height: 140px !important;}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
