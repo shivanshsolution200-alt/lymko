@@ -47,6 +47,18 @@
       style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
     >
       <div class="card__inner {% if card_product.featured_media %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+        {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+          {% assign image_discount_amount = card_product.compare_at_price | minus: card_product.price %}
+          {% assign image_discount_percentage = image_discount_amount
+            | times: 100.0
+            | divided_by: card_product.compare_at_price
+            | round: 1
+          %}
+          <div class="lymko-image-discount-ribbon" aria-label="{{ image_discount_percentage }}% off">
+            <span>{{ image_discount_percentage }}%</span>
+          </div>
+        {%- endif -%}
+
         {%- if card_product.featured_media -%}
           <div class="card__media">
           <a href="{{ card_product.url }}">
@@ -103,23 +115,6 @@
                 {{ card_product.title | escape }}
               </a>
             </h3>
-          </div>
-          <div class="card__badge {{ settings.badge_position }} image-discount-badge">
-            {%- if card_product.available == false -%}
-              <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-
-              {% assign discount_amount = card_product.compare_at_price | minus: card_product.price %}
-{% assign discount_percentage = discount_amount
-  | times: 100.0
-  | divided_by: card_product.compare_at_price
-  | round: 1
-%}
-
-<span class="badge image-sale-percent">
-  {{ discount_percentage }}%
-</span>
-            {%- endif -%}
           </div>
            <ul class="product-icons right-aligned">          
         {%- if settings.enable_compare -%}
@@ -384,46 +379,31 @@
 {%- endif -%}
 
 <style>
-/* ========================================
-   IMAGE DISCOUNT RIBBON
-======================================== */
+/* =========================================================
+   LYMKO IMAGE DISCOUNT RIBBON
+   Scoped only to this new badge.
+   Does NOT alter product image hover, media overflow or card layout.
+========================================================= */
 
-.card-wrapper {
+.card-wrapper .card__inner {
   position: relative;
 }
 
-.card-wrapper .image-discount-badge {
+.card-wrapper .lymko-image-discount-ribbon {
   position: absolute !important;
-  top: 10px !important;
-  left: -10px !important;
-  right: auto !important;
-  bottom: auto !important;
+  top: 8px !important;
+  left: 8px !important;
+  z-index: 30 !important;
 
-  width: 65px !important;
-  height: 28px !important;
+  width: 58px !important;
+  height: 25px !important;
 
   margin: 0 !important;
   padding: 0 !important;
-
-  z-index: 20 !important;
-  overflow: visible !important;
-  pointer-events: none !important;
-}
-
-.card-wrapper .image-discount-badge .image-sale-percent {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
 
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-
-  width: 65px !important;
-  height: 28px !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
 
   background: #61c6a5 !important;
   color: #ffffff !important;
@@ -431,44 +411,38 @@
   border: 0 !important;
   border-radius: 0 !important;
 
-  font-size: 11px !important;
-  line-height: 1 !important;
-  font-weight: 700 !important;
-
-  white-space: nowrap !important;
-
-  transform: rotate(-48deg) !important;
+  transform: rotate(-45deg) translate(-13px, -4px) !important;
   transform-origin: center center !important;
 
   box-shadow: none !important;
-  z-index: 21 !important;
+  pointer-events: none !important;
 }
 
-/* Allow the rotated ribbon to remain visible */
-.card-wrapper,
-.card-wrapper .card,
-.card-wrapper .card__inner {
-  overflow: visible !important;
+.card-wrapper .lymko-image-discount-ribbon span {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #ffffff !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
 }
 
-/* Keep the image itself clipped normally */
-.card-wrapper .card__media {
-  overflow: hidden !important;
-}
-
+/* Mobile */
 @media screen and (max-width: 749px) {
-  .card-wrapper .image-discount-badge {
-    top: 9px !important;
-    left: -8px !important;
-    width: 58px !important;
-    height: 25px !important;
+  .card-wrapper .lymko-image-discount-ribbon {
+    top: 7px !important;
+    left: 7px !important;
+    width: 54px !important;
+    height: 23px !important;
+    transform: rotate(-45deg) translate(-12px, -4px) !important;
   }
 
-  .card-wrapper .image-discount-badge .image-sale-percent {
-    width: 58px !important;
-    height: 25px !important;
-    font-size: 10px !important;
-    transform: rotate(-48deg) !important;
+  .card-wrapper .lymko-image-discount-ribbon span {
+    font-size: 9px !important;
   }
 }
 </style>
