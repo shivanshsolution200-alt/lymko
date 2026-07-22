@@ -104,11 +104,11 @@
               </a>
             </h3>
           </div>
-          <div class="card__badge {{ settings.badge_position }}">
+          <div class="card__badge {{ settings.badge_position }} image-discount-badge">
             {%- if card_product.available == false -%}
               <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-              
+
               {% assign discount_amount = card_product.compare_at_price | minus: card_product.price %}
 {% assign discount_percentage = discount_amount
   | times: 100.0
@@ -116,7 +116,7 @@
   | round: 1
 %}
 
-<span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
+<span class="badge image-sale-percent">
   {{ discount_percentage }}%
 </span>
             {%- endif -%}
@@ -382,3 +382,94 @@
   </div>
   </div>  
 {%- endif -%}
+
+<style>
+/* ========================================
+   IMAGE DISCOUNT RIBBON
+======================================== */
+
+.card-wrapper {
+  position: relative;
+}
+
+.card-wrapper .image-discount-badge {
+  position: absolute !important;
+  top: 10px !important;
+  left: -10px !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: 65px !important;
+  height: 28px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 20 !important;
+  overflow: visible !important;
+  pointer-events: none !important;
+}
+
+.card-wrapper .image-discount-badge .image-sale-percent {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 65px !important;
+  height: 28px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: #61c6a5 !important;
+  color: #ffffff !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+
+  white-space: nowrap !important;
+
+  transform: rotate(-48deg) !important;
+  transform-origin: center center !important;
+
+  box-shadow: none !important;
+  z-index: 21 !important;
+}
+
+/* Allow the rotated ribbon to remain visible */
+.card-wrapper,
+.card-wrapper .card,
+.card-wrapper .card__inner {
+  overflow: visible !important;
+}
+
+/* Keep the image itself clipped normally */
+.card-wrapper .card__media {
+  overflow: hidden !important;
+}
+
+@media screen and (max-width: 749px) {
+  .card-wrapper .image-discount-badge {
+    top: 9px !important;
+    left: -8px !important;
+    width: 58px !important;
+    height: 25px !important;
+  }
+
+  .card-wrapper .image-discount-badge .image-sale-percent {
+    width: 58px !important;
+    height: 25px !important;
+    font-size: 10px !important;
+    transform: rotate(-48deg) !important;
+  }
+}
+</style>
+
