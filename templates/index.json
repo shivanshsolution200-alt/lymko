@@ -635,7 +635,8 @@
       "type": "featured-collection",
       "custom_css": [
         ".title-wrapper-with-link.title-wrapper--self-padded-mobile.title-wrapper--no-top-margin.content-align--center {margin-bottom: 10px !important;}",
-        ".section-template--27351286022429__featured_collection_iX7fef-padding {padding-top: 0px; padding-bottom: 0px !important;}"
+        ".section-template--27351286022429__featured_collection_iX7fef-padding {padding-top: 0px; padding-bottom: 0px !important;}",
+        ".swiper-wrapper {padding-top: 10px; padding-bottom: 0;}"
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
@@ -698,7 +699,7 @@
         "page_full_width_spacing": false,
         "color_scheme": "background-1",
         "padding_top": 0,
-        "padding_bottom": 12
+        "padding_bottom": 20
       }
     },
     "specification_block_Y7LAY7": {
