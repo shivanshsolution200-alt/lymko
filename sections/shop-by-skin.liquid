@@ -4,49 +4,73 @@
   <div class="skin-container page-width">
 
     <!-- Heading -->
-    <h2 class="skin-heading" style="text-align: {{ section.settings.heading_alignment }}">
+    <h2
+      class="skin-heading"
+      style="text-align: {{ section.settings.heading_alignment }};"
+    >
       {{ section.settings.heading }}
     </h2>
 
     <!-- Tabs -->
     <div class="skin-tabs">
       {% for block in section.blocks %}
-        <button class="skin-tab-btn {% if forloop.first %}active{% endif %}" data-tab="tab-{{ section_id }}-{{ forloop.index }}">
+        <button
+          type="button"
+          class="skin-tab-btn {% if forloop.first %}active{% endif %}"
+          data-tab="tab-{{ section_id }}-{{ forloop.index }}"
+          {{ block.shopify_attributes }}
+        >
           {{ block.settings.tab_name }}
         </button>
       {% endfor %}
     </div>
 
-    <!-- Products -->
+    <!-- Tab Products -->
     {% for block in section.blocks %}
-      {% assign collection = collections[block.settings.collection] %}
+      {% assign collection = block.settings.collection %}
 
-      <div class="skin-tab-content {% if forloop.first %}active{% endif %}" id="tab-{{ section_id }}-{{ forloop.index }}">
+      <div
+        class="skin-tab-content {% if forloop.first %}active{% endif %}"
+        id="tab-{{ section_id }}-{{ forloop.index }}"
+      >
 
-        <div class="skin-product-row">
+        {% if collection != blank %}
+          <div class="skin-product-row">
 
-          {% for product in collection.products limit: 4 %}
-             {% render 'card-product-2',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-          {% endfor %}
+            {% for product in collection.products limit: section.settings.products_limit %}
 
-        </div>
+              <div class="skin-product-item">
+                {% render 'card-product-2',
+                  card_product: product,
+                  media_aspect_ratio: section.settings.image_ratio,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  show_quick_add: settings.enable_quickadd,
+                  show_quick_view: settings.enable_quickview,
+                  show_new_tag: section.settings.show_new_tag,
+                  section_id: section.id
+                %}
+              </div>
 
-        {% if collection.url != blank %}
-          <div class="skin-view-all">
-            <a href="{{ collection.url }}" class="view-all-btn">
-              View All
-            </a>
+            {% endfor %}
+
           </div>
+
+          {% if collection.url != blank and section.settings.show_view_all %}
+            <div class="skin-view-all">
+              <a href="{{ collection.url }}" class="view-all-btn">
+                {{ section.settings.view_all_text }}
+              </a>
+            </div>
+          {% endif %}
+
+        {% else %}
+
+          <div class="skin-empty">
+            Please select a collection for this tab.
+          </div>
+
         {% endif %}
 
       </div>
@@ -56,101 +80,71 @@
 </div>
 
 <style>
-/* =========================
-   SECTION BASE
-========================= */
+/* =========================================
+   SECTION
+========================================= */
+
 #skin-section-{{ section_id }} {
-  padding: 20px 0px;
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
 }
 
-/* Tabs */
+#skin-section-{{ section_id }} .skin-heading {
+  margin: 0 0 22px;
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
 #skin-section-{{ section_id }} .skin-tabs {
   display: flex;
-  gap: 10px;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
   flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
 #skin-section-{{ section_id }} .skin-tab-btn {
+  appearance: none;
+  -webkit-appearance: none;
+
   padding: 10px 30px;
+
+  border: 1px solid #dddddd;
   border-radius: 13px;
-  border: 1px solid #ddd;
-  background: #fff;
-  cursor: pointer;
+
+  background: #ffffff;
+  color: #000000;
+
   font-size: 14px;
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#skin-section-{{ section_id }} .skin-tab-btn:hover {
+  border-color: #000000;
 }
 
 #skin-section-{{ section_id }} .skin-tab-btn.active {
-  background: #000;
-  color: #fff;
-}
-
-/* GRID */
-#skin-section-{{ section_id }} .skin-product-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-}
-{% comment %} #skin-section-{{ section_id }} .skin-product-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  transition: 0.3s ease;
-  position: relative;
-} {% endcomment %}
-
-{% comment %} #skin-section-{{ section_id }} .skin-product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.10);
-} {% endcomment %}
-
-/* =========================
-   🔥 FORCE ALWAYS VISIBLE UI
-========================= */
-
-/* icons always visible */
-#skin-section-{{ section_id }} .product-icons,
-#skin-section-{{ section_id }} .product-icons.always-visible-icons {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  pointer-events: auto !important;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 5;
-}
-
-/* quick view + wishlist hover remove */
-#skin-section-{{ section_id }} .product-icons li,
-#skin-section-{{ section_id }} .product-icons li a {
-  opacity: 1 !important;
-  visibility: visible !important;
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
 }
 
 
-/* image */
-#skin-section-{{ section_id }} img {
-  width: 100%;
-  height: auto;
-  border-radius: 11px;
-}
+/* =========================================
+   TAB CONTENT
+========================================= */
 
-/* TITLE */
-#skin-section-{{ section_id }} .skin-title {
-  font-size: 18px;
-  margin: 12px 0 5px;
-}
-
-/* PRICE */
-#skin-section-{{ section_id }} .skin-price {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-/* Tabs content */
 #skin-section-{{ section_id }} .skin-tab-content {
   display: none;
 }
@@ -159,99 +153,478 @@
   display: block;
 }
 
-/* View all */
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+#skin-section-{{ section_id }} .skin-product-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+}
+
+#skin-section-{{ section_id }} .skin-product-item {
+  min-width: 0;
+}
+
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+#skin-section-{{ section_id }} img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* =========================================
+   SECONDARY IMAGE HOVER
+   extra fallback support
+========================================= */
+
+#skin-section-{{ section_id }} .card__media,
+#skin-section-{{ section_id }} .product-card__media,
+#skin-section-{{ section_id }} .product-media,
+#skin-section-{{ section_id }} .media {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/*
+  Common Shopify secondary image classes.
+  These rules act as fallback in case
+  card-product-2 already outputs both images.
+*/
+
+#skin-section-{{ section_id }} .card__media img + img,
+#skin-section-{{ section_id }} .product-card__media img + img,
+#skin-section-{{ section_id }} .product-media img + img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0;
+
+  transition: opacity 0.35s ease;
+}
+
+
+/* show second image */
+
+{% if section.settings.show_secondary_image %}
+
+@media (hover: hover) {
+
+  #skin-section-{{ section_id }} .card:hover .card__media img + img,
+  #skin-section-{{ section_id }} .card-wrapper:hover .card__media img + img,
+  #skin-section-{{ section_id }} .product-card:hover .product-card__media img + img,
+  #skin-section-{{ section_id }} .product-item:hover .product-media img + img,
+  #skin-section-{{ section_id }} .skin-product-item:hover .card__media img + img,
+  #skin-section-{{ section_id }} .skin-product-item:hover .product-card__media img + img,
+  #skin-section-{{ section_id }} .skin-product-item:hover .product-media img + img {
+    opacity: 1;
+  }
+
+}
+
+{% endif %}
+
+
+/* =========================================
+   ALWAYS VISIBLE PRODUCT ICONS
+========================================= */
+
+#skin-section-{{ section_id }} .product-icons,
+#skin-section-{{ section_id }} .product-icons.always-visible-icons {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: auto !important;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  z-index: 5;
+}
+
+#skin-section-{{ section_id }} .product-icons li,
+#skin-section-{{ section_id }} .product-icons li a {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* =========================================
+   VIEW ALL
+========================================= */
+
 #skin-section-{{ section_id }} .skin-view-all {
   text-align: center;
   margin-top: 25px;
 }
 
 #skin-section-{{ section_id }} .view-all-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 10px 22px;
-  border: 1px solid #000;
-  {% comment %} border-radius: 25px; {% endcomment %}
+
+  border: 1px solid #000000;
+
+  background: transparent;
+  color: #000000;
+
   text-decoration: none;
-  color: #000;
   font-size: 14px;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 #skin-section-{{ section_id }} .view-all-btn:hover {
-  background: #000;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+
+/* =========================================
+   EMPTY COLLECTION
+========================================= */
+
+#skin-section-{{ section_id }} .skin-empty {
+  padding: 30px;
+  text-align: center;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media screen and (max-width: 990px) {
+
   #skin-section-{{ section_id }} .skin-product-row {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+  #skin-section-{{ section_id }} {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #skin-section-{{ section_id }} .skin-tabs {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  #skin-section-{{ section_id }} .skin-tab-btn {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+
+  #skin-section-{{ section_id }} .skin-product-row {
+    grid-template-columns: repeat({{ section.settings.mobile_columns }}, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media screen and (max-width: 480px) {
+
+  #skin-section-{{ section_id }} .skin-tab-btn {
+    padding: 8px 15px;
+    border-radius: 10px;
   }
 
 }
 </style>
 
+
 <script>
-(function(){
-  const section = document.getElementById("skin-section-{{ section_id }}");
-  if(!section) return;
+(function() {
 
-  const buttons = section.querySelectorAll(".skin-tab-btn");
-  const contents = section.querySelectorAll(".skin-tab-content");
+  function initSkinTabs() {
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", function(){
-      const tab = this.getAttribute("data-tab");
+    const section = document.getElementById(
+      "skin-section-{{ section_id }}"
+    );
 
-      buttons.forEach(b => b.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
+    if (!section) return;
 
-      this.classList.add("active");
-      section.querySelector("#"+tab).classList.add("active");
+    const buttons = section.querySelectorAll(
+      ".skin-tab-btn"
+    );
+
+    const contents = section.querySelectorAll(
+      ".skin-tab-content"
+    );
+
+
+    buttons.forEach(function(button) {
+
+      button.addEventListener("click", function() {
+
+        const tabId = this.getAttribute("data-tab");
+
+        const targetContent = section.querySelector(
+          "#" + tabId
+        );
+
+        if (!targetContent) return;
+
+
+        buttons.forEach(function(btn) {
+          btn.classList.remove("active");
+        });
+
+
+        contents.forEach(function(content) {
+          content.classList.remove("active");
+        });
+
+
+        this.classList.add("active");
+
+        targetContent.classList.add("active");
+
+      });
+
     });
-  });
+
+  }
+
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initSkinTabs
+  );
+
+
+  /*
+    Shopify Theme Editor support
+  */
+
+  document.addEventListener(
+    "shopify:section:load",
+    function(event) {
+
+      if (
+        event.target &&
+        event.target.querySelector(
+          "#skin-section-{{ section_id }}"
+        )
+      ) {
+        initSkinTabs();
+      }
+
+    }
+  );
+
 })();
 </script>
+
 
 {% schema %}
 {
   "name": "Skin Type Tabs Grid",
+
   "settings": [
+
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
       "default": "Shop By Skin Type"
     },
+
     {
       "type": "select",
       "id": "heading_alignment",
       "label": "Heading Alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "label": "Show second image on hover",
+      "default": true
+    },
+
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "adapt"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating",
+      "default": false
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_new_tag",
+      "label": "Show new tag",
+      "default": true
+    },
+
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products per tab",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Products per row on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All button",
+      "default": true
+    },
+
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All button text",
+      "default": "View All"
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
     }
+
   ],
+
   "blocks": [
+
     {
       "type": "tab",
       "name": "Tab",
+
       "settings": [
+
         {
           "type": "text",
           "id": "tab_name",
           "label": "Tab Name",
           "default": "Oily"
         },
+
         {
           "type": "collection",
           "id": "collection",
           "label": "Select Collection"
         }
+
       ]
     }
+
   ],
+
+  "max_blocks": 10,
+
   "presets": [
     {
       "name": "Skin Type Tabs Grid"
