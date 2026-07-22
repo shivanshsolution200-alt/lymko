@@ -510,7 +510,14 @@
       ],
       "custom_css": [
         "h2.skin-heading {margin-top: 0;}",
-        "#skin-section-template--27351286022429__shop_by_skin_pikKnX {padding: 10px 0px;}"
+        "#skin-section-template--27351286022429__shop_by_skin_pikKnX {padding: 10px 0px;}",
+        ".card-wrapper .card-information.review {display: flex; justify-content: flex-start; width: 100% !important;}",
+        ".price--on-sale .price__sale {display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start !important;}",
+        "h3 {text-align: left;}",
+        "p {text-align: left;}",
+        ".price.price--on-sale.product-price-current {text-align: left;}",
+        "product-form {width: 100%;}",
+        ".quick-add.button-quick-add {width: 100%;}"
       ],
       "name": "Skin Type Tabs",
       "settings": {
