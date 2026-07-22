@@ -348,7 +348,8 @@
       "custom_css": [
         "p.description {margin-top: 2px; margin-bottom: 2px; text-align: center;}",
         ".swiper-wrapper {padding-top: 10px; padding-bottom: 0;}",
-        ".title-wrapper-with-link {margin-bottom: 1rem;}"
+        ".title-wrapper-with-link {margin-bottom: 1rem;}",
+        "@media (min-width: 1024px){.product-grid .card__information {height: 90px;}}"
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
