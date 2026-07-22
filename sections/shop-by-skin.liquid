@@ -6,7 +6,7 @@
     <!-- Heading -->
     <h2
       class="skin-heading"
-      style="text-align: {{ section.settings.heading_alignment }};"
+      style="text-align: {{ section.settings.heading_alignment }}"
     >
       {{ section.settings.heading }}
     </h2>
@@ -25,9 +25,10 @@
       {% endfor %}
     </div>
 
-    <!-- Tab Products -->
+    <!-- Tab Content -->
     {% for block in section.blocks %}
-      {% assign collection = block.settings.collection %}
+
+      {% assign collection = collections[block.settings.collection] %}
 
       <div
         class="skin-tab-content {% if forloop.first %}active{% endif %}"
@@ -35,68 +36,63 @@
       >
 
         {% if collection != blank %}
+
           <div class="skin-product-row">
 
-            {% for product in collection.products limit: section.settings.products_limit %}
+            {% for product in collection.products limit: 4 %}
 
-              <div class="skin-product-item">
-                {% render 'card-product-2',
-                  card_product: product,
-                  media_aspect_ratio: section.settings.image_ratio,
-                  show_secondary_image: section.settings.show_secondary_image,
-                  show_vendor: section.settings.show_vendor,
-                  show_rating: section.settings.show_rating,
-                  show_quick_add: settings.enable_quickadd,
-                  show_quick_view: settings.enable_quickview,
-                  show_new_tag: section.settings.show_new_tag,
-                  section_id: section.id
-                %}
-              </div>
+              {% render 'card-product-2',
+                card_product: product,
+                show_secondary_image: true,
+                show_vendor: false,
+                show_rating: false,
+                show_quick_add: settings.enable_quickadd,
+                show_quick_view: settings.enable_quickview,
+                show_new_tag: true,
+                section_id: section.id
+              %}
 
             {% endfor %}
 
           </div>
 
-          {% if collection.url != blank and section.settings.show_view_all %}
+          {% if collection.url != blank %}
             <div class="skin-view-all">
               <a href="{{ collection.url }}" class="view-all-btn">
-                {{ section.settings.view_all_text }}
+                View All
               </a>
             </div>
           {% endif %}
 
-        {% else %}
-
-          <div class="skin-empty">
-            Please select a collection for this tab.
-          </div>
-
         {% endif %}
 
       </div>
+
     {% endfor %}
 
   </div>
 </div>
 
+
 <style>
-/* =========================================
+
+/* =========================
    SECTION
-========================================= */
+========================= */
 
 #skin-section-{{ section_id }} {
-  padding-top: {{ section.settings.padding_top }}px;
-  padding-bottom: {{ section.settings.padding_bottom }}px;
+  padding: 20px 0;
 }
 
 #skin-section-{{ section_id }} .skin-heading {
-  margin: 0 0 22px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 
-/* =========================================
+/* =========================
    TABS
-========================================= */
+========================= */
 
 #skin-section-{{ section_id }} .skin-tabs {
   display: flex;
@@ -108,26 +104,20 @@
 }
 
 #skin-section-{{ section_id }} .skin-tab-btn {
-  appearance: none;
-  -webkit-appearance: none;
-
   padding: 10px 30px;
 
-  border: 1px solid #dddddd;
   border-radius: 13px;
+  border: 1px solid #dddddd;
 
   background: #ffffff;
   color: #000000;
 
+  cursor: pointer;
+
   font-size: 14px;
   line-height: 1.2;
 
-  cursor: pointer;
-
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
+  transition: 0.25s ease;
 }
 
 #skin-section-{{ section_id }} .skin-tab-btn:hover {
@@ -141,9 +131,9 @@
 }
 
 
-/* =========================================
+/* =========================
    TAB CONTENT
-========================================= */
+========================= */
 
 #skin-section-{{ section_id }} .skin-tab-content {
   display: none;
@@ -154,9 +144,9 @@
 }
 
 
-/* =========================================
+/* =========================
    PRODUCT GRID
-========================================= */
+========================= */
 
 #skin-section-{{ section_id }} .skin-product-row {
   display: grid;
@@ -164,82 +154,12 @@
   gap: 25px;
 }
 
-#skin-section-{{ section_id }} .skin-product-item {
-  min-width: 0;
-}
 
+/* =========================
+   PRODUCT ICONS
+========================= */
 
-/* =========================================
-   PRODUCT IMAGE
-========================================= */
-
-#skin-section-{{ section_id }} img {
-  max-width: 100%;
-  height: auto;
-}
-
-
-/* =========================================
-   SECONDARY IMAGE HOVER
-   extra fallback support
-========================================= */
-
-#skin-section-{{ section_id }} .card__media,
-#skin-section-{{ section_id }} .product-card__media,
-#skin-section-{{ section_id }} .product-media,
-#skin-section-{{ section_id }} .media {
-  position: relative;
-  overflow: hidden;
-}
-
-
-/*
-  Common Shopify secondary image classes.
-  These rules act as fallback in case
-  card-product-2 already outputs both images.
-*/
-
-#skin-section-{{ section_id }} .card__media img + img,
-#skin-section-{{ section_id }} .product-card__media img + img,
-#skin-section-{{ section_id }} .product-media img + img {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  opacity: 0;
-
-  transition: opacity 0.35s ease;
-}
-
-
-/* show second image */
-
-{% if section.settings.show_secondary_image %}
-
-@media (hover: hover) {
-
-  #skin-section-{{ section_id }} .card:hover .card__media img + img,
-  #skin-section-{{ section_id }} .card-wrapper:hover .card__media img + img,
-  #skin-section-{{ section_id }} .product-card:hover .product-card__media img + img,
-  #skin-section-{{ section_id }} .product-item:hover .product-media img + img,
-  #skin-section-{{ section_id }} .skin-product-item:hover .card__media img + img,
-  #skin-section-{{ section_id }} .skin-product-item:hover .product-card__media img + img,
-  #skin-section-{{ section_id }} .skin-product-item:hover .product-media img + img {
-    opacity: 1;
-  }
-
-}
-
-{% endif %}
-
-
-/* =========================================
-   ALWAYS VISIBLE PRODUCT ICONS
-========================================= */
+/* Eye + Wishlist always visible */
 
 #skin-section-{{ section_id }} .product-icons,
 #skin-section-{{ section_id }} .product-icons.always-visible-icons {
@@ -252,7 +172,7 @@
   top: 10px;
   right: 10px;
 
-  z-index: 5;
+  z-index: 9;
 }
 
 #skin-section-{{ section_id }} .product-icons li,
@@ -262,9 +182,21 @@
 }
 
 
-/* =========================================
+/*
+=========================================
+IMPORTANT
+Product image ki koi custom CSS nahi hai.
+
+card-product-2 ki original image +
+secondary hover functionality ko
+theme handle karega.
+=========================================
+*/
+
+
+/* =========================
    VIEW ALL
-========================================= */
+========================= */
 
 #skin-section-{{ section_id }} .skin-view-all {
   text-align: center;
@@ -272,23 +204,20 @@
 }
 
 #skin-section-{{ section_id }} .view-all-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
 
   padding: 10px 22px;
 
   border: 1px solid #000000;
 
-  background: transparent;
-  color: #000000;
-
   text-decoration: none;
+
+  color: #000000;
+  background: transparent;
+
   font-size: 14px;
 
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
+  transition: 0.25s ease;
 }
 
 #skin-section-{{ section_id }} .view-all-btn:hover {
@@ -297,19 +226,9 @@
 }
 
 
-/* =========================================
-   EMPTY COLLECTION
-========================================= */
-
-#skin-section-{{ section_id }} .skin-empty {
-  padding: 30px;
-  text-align: center;
-}
-
-
-/* =========================================
+/* =========================
    TABLET
-========================================= */
+========================= */
 
 @media screen and (max-width: 990px) {
 
@@ -321,20 +240,15 @@
 }
 
 
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
 @media screen and (max-width: 768px) {
 
-  #skin-section-{{ section_id }} {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  #skin-section-{{ section_id }} .skin-tabs {
-    gap: 8px;
-    margin-bottom: 20px;
+  #skin-section-{{ section_id }} .skin-product-row {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 15px;
   }
 
   #skin-section-{{ section_id }} .skin-tab-btn {
@@ -342,26 +256,13 @@
     font-size: 13px;
   }
 
-  #skin-section-{{ section_id }} .skin-product-row {
-    grid-template-columns: repeat({{ section.settings.mobile_columns }}, minmax(0, 1fr));
-    gap: 12px;
+  #skin-section-{{ section_id }} .skin-tabs {
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
 }
 
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media screen and (max-width: 480px) {
-
-  #skin-section-{{ section_id }} .skin-tab-btn {
-    padding: 8px 15px;
-    border-radius: 10px;
-  }
-
-}
 </style>
 
 
@@ -376,13 +277,8 @@
 
     if (!section) return;
 
-    const buttons = section.querySelectorAll(
-      ".skin-tab-btn"
-    );
-
-    const contents = section.querySelectorAll(
-      ".skin-tab-content"
-    );
+    const buttons = section.querySelectorAll(".skin-tab-btn");
+    const contents = section.querySelectorAll(".skin-tab-content");
 
 
     buttons.forEach(function(button) {
@@ -390,12 +286,9 @@
       button.addEventListener("click", function() {
 
         const tabId = this.getAttribute("data-tab");
+        const target = section.querySelector("#" + tabId);
 
-        const targetContent = section.querySelector(
-          "#" + tabId
-        );
-
-        if (!targetContent) return;
+        if (!target) return;
 
 
         buttons.forEach(function(btn) {
@@ -409,8 +302,7 @@
 
 
         this.classList.add("active");
-
-        targetContent.classList.add("active");
+        target.classList.add("active");
 
       });
 
@@ -419,22 +311,27 @@
   }
 
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    initSkinTabs
-  );
+  if (document.readyState === "loading") {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initSkinTabs
+    );
+
+  } else {
+
+    initSkinTabs();
+
+  }
 
 
-  /*
-    Shopify Theme Editor support
-  */
+  /* Shopify Customizer */
 
   document.addEventListener(
     "shopify:section:load",
     function(event) {
 
       if (
-        event.target &&
         event.target.querySelector(
           "#skin-section-{{ section_id }}"
         )
@@ -481,118 +378,6 @@
         }
       ],
       "default": "center"
-    },
-
-    {
-      "type": "checkbox",
-      "id": "show_secondary_image",
-      "label": "Show second image on hover",
-      "default": true
-    },
-
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "label": "Image ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "Adapt to image"
-        },
-        {
-          "value": "portrait",
-          "label": "Portrait"
-        },
-        {
-          "value": "square",
-          "label": "Square"
-        }
-      ],
-      "default": "adapt"
-    },
-
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "label": "Show vendor",
-      "default": false
-    },
-
-    {
-      "type": "checkbox",
-      "id": "show_rating",
-      "label": "Show rating",
-      "default": false
-    },
-
-    {
-      "type": "checkbox",
-      "id": "show_new_tag",
-      "label": "Show new tag",
-      "default": true
-    },
-
-    {
-      "type": "range",
-      "id": "products_limit",
-      "label": "Products per tab",
-      "min": 1,
-      "max": 12,
-      "step": 1,
-      "default": 4
-    },
-
-    {
-      "type": "select",
-      "id": "mobile_columns",
-      "label": "Products per row on mobile",
-      "options": [
-        {
-          "value": "1",
-          "label": "1"
-        },
-        {
-          "value": "2",
-          "label": "2"
-        }
-      ],
-      "default": "1"
-    },
-
-    {
-      "type": "checkbox",
-      "id": "show_view_all",
-      "label": "Show View All button",
-      "default": true
-    },
-
-    {
-      "type": "text",
-      "id": "view_all_text",
-      "label": "View All button text",
-      "default": "View All"
-    },
-
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 20
-    },
-
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 20
     }
 
   ],
@@ -609,7 +394,7 @@
           "type": "text",
           "id": "tab_name",
           "label": "Tab Name",
-          "default": "Oily"
+          "default": "Face Serums"
         },
 
         {
@@ -619,6 +404,7 @@
         }
 
       ]
+
     }
 
   ],
@@ -626,9 +412,12 @@
   "max_blocks": 10,
 
   "presets": [
+
     {
       "name": "Skin Type Tabs Grid"
     }
+
   ]
+
 }
 {% endschema %}
