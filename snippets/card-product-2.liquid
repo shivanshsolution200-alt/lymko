@@ -49,20 +49,20 @@
       <div class="card__inner {% if card_product.featured_media %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
         {%- if card_product.featured_media -%}
           <div class="card__media">
-            {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
-              {% assign image_discount_amount = card_product.compare_at_price | minus: card_product.price %}
-              {% assign image_discount_percentage = image_discount_amount
-                | times: 100.0
-                | divided_by: card_product.compare_at_price
-                | round: 1
-              %}
-              <div class="lymko-corner-ribbon" aria-label="{{ image_discount_percentage }}% off">
-                <span>{{ image_discount_percentage }}%</span>
-              </div>
-            {%- endif -%}
-
           <a href="{{ card_product.url }}">
             <div class="media media--transparent media--hover-effect">
+              {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+                {% assign image_discount_amount = card_product.compare_at_price | minus: card_product.price %}
+                {% assign image_discount_percentage = image_discount_amount
+                  | times: 100.0
+                  | divided_by: card_product.compare_at_price
+                  | round: 1
+                %}
+                <div class="lymko-image-ribbon" aria-label="{{ image_discount_percentage }}% off">
+                  <span>{{ image_discount_percentage }}%</span>
+                </div>
+              {%- endif -%}
+
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
           
               <img
@@ -380,31 +380,25 @@
 
 <style>
 /* =========================================================
-   FINAL IMAGE CORNER RIBBON
-   Sits INSIDE .card__media so it looks joined to the image.
-   Nothing green protrudes outside the image corner.
+   CLEAN DISCOUNT RIBBON
+   IMPORTANT: no card/media sizing or positioning is changed.
 ========================================================= */
 
-.card-wrapper .card__media {
-  position: relative;
-}
-
-/* Ribbon strip */
-.card-wrapper .lymko-corner-ribbon {
+.lymko-image-ribbon {
   position: absolute !important;
+  top: 12px !important;
+  left: -18px !important;
+  z-index: 15 !important;
 
-  top: 0 !important;
-  left: 0 !important;
+  width: 72px !important;
+  height: 24px !important;
 
-  width: 76px !important;
-  height: 25px !important;
+  margin: 0 !important;
+  padding: 0 !important;
 
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
 
   background: #61c6a5 !important;
   color: #ffffff !important;
@@ -412,42 +406,37 @@
   border: 0 !important;
   border-radius: 0 !important;
 
-  z-index: 25 !important;
-  pointer-events: none !important;
-
-  /* Makes it a clean diagonal ribbon attached to the image corner */
-  transform: translate(-20px, 10px) rotate(-45deg) !important;
+  transform: rotate(-45deg) !important;
   transform-origin: center center !important;
 
+  pointer-events: none !important;
   box-shadow: none !important;
 }
 
-/* Text */
-.card-wrapper .lymko-corner-ribbon span {
+.lymko-image-ribbon span {
   display: block !important;
-
   margin: 0 !important;
   padding: 0 !important;
 
   color: #ffffff !important;
-
   font-size: 10px !important;
-  font-weight: 700 !important;
   line-height: 1 !important;
+  font-weight: 700 !important;
 
-  white-space: nowrap !important;
   letter-spacing: 0 !important;
+  white-space: nowrap !important;
 }
 
 /* Mobile */
 @media screen and (max-width: 749px) {
-  .card-wrapper .lymko-corner-ribbon {
-    width: 70px !important;
-    height: 23px !important;
-    transform: translate(-19px, 9px) rotate(-45deg) !important;
+  .lymko-image-ribbon {
+    top: 11px !important;
+    left: -19px !important;
+    width: 68px !important;
+    height: 22px !important;
   }
 
-  .card-wrapper .lymko-corner-ribbon span {
+  .lymko-image-ribbon span {
     font-size: 9px !important;
   }
 }
