@@ -73,7 +73,7 @@
         </span>
       {%- endunless -%}
       
-      {%- if available == false -%}
+      {% comment %} {%- if available == false -%}
   <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">
     {{ 'products.product.sold_out' | t }}
   </span>
@@ -91,7 +91,7 @@
     {{ discount_percentage }}% Off
   </span>
 
-{%- endif -%}
+{%- endif -%} {% endcomment %}
       {% comment %}
         <div class="product_right_tag  {% if on_sale %} offer_exist {% endif %}">
             {% if on_sale %}
