@@ -54,8 +54,8 @@
         "slide_UUDxKr": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/resize_banner.png",
-            "mobile_image": "shopify://shop_images/lymko_mobile_banner_2_1.png",
+            "image": "shopify://shop_images/Launch_Banner_web_1.png",
+            "mobile_image": "shopify://shop_images/Launch_Banner_mobile_1.png",
             "eyebrow": "",
             "heading": "",
             "button_label": "",
@@ -574,7 +574,7 @@
         "text_eCXKhC": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/sunscreen_step_4_9d547461-b541-4a0d-8724-0c7ca50c4181.png",
+            "block_image": "shopify://shop_images/step_4_sunscreen.png",
             "show_content": true,
             "block_title": "Step 4",
             "enable_title_link": false,
