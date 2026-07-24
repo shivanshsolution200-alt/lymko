@@ -124,7 +124,7 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [
-        "@media (max-width: 786px){.product-grid .card__information {height: 140px;}.card__content.for-arrow-alignment {display: flex !important; flex-direction: column; justify-content: space-between;}}"
+        "@media (max-width: 786px) {.product-grid .card__information {height: 110px; } .card__content.for-arrow-alignment {display: flex !important; flex-direction: column; justify-content: space-between; }}"
       ],
       "settings": {
         "products_per_page": 12,
