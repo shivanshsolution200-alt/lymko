@@ -125,7 +125,8 @@
       "type": "main-collection-product-grid",
       "custom_css": [
         ".card__content.for-arrow-alignment {display: flex !important; flex-direction: column; justify-content: space-between;}",
-        ".product-grid .card__information {height: 90px;}"
+        ".product-grid .card__information {height: 90px;}",
+        "@media (max-width: 768px){.product-grid .card__information {height: 120px;}}"
       ],
       "settings": {
         "products_per_page": 12,
