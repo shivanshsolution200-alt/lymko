@@ -1161,7 +1161,8 @@
       ".price.price--on-sale.product-price-current {text-align: left;}",
       "product-form {width: 100%;}",
       ".quick-add.button-quick-add {width: 100%;}",
-      "span.price-item.price-item--sale.price-item--last {color: #b32889;}"
+      "span.price-item.price-item--sale.price-item--last {color: #b32889;}",
+      "div#Slider-template--27351286022429__collection_list_QVNMd6 h3.card__heading {text-align: center !important;}"
     ]
   }
 }
