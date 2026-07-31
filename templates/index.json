@@ -844,6 +844,7 @@
         "reel_zDmYg6",
         "reel_7tcdUM"
       ],
+      "disabled": true,
       "custom_css": [
         "h2.reels-section-title {margin: 10px 0px;}"
       ],
