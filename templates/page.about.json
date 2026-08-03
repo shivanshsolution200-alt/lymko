@@ -29,6 +29,7 @@
         "feature_aMWhmy": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/download.svg",
             "title": "POWERED BY NATURE",
             "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
@@ -36,22 +37,25 @@
         "feature_f3GwWa": {
           "type": "feature",
           "settings": {
-            "title": "POWERED BY NATURE",
-            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+            "icon": "shopify://shop_images/download_1.svg",
+            "title": "BACKED BY SCIENCE",
+            "text": "Advanced nano bio quantum technology for visible, real and lasting results."
           }
         },
         "feature_EjcGGx": {
           "type": "feature",
           "settings": {
-            "title": "POWERED BY NATURE",
-            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+            "icon": "shopify://shop_images/download_2.svg",
+            "title": "CLEAN & SAFE",
+            "text": "Toxin-free, cruelty-free and dermatologically tested for your safety."
           }
         },
         "feature_EzU94B": {
           "type": "feature",
           "settings": {
-            "title": "POWERED BY NATURE",
-            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+            "icon": "shopify://shop_images/download_3.svg",
+            "title": "SUSTAINABLE BEAUTY",
+            "text": "Responsible skincare for you and our planet, today and tomorrow."
           }
         }
       },
