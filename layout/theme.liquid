@@ -509,6 +509,87 @@ document.addEventListener("DOMContentLoaded", function () {
   updateHeader();
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  function updateCart(line, quantity, input) {
+
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        line: line,
+        quantity: quantity
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      location.reload(); // Cart refresh
+    })
+    .catch(error => {
+      console.error(error);
+      input.value = quantity;
+    });
+
+  }
+
+  document.querySelectorAll('.cart-item').forEach(function(item){
+
+    const input = item.querySelector('.quantity__input');
+    const plus = item.querySelector('button[name="plus"]');
+    const minus = item.querySelector('button[name="minus"]');
+
+    if(!input) return;
+
+    const line = parseInt(input.dataset.index);
+
+    plus.addEventListener('click', function(e){
+      e.preventDefault();
+
+      let qty = parseInt(input.value) || 1;
+      qty++;
+
+      input.value = qty;
+
+      updateCart(line, qty, input);
+
+    });
+
+    minus.addEventListener('click', function(e){
+      e.preventDefault();
+
+      let qty = parseInt(input.value) || 1;
+
+      if(qty > 1){
+        qty--;
+      }else{
+        qty = 0;
+      }
+
+      input.value = qty;
+
+      updateCart(line, qty, input);
+
+    });
+
+    input.addEventListener('change', function(){
+
+      let qty = parseInt(this.value);
+
+      if(isNaN(qty) || qty < 0){
+        qty = 1;
+      }
+
+      updateCart(line, qty, this);
+
+    });
+
+  });
+
+});
+</script>
   </body>
 
 
