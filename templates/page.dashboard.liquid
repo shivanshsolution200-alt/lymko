@@ -349,29 +349,7 @@
                     {% else %}
                       <p>No shipping address available.</p>
                     {% endif %}
-                    <div class="ldash__address">
-  {% assign address = customer.metafields.custom.address.value | default: customer.metafields.custom.address %}
-  {% assign city = customer.metafields.custom.city.value | default: customer.metafields.custom.city %}
-  {% assign state = customer.metafields.custom.state.value | default: customer.metafields.custom.state %}
-  {% assign pin_code = customer.metafields.custom.pin_code.value | default: customer.metafields.custom.pin_code %}
-
-  {% if address != blank %}
-    <p>{{ address }}</p>
-  {% endif %}
-
-  {% if city != blank or state != blank or pin_code != blank %}
-    <p>
-      {{ city }}
-      {% if city != blank and state != blank %}, {% endif %}
-      {{ state }}
-      {% if pin_code != blank %} - {{ pin_code }}{% endif %}
-    </p>
-  {% endif %}
-
-  {% if address == blank and city == blank and state == blank and pin_code == blank %}
-    <p>No address added.</p>
-  {% endif %}
-</div>
+                    
                   </div>
 
                   <div>
