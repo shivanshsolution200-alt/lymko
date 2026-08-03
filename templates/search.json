@@ -14,7 +14,8 @@
       "custom_css": [
         "h1.h2 {margin: 0;}",
         ".template-search__search .search {margin-top: 15px;}",
-        "@media screen and (min-width: 750px) {.template-search__header {margin-bottom: 0px; }}"
+        "@media screen and (min-width: 750px) {.template-search__header {margin-bottom: 0px; }}",
+        ".custom-product-grid li.active svg {z-index: 1; color: #000 !important;}"
       ],
       "settings": {
         "columns_desktop": 4,
