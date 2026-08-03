@@ -509,7 +509,121 @@ document.addEventListener("DOMContentLoaded", function () {
   updateHeader();
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+  function updateCart(line, quantity) {
+
+    fetch("/cart/change.js", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        line: line,
+        quantity: quantity
+      })
+    })
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(){
+      location.reload();
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+
+  }
+
+  function toggleMinusButton(input){
+
+    const quantityBox = input.closest(".quantity");
+    if(!quantityBox) return;
+
+    const minusBtn = quantityBox.querySelector('button[name="minus"]');
+
+    if(!minusBtn) return;
+
+    if(parseInt(input.value) <= 1){
+      minusBtn.disabled = true;
+      minusBtn.style.opacity = ".4";
+      minusBtn.style.cursor = "not-allowed";
+    }else{
+      minusBtn.disabled = false;
+      minusBtn.style.opacity = "1";
+      minusBtn.style.cursor = "pointer";
+    }
+
+  }
+
+  document.querySelectorAll(".cart-item").forEach(function(cartItem){
+
+    const input = cartItem.querySelector(".quantity__input");
+    const plus = cartItem.querySelector('button[name="plus"]');
+    const minus = cartItem.querySelector('button[name="minus"]');
+
+    if(!input) return;
+
+    const line = parseInt(input.dataset.index);
+
+    toggleMinusButton(input);
+
+    plus.addEventListener("click", function(e){
+
+      e.preventDefault();
+
+      let qty = parseInt(input.value) || 1;
+      qty++;
+
+      input.value = qty;
+
+      toggleMinusButton(input);
+
+      updateCart(line, qty);
+
+    });
+
+    minus.addEventListener("click", function(e){
+
+      e.preventDefault();
+
+      let qty = parseInt(input.value) || 1;
+
+      if(qty <= 1){
+        return;
+      }
+
+      qty--;
+
+      input.value = qty;
+
+      toggleMinusButton(input);
+
+      updateCart(line, qty);
+
+    });
+
+    input.addEventListener("change", function(){
+
+      let qty = parseInt(this.value);
+
+      if(isNaN(qty) || qty < 1){
+        qty = 1;
+      }
+
+      this.value = qty;
+
+      toggleMinusButton(this);
+
+      updateCart(line, qty);
+
+    });
+
+  });
+
+});
+</script>
   </body>
 
 
