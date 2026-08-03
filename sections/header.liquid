@@ -1109,7 +1109,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+function updateHeader() {
 
+  const drawer = document.querySelector("#Details-menu-drawer-container");
+
+
+  // Drawer open hai to header kuch nahi karega
+  if(drawer && drawer.hasAttribute("open")){
+    ticking = false;
+    return;
+  }
+
+
+  let scrollY = window.scrollY || document.documentElement.scrollTop;
+
+
+  if (scrollY > 0 && scrollY <= 300) {
+
+
+    if (!header.classList.contains("temp-sticky")) {
+      spacer.style.height = header.offsetHeight + "px";
+    }
+
+
+    header.classList.add("temp-sticky");
+    header.classList.remove("hide-header");
+
+
+  } else if (scrollY > 300) {
+
+
+    header.classList.remove("temp-sticky");
+    header.classList.add("hide-header");
+    spacer.style.height = "0px";
+
+
+  } else {
+
+
+    header.classList.remove("temp-sticky");
+    header.classList.remove("hide-header");
+    spacer.style.height = "0px";
+
+
+  }
+
+
+  ticking = false;
+
+}
 
 
   window.addEventListener("scroll", function(){
