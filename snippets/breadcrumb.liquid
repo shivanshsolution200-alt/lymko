@@ -145,6 +145,7 @@
     {% if settings.use_breadcrumb_title %}  
     <h1 class="breadcrumb_title">{{ page.title }}</h1>
      {% endif %}   
+     <div>
     <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
 
      <span aria-hidden="true" class="breadcrumb__sep">
@@ -153,7 +154,7 @@
 </svg>
     </span>
     <span>{{ page.title }}</span>
-
+  </div>
     {% else %}
     {% if template == 'list-collections' %}
     {% if settings.use_breadcrumb_title %}    
