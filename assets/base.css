@@ -5164,3 +5164,7 @@ header#header.temp-sticky {
         height: fit-content;
     }
 }
+.shopify-payment-button__button--unbranded:hover, .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+    background-color: rgba(var(--color-base-outline-button-labels));
+    color: #fff !important;
+}
