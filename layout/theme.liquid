@@ -512,40 +512,65 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  function updateCart(line, quantity, input) {
+  function updateCart(line, quantity) {
 
-    fetch('/cart/change.js', {
-      method: 'POST',
+    fetch("/cart/change.js", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         line: line,
         quantity: quantity
       })
     })
-    .then(response => response.json())
-    .then(data => {
-      location.reload(); // Cart refresh
+    .then(function(response){
+      return response.json();
     })
-    .catch(error => {
-      console.error(error);
-      input.value = quantity;
+    .then(function(){
+      location.reload();
+    })
+    .catch(function(error){
+      console.log(error);
     });
 
   }
 
-  document.querySelectorAll('.cart-item').forEach(function(item){
+  function toggleMinusButton(input){
 
-    const input = item.querySelector('.quantity__input');
-    const plus = item.querySelector('button[name="plus"]');
-    const minus = item.querySelector('button[name="minus"]');
+    const quantityBox = input.closest(".quantity");
+    if(!quantityBox) return;
+
+    const minusBtn = quantityBox.querySelector('button[name="minus"]');
+
+    if(!minusBtn) return;
+
+    if(parseInt(input.value) <= 1){
+      minusBtn.disabled = true;
+      minusBtn.style.opacity = ".4";
+      minusBtn.style.cursor = "not-allowed";
+    }else{
+      minusBtn.disabled = false;
+      minusBtn.style.opacity = "1";
+      minusBtn.style.cursor = "pointer";
+    }
+
+  }
+
+  document.querySelectorAll(".cart-item").forEach(function(cartItem){
+
+    const input = cartItem.querySelector(".quantity__input");
+    const plus = cartItem.querySelector('button[name="plus"]');
+    const minus = cartItem.querySelector('button[name="minus"]');
 
     if(!input) return;
 
     const line = parseInt(input.dataset.index);
 
-    plus.addEventListener('click', function(e){
+    toggleMinusButton(input);
+
+    plus.addEventListener("click", function(e){
+
       e.preventDefault();
 
       let qty = parseInt(input.value) || 1;
@@ -553,36 +578,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
       input.value = qty;
 
-      updateCart(line, qty, input);
+      toggleMinusButton(input);
+
+      updateCart(line, qty);
 
     });
 
-    minus.addEventListener('click', function(e){
+    minus.addEventListener("click", function(e){
+
       e.preventDefault();
 
       let qty = parseInt(input.value) || 1;
 
-      if(qty > 1){
-        qty--;
-      }else{
-        qty = 0;
+      if(qty <= 1){
+        return;
       }
+
+      qty--;
 
       input.value = qty;
 
-      updateCart(line, qty, input);
+      toggleMinusButton(input);
+
+      updateCart(line, qty);
 
     });
 
-    input.addEventListener('change', function(){
+    input.addEventListener("change", function(){
 
       let qty = parseInt(this.value);
 
-      if(isNaN(qty) || qty < 0){
+      if(isNaN(qty) || qty < 1){
         qty = 1;
       }
 
-      updateCart(line, qty, this);
+      this.value = qty;
+
+      toggleMinusButton(this);
+
+      updateCart(line, qty);
 
     });
 
