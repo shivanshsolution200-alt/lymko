@@ -32,14 +32,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
         "fake_visitors_JaqMJq": {
           "type": "fake_visitors",
           "settings": {
@@ -47,6 +39,14 @@
             "min_count": 50,
             "max_count": 200
           }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
         },
         "caption": {
           "type": "text",
@@ -73,6 +73,7 @@
         },
         "custom_liquid_HFdpPU": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div class=\"viewing-box\">\n  \n  <span class=\"eye-icon\">\n    <!-- SVG Eye Icon -->\n    <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#222\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n      <path d=\"M1 12C3.5 7 7.5 4 12 4s8.5 3 11 8c-2.5 5-6.5 8-11 8s-8.5-3-11-8z\"/>\n      <circle cx=\"12\" cy=\"12\" r=\"3\"/>\n    </svg>\n  </span>\n\n  <span class=\"viewing-text\">\n    <b id=\"viewingCount\">52</b> People are Viewing Right Now\n  </span>\n\n</div>"
           }
@@ -197,9 +198,9 @@
         }
       },
       "block_order": [
+        "fake_visitors_JaqMJq",
         "title",
         "price",
-        "fake_visitors_JaqMJq",
         "caption",
         "custom_liquid_ebCM4N",
         "381e9805-2b9d-4e45-99ce-2a5f748ed6af",
