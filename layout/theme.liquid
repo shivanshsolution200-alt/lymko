@@ -524,17 +524,16 @@ document.addEventListener("DOMContentLoaded", function () {
         quantity: quantity
       })
     })
-    .then(function(response){
-      return response.json();
-    })
-    .then(function(){
+    .then(response => response.json())
+    .then(() => {
       location.reload();
     })
-    .catch(function(error){
+    .catch(error => {
       console.log(error);
     });
 
   }
+
 
   function toggleMinusButton(input){
 
@@ -545,11 +544,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(!minusBtn) return;
 
-    if(parseInt(input.value) <= 1){
+    if(Number(input.value) <= 1){
       minusBtn.disabled = true;
-      minusBtn.style.opacity = ".4";
+      minusBtn.style.opacity = "0.4";
       minusBtn.style.cursor = "not-allowed";
-    }else{
+    } else {
       minusBtn.disabled = false;
       minusBtn.style.opacity = "1";
       minusBtn.style.cursor = "pointer";
@@ -557,24 +556,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   document.querySelectorAll(".cart-item").forEach(function(cartItem){
 
     const input = cartItem.querySelector(".quantity__input");
     const plus = cartItem.querySelector('button[name="plus"]');
     const minus = cartItem.querySelector('button[name="minus"]');
 
-    if(!input) return;
+    if(!input || !plus || !minus) return;
 
-    const line = parseInt(input.dataset.index);
+
+    const line = Number(input.dataset.index);
+
 
     toggleMinusButton(input);
+
 
     plus.addEventListener("click", function(e){
 
       e.preventDefault();
+      e.stopImmediatePropagation(); // Shopify native JS block
 
-      let qty = parseInt(input.value) || 1;
-      qty++;
+      let qty = Number(input.value);
+
+      qty = qty + 1;
 
       input.value = qty;
 
@@ -582,19 +587,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
       updateCart(line, qty);
 
-    });
+    }, true);
+
+
 
     minus.addEventListener("click", function(e){
 
       e.preventDefault();
+      e.stopImmediatePropagation();
 
-      let qty = parseInt(input.value) || 1;
+      let qty = Number(input.value);
+
 
       if(qty <= 1){
         return;
       }
 
-      qty--;
+
+      qty = qty - 1;
+
 
       input.value = qty;
 
@@ -602,25 +613,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
       updateCart(line, qty);
 
-    });
 
-    input.addEventListener("change", function(){
+    }, true);
 
-      let qty = parseInt(this.value);
 
-      if(isNaN(qty) || qty < 1){
+
+    input.addEventListener("change", function(e){
+
+      e.stopImmediatePropagation();
+
+
+      let qty = Number(this.value);
+
+
+      if(!qty || qty < 1){
         qty = 1;
       }
 
+
       this.value = qty;
+
 
       toggleMinusButton(this);
 
       updateCart(line, qty);
 
-    });
+
+    }, true);
+
+
 
   });
+
 
 });
 </script>
