@@ -1578,7 +1578,7 @@ facet-filters-form.facets.small-hide.horizontal {
 .facets .detail-Price.disclosure-has-popup[open]  .facets__display{   min-width: 310px; }
 .detail-Product.type.disclosure-has-popup .facet-checkbox:before{ display:none;}
 .detail-Brand.disclosure-has-popup  .facet-checkbox:before{ display:none; }
-.facets__disclosure[open] .facets__display{ right: 0; /* left: auto; */  min-width: 200px; width: 100%;}
+.facets__disclosure[open] .facets__display{ right: 0; /* left: auto; */  max-width: 200px; width: 100%;}
 .facet-filters__field summary .icon-caret { right: 15px; }
 .filter-panel-menu ul li a{ margin-right:0 !important;}
 .filter-panel-menu ul li{ list-style-type:disc; margin-left:20px;}
