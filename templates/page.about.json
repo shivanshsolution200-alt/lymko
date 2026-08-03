@@ -9,6 +9,20 @@
  */
 {
   "sections": {
+    "about_science_3LrUqq": {
+      "type": "about-science",
+      "name": "About Science",
+      "settings": {
+        "label": "ABOUT US",
+        "heading1": "The Science Behind,",
+        "heading2": "The Care Within.",
+        "text1": "At Lymko, we believe skincare is more than a routine—it's a daily ritual of self-care, confidence, and well-being.",
+        "text2": "We blend the best of nature with advanced skincare science to create safe, effective, and luxurious products that help you achieve healthy, radiant skin.",
+        "button_text": "",
+        "button_link": "",
+        "bg_color": "#f8f7f3"
+      }
+    },
     "176e23ad-9343-4ac6-9422-a72a3524281b": {
       "type": "breadcrumb",
       "disabled": true,
@@ -609,6 +623,7 @@
     }
   },
   "order": [
+    "about_science_3LrUqq",
     "176e23ad-9343-4ac6-9422-a72a3524281b",
     "main",
     "image_with_text_bYAAWi",
