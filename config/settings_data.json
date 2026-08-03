@@ -1157,7 +1157,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".section.form-image .form-contact.map-with-form .contact {width: calc(50% - 1vw); background: #f2ede9; padding: 6rem; height: fit-content; position: sticky; top: 0;}"
+      ".section.form-image .form-contact.map-with-form .contact {background: #f2ede9;}"
     ]
   }
 }
