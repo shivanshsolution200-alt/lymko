@@ -11,6 +11,10 @@
   "sections": {
     "main": {
       "type": "main-search",
+      "custom_css": [
+        "h1.h2 {margin: 0;}",
+        ".template-search__search .search {margin-top: 15px;}"
+      ],
       "settings": {
         "columns_desktop": 4,
         "page_full_width": true,
