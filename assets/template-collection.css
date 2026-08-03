@@ -100,7 +100,7 @@
 }
 
 facet-filters-form.facets.facets-vertical-sort {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
