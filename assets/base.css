@@ -5157,11 +5157,9 @@ header#header.temp-sticky {
     aside.facets-wrapper.sidebar-sticky {
         width: 330px !important;
     }
-        .facets-vertical .product-grid-container {
-        width: fit-content !important;
-        position: sticky;
-        top: 0;
-        height: fit-content;
+           .facets-vertical {
+        display: flex;
+        justify-content: flex-start;
     }
 }
 .shopify-payment-button__button--unbranded:hover, .shopify-payment-button__button--unbranded:hover:not([disabled]) {
