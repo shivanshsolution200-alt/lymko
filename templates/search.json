@@ -15,7 +15,9 @@
         "h1.h2 {margin: 0;}",
         ".template-search__search .search {margin-top: 15px;}",
         "@media screen and (min-width: 750px) {.template-search__header {margin-bottom: 0px; }}",
-        ".custom-product-grid li.active svg {z-index: 1; color: #000 !important;}"
+        ".custom-product-grid li.active svg {z-index: 1; color: #000 !important;}",
+        ".template-search__search {margin: 0 auto 0.5rem; max-width: 47.8rem;}",
+        "ul.custom-product-grid {display: none !important;}"
       ],
       "settings": {
         "columns_desktop": 3,
