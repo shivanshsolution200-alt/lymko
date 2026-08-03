@@ -911,6 +911,9 @@
       },
       "featured-collection": {
         "type": "featured-collection",
+        "custom_css": [
+          ".card__content.for-arrow-alignment {display: flex !important; flex-direction: column; justify-content: space-between;}"
+        ],
         "settings": {
           "page_full_width": true,
           "page_full_width_spacing": true,
@@ -924,7 +927,7 @@
           "column_alignment": "center",
           "collection": "hair-care",
           "products_to_show": 4,
-          "columns_desktop": 3,
+          "columns_desktop": 4,
           "show_view_all": false,
           "view_all_style": "solid",
           "color_scheme": "background-1",
