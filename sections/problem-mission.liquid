@@ -1,0 +1,448 @@
+<section class="problem-mission" style="background: {{ section.settings.bg_color }};">
+  <div class="page-width">
+
+    <div class="pm-grid">
+
+      <!-- LEFT -->
+      <div class="pm-left">
+
+        {% if section.settings.heading != blank %}
+          <h2 class="pm-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        <span class="pm-line"></span>
+
+        {% if section.settings.description != blank %}
+          <div class="pm-description">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+
+        <div class="problem-list">
+
+          {% for block in section.blocks %}
+            {% if block.type == 'problem' %}
+
+            <div class="problem-item" {{ block.shopify_attributes }}>
+
+              <div class="problem-icon">
+
+                {% if block.settings.icon != blank %}
+                  <img
+                    src="{{ block.settings.icon | image_url: width:100 }}"
+                    alt="{{ block.settings.title }}"
+                    width="34"
+                    height="34"
+                    loading="lazy">
+                {% endif %}
+
+              </div>
+
+              <span>{{ block.settings.title }}</span>
+
+            </div>
+
+            {% endif %}
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="pm-right">
+
+        {% for block in section.blocks %}
+          {% if block.type == 'card' %}
+
+          <div class="info-card" {{ block.shopify_attributes }}>
+
+            <div class="card-icon">
+
+              {% if block.settings.icon != blank %}
+                <img
+                  src="{{ block.settings.icon | image_url: width:120 }}"
+                  alt="{{ block.settings.heading }}"
+                  width="46"
+                  height="46"
+                  loading="lazy">
+              {% endif %}
+
+            </div>
+
+            <div class="card-content">
+
+              <h3>{{ block.settings.heading }}</h3>
+
+              <p>{{ block.settings.text }}</p>
+
+            </div>
+
+          </div>
+
+          {% endif %}
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+{% schema %}
+{
+  "name": "Problem & Mission",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Problem We Solve"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Our skin faces daily challenges from pollution, stress, UV rays, harsh chemicals, and lifestyle habits.</p><p>These factors can lead to:</p>"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    }
+  ],
+
+  "blocks":[
+
+    {
+      "type":"problem",
+      "name":"Problem Item",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"icon",
+          "label":"Icon"
+        },
+        {
+          "type":"text",
+          "id":"title",
+          "label":"Title",
+          "default":"Acne & Blemishes"
+        }
+      ]
+    },
+
+    {
+      "type":"card",
+      "name":"Mission / Vision Card",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"icon",
+          "label":"Icon"
+        },
+        {
+          "type":"text",
+          "id":"heading",
+          "label":"Heading",
+          "default":"Our Mission"
+        },
+        {
+          "type":"textarea",
+          "id":"text",
+          "label":"Text",
+          "default":"To create high-quality skincare that is effective, safe, and accessible."
+        }
+      ]
+    }
+
+  ],
+
+  "presets":[
+    {
+      "name":"Problem & Mission"
+    }
+  ]
+}
+{% endschema %}
+<style>
+.problem-mission{
+    padding:80px 0;
+    background:var(--bg-color,#fff);
+}
+
+.problem-mission .page-width{
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 20px;
+}
+
+.pm-grid{
+    display:grid;
+    grid-template-columns:58% 42%;
+    gap:60px;
+    align-items:start;
+}
+
+/* LEFT */
+
+.pm-heading{
+    font-size:52px;
+    line-height:1.1;
+    font-weight:400;
+    color:#173628;
+    margin:0;
+    font-family:"Marcellus",serif;
+}
+
+.pm-line{
+    display:block;
+    width:110px;
+    height:2px;
+    background:#b89b5f;
+    margin:18px 0 28px;
+}
+
+.pm-description{
+    font-size:18px;
+    line-height:1.9;
+    color:#555;
+    max-width:720px;
+}
+
+.pm-description p{
+    margin:0 0 14px;
+}
+
+.problem-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px 18px;
+    margin-top:35px;
+}
+
+.problem-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.problem-icon{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    border-radius:50%;
+    background:#f7f6ef;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.problem-icon img{
+    width:24px;
+    height:24px;
+    object-fit:contain;
+}
+
+.problem-item span{
+    font-size:17px;
+    color:#444;
+    line-height:1.5;
+}
+
+/* RIGHT */
+
+.pm-right{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.info-card{
+    display:flex;
+    gap:24px;
+    align-items:flex-start;
+    border:1px solid #ece8e3;
+    border-radius:18px;
+    padding:28px;
+    background:#fff;
+}
+
+.card-icon{
+    width:95px;
+    height:95px;
+    min-width:95px;
+    border-radius:50%;
+    background:#f7f6ef;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.card-icon img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+}
+
+.card-content{
+    flex:1;
+}
+
+.card-content h3{
+    margin:0 0 12px;
+    font-size:34px;
+    color:#173628;
+    font-family:"Marcellus",serif;
+    font-weight:400;
+}
+
+.card-content p{
+    margin:0;
+    font-size:17px;
+    line-height:1.9;
+    color:#555;
+}
+
+/* Tablet */
+
+@media(max-width:1100px){
+
+.pm-grid{
+    grid-template-columns:1fr;
+}
+
+.problem-list{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.pm-right{
+    margin-top:40px;
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.problem-mission{
+    padding:60px 0;
+}
+
+.pm-heading{
+    font-size:36px;
+}
+
+.pm-description{
+    font-size:16px;
+}
+
+.problem-list{
+    grid-template-columns:1fr;
+    gap:18px;
+}
+
+.info-card{
+    padding:22px;
+}
+
+.card-icon{
+    width:72px;
+    height:72px;
+    min-width:72px;
+}
+
+.card-icon img{
+    width:36px;
+    height:36px;
+}
+
+.card-content h3{
+    font-size:28px;
+}
+
+.card-content p{
+    font-size:16px;
+    line-height:1.7;
+}
+
+}
+/* ---------- Hover Effects ---------- */
+
+.info-card{
+    transition:all .35s ease;
+}
+
+.info-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+}
+
+.problem-item{
+    transition:all .3s ease;
+}
+
+.problem-item:hover{
+    transform:translateX(6px);
+}
+
+.problem-item:hover .problem-icon,
+.info-card:hover .card-icon{
+    background:#eef3e7;
+}
+
+.problem-icon,
+.card-icon{
+    transition:all .35s ease;
+}
+
+/* ---------- Better Typography ---------- */
+
+.pm-heading{
+    letter-spacing:-0.5px;
+}
+
+.card-content h3{
+    letter-spacing:-0.4px;
+}
+
+.problem-item span{
+    font-weight:500;
+}
+
+.pm-description p:last-child{
+    margin-bottom:0;
+}
+
+/* ---------- Better Images ---------- */
+
+.problem-icon img,
+.card-icon img{
+    display:block;
+    max-width:100%;
+    height:auto;
+}
+
+/* ---------- Card Radius ---------- */
+
+.info-card{
+    border-radius:20px;
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:768px){
+
+.info-card{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.card-icon{
+    margin-bottom:10px;
+}
+
+}
+</style>
