@@ -23,6 +23,49 @@
         "bg_color": "#f8f7f3"
       }
     },
+    "features_icons_LNiPwx": {
+      "type": "features-icons",
+      "blocks": {
+        "feature_aMWhmy": {
+          "type": "feature",
+          "settings": {
+            "title": "POWERED BY NATURE",
+            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+          }
+        },
+        "feature_f3GwWa": {
+          "type": "feature",
+          "settings": {
+            "title": "POWERED BY NATURE",
+            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+          }
+        },
+        "feature_EjcGGx": {
+          "type": "feature",
+          "settings": {
+            "title": "POWERED BY NATURE",
+            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+          }
+        },
+        "feature_EzU94B": {
+          "type": "feature",
+          "settings": {
+            "title": "POWERED BY NATURE",
+            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+          }
+        }
+      },
+      "block_order": [
+        "feature_aMWhmy",
+        "feature_f3GwWa",
+        "feature_EjcGGx",
+        "feature_EzU94B"
+      ],
+      "name": "Feature Icons",
+      "settings": {
+        "bg": "#ffffff"
+      }
+    },
     "176e23ad-9343-4ac6-9422-a72a3524281b": {
       "type": "breadcrumb",
       "disabled": true,
@@ -624,6 +667,7 @@
   },
   "order": [
     "about_science_3LrUqq",
+    "features_icons_LNiPwx",
     "176e23ad-9343-4ac6-9422-a72a3524281b",
     "main",
     "image_with_text_bYAAWi",
