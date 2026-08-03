@@ -5159,7 +5159,7 @@ header#header.temp-sticky {
     }
            .facets-vertical {
         display: flex;
-        justify-content: flex-start;
+        justify-content: flex-start !important;
     }
 }
 .shopify-payment-button__button--unbranded:hover, .shopify-payment-button__button--unbranded:hover:not([disabled]) {
