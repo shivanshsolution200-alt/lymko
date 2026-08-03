@@ -34,6 +34,9 @@
     },
     "0b8c12a8-0a65-4c8c-b88c-2a212202886f": {
       "type": "form-image",
+      "custom_css": [
+        ".collapsible-contact {margin-bottom: 2rem;}"
+      ],
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": false,
@@ -53,9 +56,9 @@
         "address_desc_2": "Support Email Id",
         "collapsible_contact_no": "",
         "address_desc_3": "",
-        "collapsible_contact_id": "contact.lymko@gmail.in <br>contact@lymko.in.",
+        "collapsible_contact_id": "contact.lymko@gmail.in contact@lymko.in.",
         "block_alignments": "map-with-form",
-        "padding_top": 100,
+        "padding_top": 0,
         "padding_bottom": 48
       }
     },
