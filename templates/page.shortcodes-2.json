@@ -18,6 +18,26 @@
         "padding_bottom": 40
       }
     },
+    "custom_liquid_TfFW68": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "page_full_width": false,
+        "page_full_width_spacing": false,
+        "title": "",
+        "heading_size": "h1",
+        "sub_heading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style_secondary": false,
+        "column_alignment": "center",
+        "custom_liquid": "<a href=\"{{ routes.account_login_url }}\" class=\"register-btn\" id=\"registerBtn\">\n    <span class=\"btn-text\">Already Registered</span>\n\n    <span class=\"loader\">\n        <span class=\"progress\"></span>\n    </span>\n</a>\n<style>\n.register-btn{\n    position:relative;\n    display:inline-flex;\n    justify-content:center;\n    align-items:center;\n    width:220px;\n    height:50px;\n    background:#000;\n    color:#fff;\n    text-decoration:none;\n    text-transform:uppercase;\n    letter-spacing:3px;\n    font-family:Arial,sans-serif;\n    font-weight:700;\n    overflow:hidden;\n}\n\n.btn-text{\n    position:relative;\n    z-index:2;\n}\n\n.loader{\n    position:absolute;\n    left:0;\n    bottom:0;\n    width:100%;\n    height:4px;\n    background:#222;\n    display:none;\n}\n\n.progress{\n    display:block;\n    height:100%;\n    width:0%;\n    background:#fff;\n}\n</style>\n<script>\ndocument.getElementById(\"registerBtn\").addEventListener(\"click\", function () {\n\n    const loader = this.querySelector(\".loader\");\n    const progress = this.querySelector(\".progress\");\n\n    loader.style.display = \"block\";\n\n    let width = 0;\n\n    const interval = setInterval(function(){\n\n        width += 2;\n\n        progress.style.width = width + \"%\";\n\n        if(width >= 100){\n            clearInterval(interval);\n        }\n\n    },20);\n\n});\n</script>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "rich_text_kp7b48": {
       "type": "rich-text",
       "blocks": {
@@ -74,6 +94,7 @@
   },
   "order": [
     "main",
+    "custom_liquid_TfFW68",
     "rich_text_kp7b48",
     "1783756603b97eea4f"
   ]
