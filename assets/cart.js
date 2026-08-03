@@ -28,19 +28,8 @@ class CartItems extends HTMLElement {
   }
 
   onChange(event) {
-  let qty = parseInt(event.target.value, 10);
-
-  if (isNaN(qty) || qty < 0) {
-    qty = 0;
-    event.target.value = 0;
+    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
   }
-
-  this.updateQuantity(
-    event.target.dataset.index,
-    qty,
-    event.target.getAttribute("name")
-  );
-}
 
  getSectionsToRender() {
     let sections = [
@@ -173,37 +162,7 @@ class CartItems extends HTMLElement {
 }
 
 customElements.define('cart-items', CartItems);
-document.addEventListener("click", function (e) {
-  const btn = e.target.closest(".quantity__button");
-  if (!btn) return;
 
-  e.preventDefault();
-
-  const quantity = btn.closest("quantity-input");
-  const input = quantity.querySelector(".quantity__input");
-
-  let value = parseInt(input.value, 10) || 0;
-
-  if (btn.name === "plus") {
-    value++;
-  } else {
-    value = Math.max(0, value - 1);
-  }
-
-  input.value = value;
-
-  const cartItems =
-    quantity.closest("cart-items") ||
-    quantity.closest("cart-drawer-items");
-
-  if (cartItems) {
-    cartItems.updateQuantity(
-      input.dataset.index,
-      value,
-      input.getAttribute("name")
-    );
-  }
-});
 if (!customElements.get('cart-note')) {
   customElements.define('cart-note', class CartNote extends HTMLElement {
     constructor() {
