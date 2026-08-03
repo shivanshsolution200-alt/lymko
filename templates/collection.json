@@ -126,7 +126,7 @@
       "custom_css": [
         ".card__content.for-arrow-alignment {display: flex !important; flex-direction: column; justify-content: space-between;}",
         ".product-grid .card__information {height: 90px;}",
-        "@media (max-width: 768px){.product-grid .card__information {height: 120px;}}"
+        "@media (max-width: 768px) {.product-grid .card__information {height: 120px; }}"
       ],
       "settings": {
         "products_per_page": 12,
@@ -142,7 +142,7 @@
         "enable_filtering": true,
         "filter_type": "vertical",
         "enable_sorting": true,
-        "pagination": "numbers",
+        "pagination": "infinit_scroll",
         "columns_mobile": "2",
         "padding_top": 4,
         "padding_bottom": 20,
