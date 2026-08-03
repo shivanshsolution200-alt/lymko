@@ -5149,7 +5149,7 @@ header#header.temp-sticky {
     height: 120px;
 }
 .custom-product-grid > li:nth-child(1),
-.list-view-filter > li:nth-child(2),
-.list-view-filter > li:nth-child(3) {
+.custom-product-grid > li:nth-child(2),
+.custom-product-grid > li:nth-child(3) {
     display: none !important;
 }
