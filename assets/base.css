@@ -5148,7 +5148,7 @@ header#header.temp-sticky {
 .product-grid .card__information {
     height: 120px;
 }
-.list-view-filter > li:nth-child(1),
+.custom-product-grid > li:nth-child(1),
 .list-view-filter > li:nth-child(2),
 .list-view-filter > li:nth-child(3) {
     display: none !important;
