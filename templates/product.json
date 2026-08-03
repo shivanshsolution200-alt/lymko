@@ -42,7 +42,6 @@
         },
         "fake_visitors_JaqMJq": {
           "type": "fake_visitors",
-          "disabled": true,
           "settings": {
             "text": "People are Viewing Right Now",
             "min_count": 50,
