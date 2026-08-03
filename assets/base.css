@@ -4930,11 +4930,13 @@ a.full-unstyled-link {
   button.product-form__submit.product-form__s.button.button--full-width.button--secondary {
     width: 296px;
 }
+}
+@media(max-width:426px){
+
 div#Slider-template--27351286022429__collection_list_QVNMd6 {
     justify-content: space-between;
 }
 }
-
 @media screen and (max-width: 989px) and (min-width: 750px) {
     .main-product-template .facets-vertical .main-product_info>.grid__item {
         /* width: calc(81% - var(--grid-desktop-horizontal-spacing) / 2); */
