@@ -29,7 +29,7 @@
         "filter_type": "vertical",
         "sidebar_settings": "sidebar-left",
         "enable_sorting": true,
-        "enable_grid_list": true,
+        "enable_grid_list": false,
         "article_show_date": true,
         "article_show_author": false,
         "columns_mobile": "1",
