@@ -1038,7 +1038,99 @@ display: inline-flex;
       "url": {{ request.origin | append: page.url | json }}
     }
   </script>
-  
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const header = document.querySelector("#header");
+
+  if (!header) return;
+
+
+  const spacer = document.createElement("div");
+  spacer.style.height = "0px";
+  header.parentNode.insertBefore(spacer, header.nextSibling);
+
+
+
+  let ticking = false;
+
+
+  function updateHeader() {
+
+    let scrollY = window.scrollY || document.documentElement.scrollTop;
+
+
+
+    // 0 to 300px sticky
+    if (scrollY > 0 && scrollY <= 300) {
+
+
+      if (!header.classList.contains("temp-sticky")) {
+
+        spacer.style.height = header.offsetHeight + "px";
+
+      }
+
+
+      header.classList.add("temp-sticky");
+      header.classList.remove("hide-header");
+
+
+
+    } 
+
+    // after 300px hide
+    else if (scrollY > 300) {
+
+
+      header.classList.remove("temp-sticky");
+
+      header.classList.add("hide-header");
+
+      spacer.style.height = "0px";
+
+
+    } 
+
+    // top normal
+    else {
+
+
+      header.classList.remove("temp-sticky");
+      header.classList.remove("hide-header");
+
+      spacer.style.height = "0px";
+
+
+    }
+
+
+    ticking = false;
+
+  }
+
+
+
+
+  window.addEventListener("scroll", function(){
+
+    if(!ticking){
+
+      requestAnimationFrame(updateHeader);
+
+      ticking = true;
+
+    }
+
+  });
+
+
+
+  updateHeader();
+
+
+});
+</script>
 {%- endif -%}
 
 {% schema %}
