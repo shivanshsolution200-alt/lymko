@@ -31,7 +31,7 @@
           "settings": {
             "icon": "shopify://shop_images/download.svg",
             "title": "POWERED BY NATURE",
-            "text": "Natural ingredients that nourish, protect and bring out the best in your skin."
+            "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
         },
         "feature_f3GwWa": {
@@ -39,7 +39,7 @@
           "settings": {
             "icon": "shopify://shop_images/download_1.svg",
             "title": "BACKED BY SCIENCE",
-            "text": "Advanced nano bio quantum technology for visible, real and lasting results."
+            "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
         },
         "feature_EjcGGx": {
@@ -47,7 +47,7 @@
           "settings": {
             "icon": "shopify://shop_images/download_2.svg",
             "title": "CLEAN & SAFE",
-            "text": "Toxin-free, cruelty-free and dermatologically tested for your safety."
+            "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
         },
         "feature_EzU94B": {
@@ -55,7 +55,7 @@
           "settings": {
             "icon": "shopify://shop_images/download_3.svg",
             "title": "SUSTAINABLE BEAUTY",
-            "text": "Responsible skincare for you and our planet, today and tomorrow."
+            "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
         }
       },
@@ -68,6 +68,98 @@
       "name": "Feature Icons",
       "settings": {
         "bg": "#ffffff"
+      }
+    },
+    "problem_mission_76mGHL": {
+      "type": "problem-mission",
+      "blocks": {
+        "problem_gth3Dg": {
+          "type": "problem",
+          "settings": {
+            "title": "Acne & Blemishes"
+          }
+        },
+        "problem_TRQYA6": {
+          "type": "problem",
+          "settings": {
+            "title": "Pigmentation & Dark Spots"
+          }
+        },
+        "problem_zLzFBd": {
+          "type": "problem",
+          "settings": {
+            "title": "Dryness & Dehydration"
+          }
+        },
+        "problem_G9Wx4G": {
+          "type": "problem",
+          "settings": {
+            "title": "Uneven Skin Tone"
+          }
+        },
+        "problem_TGEEQe": {
+          "type": "problem",
+          "settings": {
+            "title": "Fine Lines & Early Aging"
+          }
+        },
+        "problem_RJNj8K": {
+          "type": "problem",
+          "settings": {
+            "title": "Dull, Tired Looking Skin"
+          }
+        },
+        "problem_HTnJxf": {
+          "type": "problem",
+          "settings": {
+            "title": "Excess Oil & Congestion"
+          }
+        },
+        "problem_JXYcBV": {
+          "type": "problem",
+          "settings": {
+            "title": "Sensitive & Irritated Skin"
+          }
+        },
+        "problem_QRjNFX": {
+          "type": "problem",
+          "settings": {
+            "title": "Weak Skin Barrier"
+          }
+        },
+        "card_eCth6X": {
+          "type": "card",
+          "settings": {
+            "heading": "Our Mission",
+            "text": "To create high-quality skincare that is effective, safe, and accessible."
+          }
+        },
+        "card_U9ErDe": {
+          "type": "card",
+          "settings": {
+            "heading": "Our Vision",
+            "text": "To become a globally trusted skincare brand known for innovation, integrity, and sustainability, inspiring healthy skin and a better world."
+          }
+        }
+      },
+      "block_order": [
+        "problem_gth3Dg",
+        "problem_TRQYA6",
+        "problem_zLzFBd",
+        "problem_G9Wx4G",
+        "problem_TGEEQe",
+        "problem_RJNj8K",
+        "problem_HTnJxf",
+        "problem_JXYcBV",
+        "problem_QRjNFX",
+        "card_eCth6X",
+        "card_U9ErDe"
+      ],
+      "name": "Problem & Mission",
+      "settings": {
+        "heading": "The Problem We Solve",
+        "description": "<p>Our skin faces daily challenges from pollution, stress, UV rays, harsh chemicals, and lifestyle habits.</p><p>These factors can lead to:</p>",
+        "bg_color": "#ffffff"
       }
     },
     "176e23ad-9343-4ac6-9422-a72a3524281b": {
@@ -672,6 +764,7 @@
   "order": [
     "about_science_3LrUqq",
     "features_icons_LNiPwx",
+    "problem_mission_76mGHL",
     "176e23ad-9343-4ac6-9422-a72a3524281b",
     "main",
     "image_with_text_bYAAWi",
