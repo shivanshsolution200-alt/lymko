@@ -1,0 +1,189 @@
+<section class="features-icons">
+  <div class="page-width">
+    <div class="features-grid">
+
+      {% for block in section.blocks %}
+        <div class="feature-item" {{ block.shopify_attributes }}>
+
+          {% if block.settings.icon != blank %}
+            <div class="feature-icon">
+              <img
+                src="{{ block.settings.icon | image_url: width: 100 }}"
+                alt="{{ block.settings.title }}"
+                loading="lazy">
+            </div>
+          {% endif %}
+
+          <div class="feature-content">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+
+.features-icons{
+    background:{{ section.settings.bg }};
+    padding:35px 0;
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.feature-item{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    padding:0 30px;
+    border-right:1px solid #e8e8e8;
+}
+
+.feature-item:last-child{
+    border-right:none;
+}
+
+.feature-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#f6f5ef;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.feature-icon img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+}
+
+.feature-content h3{
+    margin:0 0 8px;
+    font-size:22px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#233626;
+}
+
+.feature-content p{
+    margin:0;
+    font-size:16px;
+    line-height:1.7;
+    color:#555;
+}
+
+@media(max-width:989px){
+
+.features-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+}
+
+.feature-item{
+    border-right:none;
+    border-bottom:1px solid #eee;
+    padding-bottom:25px;
+}
+
+}
+
+@media(max-width:749px){
+
+.features-grid{
+    grid-template-columns:1fr;
+}
+
+.feature-item{
+    padding:20px 0;
+}
+
+.feature-content h3{
+    font-size:18px;
+}
+
+.feature-content p{
+    font-size:15px;
+}
+
+.feature-icon{
+    width:60px;
+    height:60px;
+}
+
+.feature-icon img{
+    width:30px;
+}
+
+}
+
+</style>
+
+{% schema %}
+{
+  "name":"Feature Icons",
+  "settings":[
+    {
+      "type":"color",
+      "id":"bg",
+      "label":"Background",
+      "default":"#ffffff"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"feature",
+      "name":"Feature",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"icon",
+          "label":"Icon"
+        },
+        {
+          "type":"text",
+          "id":"title",
+          "label":"Title",
+          "default":"POWERED BY NATURE"
+        },
+        {
+          "type":"textarea",
+          "id":"text",
+          "label":"Description",
+          "default":"Natural ingredients that nourish, protect and bring out the best in your skin."
+        }
+      ]
+    }
+  ],
+  "max_blocks":4,
+  "presets":[
+    {
+      "name":"Feature Icons",
+      "blocks":[
+        {
+          "type":"feature"
+        },
+        {
+          "type":"feature"
+        },
+        {
+          "type":"feature"
+        },
+        {
+          "type":"feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
