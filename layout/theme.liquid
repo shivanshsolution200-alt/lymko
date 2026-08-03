@@ -466,7 +466,79 @@
 {% endif %}
 
 {% render 'recently-viewed-tracker' %}
+<script>
+document.addEventListener("DOMContentLoaded", function(){
 
+  const drawer = document.querySelector("#menu-drawer");
+
+  if(!drawer) return;
+
+
+  function lockScroll(){
+    document.body.classList.add("menu-open");
+  }
+
+
+  function unlockScroll(){
+    document.body.classList.remove("menu-open");
+  }
+
+
+
+  // Menu icon click
+  document.querySelectorAll("summary, .header__icon--menu, .menu-drawer-button, .mobile-menu-trigger")
+  .forEach(function(btn){
+
+    btn.addEventListener("click", function(){
+
+      setTimeout(function(){
+
+        if(drawer.classList.contains("active") || drawer.hasAttribute("open")){
+          lockScroll();
+        }
+
+      },100);
+
+    });
+
+  });
+
+
+
+  // Close button
+  const closeBtn = drawer.querySelector(".header-drawer__close");
+
+  if(closeBtn){
+
+    closeBtn.addEventListener("click", function(){
+
+      unlockScroll();
+
+    });
+
+  }
+
+
+
+  // Outside click / escape close
+  document.addEventListener("click", function(e){
+
+    if(!drawer.contains(e.target)){
+
+      if(!e.target.closest(".header__icon--menu")){
+
+        unlockScroll();
+
+      }
+
+    }
+
+  });
+
+
+
+});
+</script>
 
   </body>
 

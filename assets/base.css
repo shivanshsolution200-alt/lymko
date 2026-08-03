@@ -5170,32 +5170,28 @@ header#header.temp-sticky {
     background: var(--gradient-base-accent-1);
     color: #fff !important;
 }
-/* Sticky Header */
-header#header.temp-sticky {
-  position: fixed;
+/* Drawer fix */
+#menu-drawer {
+  position: fixed !important;
   top: 0;
   left: 0;
+  height: 100vh !important;
   width: 100%;
-  z-index: 1000;
-}
-
-
-/* Mobile Menu Drawer Above Header */
-#menu-drawer {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   z-index: 99999 !important;
 }
 
 
-/* Drawer overlay bhi upar rahe */
-.menu-drawer-overlay,
-.drawer-overlay {
-  z-index: 99998 !important;
+/* Background scroll lock */
+body.menu-open {
+  overflow: hidden !important;
+  height: 100vh;
 }
-@media(max-width: 768px){
 
-  #menu-drawer {
-    top: var(--header-height, 0px) !important;
-    height: calc(100vh - var(--header-height, 0px)) !important;
-  }
 
+/* Drawer ke andar scroll allow */
+#menu-drawer .menu-drawer__inner-container {
+  height: 100%;
+  overflow-y: auto;
 }
