@@ -49,8 +49,8 @@
         "column_alignment": "left",
         "color_scheme": "accent-1",
         "address_heading": "",
-        "address_desc": "Contact Us",
-        "additional_address_heading": "",
+        "address_desc": "",
+        "additional_address_heading": "Contact Us",
         "address_desc_1": "",
         "collapsible_address": "",
         "address_desc_2": "Support Email Id",
@@ -58,7 +58,7 @@
         "address_desc_3": "",
         "collapsible_contact_id": "contact.lymko@gmail.in contact@lymko.in.",
         "block_alignments": "map-with-form",
-        "padding_top": 0,
+        "padding_top": 16,
         "padding_bottom": 48
       }
     },
