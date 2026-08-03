@@ -32,14 +32,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "fake_visitors_JaqMJq": {
-          "type": "fake_visitors",
-          "settings": {
-            "text": "People are Viewing Right Now",
-            "min_count": 50,
-            "max_count": 200
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
@@ -73,9 +65,8 @@
         },
         "custom_liquid_HFdpPU": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
-            "custom_liquid": "<div class=\"viewing-box\">\n  \n  <span class=\"eye-icon\">\n    <!-- SVG Eye Icon -->\n    <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#222\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n      <path d=\"M1 12C3.5 7 7.5 4 12 4s8.5 3 11 8c-2.5 5-6.5 8-11 8s-8.5-3-11-8z\"/>\n      <circle cx=\"12\" cy=\"12\" r=\"3\"/>\n    </svg>\n  </span>\n\n  <span class=\"viewing-text\">\n    <b id=\"viewingCount\">52</b> People are Viewing Right Now\n  </span>\n\n</div>"
+            "custom_liquid": "<div class=\"viewing-box\">\n  \n  <span class=\"eye-icon\">\n    <!-- SVG Eye Icon -->\n    <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#222\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n      <path d=\"M1 12C3.5 7 7.5 4 12 4s8.5 3 11 8c-2.5 5-6.5 8-11 8s-8.5-3-11-8z\"/>\n      <circle cx=\"12\" cy=\"12\" r=\"3\"/>\n    </svg>\n  </span>\n\n  <span class=\"viewing-text\">\n    <b id=\"viewingCount\">52</b> People are Viewing Right Now\n  </span>\n\n</div>\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const viewingCount = document.getElementById(\"viewingCount\");\n\n    let count = Math.floor(Math.random() * (5000 - 50 + 1)) + 50;\n    viewingCount.textContent = count.toLocaleString();\n\n    setInterval(() => {\n        const change = Math.floor(Math.random() * 41) - 20; // -20 to +20\n        count += change;\n\n        if (count < 50) count = 50;\n        if (count > 5000) count = 5000;\n\n        viewingCount.textContent = count.toLocaleString();\n    }, 3000);\n});\n</script>"
           }
         },
         "variant_picker": {
@@ -198,7 +189,6 @@
         }
       },
       "block_order": [
-        "fake_visitors_JaqMJq",
         "title",
         "price",
         "caption",
