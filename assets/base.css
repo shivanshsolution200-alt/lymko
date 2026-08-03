@@ -5166,3 +5166,7 @@ header#header.temp-sticky {
     background-color: rgba(var(--color-base-outline-button-labels));
     color: #fff !important;
 }
+.product-form__buttons button.product-form__submit.button.button--full-width.button--secondary:hover, .product-form__buttons a.button.add-wishlist.button--secondary:hover {
+    background: var(--gradient-base-accent-1);
+    color: #fff;
+}
