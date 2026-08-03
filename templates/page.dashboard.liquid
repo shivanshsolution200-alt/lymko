@@ -255,9 +255,21 @@
       {% comment %} <a href="https://account.lymko.in/profile" class="ldash__small-btn">Add</a> {% endcomment %}
     </header>
       <div class="ldash__card-body">
-        {% if customer.addresses.size > 0 %}<div class="ldash__address-grid">{% for address in customer.addresses %}<div class="ldash__address-card">{% if address == customer.default_address %}<span>Default</span>{% endif %}{{ address | format_address }}</div>{% endfor %}</div>{% else %}<p class="ldash__muted">No addresses added.</p>{% endif %}
-      
-      </div>
+  {% if customer.addresses.size > 0 %}
+    <div class="ldash__address-grid">
+      {% for address in customer.addresses %}
+        <div class="ldash__address-card">
+          {% if address == customer.default_address %}
+            <span>Default</span>
+          {% endif %}
+          {{ address | format_address }}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="ldash__muted">No addresses added.</p>
+  {% endif %}
+</div>
     </article>
   </div>
 
