@@ -1,22 +1,29 @@
-<section class="features-icons">
+<section class="feature-icons-pro" style="--bg-color: {{ section.settings.bg }};">
   <div class="page-width">
-    <div class="features-grid">
+    <div class="feature-icons-wrapper">
 
       {% for block in section.blocks %}
-        <div class="feature-item" {{ block.shopify_attributes }}>
+        <div class="feature-box" {{ block.shopify_attributes }}>
 
-          {% if block.settings.icon != blank %}
-            <div class="feature-icon">
+          <div class="feature-icon">
+            {% if block.settings.icon != blank %}
               <img
                 src="{{ block.settings.icon | image_url: width: 100 }}"
-                alt="{{ block.settings.title }}"
+                alt="{{ block.settings.title | escape }}"
+                width="40"
+                height="40"
                 loading="lazy">
-            </div>
-          {% endif %}
+            {% endif %}
+          </div>
 
-          <div class="feature-content">
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
+          <div class="feature-text">
+            {% if block.settings.title != blank %}
+              <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+
+            {% if block.settings.description != blank %}
+              <p>{{ block.settings.description }}</p>
+            {% endif %}
           </div>
 
         </div>
@@ -26,164 +33,248 @@
   </div>
 </section>
 
-<style>
-
-.features-icons{
-    background:{{ section.settings.bg }};
-    padding:35px 0;
-}
-
-.features-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-}
-
-.feature-item{
-    display:flex;
-    align-items:flex-start;
-    gap:18px;
-    padding:0 30px;
-    border-right:1px solid #e8e8e8;
-}
-
-.feature-item:last-child{
-    border-right:none;
-}
-
-.feature-icon{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    background:#f6f5ef;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-}
-
-.feature-icon img{
-    width:34px;
-    height:34px;
-    object-fit:contain;
-}
-
-.feature-content h3{
-    margin:0 0 8px;
-    font-size:22px;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    color:#233626;
-}
-
-.feature-content p{
-    margin:0;
-    font-size:16px;
-    line-height:1.7;
-    color:#555;
-}
-
-@media(max-width:989px){
-
-.features-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:35px;
-}
-
-.feature-item{
-    border-right:none;
-    border-bottom:1px solid #eee;
-    padding-bottom:25px;
-}
-
-}
-
-@media(max-width:749px){
-
-.features-grid{
-    grid-template-columns:1fr;
-}
-
-.feature-item{
-    padding:20px 0;
-}
-
-.feature-content h3{
-    font-size:18px;
-}
-
-.feature-content p{
-    font-size:15px;
-}
-
-.feature-icon{
-    width:60px;
-    height:60px;
-}
-
-.feature-icon img{
-    width:30px;
-}
-
-}
-
-</style>
-
 {% schema %}
 {
-  "name":"Feature Icons",
-  "settings":[
+  "name": "Feature Icons Pro",
+  "tag": "section",
+  "class": "section-feature-icons",
+  "settings": [
     {
-      "type":"color",
-      "id":"bg",
-      "label":"Background",
-      "default":"#ffffff"
+      "type": "color",
+      "id": "bg",
+      "label": "Background Color",
+      "default": "#ffffff"
     }
   ],
-  "blocks":[
+  "blocks": [
     {
-      "type":"feature",
-      "name":"Feature",
-      "settings":[
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
         {
-          "type":"image_picker",
-          "id":"icon",
-          "label":"Icon"
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
         },
         {
-          "type":"text",
-          "id":"title",
-          "label":"Title",
-          "default":"POWERED BY NATURE"
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "POWERED BY NATURE"
         },
         {
-          "type":"textarea",
-          "id":"text",
-          "label":"Description",
-          "default":"Natural ingredients that nourish, protect and bring out the best in your skin."
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Natural ingredients that nourish, protect and bring out the best in your skin."
         }
       ]
     }
   ],
-  "max_blocks":4,
-  "presets":[
+  "max_blocks": 4,
+  "presets": [
     {
-      "name":"Feature Icons",
-      "blocks":[
+      "name": "Feature Icons Pro",
+      "blocks": [
         {
-          "type":"feature"
+          "type": "feature",
+          "settings": {
+            "title": "POWERED BY NATURE",
+            "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
+          }
         },
         {
-          "type":"feature"
+          "type": "feature",
+          "settings": {
+            "title": "BACKED BY SCIENCE",
+            "description": "Advanced nano bio quantum technology for visible, real and lasting results."
+          }
         },
         {
-          "type":"feature"
+          "type": "feature",
+          "settings": {
+            "title": "CLEAN & SAFE",
+            "description": "Toxin-free, cruelty-free and dermatologically tested for your safety."
+          }
         },
         {
-          "type":"feature"
+          "type": "feature",
+          "settings": {
+            "title": "SUSTAINABLE BEAUTY",
+            "description": "Responsible skincare for you and our planet, today and tomorrow."
+          }
         }
       ]
     }
   ]
 }
 {% endschema %}
+<style>
+    .feature-icons-pro{
+    background: var(--bg-color);
+    padding:55px 0;
+    border-top:1px solid #ece8e3;
+    border-bottom:1px solid #ece8e3;
+}
+
+.feature-icons-pro .page-width{
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 20px;
+}
+
+.feature-icons-wrapper{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.feature-box{
+    display:flex;
+    align-items:flex-start;
+    gap:22px;
+    padding:0 35px;
+    position:relative;
+    min-height:140px;
+}
+
+.feature-box:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    right:0;
+    top:5px;
+    width:1px;
+    height:130px;
+    background:#e8e3dc;
+}
+
+.feature-icon{
+    width:74px;
+    height:74px;
+    min-width:74px;
+    border-radius:50%;
+    background:#f8f6ef;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.feature-icon img{
+    width:36px;
+    height:36px;
+    object-fit:contain;
+    display:block;
+}
+
+.feature-text{
+    flex:1;
+}
+
+.feature-text h3{
+    margin:0 0 12px;
+    font-size:18px;
+    line-height:1.2;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#233626;
+}
+
+.feature-text p{
+    margin:0;
+    font-size:16px;
+    line-height:1.8;
+    color:#666;
+}
+
+@media screen and (max-width:990px){
+
+.feature-icons-wrapper{
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+}
+
+.feature-box{
+    padding:0;
+}
+
+.feature-box::after{
+    display:none;
+}
+
+}
+
+@media screen and (max-width:749px){
+
+.feature-icons-pro{
+    padding:40px 0;
+}
+
+.feature-icons-wrapper{
+    grid-template-columns:1fr;
+    gap:25px;
+}
+
+.feature-box{
+    border-bottom:1px solid #ece8e3;
+    padding-bottom:25px;
+}
+
+.feature-box:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.feature-icon{
+    width:66px;
+    height:66px;
+    min-width:66px;
+}
+
+.feature-icon img{
+    width:32px;
+    height:32px;
+}
+
+.feature-text h3{
+    font-size:17px;
+}
+
+.feature-text p{
+    font-size:15px;
+    line-height:1.7;
+}
+
+}
+/* Better alignment */
+.feature-box{
+    align-items:center;
+}
+
+/* Smooth hover */
+.feature-box{
+    transition:.35s ease;
+}
+
+.feature-box:hover{
+    transform:translateY(-4px);
+}
+
+.feature-box:hover .feature-icon{
+    background:#eef2e5;
+}
+
+/* Icon */
+.feature-icon img{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+    display:block;
+}
+
+/* Better text rendering */
+.feature-text h3,
+.feature-text p{
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+}
+</style>
