@@ -462,6 +462,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  document.querySelectorAll('cart-remove-button, .cart-remove-button, [name="remove"]').forEach(function(removeBtn){
+
+    removeBtn.addEventListener("click", function(e){
+
+      e.preventDefault();
+
+      let cartItem = this.closest(".cart-item");
+
+      if(!cartItem) return;
+
+
+      let input = cartItem.querySelector(".quantity__input");
+
+      if(!input) return;
+
+
+      let line = Number(input.dataset.index);
+
+
+      fetch("/cart/change.js", {
+        method: "POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+          line: line,
+          quantity: 0
+        })
+      })
+      .then(response => response.json())
+      .then(() => {
+
+        location.reload();
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+
+    });
+
+  });
+
+});
+</script>
 {% schema %}
 {
   "name": "t:sections.main-cart-items.name",
