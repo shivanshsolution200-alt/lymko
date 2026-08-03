@@ -32,7 +32,7 @@ li.dt-sc-menu-product {
 }
 
 .menu-drawer {
-  position: absolute;
+  position: fixed;
   transform: translateX(-100%);
   visibility: hidden;
   z-index: 5;
