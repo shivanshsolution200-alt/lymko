@@ -1,0 +1,258 @@
+<section class="science-section" style="background: {{ section.settings.bg_color }};">
+  <div class="page-width">
+    <div class="science-wrapper">
+
+      <!-- Left -->
+      <div class="science-content">
+
+        {% if section.settings.label != blank %}
+        <span class="about-label">
+          {{ section.settings.label }}
+        </span>
+        {% endif %}
+
+        <h2 class="science-title">
+          <span class="title-dark">{{ section.settings.heading1 }}</span><br>
+          <span class="title-gold">{{ section.settings.heading2 }}</span>
+        </h2>
+
+        {% if section.settings.text1 != blank %}
+        <p>{{ section.settings.text1 }}</p>
+        {% endif %}
+
+        {% if section.settings.text2 != blank %}
+        <p>{{ section.settings.text2 }}</p>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="science-btn">
+          {{ section.settings.button_text }}
+        </a>
+        {% endif %}
+
+      </div>
+
+      <!-- Right -->
+      <div class="science-image">
+
+        {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            alt="{{ section.settings.heading1 }}"
+            loading="lazy"
+          >
+        {% else %}
+          {{ 'image' | placeholder_svg_tag }}
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+
+.science-section{
+padding:80px 20px;
+}
+
+.science-wrapper{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:70px;
+}
+
+.science-content{
+width:45%;
+}
+
+.science-image{
+width:55%;
+text-align:right;
+}
+
+.science-image img{
+width:100%;
+display:block;
+border-radius:12px;
+}
+
+.about-label{
+display:inline-block;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+margin-bottom:20px;
+color:#a88543;
+font-weight:600;
+position:relative;
+padding-right:60px;
+}
+
+.about-label:after{
+content:"";
+position:absolute;
+right:0;
+top:50%;
+width:45px;
+height:1px;
+background:#b69353;
+}
+
+.science-title{
+font-size:58px;
+line-height:1.15;
+font-weight:500;
+margin-bottom:30px;
+font-family:Georgia,serif;
+}
+
+.title-dark{
+color:#0d3427;
+}
+
+.title-gold{
+color:#b08a47;
+}
+
+.science-content p{
+font-size:18px;
+line-height:1.9;
+color:#555;
+margin-bottom:25px;
+}
+
+.science-btn{
+display:inline-block;
+padding:15px 35px;
+background:#0d3427;
+color:#fff;
+text-decoration:none;
+border-radius:40px;
+transition:.3s;
+}
+
+.science-btn:hover{
+background:#b08a47;
+}
+
+@media(max-width:990px){
+
+.science-wrapper{
+flex-direction:column;
+}
+
+.science-content,
+.science-image{
+width:100%;
+}
+
+.science-title{
+font-size:42px;
+}
+
+.science-image{
+margin-top:40px;
+text-align:center;
+}
+
+}
+
+@media(max-width:767px){
+
+.science-section{
+padding:50px 15px;
+}
+
+.science-title{
+font-size:34px;
+}
+
+.science-content p{
+font-size:16px;
+line-height:1.7;
+}
+
+.about-label{
+font-size:12px;
+}
+
+}
+
+</style>
+
+{% schema %}
+{
+"name":"About Science",
+"settings":[
+
+{
+"type":"text",
+"id":"label",
+"label":"Label",
+"default":"ABOUT US"
+},
+
+{
+"type":"text",
+"id":"heading1",
+"label":"Heading Line 1",
+"default":"The Science Behind,"
+},
+
+{
+"type":"text",
+"id":"heading2",
+"label":"Heading Line 2",
+"default":"The Care Within."
+},
+
+{
+"type":"textarea",
+"id":"text1",
+"label":"Paragraph 1",
+"default":"At Lymko, we believe skincare is more than a routine—it's a daily ritual of self-care, confidence, and well-being."
+},
+
+{
+"type":"textarea",
+"id":"text2",
+"label":"Paragraph 2",
+"default":"We blend the best of nature with advanced skincare science to create safe, effective, and luxurious products that help you achieve healthy, radiant skin."
+},
+
+{
+"type":"image_picker",
+"id":"image",
+"label":"Right Image"
+},
+
+{
+"type":"text",
+"id":"button_text",
+"label":"Button Text"
+},
+
+{
+"type":"url",
+"id":"button_link",
+"label":"Button Link"
+},
+
+{
+"type":"color",
+"id":"bg_color",
+"label":"Background",
+"default":"#f8f7f3"
+}
+
+],
+"presets":[
+{
+"name":"About Science"
+}
+]
+}
+{% endschema %}
