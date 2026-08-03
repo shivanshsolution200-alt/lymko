@@ -326,6 +326,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
+
   function updateCart(line, quantity) {
 
     fetch("/cart/change.js", {
@@ -349,6 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+
   function toggleMinusButton(input){
 
     const quantityBox = input.closest(".quantity");
@@ -358,106 +360,162 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(!minusBtn) return;
 
-    if(Number(input.value) <= 1){
-      minusBtn.disabled = true;
-      minusBtn.style.opacity = "0.4";
-      minusBtn.style.cursor = "not-allowed";
-    } else {
-      minusBtn.disabled = false;
-      minusBtn.style.opacity = "1";
-      minusBtn.style.cursor = "pointer";
-    }
+
+    // Minus kabhi disable nahi hoga
+    minusBtn.disabled = false;
+    minusBtn.style.opacity = "1";
+    minusBtn.style.cursor = "pointer";
 
   }
 
 
+
   document.querySelectorAll(".cart-item").forEach(function(cartItem){
+
 
     const input = cartItem.querySelector(".quantity__input");
     const plus = cartItem.querySelector('button[name="plus"]');
     const minus = cartItem.querySelector('button[name="minus"]');
 
+
     if(!input || !plus || !minus) return;
+
 
 
     const line = Number(input.dataset.index);
 
 
+
     toggleMinusButton(input);
 
 
+
+
+    // PLUS
     plus.addEventListener("click", function(e){
 
       e.preventDefault();
-      e.stopImmediatePropagation(); // Shopify native JS block
+      e.stopImmediatePropagation();
 
-      let qty = Number(input.value);
+
+      let qty = Number(input.value) || 1;
+
 
       qty = qty + 1;
 
+
       input.value = qty;
+
 
       toggleMinusButton(input);
 
+
       updateCart(line, qty);
+
 
     }, true);
 
 
 
+
+
+
+
+    // MINUS
     minus.addEventListener("click", function(e){
+
 
       e.preventDefault();
       e.stopImmediatePropagation();
 
-      let qty = Number(input.value);
 
 
+      let qty = Number(input.value) || 1;
+
+
+
+      // Quantity 1 hai to remove
       if(qty <= 1){
+
+
+        updateCart(line, 0);
+
+
         return;
+
       }
+
+
 
 
       qty = qty - 1;
 
 
+
       input.value = qty;
+
+
 
       toggleMinusButton(input);
 
+
+
       updateCart(line, qty);
+
 
 
     }, true);
 
 
 
+
+
+
+
+    // Manual quantity change
     input.addEventListener("change", function(e){
 
+
       e.stopImmediatePropagation();
+
 
 
       let qty = Number(this.value);
 
 
+
       if(!qty || qty < 1){
-        qty = 1;
+
+
+        updateCart(line, 0);
+
+
+        return;
+
       }
+
+
 
 
       this.value = qty;
 
 
+
       toggleMinusButton(this);
 
+
+
       updateCart(line, qty);
+
 
 
     }, true);
 
 
 
+
   });
+
 
 
 });
