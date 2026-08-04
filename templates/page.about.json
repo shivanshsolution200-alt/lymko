@@ -18,6 +18,7 @@
         "heading2": "The Care Within.",
         "text1": "At Lymko, we believe skincare is more than a routine—it's a daily ritual of self-care, confidence, and well-being.",
         "text2": "We blend the best of nature with advanced skincare science to create safe, effective, and luxurious products that help you achieve healthy, radiant skin.",
+        "image": "shopify://shop_images/side_image_11.png",
         "button_text": "",
         "button_link": "",
         "bg_color": "#f8f7f3"
@@ -29,7 +30,7 @@
         "feature_aMWhmy": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/download.svg",
+            "icon": "shopify://shop_images/POWERED_BY_NATURE.png",
             "title": "POWERED BY NATURE",
             "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
@@ -37,7 +38,7 @@
         "feature_f3GwWa": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/download_1.svg",
+            "icon": "shopify://shop_images/BACKED_BY_SCIENCE.png",
             "title": "BACKED BY SCIENCE",
             "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
@@ -45,7 +46,7 @@
         "feature_EjcGGx": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/download_2.svg",
+            "icon": "shopify://shop_images/CLEAN_SAFE.png",
             "title": "CLEAN & SAFE",
             "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
@@ -53,7 +54,7 @@
         "feature_EzU94B": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/download_3.svg",
+            "icon": "shopify://shop_images/SUSTAINABLE_BEAUTY.png",
             "title": "SUSTAINABLE BEAUTY",
             "description": "Natural ingredients that nourish, protect and bring out the best in your skin."
           }
@@ -76,60 +77,70 @@
         "problem_gth3Dg": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Acne_Blemishes.png",
             "title": "Acne & Blemishes"
           }
         },
         "problem_TRQYA6": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Pigmentation_Dark_Spots.png",
             "title": "Pigmentation & Dark Spots"
           }
         },
         "problem_zLzFBd": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Dryness_Dehydration.png",
             "title": "Dryness & Dehydration"
           }
         },
         "problem_G9Wx4G": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Uneven_Skin_Tone.png",
             "title": "Uneven Skin Tone"
           }
         },
         "problem_TGEEQe": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Fine_Lines_Early_Aging.png",
             "title": "Fine Lines & Early Aging"
           }
         },
         "problem_RJNj8K": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Dull_Tired_Looking_Skin.png",
             "title": "Dull, Tired Looking Skin"
           }
         },
         "problem_HTnJxf": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Excess_Oil_Congestion_86302212-b016-4b6b-b2c0-c39ea9988697.png",
             "title": "Excess Oil & Congestion"
           }
         },
         "problem_JXYcBV": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Sensitive_Irritated_Skin.png",
             "title": "Sensitive & Irritated Skin"
           }
         },
         "problem_QRjNFX": {
           "type": "problem",
           "settings": {
+            "icon": "shopify://shop_images/Weak_Skin_Barrier_798bd2ea-b07f-4fd6-aca7-ce943126b58d.png",
             "title": "Weak Skin Barrier"
           }
         },
         "card_eCth6X": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/Our_Mission.png",
             "heading": "Our Mission",
             "text": "To create high-quality skincare that is effective, safe, and accessible."
           }
@@ -137,6 +148,7 @@
         "card_U9ErDe": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/Our_Vision.png",
             "heading": "Our Vision",
             "text": "To become a globally trusted skincare brand known for innovation, integrity, and sustainability, inspiring healthy skin and a better world."
           }
