@@ -10,7 +10,7 @@
       </symbol>
     </svg>
     <h1>{{ 'customer.addresses.title' | t }}</h1>
-    <a href="{{ /pages/dashboard }}">
+    <a href="{{ pages.dashboard }}">
       {{ 'customer.account.return' | t }}
     </a>
 
@@ -262,3 +262,13 @@
    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
    });
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ /pages/dashboard }}"
+  to: "{{ pages.dashboard }}"
+  position: 571..592
+{% endcomment %}

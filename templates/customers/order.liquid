@@ -8,7 +8,7 @@
   </svg>
   <div>
     <h1>{{ 'customer.account.title' | t }}</h1>
-    <a href="{{ /pages/dashboard }}">{{ 'customer.account.return' | t }}</a>
+    <a href="{{ pages.dashboard }}">{{ 'customer.account.return' | t }}</a>
   </div>
 
   <div>
@@ -282,3 +282,13 @@
     </div>
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ /pages/dashboard }}"
+  to: "{{ pages.dashboard }}"
+  position: 451..472
+{% endcomment %}

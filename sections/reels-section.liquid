@@ -22,7 +22,7 @@
               </div>
             {%- else -%}
               <div class="reel-video-placeholder">
-                {%- capture 'placeholder' -%}
+                {%- capture placeholder -%}
                   {%- cycle 'lifestyle-1', 'lifestyle-2' -%}
                 {%- endcapture -%}
                 {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
@@ -309,4 +309,13 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- capture 'placeholder' -%}"
+  to: "{%- capture placeholder -%}"
+  position: 1138..1165
+{%- endcomment -%}
